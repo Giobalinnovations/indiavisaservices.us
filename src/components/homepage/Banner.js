@@ -8,11 +8,9 @@ const Banner = () => {
 
   return (
     <div className="">
-      <div className="relative h-screen">
         <div
-          className=" bg-cover bg-no-repeat bg-right-bottom"
-          style={{
-            backgroundImage: ' url("/images/home/banner.png")',
+          className=' bg-cover bg-no-repeat bg-right-bottom h-screen' style={{
+            backgroundImage: ' url("/images/home/banner.png")'
           }}
         >
           <div className="text-white h-full bg-gradient-to-r from-black/80 via-black/50 to-transparent">
@@ -37,8 +35,6 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
-
       <div className="absolute bottom-0 bg-black/50 w-full">
         <div className="container flex items-center justify-between text-white py-4 overflow-x-auto flex-wrap gap-4">
           <div className="flex items-center space-x-4 md:text-base ">
