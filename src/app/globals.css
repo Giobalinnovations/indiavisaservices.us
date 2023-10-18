@@ -24,6 +24,29 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+/* form css start  */
+.formMain{
+  @apply py-8 space-y-4
+}
+.form-input-main-div{
+  @apply grid grid-cols-12 items-center
+}
+.form-label{
+  @apply col-span-4 mb-3 block text-base text-[#07074D]
+}
+.form-input{
+  @apply col-span-8 w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md
+}
+.select-input{
+ @apply col-span-8 w-full
+}
+.formbtnBorder {
+  @apply py-2 px-8 hover:bg-primary text-primary hover:text-black border-2 border-primary font-semibold rounded-full shadow-md bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}
+.formbtn {
+  @apply py-2 px-8 bg-primary text-white font-semibold rounded-full shadow-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+}
+/* form css end  */
 .container {
   padding-right: 15px;
   padding-left: 15px;
