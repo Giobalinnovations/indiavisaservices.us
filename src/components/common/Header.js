@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
 import { FiChevronDown } from "react-icons/fi";
 import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Image from "next/image";
+import { FaBars, FaTimes } from "react-icons/fa";
 // import logoImg from "@/public/images/logo.png"
 // import Image from "next/image";
 const Header = ({ bgcolor }) => {

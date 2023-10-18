@@ -9,9 +9,7 @@ const StepThree = () => {
         </h2>
         <form method="POST">
           <div class="mb-5">
-            <label for="name" class="form-label">
-              Full Name
-            </label>
+            <label class="form-label">Full Name</label>
             <input
               type="text"
               name="name"
