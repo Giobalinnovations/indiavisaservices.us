@@ -10,10 +10,8 @@ const Banner = () => {
  
   return (
     <div className="">
-
-      <div className="relative h-screen">
         <div
-          className=' bg-cover bg-no-repeat bg-right-bottom' style={{
+          className=' bg-cover bg-no-repeat bg-right-bottom h-screen' style={{
             backgroundImage: ' url("/images/home/banner.png")'
           }}
         >
@@ -39,10 +37,6 @@ const Banner = () => {
           </div>
 
         </div>
-
-      </div>
-
-
       <div className="absolute bottom-0 bg-black/50 w-full">
         <div className="container flex items-center justify-between text-white py-4 overflow-x-auto flex-wrap gap-4">
 
