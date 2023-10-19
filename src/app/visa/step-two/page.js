@@ -1,5 +1,6 @@
 "use client";
 import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
 import React, { useState } from "react";
 import Select from "react-select";
 
@@ -318,8 +319,8 @@ const StepTwo = ({ step }) => {
         <p className="font-semibold">Mandatory Fields*</p>
 
         <div className="text-center space-x-4">
-          <button class="formbtnBorder">Back</button>
-          <button class="formbtn">Continue</button>
+        <Link href="/visa/step-one" ><button class="formbtnBorder">Back</button></Link>  
+       <Link href="/visa/step-three" >   <button class="formbtn">Continue</button></Link>
         </div>
       </div>
     </>
