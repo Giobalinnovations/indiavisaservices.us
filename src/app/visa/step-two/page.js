@@ -15,7 +15,7 @@ const StepTwo = ({ step }) => {
       <BannerPage heading="Applicant Detail Form" />
       <div className="container py-16">
         <div className="">
-          <h2 className="text-2xl font-semibold">Applicant Details</h2>
+          <h2 className="text-3xl font-semibold">Applicant Details</h2>
           <hr className="text-primary bg-primary w-36 h-1" />
         </div>
         <div className=" grid grid-cols-12 gap-8">
@@ -29,8 +29,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -40,8 +40,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="w-full flex items-center space-x-3 font-medium py-2">
@@ -69,8 +69,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -88,8 +88,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -108,8 +108,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -164,6 +164,7 @@ const StepTwo = ({ step }) => {
             Have you lived for at least two years in the country where you are
             applying visa?
           </label>
+
           <div className="space-x-4 flex">
             <div className="px-2 space-x-2">
               <input type="checkbox" />
@@ -174,6 +175,9 @@ const StepTwo = ({ step }) => {
               <label class=" font-semibold">No</label>
             </div>
           </div>
+        </div>
+        <div className="text-primary font-semibold text-2xl">
+          Passport Details
         </div>
         <div className=" grid grid-cols-12 gap-8">
           <div className="col-span-8">
@@ -186,8 +190,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -197,8 +201,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -208,8 +212,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -219,8 +223,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div className="flex items-start space-x-2 py-2">
@@ -254,8 +258,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -265,8 +269,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">
@@ -276,8 +280,8 @@ const StepTwo = ({ step }) => {
                     name="Email ID*"
                     id="name"
                     class="form-input"
-                    //   value={fullName}
-                    //   onChange={(e) => setFullName(e.target.value)}
+                  //   value={fullName}
+                  //   onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div class="form-input-main-div">

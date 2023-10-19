@@ -8,6 +8,7 @@ import Confrence from './EvisaCategory/Confrence';
 import Medical from './EvisaCategory/Medical';
 import MedicalAttend from './EvisaCategory/MedicalAttend';
 import MainPage from './instruction/MainPage';
+import Link from 'next/link';
 
 const Advisory = () => {
     const [select, setSelect] = useState(1);
@@ -39,26 +40,32 @@ const Advisory = () => {
         {
             id: 1,
             title: "Sample e-Visa Application",
+            link:"#"
         },
         {
             id: 2,
             title: "Apply here for e-Visa",
+            link:"/visa/step-one",
         },
         {
             id: 3,
             title: "Complete partially filled application form",
+            link:"#"
         },
         {
             id: 4,
             title: "Verify Payment / Pay e-Visa fee",
+            link:"#"
         },
         {
             id: 5,
             title: "Print e-Visa Application",
+            link:"#"
         },
         {
             id: 6,
             title: "Check your Status",
+            link:"#"
         },
 
     ]
@@ -83,67 +90,69 @@ const Advisory = () => {
             <div className='grid grid-cols-3 gap-10 pt-16 '>
                 {data.map((e, i) => (
                     <>
-                        <div className='bg-white border border-primary hover:drop-shadow-lg hover:shadow-[2px_6px_30px_-15px_#ff6c00] hover:border-transparent  px-8 py-10 h-[120px] flex flex-col space-y-3 rounded-2xl justify-content-center align-items-center hover:cursor-pointer' key={i}>
-                            <p className='font-semibold text-center text-lg text-primary'> {e.title}</p>
+                        <Link href={e.link} >
+                            <div className='bg-white border border-primary hover:drop-shadow-lg hover:shadow-[2px_6px_30px_-15px_#ff6c00] hover:border-transparent  px-8 py-10 h-[120px] flex flex-col space-y-3 rounded-2xl justify-content-center align-items-center hover:cursor-pointer' key={i}>
+                                <p className='font-semibold text-center text-lg text-primary'> {e.title}</p>
 
-                        </div>
+                            </div>
+                        </Link>
                     </>
                 ))}
             </div>
-            
-                <div className="grid md:grid-cols-3 md:pt-20 gap-8 items-start">
-                    <div className="  md:overflow-auto overflow-scroll">
-                        <Texteft
-                            title="eVisa is admissable only under the following categories:" />
-                        <div className=" md:flex-col flex md:space-x-0 space-x-4 whitespace-pre">
-                            {tabs.map((item, index) => (
+
+            <div className="grid md:grid-cols-3 md:pt-20 gap-8 items-start">
+                <div className="  md:overflow-auto overflow-scroll">
+                    <Texteft
+                        title="eVisa is admissable only under the following categories:" />
+                    <div className=" md:flex-col flex md:space-x-0 space-x-4 whitespace-pre">
+                        {tabs.map((item, index) => (
+                            <div
+
+                                className="group pt-5"
+                                key={index}
+                            >
                                 <div
-
-                                    className="group pt-5"
-                                    key={index}
+                                    onClick={() => setSelect(item.id)}
+                                    className={` py-3 rounded-md md:text-lg flex space-x-2 items-center w-fit cursor-pointer ${select === item.id
+                                        ? " font-bold text-primary "
+                                        : "  text-secondary font-semibold "
+                                        }`}
                                 >
-                                    <div
-                                        onClick={() => setSelect(item.id)}
-                                        className={` py-3 rounded-md md:text-lg flex space-x-2 items-center w-fit cursor-pointer ${select === item.id
-                                                ? " font-bold text-primary "
-                                                : "  text-secondary font-semibold "
-                                            }`}
-                                    >
-                                        <img src="/images/process/circleicon.png" alt="" className="md:w-5 md:h-5 " />
-                                        <span className="">{item.text}</span>
-                                    </div>
+                                    <img src="/images/process/circleicon.png" alt="" className="md:w-5 md:h-5 " />
+                                    <span className="">{item.text}</span>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
-
-                    <div className="col-span-2">
-                        <div className="bg-white  shadow-xl rounded-xl h-[600px]">
-                            {select === 1 ? (
-                                <>
-                                    <Tourist />
-                                </>
-                            ) : select === 2 ? (
-                                <>
-                                    <Business />
-                                </>
-                            ) : select === 3 ? (
-                                <>
-                                    <Confrence />
-                                </>
-                            ) : select === 4 ? (
-                                <>
-                                    <Medical />
-                                </>
-                            ) : (
-                                <>
-                                    <MedicalAttend />
-                                </>
-                            )}
-                        </div>
-                    </div>
-                    <div></div>
                 </div>
+
+                <div className="col-span-2">
+                    <div className="bg-white  shadow-xl rounded-xl h-[600px]">
+                        {select === 1 ? (
+                            <>
+                                <Tourist />
+                            </>
+                        ) : select === 2 ? (
+                            <>
+                                <Business />
+                            </>
+                        ) : select === 3 ? (
+                            <>
+                                <Confrence />
+                            </>
+                        ) : select === 4 ? (
+                            <>
+                                <Medical />
+                            </>
+                        ) : (
+                            <>
+                                <MedicalAttend />
+                            </>
+                        )}
+                    </div>
+                </div>
+                <div></div>
+            </div>
             <div>
                 <MainPage />
             </div>
