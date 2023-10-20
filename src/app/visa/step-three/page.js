@@ -18,7 +18,7 @@ const StepThree = ({ step }) => {
         <div>
           <div className="">
             <h2 className="text-3xl font-semibold">
-              Applicant's Address Details
+              Applicant&apos;s Address Details
             </h2>
             <hr className="text-primary bg-primary w-36 h-1" />
           </div>
@@ -160,29 +160,29 @@ const StepThree = ({ step }) => {
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
-                <div>
-              <h2 className="sidetext py-2 ">Applicant’s permanent address (with postal/zip code)</h2>
-              <h2 className="sidetext py-5 ">Village/Town/City</h2>
+              <div>
+                <h2 className="sidetext py-2 ">
+                  Applicant’s permanent address (with postal/zip code)
+                </h2>
+                <h2 className="sidetext py-5 ">Village/Town/City</h2>
 
-              <h2 className="sidetext pt-[70px] pb-6 ">
-              State/Province/City
-              </h2>
+                <h2 className="sidetext pt-[70px] pb-6 ">
+                  State/Province/City
+                </h2>
 
-              <h2 className="sidetext py-4 ">Postal Zip Code</h2>
+                <h2 className="sidetext py-4 ">Postal Zip Code</h2>
 
-              <h2 className="sidetext py-5 ">One contact no. is mandatory</h2>
+                <h2 className="sidetext py-5 ">One contact no. is mandatory</h2>
 
-              <h2 className="sidetext py-4 ">Mobile No.</h2>
-
+                <h2 className="sidetext py-4 ">Mobile No.</h2>
               </div>
 
-
               <div className="">
-              <h2 className="sidetext py-2">Applicant’s present address, maximum 35 characters (each line)</h2>
-              <h2 className="sidetext py-5 ">Village/Town/City</h2>
-              <h2 className="sidetext py-4 ">Village/Town/City</h2>
-
-      
+                <h2 className="sidetext py-2">
+                  Applicant’s present address, maximum 35 characters (each line)
+                </h2>
+                <h2 className="sidetext py-5 ">Village/Town/City</h2>
+                <h2 className="sidetext py-4 ">Village/Town/City</h2>
               </div>
             </div>
           </div>
@@ -303,21 +303,29 @@ const StepThree = ({ step }) => {
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
-         <div>
-         <h2 className="sidetext py-4 ">Applicant’s father name</h2>
-              <h2 className="sidetext py-5 ">Nationality / region of father</h2>
-              <h2 className="sidetext py-4 ">Previous nationality / Region of Father</h2>
-              <h2 className="sidetext py-5 ">Place of birth</h2>
-              <h2 className="sidetext py-4 ">Country / region of birth</h2>
-         </div>
+              <div>
+                <h2 className="sidetext py-4 ">Applicant’s father name</h2>
+                <h2 className="sidetext py-5 ">
+                  Nationality / region of father
+                </h2>
+                <h2 className="sidetext py-4 ">
+                  Previous nationality / Region of Father
+                </h2>
+                <h2 className="sidetext py-5 ">Place of birth</h2>
+                <h2 className="sidetext py-4 ">Country / region of birth</h2>
+              </div>
 
-         <div>
-         <h2 className="sidetext py-3 ">Applicant’s mother name</h2>
-              <h2 className="sidetext py-5 ">Nationality / region of mother</h2>
-              <h2 className="sidetext py-4 ">Previous nationality / Region of Mother</h2>
-              <h2 className="sidetext py-5 ">Place of birth</h2>
-              <h2 className="sidetext py-4 ">Country / region of birth</h2>
-         </div>
+              <div>
+                <h2 className="sidetext py-3 ">Applicant’s mother name</h2>
+                <h2 className="sidetext py-5 ">
+                  Nationality / region of mother
+                </h2>
+                <h2 className="sidetext py-4 ">
+                  Previous nationality / Region of Mother
+                </h2>
+                <h2 className="sidetext py-5 ">Place of birth</h2>
+                <h2 className="sidetext py-4 ">Country / region of birth</h2>
+              </div>
             </div>
           </div>
         </div>
@@ -428,20 +436,26 @@ const StepThree = ({ step }) => {
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
-            <div>
-         <h2 className="sidetext py-4 ">Applicant’s Marital Status</h2>
-     
-         </div>
+              <div>
+                <h2 className="sidetext py-4 ">Applicant’s Marital Status</h2>
+              </div>
 
-         <div>
-         <h2 className="sidetext py-4 ">Applicant’s spouse name</h2>
-              <h2 className="sidetext py-4 ">Nationality / region of spouse</h2>
-              <h2 className="sidetext py-4 ">Previous nationality / Region of spouse</h2>
-              <h2 className="sidetext py-4 ">Place of birth</h2>
-              <h2 className="sidetext py-4 ">Country / region of birth</h2>
-              <h2 className="sidetext py-4 ">Were your parents/grandparents (paternal/maternal) Pakistan nationals or belong to Pakistan held area? Yes/No</h2>
-              <h2 className="sidetext py-4 ">Country / region of birth</h2>
-         </div>
+              <div>
+                <h2 className="sidetext py-4 ">Applicant’s spouse name</h2>
+                <h2 className="sidetext py-4 ">
+                  Nationality / region of spouse
+                </h2>
+                <h2 className="sidetext py-4 ">
+                  Previous nationality / Region of spouse
+                </h2>
+                <h2 className="sidetext py-4 ">Place of birth</h2>
+                <h2 className="sidetext py-4 ">Country / region of birth</h2>
+                <h2 className="sidetext py-4 ">
+                  Were your parents/grandparents (paternal/maternal) Pakistan
+                  nationals or belong to Pakistan held area? Yes/No
+                </h2>
+                <h2 className="sidetext py-4 ">Country / region of birth</h2>
+              </div>
             </div>
           </div>
         </div>
@@ -586,24 +600,22 @@ const StepThree = ({ step }) => {
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
-            <div>
-         <h2 className="sidetext py-4 ">If others, please specify</h2>
-         <h2 className="sidetext py-5 ">Employer Name / Business</h2>
-         <h2 className="sidetext py-4 ">Designation</h2>
-         <h2 className="sidetext py-5 ">Address</h2>
-         <h2 className="sidetext py-5 ">Phone No.</h2>
-         <h2 className="sidetext py-3 ">Past Occupation, if any</h2>
-         <h2 className="sidetext pt-6 ">If yes, give details</h2>
-     
-         </div>
+              <div>
+                <h2 className="sidetext py-4 ">If others, please specify</h2>
+                <h2 className="sidetext py-5 ">Employer Name / Business</h2>
+                <h2 className="sidetext py-4 ">Designation</h2>
+                <h2 className="sidetext py-5 ">Address</h2>
+                <h2 className="sidetext py-5 ">Phone No.</h2>
+                <h2 className="sidetext py-3 ">Past Occupation, if any</h2>
+                <h2 className="sidetext pt-6 ">If yes, give details</h2>
+              </div>
 
-         <div>
-         <h2 className="sidetext py-5 ">Organization</h2>
-              <h2 className="sidetext py-5 ">Designation</h2>
-              <h2 className="sidetext py-4 ">Rank</h2>
-              <h2 className="sidetext py-5 ">Place of posting</h2>
-
-         </div>
+              <div>
+                <h2 className="sidetext py-5 ">Organization</h2>
+                <h2 className="sidetext py-5 ">Designation</h2>
+                <h2 className="sidetext py-4 ">Rank</h2>
+                <h2 className="sidetext py-5 ">Place of posting</h2>
+              </div>
             </div>
           </div>
         </div>
@@ -611,8 +623,13 @@ const StepThree = ({ step }) => {
         <p className="font-semibold">Mandatory Fields*</p>
 
         <div className="text-center space-x-4">
-        <Link href="/visa/step-two" ><button class="formbtnBorder">Back</button></Link>  
-       <Link href="/visa/step-four" >   <button class="formbtn">Continue</button></Link>
+          <Link href="/visa/step-two">
+            <button class="formbtnBorder">Back</button>
+          </Link>
+          <Link href="/visa/step-four">
+            {" "}
+            <button class="formbtn">Continue</button>
+          </Link>
         </div>
       </div>
     </>

@@ -39,8 +39,8 @@ const Banner = () => {
         <div className="container flex items-center justify-between text-white py-4 overflow-x-auto flex-wrap gap-4">
           <div className="flex items-center space-x-4 md:text-base ">
             <marquee>
-              Avail Indian Visa plus services through "Official app Indian Visa
-              Su-Swagatam" mobile App for 60 countries".... One stop solution
+              Avail Indian Visa plus services through &quot;Official app Indian Visa
+              Su-Swagatam&quot; mobile App for 60 countries&quot;.... One stop solution
               for all Visa related services.
             </marquee>
           </div>
