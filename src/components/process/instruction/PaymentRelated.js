@@ -19,7 +19,7 @@ const PaymentRelated = () => {
                         Not available to Diplomatic/Official Passport Holders or Laissez-passer travel document holders.
                     </li>
                     <li>
-                        Not available to individuals endorsed on Parent`&apos;s/Spouse's Passport i.e. each individual should have a separate passport.
+                        Not available to individuals endorsed on Parent&apos;s/Spouse&apos;s Passport i.e. each individual should have a separate passport.
                     </li>
                     <li>
                         Not available to International Travel Document Holders other than Passport.

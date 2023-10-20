@@ -29,7 +29,7 @@ const Countries = () => {
             <p className='font-bold py-2' >If you are a national of any following countries, you are eligible for eVisa.</p>
             <div className="grid grid-cols-4 gap-4">
                 <div>
-                    Afghanistan<br />Albania<br />Andorra<br />Angola<br />Anguilla<br />Antigua & Barbuda<br />Argentina<br />Armenia<br />Aruba<br />Australia<br />Austria<br />Azerbaijan<br />Bahamas<br />Barbados<br />Belarus<br />Belgium<br />Belize<br />Benin<br />Bolivia<br />Bosnia & Herzegovina<br />Botswana<br />Brazil<br />Brunei<br />Bulgaria<br />Burundi<br />Cambodia<br />Cameroon Union Republic<br />Cape Verde<br />Cayman Island<br />Chile<br />Colombia<br />Comoros<br />Cook Islands<br />Costa Rica<br />Cote d'lvoire<br />Croatia<br />Cuba<br />Cyprus<br />Czech Republic<br />Denmark<br />Djibouti
+                    Afghanistan<br />Albania<br />Andorra<br />Angola<br />Anguilla<br />Antigua & Barbuda<br />Argentina<br />Armenia<br />Aruba<br />Australia<br />Austria<br />Azerbaijan<br />Bahamas<br />Barbados<br />Belarus<br />Belgium<br />Belize<br />Benin<br />Bolivia<br />Bosnia & Herzegovina<br />Botswana<br />Brazil<br />Brunei<br />Bulgaria<br />Burundi<br />Cambodia<br />Cameroon Union Republic<br />Cape Verde<br />Cayman Island<br />Chile<br />Colombia<br />Comoros<br />Cook Islands<br />Costa Rica<br />Cote d&apos;lvoire<br />Croatia<br />Cuba<br />Cyprus<br />Czech Republic<br />Denmark<br />Djibouti
 
                 </div>
                 <div>
