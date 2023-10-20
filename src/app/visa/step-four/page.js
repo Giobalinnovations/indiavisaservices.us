@@ -88,8 +88,8 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 pt-10 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-center">
+                        <h2 className="sidetext py-5 ">If you intend to visit Protected/Restricted/ Cantonment areas, you would require prior permission from the Civil Authority.</h2>
                         </div>
                     </div>
                 </div>
@@ -187,8 +187,11 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-end">
+                        <h2 className="sidetext py-6 ">No. of entries</h2>
+                        <h2 className="sidetext py-4 ">Port of arrival in India</h2>
+                        <h2 className="sidetext py-4 ">Expected port of exit from India</h2>
+
                         </div>
                     </div>
                 </div>
@@ -335,8 +338,28 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
+                            <div>
+                        <h2 className="sidetext py-5 ">If yes please give details</h2>
+                        <h2 className="sidetext py-3 ">Enter the address of stay during your last visit</h2>
+                        </div>
+
+                        <div>
+                        <h2 className="sidetext pt-20 ">Cities in India visited (comma seperated)</h2>
+                        </div>
+
+                        <div className="pt-36">
+                        <h2 className="sidetext py-5">Last Indian visa no. / Currently valid Visa no.</h2>
+                        <h2 className="sidetext py-6 ">Type of Visa</h2>
+                        <h2 className="sidetext py-3 ">Place of Issue</h2>
+                        <h2 className="sidetext py-6 ">Date of issue in (dd/mm/yyyy) format</h2>
+                        <h2 className="sidetext py-2 ">Refuse details Yes/No</h2>
+
+                        </div>
+
+                        <div>
+                        <h2 className="sidetext py-8 ">If so, when and by whom (mentioned control no and date)</h2>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -397,8 +420,11 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 py-3 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
+                        <h2 className="sidetext py- ">Have you visited “South Asian Association for Regional Cooperation” (SAARC) countries (expect your own country) during last 3 years? Yes/No</h2>
+
+                        <h2 className="sidetext py-6 ">Please provide data</h2>
+
                         </div>
                     </div>
                 </div>
@@ -425,8 +451,8 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-center">
+                            <h2 className="sidetext">If information furnished is found to be incorrect at the time of entry or anything during stay in India, you will be refused entry.</h2>
                         </div>
                     </div>
                 </div>
@@ -549,8 +575,25 @@ const StepThree = ({ step }) => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl">
-                            gagan
+                        <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
+                        <div>
+                        <h2 className="sidetext py-4">Reference Name and Address in India</h2>
+                        </div>
+
+
+                        <div className="pt-20">
+                        <h2 className="sidetext py-4">Phone no.</h2>
+                        <h2 className="sidetext py-4">Please mention one contact details in Home Country to be contracted in case of emergency</h2>
+
+                        </div>
+
+                        <div>
+                        <h2 className="sidetext py-4">Phone no.</h2>
+                        </div>
+
+                        
+
+
                         </div>
                     </div>
                 </div>
