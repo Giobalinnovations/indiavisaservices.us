@@ -581,14 +581,17 @@ const StepThree = ({ step }) => {
                         </div>
 
 
-                        <div className="pt-20">
+                        <div className="pt-48">
                         <h2 className="sidetext py-4">Phone no.</h2>
                         <h2 className="sidetext py-4">Please mention one contact details in Home Country to be contracted in case of emergency</h2>
+
+                        <h2 className="sidetext py-6">Address of the Referred Person</h2>
 
                         </div>
 
                         <div>
-                        <h2 className="sidetext py-4">Phone no.</h2>
+                      
+                        <h2 className="sidetext py-4">Phone no. of the Referred Person</h2>
                         </div>
 
                         
