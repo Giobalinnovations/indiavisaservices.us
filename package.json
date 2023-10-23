@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "country-state-city": "^3.2.1",
     "next": "13.5.4",
     "react": "^18",
+    "react-country-state-city": "^1.1.0",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
     "react-select": "^5.7.7"

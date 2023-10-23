@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import Link from "next/link";
 import Button from "./Button";
 
 const BannerPage = ({ heading, buttonTitle }) => {
