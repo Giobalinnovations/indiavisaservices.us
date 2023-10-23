@@ -1,16 +1,29 @@
 "use client";
 import BannerPage from "@/components/common/BannerPage";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import { Country, State, City } from "country-state-city";
 
-const StepOne = ({ step }) => {
+const StepOne = () => {
+  console.log("country:", Country.getAllCountries());
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
+
   const [fullName, setFullName] = useState("");
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+
+  useEffect(() => {
+    console.log(selectedCountry);
+    console.log(selectedCountry?.isoCode);
+    console.log(State?.getStatesOfCountry(selectedCountry?.isoCode));
+  }, [selectedCountry]);
+
   return (
     <>
       <BannerPage heading="E-VISA APPLICATION FORM" />{" "}
@@ -23,9 +36,18 @@ const StepOne = ({ step }) => {
           <div class="form-input-main-div">
             <label class="form-label">Nationality / Region*</label>
             <Select
-              placeholder="Select Nationality"
-              options={options}
               className="select-input"
+              options={Country.getAllCountries()}
+              getOptionLabel={(options) => {
+                return options["name"];
+              }}
+              getOptionValue={(options) => {
+                return options["name"];
+              }}
+              value={selectedCountry}
+              onChange={(item) => {
+                setSelectedCountry(item);
+              }}
             />
           </div>
           <div class="form-input-main-div">
@@ -124,7 +146,10 @@ const StepOne = ({ step }) => {
           </p>
 
           <div className="text-center">
-          <Link href="/visa/step-two"> <button class="formbtn">Continue</button></Link> 
+            <Link href="/visa/step-two">
+              {" "}
+              <button class="formbtn">Continue</button>
+            </Link>
           </div>
         </form>
       </div>
