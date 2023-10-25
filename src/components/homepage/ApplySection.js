@@ -7,17 +7,17 @@ const ApplySection = () => {
     {
       id: 1,
       title: "For Regular/Paper VISA by Indian Mission/Post",
-      link: "#",
+      link: "/visa/step-one",
     },
     {
       id: 2,
       title: "For e VISA Bureau of Immigration",
-      link: "/process",
+      link: "/visa/step-one",
     },
     {
       id: 3,
       title: "VISA on arrival for the nationals of Japan, South Korea & UAE",
-      link: "#",
+      link: "/visa/step-one",
     },
   ];
   return (
