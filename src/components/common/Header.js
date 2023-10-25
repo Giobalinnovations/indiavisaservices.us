@@ -79,7 +79,7 @@ const Header = ({ bgcolor }) => {
               </Link>
             </li>
             {/* for mobile end */}
-            <Link href="#">
+            <Link href="/visa/step-one">
               <li className="group dropdown drop-shadow-2xl md:flex hidden nav-item text-sm  font-semibold nav-desk  hover:text-primary  group relative cursor-pointer">
                 Apply E-VISA
               </li>
@@ -87,7 +87,7 @@ const Header = ({ bgcolor }) => {
             {/* for mobile start */}
             <li className="md:hidden block">
               <Link
-                href="#"
+                href="/visa/step-one"
                 className="py-4 px-2 border-b border-b-secondary mx-4 font-semibold flex items-center space-x-2"
               >
                 <span className="w-2 h-2 bg-black"></span>
@@ -130,10 +130,7 @@ const Header = ({ bgcolor }) => {
               </Link>
             </li>
             {/* for mobile end */}
-
           </ul>
-
-
         </div>
 
         <div className="hamburger" onClick={handleClick}>
