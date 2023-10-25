@@ -165,8 +165,8 @@ const StepOne = () => {
               <div className="">
                 <div>
                   {visaServiceData.map((x, i) => (
-                    <div>
-                      <div key={i} class="flex space-x-3 py-2">
+                    <div key={i}>
+                      <div class="flex space-x-3 py-2">
                         <input
                           type="checkbox"
                           id={x.id}
