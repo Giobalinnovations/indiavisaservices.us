@@ -8,10 +8,69 @@ import { Country, State, City } from "country-state-city";
 const StepOne = () => {
   console.log("country:", Country.getAllCountries());
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedState, setSelectedState] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
 
   const [fullName, setFullName] = useState("");
+  const [disabledTitle, setDisabledTitle] = useState("");
+  const [visaServiceData, setVisaServiceData] = useState([
+    {
+      id: 1,
+      title: "eMEDICAL VISA",
+      moreOptions: [
+        {
+          id: 1,
+          title: "one",
+        },
+        {
+          id: 2,
+          title: "one",
+        },
+        {
+          id: 3,
+          title: "one",
+        },
+      ],
+      isChecked: false,
+    },
+    {
+      id: 2,
+      title: "eBUSINESS VISA",
+      moreOptions: [
+        {
+          id: 1,
+          title: "two",
+        },
+        {
+          id: 2,
+          title: "two",
+        },
+        {
+          id: 3,
+          title: "two",
+        },
+      ],
+      isChecked: false,
+    },
+    {
+      id: 3,
+      title: "eCONFERENCE VISA",
+      moreOptions: [
+        {
+          id: 1,
+          title: "three",
+        },
+        {
+          id: 2,
+          title: "three",
+        },
+        {
+          id: 3,
+          title: "three",
+        },
+      ],
+      isChecked: false,
+    },
+  ]);
+
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
@@ -19,9 +78,8 @@ const StepOne = () => {
   ];
 
   useEffect(() => {
-    console.log(selectedCountry);
-    console.log(selectedCountry?.isoCode);
-    console.log(State?.getStatesOfCountry(selectedCountry?.isoCode));
+    console.log("select country:", selectedCountry);
+    console.log("select country iso:", selectedCountry?.isoCode);
   }, [selectedCountry]);
 
   return (
@@ -103,6 +161,44 @@ const StepOne = () => {
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Visa Service*</label>
+            <div class="form-input divide-y-[1px]">
+              <div className="">
+                <div>
+                  {visaServiceData.map((x, i) => (
+                    <div>
+                      <div key={i} class="flex space-x-3 py-2">
+                        <input
+                          type="checkbox"
+                          id={x.id}
+                          checked={x.isChecked}
+                          onChange={(e) => {
+                            const updatedVisaServiceData = visaServiceData.map(
+                              (item) =>
+                                item.id === x.id
+                                  ? { ...item, isChecked: !item.isChecked }
+                                  : item
+                            );
+
+                            // Set the updated array as the new state
+                            setVisaServiceData(updatedVisaServiceData);
+                          }}
+                        />
+                        <label for={x.id}>{x.title}</label>
+                      </div>
+                      {x.isChecked && (
+                        <div className="px-8">
+                          {x.moreOptions.map((ele, ind) => (
+                            <ul key={ind}>
+                              <li>{ele.title}</li>
+                            </ul>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Expected Date of Arrival</label>
