@@ -36,21 +36,19 @@ const ApplySectionUrgentHelp = () => {
   const cardData = [
     {
       id: 1,
+      imgSrc: "/images/common/paypal.png",
     },
     {
       id: 2,
+      imgSrc: "/images/common/mastercard-secured.png",
     },
     {
       id: 3,
+      imgSrc: "/images/common/varified.png",
     },
     {
       id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
+      imgSrc: "/images/common/mastercard.png",
     },
   ];
   return (
@@ -82,10 +80,10 @@ const ApplySectionUrgentHelp = () => {
           </span>
           <span className="text-sm">info@india-travelservices.com</span>
         </div>
-        <div className="flex flex-wrap text-center justify-center gap-3">
+        <div className="flex flex-col space-y-4 flex-wrap text-center justify-center gap-4 py-4">
           {cardData.map((e, i) => (
-            <div className="border-b-2" key={i}>
-              <img src="/images/home/mastercard.png" className="w-24" />
+            <div className="flex items-center justify-center" key={i}>
+              <img src={e.imgSrc} className="w-40" />
             </div>
           ))}
         </div>
