@@ -4,72 +4,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Country, State, City } from "country-state-city";
+import { useFormik } from "formik";
+import { toast } from "react-toastify";
 
 const StepOne = () => {
-  console.log("country:", Country.getAllCountries());
-  const [selectedCountry, setSelectedCountry] = useState(null);
-
+  // console.log("country:", Country.getAllCountries());
+  // const [selectedCountry, setSelectedCountry] = useState(null);
   const [fullName, setFullName] = useState("");
-  const [disabledTitle, setDisabledTitle] = useState("");
-  const [visaServiceData, setVisaServiceData] = useState([
-    {
-      id: 1,
-      title: "eMEDICAL VISA",
-      moreOptions: [
-        {
-          id: 1,
-          title: "one",
-        },
-        {
-          id: 2,
-          title: "one",
-        },
-        {
-          id: 3,
-          title: "one",
-        },
-      ],
-      isChecked: false,
-    },
-    {
-      id: 2,
-      title: "eBUSINESS VISA",
-      moreOptions: [
-        {
-          id: 1,
-          title: "two",
-        },
-        {
-          id: 2,
-          title: "two",
-        },
-        {
-          id: 3,
-          title: "two",
-        },
-      ],
-      isChecked: false,
-    },
-    {
-      id: 3,
-      title: "eCONFERENCE VISA",
-      moreOptions: [
-        {
-          id: 1,
-          title: "three",
-        },
-        {
-          id: 2,
-          title: "three",
-        },
-        {
-          id: 3,
-          title: "three",
-        },
-      ],
-      isChecked: false,
-    },
-  ]);
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -77,10 +18,51 @@ const StepOne = () => {
     { value: "vanilla", label: "Vanilla" },
   ];
 
-  useEffect(() => {
-    console.log("select country:", selectedCountry);
-    console.log("select country iso:", selectedCountry?.isoCode);
-  }, [selectedCountry]);
+  // post api start
+  const initialValues = {
+    nationalityRegion: "",
+    passportType: "",
+    portOfArrival: "",
+    dateOfBirth: "",
+    emailId: "",
+    visaService: "",
+    expectedDateOfArrival: "",
+    captcha: "",
+    instructionsAccepted: "",
+  };
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: initialValues,
+      onSubmit: async (values, action) => {
+        try {
+          await axios.post("http://127.0.0.1:8081/visa/add", {
+            data: {
+              nationalityRegion: values.nationalityRegion,
+              passportType: values.passportType,
+              portOfArrival: values.portOfArrival,
+              dateOfBirth: values.designation,
+              emailId: values.emailId,
+              visaService: values.visaService,
+              expectedDateOfArrival: values.expectedDateOfArrival,
+              captcha: values.captcha,
+              instructionsAccepted: values.instructionsAccepted,
+            },
+          });
+
+          action.resetForm();
+          toast("Thank you for downloading the resource.");
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    });
+  // post api end
+
+  // useEffect(() => {
+  //   console.log("select country:", selectedCountry);
+  //   console.log("select country iso:", selectedCountry?.isoCode);
+  // }, [selectedCountry]);
 
   return (
     <>
@@ -90,61 +72,73 @@ const StepOne = () => {
         <span className="text-primary pl-2 pr-1">AFGHANISTAN</span> nationality
       </p>
       <div className="mx-auto py-4 max-w-4xl px-12">
-        <form className="formMain">
+        <form onSubmit={handleSubmit} className="formMain">
           <div class="form-input-main-div">
-            <label class="form-label">Nationality / Region*</label>
-            <Select
-              className="select-input"
-              options={Country.getAllCountries()}
-              getOptionLabel={(options) => {
-                return options["name"];
-              }}
-              getOptionValue={(options) => {
-                return options["name"];
-              }}
-              value={selectedCountry}
-              onChange={(item) => {
-                setSelectedCountry(item);
-              }}
-            />
+            <label class="form-label">Select Country*</label>
+            <select
+              className="select-input border p-2 rounded"
+              name="nationalityRegion"
+              value={values.nationalityRegion}
+              onChange={handleChange}
+            >
+              <option value="India">India</option>
+              <option value="Pakistan">Pakistan</option>
+              <option value="uk">Uk</option>
+              <option value="usa">usa</option>
+            </select>
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Passport Type*</label>
-            <Select
-              placeholder="Select Passport Type"
-              options={options}
-              className="select-input"
-            />
+            <select
+              className="select-input border p-2 rounded"
+              name="passportType"
+              value={values.passportType}
+              onChange={handleChange}
+            >
+              <option disabled selected>
+                TimeZone*
+              </option>
+              <option value="Bussiness">Bussiness</option>
+              <option value="Education">Education</option>
+              <option value="Dummy1">Dummy1</option>
+              <option value="Dummy2">Dummy2</option>
+            </select>
           </div>
           <div class="form-input-main-div">
-            <label class="form-label">Port of Arrival*</label>
-            <Select
-              placeholder="Select Port of Arrival"
-              options={options}
-              className="select-input"
-            />
+            <label class="form-label">Port Of Arrival</label>
+            <select
+              className="select-input border p-2 rounded"
+              name="portOfArrival"
+              value={values.portOfArrival}
+              onChange={handleChange}
+            >
+              <option value="arrone">arrone</option>
+              <option value="arrtwo">arrtwo</option>
+              <option value="arrthree">arrthree</option>
+              <option value="arrfour">arrfour</option>
+            </select>
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Date Of Birth</label>
             <input
               type="date"
-              name="fullName"
+              name="dateOfBirth"
               id="name"
               class="form-input"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={values.dateOfBirth}
+              onChange={handleChange}
             />
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Email ID*</label>
             <input
               type="text"
-              name="Email ID*"
+              name="emailId"
               id="name"
               placeholder="Enter Email Id"
               class="form-input"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={values.emailId}
+              onChange={handleChange}
             />
           </div>
           <div class="form-input-main-div">
@@ -161,55 +155,26 @@ const StepOne = () => {
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Visa Service*</label>
-            <div class="form-input divide-y-[1px]">
-              <div className="">
-                <div>
-                  {visaServiceData.map((x, i) => (
-                    <div key={i}>
-                      <div class="flex space-x-3 py-2">
-                        <input
-                          type="checkbox"
-                          id={x.id}
-                          checked={x.isChecked}
-                          onChange={(e) => {
-                            const updatedVisaServiceData = visaServiceData.map(
-                              (item) =>
-                                item.id === x.id
-                                  ? { ...item, isChecked: !item.isChecked }
-                                  : item
-                            );
-
-                            // Set the updated array as the new state
-                            setVisaServiceData(updatedVisaServiceData);
-                          }}
-                        />
-                        <label for={x.id}>{x.title}</label>
-                      </div>
-                      {x.isChecked && (
-                        <div className="px-8">
-                          {x.moreOptions.map((ele, ind) => (
-                            <ul key={ind}>
-                              <li>{ele.title}</li>
-                            </ul>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <input
+              type="text"
+              name="visaService"
+              id="name"
+              placeholder="Visa service"
+              class="form-input"
+              value={values.visaService}
+              onChange={handleChange}
+            />
           </div>
           <div class="form-input-main-div">
             <label class="form-label">Expected Date of Arrival</label>
             <input
               type="date"
-              name="fullName"
+              name="expectedDateOfArrival"
               id="name"
               placeholder="Full Name"
               class="form-input"
-              // value={fullName}
-              // onChange={(e) => setFullName(e.target.value)}
+              value={values.expectedDateOfArrival}
+              onChange={handleChange}
             />
           </div>
           <div class="form-input-main-div">
@@ -222,11 +187,11 @@ const StepOne = () => {
             <label class="form-label">Please enter above text*</label>
             <input
               type="text"
-              name="fullName"
+              name="captcha"
               id="name"
               class="form-input"
-              // value={fullName}
-              // onChange={(e) => setFullName(e.target.value)}
+              value={values.captcha}
+              onChange={handleChange}
             />
           </div>
           <div className="flex items-start space-x-2">
