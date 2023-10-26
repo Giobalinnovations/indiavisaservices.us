@@ -33,6 +33,26 @@ const ApplySectionUrgentHelp = () => {
       title: "Indian Tourism",
     },
   ];
+  const cardData = [
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+  ];
   return (
     <>
       {/* urgent help satrt  */}
@@ -63,7 +83,7 @@ const ApplySectionUrgentHelp = () => {
           <span className="text-sm">info@india-travelservices.com</span>
         </div>
         <div className="flex flex-wrap text-center justify-center gap-3">
-          {travelInfoData.map((e, i) => (
+          {cardData.map((e, i) => (
             <div className="border-b-2" key={i}>
               <img src="/images/home/mastercard.png" className="w-24" />
             </div>
