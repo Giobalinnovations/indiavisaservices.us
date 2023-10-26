@@ -42,7 +42,7 @@ const ApplySectionUrgentHelp = () => {
         </h2>
         <div className="divide-y-[1px]">
           {travelInfoData.map((e, i) => (
-            <div className="space-x-3 flex items-center p-3">
+            <div key={i} className="space-x-3 flex items-center p-3">
               <span>
                 <FaCheck className="font-bold text-green-700" />
               </span>

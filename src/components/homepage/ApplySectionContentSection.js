@@ -44,7 +44,7 @@ const ApplySectionContentSection = () => {
           Belarus, Belgium, Belize, Benin, Bolivia, Bosnia & Herzegovina,
           Botswana, Brazil, Brunei, Bulgaria, Burundi, Cambodia, Cameroon Union
           Republic, Cape Verde, Cayman Island, Chile, Colombia, Comoros, Cook
-          Islands, Costa Rica, Cote d'lvoire, Croatia, Cuba, Cyprus, Czech
+          Islands, Costa Rica, Cote d&apos;lvoire, Croatia, Cuba, Cyprus, Czech
           Republic, Denmark, Djibouti, Dominica, Dominican Republic, East Timor,
           Ecuador, El Salvador, Equatorial Guinea, Eritrea, Estonia, Fiji,
           Finland, France, Gabon, Gambia, Georgia, Germany, Ghana, Greece,
