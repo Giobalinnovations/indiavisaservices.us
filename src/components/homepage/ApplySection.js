@@ -1,40 +1,23 @@
 import React from "react";
 import Button from "../common/Button";
 import Link from "next/link";
+import ApplySectionUrgentHelp from "./ApplySectionUrgentHelp";
+import ApplySectionContentSection from "./ApplySectionContentSection";
 
 const ApplySection = () => {
-  const data = [
-    {
-      id: 1,
-      title: "For Regular/Paper VISA by Indian Mission/Post",
-      link: "/visa/step-one",
-    },
-    {
-      id: 2,
-      title: "For e VISA Bureau of Immigration",
-      link: "/visa/step-one",
-    },
-    {
-      id: 3,
-      title: "VISA on arrival for the nationals of Japan, South Korea & UAE",
-      link: "/visa/step-one",
-    },
-  ];
   return (
     <div className="container md:py-24 py-8">
-      <div className="md:grid grid-cols-3 gap-10 md:space-y-0 space-y-4">
-        {data.map((e, i) => (
-          <>
-            <div
-              className="bg-white drop-shadow-lg px-10 py-10 h-[180px] flex flex-col space-y-3 rounded-2xl justify-center items-center"
-              key={i}
-            >
-              <p className="font-semibold text-center md:text-lg"> {e.title}</p>
+      <div class="mx-auto grid grid-cols-12 gap-4 bg-zinc-50 p-1">
+        <div class="col-span-3 rounded border border-gray-400">
+          <ApplySectionUrgentHelp />
+        </div>
+        <div class="col-span-9 rounded-lg border border-gray-500 bg-gray-50">
+          <ApplySectionContentSection />
+        </div>
 
-              <Button title="Apply Here" link={e.link} />
-            </div>
-          </>
-        ))}
+        <div class="footer col-span-12 rounded-lg border border-gray-800 bg-gray-700 p-6">
+          {/* <!-- Footer content --> */}
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center pt-16">
         <h2 className="font-semibold text-lg"> Advisory:</h2>
