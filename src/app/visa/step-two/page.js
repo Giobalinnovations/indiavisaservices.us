@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
   lastName: Yup.string().required('Last Name is required'),
+  changedName: Yup.boolean().optional(),
   gender: Yup.string().required('Gender is required'),
   dateOfBirth: Yup.date().required('Date Of Birth is required'),
   townCityOfBirth: Yup.string().required('Town/City of birth is required'),
@@ -27,24 +28,27 @@ const validationSchema = Yup.object().shape({
   nationalityRegion: Yup.string().required('Nationality/Region is required'),
   acquisitionType: Yup.string().required('Acquisition type is required'),
 
-  haveLivedInApplyingCountry: Yup.string().required(
-    'Please select whether you have lived in the country where you are applying for a visa'
+  // haveLivedInApplyingCountry: Yup.string().required(
+  //   'Please select whether you have lived in the country where you are applying for a visa'
+  // ),
+  placeOfIssue: Yup.string().required('Place of Issue is required'),
+  nationalityMentionedTherein: Yup.string().required(
+    'Nationality mentioned therein is required'
   ),
 
   passportNumber: Yup.string().required('Passport Number is required'),
-  placeOfIssue: Yup.string().required('Place of Issue is required'),
-  dateOfIssue: Yup.date().required('Date Of Birth is required'),
-  dateOfExpiry: Yup.date().required('Date Of Birth is required'),
-  anyOtherPassport: Yup.string().required(
-    'Please select whether you hold another Passport/Identity Certificate (IC)'
-  ),
-  countryOfIssue: Yup.string().required('Country of Issue is required'),
-  passportICNumber: Yup.string().required('Passport/IC No. is required'),
-  dateOfIssuePassportIC: Yup.date().required('Date Of Birth is required'),
   placeOfIssuePassportIC: Yup.string().required(
     'Place of Issue (Passport/IC) is required'
   ),
-  nationalityMentionedTherein: Yup.string().required(
+  dateOfIssue: Yup.date().required('Date Of issue is required'),
+  dateOfExpiry: Yup.date().required('Date Of expiry is required'),
+  // anyOtherPassport: Yup.string().required(
+  //   'Please select whether you hold another Passport/Identity Certificate (IC)'
+  // ),
+  countryOfIssue: Yup.string().required('Country of Issue is required'),
+  passportICNumber: Yup.string().required('Passport/IC No. is required'),
+  dateOfIssuePassportIC: Yup.date().required('Date Of issue is required'),
+  passportNationalityMentionedTherein: Yup.string().required(
     'Nationality mentioned therein is required'
   ),
 });
@@ -74,18 +78,19 @@ const StepTwo = ({ step }) => {
           educationalQualification: '',
           nationalityRegion: '',
           acquisitionType: '',
-
-          haveLivedInApplyingCountry: '',
-          passportNumber: '',
           placeOfIssue: '',
+          nationalityMentionedTherein: '',
+          // haveLivedInApplyingCountry: '',
+          passportNumber: '',
+          placeOfIssuePassportIC: '',
           dateOfIssue: '',
           dateOfExpiry: '',
-          anyOtherPassport: '',
+          // anyOtherPassport: '',
           countryOfIssue: '',
           passportICNumber: '',
           dateOfIssuePassportIC: '',
-          placeOfIssuePassportIC: '',
-          nationalityMentionedTherein: '',
+
+          passportNationalityMentionedTherein: '',
         }}
         validationSchema={validationSchema}
         validateOnChange={true}
@@ -256,8 +261,8 @@ const StepTwo = ({ step }) => {
                       <Field
                         required
                         component="select"
-                        id="nationalityRegion"
-                        name="nationalityRegion"
+                        id="religion"
+                        name="religion"
                         className="p-2 border rounded select-input"
                         onChange={handleChange}
                       >
@@ -268,7 +273,7 @@ const StepTwo = ({ step }) => {
                         <option value="muslim">Muslim</option>
                         <option value="other">Other</option>
                       </Field>
-                      <ErrorMessage name="nationalityRegion">
+                      <ErrorMessage name="religion">
                         {errorMsg => (
                           <div style={{ color: 'red' }}>{errorMsg}</div>
                         )}
@@ -364,12 +369,12 @@ const StepTwo = ({ step }) => {
                       <Field
                         required
                         type="text"
-                        id="placeOfIssuePassportIC"
-                        name="placeOfIssuePassportIC"
+                        id="placeOfIssue"
+                        name="placeOfIssue"
                         className="p-2 border rounded select-input"
                         onChange={handleChange}
                       />
-                      <ErrorMessage name="placeOfIssuePassportIC">
+                      <ErrorMessage name="placeOfIssue">
                         {errorMsg => (
                           <div style={{ color: 'red' }}>{errorMsg}</div>
                         )}
@@ -441,7 +446,7 @@ const StepTwo = ({ step }) => {
               </div>
             </div>
 
-            <div className="flex items-start py-2 space-x-2">
+            {/* <div className="flex items-start py-2 space-x-2">
               <label class=" font-semibold">
                 Have you lived for at least two years in the country where you
                 are applying visa?
@@ -457,7 +462,7 @@ const StepTwo = ({ step }) => {
                   <label class=" font-semibold">No</label>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* passport details code start here */}
             <div className="text-2xl font-semibold text-primary">
               Passport Details
@@ -487,12 +492,12 @@ const StepTwo = ({ step }) => {
                       <Field
                         required
                         type="text"
-                        id="placeOfIssue"
-                        name="placeOfIssue"
+                        id="placeOfIssuePassportIC"
+                        name="placeOfIssuePassportIC"
                         className="p-2 border rounded select-input"
                         onChange={handleChange}
                       />
-                      <ErrorMessage name="placeOfIssue">
+                      <ErrorMessage name="placeOfIssuePassportIC">
                         {errorMsg => (
                           <div style={{ color: 'red' }}>{errorMsg}</div>
                         )}
@@ -530,7 +535,7 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div className="flex items-start py-2 space-x-2">
+                    {/* <div className="flex items-start py-2 space-x-2">
                       <label class=" font-semibold">
                         Any other valid Passport/Identity Certificate(IC) held,
                       </label>
@@ -544,14 +549,14 @@ const StepTwo = ({ step }) => {
                           <label class=" font-semibold">No</label>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     <div class="form-input-main-div">
                       <label class="form-label">Country of Issue*</label>
                       <Field
                         required
                         component="select"
-                        id="gender"
-                        name="gender"
+                        id="countryOfIssue"
+                        name="countryOfIssue"
                         className="p-2 border rounded select-input"
                         onChange={handleChange}
                       >
@@ -561,7 +566,7 @@ const StepTwo = ({ step }) => {
                         <option value="option1">option1</option>
                         <option value="option2">Option2</option>
                       </Field>
-                      <ErrorMessage name="gender">
+                      <ErrorMessage name="countryOfIssue">
                         {errorMsg => (
                           <div style={{ color: 'red' }}>{errorMsg}</div>
                         )}
@@ -607,8 +612,8 @@ const StepTwo = ({ step }) => {
                       <Field
                         required
                         component="select"
-                        id="nationalityMentionedTherein"
-                        name="nationalityMentionedTherein"
+                        id="passportNationalityMentionedTherein"
+                        name="passportNationalityMentionedTherein"
                         className="p-2 border rounded select-input"
                         onChange={handleChange}
                       >
@@ -620,7 +625,7 @@ const StepTwo = ({ step }) => {
                         <option value="option3">option3</option>
                         <option value="option4">option4</option>
                       </Field>
-                      <ErrorMessage name="nationalityMentionedTherein">
+                      <ErrorMessage name="passportNationalityMentionedTherein">
                         {errorMsg => (
                           <div style={{ color: 'red' }}>{errorMsg}</div>
                         )}
@@ -658,7 +663,9 @@ const StepTwo = ({ step }) => {
 
             <div className="space-x-4 text-center">
               <Link href="/visa/step-one">
-                <button class="formbtnBorder">Back</button>
+                <button class="formbtnBorder" type="button">
+                  Back
+                </button>
               </Link>
 
               <button
