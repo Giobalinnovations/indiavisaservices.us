@@ -14,7 +14,7 @@ const StepTwo = ({ step }) => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      <div className="container py-16">
+      <form className="container py-16">
         <div className="">
           <h2 className="text-3xl font-semibold">Applicant Details</h2>
           <hr className="h-1 text-primary bg-primary w-36" />
@@ -22,7 +22,7 @@ const StepTwo = ({ step }) => {
         <div className="grid grid-cols-12 gap-8 ">
           <div className="col-span-8">
             <div className="">
-              <form className="formMain">
+              <div className="formMain">
                 <div class="form-input-main-div">
                   <label class="form-label">First Name*</label>
                   <input
@@ -131,7 +131,7 @@ const StepTwo = ({ step }) => {
                   </label>
                   <Select options={options} className="select-input" />
                 </div>
-              </form>
+              </div>
             </div>
           </div>
           <div className="col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -189,7 +189,7 @@ const StepTwo = ({ step }) => {
         <div className="grid grid-cols-12 gap-8 ">
           <div className="col-span-8">
             <div className="">
-              <form className="formMain">
+              <div className="formMain">
                 <div class="form-input-main-div">
                   <label class="form-label">Passport Number*</label>
                   <input
@@ -301,7 +301,7 @@ const StepTwo = ({ step }) => {
                     className="select-input"
                   />
                 </div>
-              </form>
+              </div>
             </div>
           </div>
           <div className="col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -338,7 +338,7 @@ const StepTwo = ({ step }) => {
             <button class="formbtn">Continue</button>
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 };
