@@ -1,22 +1,22 @@
-"use client";
-import React, { useState } from "react";
-import Select from "react-select";
+'use client';
+import React, { useState } from 'react';
+import Select from 'react-select';
 
 const StepOne = ({ step }) => {
-  const [fullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState('');
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
   ];
   return (
     <>
-      {" "}
-      <p className="text-center font-semibold">
+      {' '}
+      <p className="font-semibold text-center">
         Note: For e-visa services to Afghan Nationals, they must select
-        <span className="text-primary pl-2 pr-1">AFGHANISTAN</span> nationality
+        <span className="pl-2 pr-1 text-primary">AFGHANISTAN</span> nationality
       </p>
-      <div className="mx-auto py-4 max-w-4xl px-12">
+      <div className="max-w-4xl px-12 py-4 mx-auto">
         <form className="formMain">
           <div class="form-input-main-div">
             <label class="form-label">Nationality / Region*</label>
@@ -50,7 +50,7 @@ const StepOne = ({ step }) => {
               id="name"
               class="form-input"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={e => setFullName(e.target.value)}
             />
           </div>
           <div class="form-input-main-div">
@@ -62,7 +62,7 @@ const StepOne = ({ step }) => {
               placeholder="Enter Email Id"
               class="form-input"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={e => setFullName(e.target.value)}
             />
           </div>
           <div class="form-input-main-div">
