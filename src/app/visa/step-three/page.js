@@ -14,7 +14,7 @@ const StepThree = ({ step }) => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      <div className="container py-16">
+      <form className="container py-16">
         <div>
           <div className="">
             <h2 className="text-3xl font-semibold">
@@ -28,7 +28,7 @@ const StepThree = ({ step }) => {
           <div className=" grid grid-cols-12 gap-8">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">House No. Street*</label>
                     <input
@@ -156,7 +156,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
@@ -199,7 +199,7 @@ const StepThree = ({ step }) => {
           <div className=" grid grid-cols-12 gap-8">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">Father’s Details</label>
                     <input
@@ -299,7 +299,7 @@ const StepThree = ({ step }) => {
                       className="select-input"
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
@@ -336,7 +336,7 @@ const StepThree = ({ step }) => {
           <div className=" grid grid-cols-12 gap-8">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">Applicant’s Marital Status</label>
                     <Select
@@ -432,7 +432,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
@@ -467,7 +467,7 @@ const StepThree = ({ step }) => {
           <div className=" grid grid-cols-12 gap-8">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">Present Occupation*</label>
                     <Select
@@ -596,7 +596,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="col-span-4 py-6 px-4 bg-primary/10 border-primary/60 border-2 rounded-xl flex flex-col justify-between">
@@ -631,7 +631,7 @@ const StepThree = ({ step }) => {
             <button class="formbtn">Continue</button>
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 };

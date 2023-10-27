@@ -1,15 +1,15 @@
-'use client';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import Select from 'react-select';
+"use client";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import React, { useState } from "react";
+import Select from "react-select";
 
 const StepTwo = ({ step }) => {
-  const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState("");
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
   ];
   return (
     <>
@@ -334,7 +334,7 @@ const StepTwo = ({ step }) => {
             <button class="formbtnBorder">Back</button>
           </Link>
           <Link href="/visa/step-three">
-            {' '}
+            {" "}
             <button class="formbtn">Continue</button>
           </Link>
         </div>

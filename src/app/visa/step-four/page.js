@@ -1,20 +1,20 @@
-'use client';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import Select from 'react-select';
+"use client";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import React, { useState } from "react";
+import Select from "react-select";
 
 const StepThree = ({ step }) => {
-  const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState("");
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
   ];
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      <div className="container py-16">
+      <form className="container py-16">
         <div>
           <div className="">
             <h2 className="text-3xl font-semibold">Details of Visa Sought</h2>
@@ -23,7 +23,7 @@ const StepThree = ({ step }) => {
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">Type of Visa*</label>
                     <input
@@ -89,7 +89,7 @@ const StepThree = ({ step }) => {
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center col-span-4 px-4 pt-10 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -110,7 +110,7 @@ const StepThree = ({ step }) => {
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">
                       Details of the Friend/Relative
@@ -194,7 +194,7 @@ const StepThree = ({ step }) => {
                       className="select-input"
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -217,7 +217,7 @@ const StepThree = ({ step }) => {
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div className="flex items-start py-2 space-x-2">
                     <label class=" font-semibold">
                       Have you ever visited India before?*
@@ -363,7 +363,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -404,14 +404,14 @@ const StepThree = ({ step }) => {
         <div>
           <div className="">
             <h2 className="text-3xl font-semibold">
-              SAARC Country Visit Details{' '}
+              SAARC Country Visit Details{" "}
             </h2>
             <hr className="h-1 text-primary bg-primary w-36" />
           </div>
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div className="flex items-start py-2 space-x-2">
                     <label class=" font-semibold">
                       Have you visited SAARC countries (except your country)
@@ -460,7 +460,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="col-span-4 px-4 py-3 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -483,7 +483,7 @@ const StepThree = ({ step }) => {
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">
                       Countries Visited in last 10 years
@@ -495,7 +495,7 @@ const StepThree = ({ step }) => {
                       placeholder=""
                     ></textarea>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -517,7 +517,7 @@ const StepThree = ({ step }) => {
           <div className="grid grid-cols-12 gap-8 ">
             <div className="col-span-8">
               <div className="">
-                <form className="formMain">
+                <div className="formMain">
                   <div class="form-input-main-div">
                     <label class="form-label">
                       Details of the Friend/Relative
@@ -624,7 +624,7 @@ const StepThree = ({ step }) => {
                       //   onChange={(e) => setFullName(e.target.value)}
                     />
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -662,11 +662,11 @@ const StepThree = ({ step }) => {
             <button class="formbtnBorder">Back</button>
           </Link>
           <Link href="#">
-            {' '}
+            {" "}
             <button class="formbtn">Continue</button>
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 };

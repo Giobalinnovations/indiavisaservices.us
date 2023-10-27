@@ -34,7 +34,7 @@ const StepFive = ({ step }) => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      <div className="container py-16">
+      <form className="container py-16">
         <div>
           <div className="">
             <h2 className="text-3xl font-semibold">Details of Visa Sought</h2>
@@ -85,7 +85,7 @@ const StepFive = ({ step }) => {
             <button class="formbtn">Continue</button>
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 };
