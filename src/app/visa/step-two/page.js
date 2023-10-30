@@ -346,10 +346,10 @@ const StepTwo = ({ step }) => {
                       </label>
                       <Field
                         required
-                        component="select"
                         id="acquisitionType"
                         name="acquisitionType"
                         className="p-2 border rounded select-input"
+                        component="select"
                         onChange={handleChange}
                       >
                         <option value="" disabled selected>

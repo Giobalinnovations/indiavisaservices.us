@@ -1,11 +1,11 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
-import { Disclosure } from "@headlessui/react";
-import Link from "next/link";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import Image from "next/image";
-import { FaBars, FaTimes } from "react-icons/fa";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+import { Disclosure } from '@headlessui/react';
+import Link from 'next/link';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import Image from 'next/image';
+import { FaBars, FaTimes } from 'react-icons/fa';
 // import logoImg from "@/public/images/logo.png"
 // import Image from "next/image";
 const Header = ({ bgcolor }) => {
@@ -28,16 +28,16 @@ const Header = ({ bgcolor }) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className={`header bg-white shadow-md ${scrolled ? "bg-white" : ""}`}>
-      <nav className="navbar container ">
-        <div className="flex md:justify-between items-center w-full md:space-x-12">
+    <div className={`header bg-white shadow-md ${scrolled ? 'bg-white' : ''}`}>
+      <nav className="container navbar ">
+        <div className="flex items-center w-full md:justify-between md:space-x-12">
           <Link href="/" className="logo">
             {scrolled ? (
               <Image
@@ -45,6 +45,7 @@ const Header = ({ bgcolor }) => {
                 width={500}
                 height={500}
                 className="w-28"
+                alt="logo"
               />
             ) : (
               <Image
@@ -52,6 +53,7 @@ const Header = ({ bgcolor }) => {
                 width={500}
                 height={500}
                 className="w-28"
+                alt="logo2"
               />
             )}
           </Link>
@@ -59,20 +61,20 @@ const Header = ({ bgcolor }) => {
           <ul
             className={
               click
-                ? "nav-menu active md:space-y-0 space-y-0 py-5 "
-                : "nav-menu"
+                ? 'nav-menu active md:space-y-0 space-y-0 py-5 '
+                : 'nav-menu'
             }
           >
             <Link href="/">
-              <li className="group dropdown drop-shadow-2xl md:flex hidden nav-item text-sm  font-semibold nav-desk  hover:text-primary  group relative cursor-pointer">
+              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Home
               </li>
             </Link>
             {/* for mobile start */}
-            <li className="md:hidden block">
+            <li className="block md:hidden">
               <Link
                 href="/"
-                className="py-4 px-2 border-b border-b-secondary mx-4 font-semibold flex items-center space-x-2"
+                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
               >
                 <span className="w-2 h-2 bg-black"></span>
                 <p className="">Home</p>
@@ -80,15 +82,15 @@ const Header = ({ bgcolor }) => {
             </li>
             {/* for mobile end */}
             <Link href="/visa/step-one">
-              <li className="group dropdown drop-shadow-2xl md:flex hidden nav-item text-sm  font-semibold nav-desk  hover:text-primary  group relative cursor-pointer">
+              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Apply E-VISA
               </li>
             </Link>
             {/* for mobile start */}
-            <li className="md:hidden block">
+            <li className="block md:hidden">
               <Link
                 href="/visa/step-one"
-                className="py-4 px-2 border-b border-b-secondary mx-4 font-semibold flex items-center space-x-2"
+                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
               >
                 <span className="w-2 h-2 bg-black"></span>
                 <p className="">Apply E-VISA</p>
@@ -97,15 +99,15 @@ const Header = ({ bgcolor }) => {
             {/* for mobile end */}
 
             <Link href="#">
-              <li className="group dropdown drop-shadow-2xl md:flex hidden nav-item text-sm  font-semibold nav-desk  hover:text-primary  group relative cursor-pointer">
+              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Ongoing Application
               </li>
             </Link>
             {/* for mobile start */}
-            <li className="md:hidden block">
+            <li className="block md:hidden">
               <Link
                 href="#"
-                className="py-4 px-2 border-b border-b-secondary mx-4 font-semibold flex items-center space-x-2"
+                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
               >
                 <span className="w-2 h-2 bg-black"></span>
                 <p className="">Ongoing Application</p>
@@ -114,16 +116,16 @@ const Header = ({ bgcolor }) => {
             {/* for mobile end */}
 
             <Link href="#">
-              <div className="  drop-shadow-2xl md:flex hidden text-base  bg-primary rounded-full text-white px-8 py-2 ml-3 ">
+              <div className="hidden px-8 py-2 ml-3 text-base text-white rounded-full drop-shadow-2xl md:flex bg-primary">
                 Contact Us
               </div>
             </Link>
 
             {/* for mobile start */}
-            <li className="md:hidden block">
+            <li className="block md:hidden">
               <Link
                 href="#"
-                className="py-4 px-2 border-b border-b-secondary mx-4 font-semibold flex items-center space-x-2"
+                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
               >
                 <span className="w-2 h-2 bg-black"></span>
                 <p className="">Contact Us</p>
@@ -135,16 +137,16 @@ const Header = ({ bgcolor }) => {
 
         <div className="hamburger" onClick={handleClick}>
           {click ? (
-            <FaTimes size={30} style={{ color: "#000" }} />
+            <FaTimes size={30} style={{ color: '#000' }} />
           ) : (
-            <FaBars size={30} style={{ color: "#000" }} />
+            <FaBars size={30} style={{ color: '#000' }} />
           )}
         </div>
       </nav>
       {bgcolor ? (
         <hr
           className={
-            scrolled ? "bg-black text-black" : "bg-black  w-[93%] mx-auto"
+            scrolled ? 'bg-black text-black' : 'bg-black  w-[93%] mx-auto'
           }
         />
       ) : null}
