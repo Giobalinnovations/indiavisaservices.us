@@ -9,28 +9,37 @@ import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import { step2ValidationSchema } from '@/app/lib/constants';
+import { useFormContext } from '@/app/context/formContext';
+import apiEndpoint from '@/services/apiEndpoint';
 
-const StepTwo = ({ step }) => {
+const StepTwo = () => {
+  const { state, dispatch } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.post('applicant-details-form-step-3', formData);
+      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP2, formData);
     },
     onSuccess: () => {
       console.log('Success');
       router.push('/visa/step-three');
     },
+    enabled: !!state.formId,
   });
 
   if (mutation.isPending) {
     console.log('Pending');
-    return <div>pendng</div>;
+    // return <div>pendng</div>;
   }
 
   if (mutation.error) {
     // return <div>{mutation.error}</div>;
     console.log('Error', mutation.error.message);
   }
+
+  if (mutation.isSuccess) {
+    console.log(mutation.data);
+  }
+
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -39,6 +48,7 @@ const StepTwo = ({ step }) => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
+      {state.formId}
       <Formik
         initialValues={step2ValidationSchema.initialValues}
         validationSchema={step2ValidationSchema.yupSchema}
@@ -46,7 +56,7 @@ const StepTwo = ({ step }) => {
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log(values);
-          mutation.mutate(values);
+          mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
@@ -627,7 +637,6 @@ const StepTwo = ({ step }) => {
                 }`}
               >
                 {mutation.isPending ? 'loading' : 'Continue'}
-                continue
               </button>
             </div>
           </Form>

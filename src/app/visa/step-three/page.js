@@ -10,22 +10,26 @@ import { step3ValidationSchema } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useFormContext } from '@/app/context/formContext';
 
 const StepThree = () => {
+  const { state, dispatch } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.post('applicant-details-form-step-3', formData);
+      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP3, formData);
     },
     onSuccess: () => {
       console.log('Success');
       router.push('/visa/step-four');
     },
+    enabled: !!state.formId,
   });
 
   if (mutation.isPending) {
     console.log('Pending');
-    return <div>pendng</div>;
+    // return <div>pendng</div>;
   }
 
   if (mutation.error) {
@@ -44,6 +48,7 @@ const StepThree = () => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
+
       <Formik
         initialValues={step3ValidationSchema.initialValues}
         validationSchema={step3ValidationSchema.yupSchema}
@@ -51,10 +56,9 @@ const StepThree = () => {
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log(values);
-          mutation.mutate(values);
+          mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
-          // resetForm();
-          console.log('testing');
+          resetForm();
         }}
       >
         {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
