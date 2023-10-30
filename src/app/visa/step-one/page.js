@@ -95,8 +95,8 @@ const StepOne = () => {
                   className="p-2 border rounded select-input"
                   onChange={handleChange}
                 >
-                  <option disabled selected>
-                    TimeZone*
+                  <option disabled selected value="">
+                    select*
                   </option>
                   <option value="Bussiness">Bussiness</option>
                   <option value="Education">Education</option>
@@ -117,6 +117,9 @@ const StepOne = () => {
                   className="p-2 border rounded select-input"
                   onChange={handleChange}
                 >
+                  <option disabled selected value="">
+                    select
+                  </option>
                   <option value="arrone">arrone</option>
                   <option value="arrtwo">arrtwo</option>
                   <option value="arrthree">arrthree</option>

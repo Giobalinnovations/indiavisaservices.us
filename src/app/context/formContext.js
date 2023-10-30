@@ -17,15 +17,17 @@ const formReducer = (state, action) => {
 };
 
 export const FormProvider = ({ children }) => {
-  // Try to get the formId from local storage, or use initialState if not available
-  const storedFormId = localStorage.getItem('formId');
-  initialState.formId = storedFormId ? storedFormId : initialState.formId;
+  if (typeof window !== 'undefined') {
+    const storedFormId = localStorage.getItem('formId');
+    initialState.formId = storedFormId ? storedFormId : initialState.formId;
+  }
 
   const [state, dispatch] = useReducer(formReducer, initialState);
 
-  // Use useEffect to update local storage whenever formId changes
   useEffect(() => {
-    localStorage.setItem('formId', state.formId);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('formId', state.formId);
+    }
   }, [state.formId]);
 
   return (
