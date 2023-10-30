@@ -11,37 +11,23 @@ import { useMutation } from '@tanstack/react-query';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axiosInstance from '@/services/api';
 import { useRouter } from 'next/navigation';
-
-const validationSchema = Yup.object().shape({
-  nationalityRegion: Yup.string().required('Select Country is required'),
-  passportType: Yup.string().required('Passport Type is required'),
-  portOfArrival: Yup.string().required('portOfArrival is required'),
-  dateOfBirth: Yup.date().required('Date Of Birth is required'),
-  emailId: Yup.string()
-    .email('Invalid email format')
-    .required('Email ID is required'),
-  visaService: Yup.string().required('Visa Service is required'),
-  expectedDateOfArrival: Yup.date().required(
-    'Expected Date of Arrival is required'
-  ),
-  captcha: Yup.string().required('Please enter the above text'),
-  instructionsAgreed: Yup.boolean().oneOf(
-    [true],
-    'You must agree to the instructions'
-  ),
-});
+import { step1ValidationSchema } from '@/app/lib/constants';
 
 const StepOne = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.post('/api', formData);
+      return axiosInstance.post('registration', formData);
     },
     onSuccess: () => {
       console.log('Success');
       router.push('/visa/step-two');
     },
   });
+
+  if (mutation.error) {
+    console.log(mutation.error);
+  }
 
   if (mutation.isSuccess) {
     console.log(mutation.data);
@@ -55,18 +41,8 @@ const StepOne = () => {
       </p>
       <div className="max-w-4xl px-12 py-4 mx-auto">
         <Formik
-          initialValues={{
-            nationalityRegion: '',
-            passportType: '',
-            portOfArrival: '',
-            dateOfBirth: '',
-            emailId: '',
-            visaService: '',
-            expectedDateOfArrival: '',
-            captcha: '',
-            instructionsAgreed: false,
-          }}
-          validationSchema={validationSchema}
+          initialValues={step1ValidationSchema.initialValues}
+          validationSchema={step1ValidationSchema.yupSchema}
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {

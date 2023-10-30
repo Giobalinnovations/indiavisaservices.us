@@ -1103,7 +1103,7 @@ const StepThree = () => {
               </Link>
               <button
                 type="submit"
-                // disabled={!isValid}
+                disabled={!isValid}
                 className={`formbtn cursor-pointer ${
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
