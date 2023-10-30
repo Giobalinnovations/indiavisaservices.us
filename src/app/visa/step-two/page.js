@@ -48,7 +48,7 @@ const StepTwo = () => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      {state.formId}
+
       <Formik
         initialValues={step2ValidationSchema.initialValues}
         validationSchema={step2ValidationSchema.yupSchema}

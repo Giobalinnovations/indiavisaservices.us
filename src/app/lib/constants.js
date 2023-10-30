@@ -114,13 +114,20 @@ export const step3ValidationSchema = {
   yupSchema: Yup.object().shape({
     houseNoStreet: Yup.string().required('House No. Street is required'),
     villageTownCity: Yup.string().required('Village/Town/City is required'),
-    country: Yup.string(), // You can define validation rules specific to the country Select component.
+    country: Yup.string(),
     stateProvinceDistrict: Yup.string().required(
       'State/Province/District is required'
     ),
     postalZipCode: Yup.string().required('Postal/Zip Code is required'),
-    phoneNo: Yup.string(), // You can define validation rules for the phone number.
-    mobileNo: Yup.string(), // You can define validation rules for the mobile number.
+    phoneNo: Yup.string()
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
+      .required('Phone is required'),
+    mobileNo: Yup.string()
+      .matches(
+        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
+        'Phone number must be a valid 10-digit number'
+      )
+      .required('Phone is required'),
     emailAddress: Yup.string()
       .email('Invalid email address')
       .required('Email Address is required'),
@@ -181,7 +188,12 @@ export const step3ValidationSchema = {
     employerName: Yup.string().required('Employer Name/Business is required'),
     designation: Yup.string(),
     address: Yup.string().required('Address is required'),
-    phone: Yup.string(),
+    phone: Yup.string()
+      .matches(
+        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
+        'Phone number must be a valid 10-digit number'
+      )
+      .required('Phone is required'),
     presentOccupationIfAny: Yup.string(),
     militaryOrganization: Yup.string().required('Please select an option'),
     organization: Yup.string(),
@@ -266,40 +278,76 @@ export const step4ValidationSchema = {
     typeOfVisa: Yup.string().required('Type of Visa is required'),
     placeOfIssue: Yup.string().required('Place of Issue is required'),
     dateOfIssue: Yup.date().required('Date Of issue is required'),
-    permissionRefused: Yup.string().required('Please select an option'),
 
-    refusalDetails: Yup.string().when('permissionRefused', {
-      is: 'yes',
-      then: Yup.string().required('Please provide details of the refusal'),
-    }),
+    permissionRefused: Yup.string(),
+    refusalDetails: Yup.string().when(
+      'permissionRefused',
+      permissionRefused => {
+        if (permissionRefused === 'no') {
+          return Yup.string();
+        } else {
+          return Yup.string().required('field required');
+        }
+      }
+    ),
+    visitedSAARCCountries: Yup.string(),
+    saarcCountryName: Yup.string().when(
+      'visitedSAARCCountries',
+      (visitedSAARCCountries, schema) => {
+        if (visitedSAARCCountries === 'no') {
+          return schema;
+        } else {
+          return schema.required('Please enter the name of the SAARC country');
+        }
+      }
+    ),
+    selectYear: Yup.string().when(
+      'visitedSAARCCountries',
+      (visitedSAARCCountries, schema) => {
+        if (visitedSAARCCountries === 'no') {
+          return schema;
+        } else {
+          return schema.required('Please select a year');
+        }
+      }
+    ),
 
-    visitedSAARCCountries: Yup.string().required('Please select an option'),
-    saarcCountryName: Yup.string().when('visitedSAARCCountries', {
-      is: 'yes',
-      then: Yup.string().required('Please enter the name of the SAARC country'),
-    }),
-    selectYear: Yup.string().when('visitedSAARCCountries', {
-      is: 'yes',
-      then: Yup.string().required('Please select a year'),
-    }),
-    numberOfVisits: Yup.number().integer('Please enter a valid number'),
+    numberOfVisits: Yup.string().when(
+      'visitedSAARCCountries',
+      (visitedSAARCCountries, schema) => {
+        if (visitedSAARCCountries === 'no') {
+          return schema;
+        } else {
+          return schema.required('Please enter a valid number');
+        }
+      }
+    ),
 
     countriesVisited: Yup.string(),
-
     friendRelativeDetails: Yup.string().required(
       'Details of the Friend/Relative is required'
     ),
     friendRelativeAddress: Yup.string().required('Address is required'),
     friendRelativeState: Yup.string().required('State is required'),
     friendRelativeDistrict: Yup.string().required('District is required'),
-    friendRelativePhone: Yup.string().required('Phone is required'),
+    friendRelativePhone: Yup.string()
+      .matches(
+        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
+        'Phone number must be a valid 10-digit number'
+      )
+      .required('Phone is required'),
     referenceNameInFrance: Yup.string().required(
       'Reference Name in France is required'
     ),
     referenceAddressInFrance: Yup.string().required(
       'Address in France is required'
     ),
-    referenceFrancePhone: Yup.string().required('Phone in France is required'),
+    referenceFrancePhone: Yup.string()
+      .matches(
+        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
+        'Phone number must be a valid 10-digit number'
+      )
+      .required('Phone is required'),
   }),
   initialValues: {
     visaType: '',

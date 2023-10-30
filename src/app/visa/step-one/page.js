@@ -43,6 +43,7 @@ const StepOne = () => {
   return (
     <>
       <BannerPage heading="E-VISA APPLICATION FORM" />
+
       <p className="pt-8 font-semibold text-center">
         Note: For e-visa services to Afghan Nationals, they must select
         <span className="pl-2 pr-1 text-primary">AFGHANISTAN</span> nationality
