@@ -55,8 +55,8 @@ const StepOne = () => {
         >
           {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
             <Form onSubmit={handleSubmit} className="formMain">
-              <div class="form-input-main-div">
-                <label class="form-label">Select Country*</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Select Country*</label>
                 <Field
                   required
                   component="select"
@@ -77,8 +77,8 @@ const StepOne = () => {
                   {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                 </ErrorMessage>
               </div>
-              <div class="form-input-main-div">
-                <label class="form-label">Passport Type*</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Passport Type*</label>
                 <Field
                   required
                   component="select"
@@ -99,8 +99,8 @@ const StepOne = () => {
                   {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                 </ErrorMessage>
               </div>
-              <div class="form-input-main-div">
-                <label class="form-label">Port Of Arrival</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Port Of Arrival</label>
                 <Field
                   required
                   component="select"
@@ -119,14 +119,14 @@ const StepOne = () => {
                 </ErrorMessage>
               </div>
 
-              <div class="form-input-main-div">
-                <label class="form-label">Date Of Birth</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Date Of Birth</label>
                 <Field
                   required
                   type="date"
                   name="dateOfBirth"
                   id="dateOfBirth"
-                  class="form-input"
+                  className="form-input"
                   onChange={handleChange}
                 />
                 <ErrorMessage name="dateOfBirth">
@@ -134,14 +134,14 @@ const StepOne = () => {
                 </ErrorMessage>
               </div>
 
-              <div class="form-input-main-div">
-                <label class="form-label">Email ID*</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Email ID*</label>
                 <Field
                   required
                   type="email"
                   name="emailId"
                   id="emailId"
-                  class="form-input"
+                  className="form-input"
                   placeholder="Enter Email Id"
                   onChange={handleChange}
                 />
@@ -150,27 +150,27 @@ const StepOne = () => {
                 </ErrorMessage>
               </div>
 
-              {/* <div class="form-input-main-div">
-                <label class="form-label">Re Enter Email ID*</label>
+              {/* <div className="form-input-main-div">
+                <label className="form-label">Re Enter Email ID*</label>
                 <input
                   type="text"
                   name="Email ID*"
                   id="name"
                   placeholder="Re-enter Email Id"
-                  class="form-input"
+                  className="form-input"
                   // value={fullName}
                   // onChange={(e) => setFullName(e.target.value)}
                 />
               </div> */}
 
-              <div class="form-input-main-div">
-                <label class="form-label">Visa Service*</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Visa Service*</label>
                 <Field
                   required
                   type="text"
                   name="visaService"
                   id="visaService"
-                  class="form-input"
+                  className="form-input"
                   placeholder="Visa service"
                   onChange={handleChange}
                 />
@@ -179,14 +179,14 @@ const StepOne = () => {
                 </ErrorMessage>
               </div>
 
-              <div class="form-input-main-div">
-                <label class="form-label">Expected Date of Arrival</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Expected Date of Arrival</label>
                 <Field
                   required
                   type="date"
                   name="expectedDateOfArrival"
                   id="expectedDateOfArrival"
-                  class="form-input"
+                  className="form-input"
                   onChange={handleChange}
                 />
                 <ErrorMessage name="expectedDateOfArrival">
@@ -194,21 +194,21 @@ const StepOne = () => {
                 </ErrorMessage>
               </div>
 
-              <div class="form-input-main-div">
-                <span class="form-label"></span>
-                <p class="px-4 py-2 bg-[#FFE6D3] text-2xl text-center rounded-lg w-36">
+              <div className="form-input-main-div">
+                <span className="form-label"></span>
+                <p className="px-4 py-2 bg-[#FFE6D3] text-2xl text-center rounded-lg w-36">
                   t8Q53A
                 </p>
               </div>
-              <div class="form-input-main-div">
-                <label class="form-label">Please enter above text*</label>
+              <div className="form-input-main-div">
+                <label className="form-label">Please enter above text*</label>
 
                 <Field
                   required
                   type="text"
                   name="captcha"
                   id="captcha"
-                  class="form-input"
+                  className="form-input"
                   onChange={handleChange}
                 />
                 <ErrorMessage name="captcha">
@@ -223,7 +223,7 @@ const StepOne = () => {
                   name="instructionsAccepted"
                   onChange={handleChange}
                 />
-                <label class="text-xs">
+                <label className="text-xs">
                   I have read the instructions ,I have all the required
                   documents in scanned pdf format and photograph in jpg/jpeg
                   format.

@@ -5,8 +5,35 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step4ValidationSchema } from '@/app/lib/constants';
+import { useRouter } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
 
-const StepThree = ({ step }) => {
+const StepFour = () => {
+  const router = useRouter();
+  const mutation = useMutation({
+    mutationFn: formData => {
+      return axiosInstance.post('applicant-details-form-step-3', formData);
+    },
+    onSuccess: () => {
+      console.log('Success');
+      router.push('/visa/step-four');
+    },
+  });
+
+  if (mutation.isPending) {
+    console.log('Pending');
+    return <div>pendng</div>;
+  }
+
+  if (mutation.error) {
+    // return <div>{mutation.error}</div>;
+    console.log('Error', mutation.error.message);
+  }
+
+  if (mutation.isSuccess) {
+    console.log(mutation.data);
+  }
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -22,8 +49,8 @@ const StepThree = ({ step }) => {
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log(values);
-          mutation.mutate(values);
-          setSubmitting(false);
+          // mutation.mutate(values);
+          // setSubmitting(false);
           // resetForm();
           console.log('testing');
         }}
@@ -41,70 +68,96 @@ const StepThree = ({ step }) => {
                 <div className="col-span-8">
                   <div className="">
                     <div className="formMain">
-                      <div class="form-input-main-div">
-                        <label class="form-label">Type of Visa*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Type of Visa*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="visaType"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="visaType"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Type of Visa*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Type of Visa*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="visaType2"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="visaType2"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Places to be visited*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Places to be visited*
+                        </label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="placesToVisit"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="placesToVisit"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Places to be visited 2</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Places to be visited 2
+                        </label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="placesToVisit2"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="placesToVisit2"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
                       <div className="flex items-start py-2 space-x-2">
-                        <label class=" font-semibold">
+                        <label className="font-semibold">
                           Have you booked any room in Hotel/Resort etc. through
                           any Tour Operator?
                         </label>
-
                         <div className="flex space-x-4">
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="yes" name="fav_language" />
-                            <label for="yes" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="yes"
+                              name="roomBooked"
+                              value="yes"
+                            />
+                            <label htmlFor="yes" className="font-semibold">
                               Yes
                             </label>
                           </div>
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="no" name="fav_language" />
-                            <label for="no" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="no"
+                              name="roomBooked"
+                              value="no"
+                            />
+                            <label htmlFor="no" className="font-semibold">
                               No
                             </label>
                           </div>
                         </div>
+                        <ErrorMessage
+                          name="roomBooked"
+                          component="div"
+                          className="error-message"
+                        />
                       </div>
                     </div>
                   </div>
@@ -129,90 +182,101 @@ const StepThree = ({ step }) => {
                 <div className="col-span-8">
                   <div className="">
                     <div className="formMain">
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Details of the Friend/Relative
                         </label>
-                        <input
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="detailsOfFriendRelative"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="detailsOfFriendRelative"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Address</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Address</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="address"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="address"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">State</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
-                        />
+                      <div className="form-input-main-div">
+                        <label className="form-label">State</label>
+                        <Field
+                          name="state"
+                          component="select"
+                          className="p-2 border rounded select-input"
+                        >
+                          <option value="">Select </option>
+                          <option value="option1">Option1</option>
+                        </Field>
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">District</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
-                        />
+                      <div className="form-input-main-div">
+                        <label className="form-label">District</label>
+                        <Field
+                          name="district"
+                          component="select"
+                          className="p-2 border rounded select-input"
+                        >
+                          <option value="">Select </option>
+
+                          <option value="option1">Option1 </option>
+                        </Field>
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Duration of Visa</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Duration of Visa</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="durationOfVisa"
+                          className="form-input"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">No. of Entries</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">No. of Entries</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="numberOfEntries"
+                          className="form-input"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Port of Arrival in India*
                         </label>
-                        <input
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="portOfArrival"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="portOfArrival"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Expected Port of Exit from India
                         </label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
-                        />
+                        <Field
+                          name="expectedPortOfExit"
+                          component="select"
+                          className="p-2 border rounded select-input"
+                        >
+                          <option value="">Select </option>
+
+                          <option value="option1">option1 </option>
+                        </Field>
                       </div>
                     </div>
                   </div>
@@ -239,150 +303,177 @@ const StepThree = ({ step }) => {
                   <div className="">
                     <div className="formMain">
                       <div className="flex items-start py-2 space-x-2">
-                        <label class=" font-semibold">
+                        <label className="font-semibold">
                           Have you ever visited India before?*
                         </label>
-
                         <div className="flex space-x-4">
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="yes" name="fav_language" />
-                            <label for="yes" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="yes"
+                              name="visitedIndiaBefore"
+                              value="yes"
+                            />
+                            <label htmlFor="yes" className="font-semibold">
                               Yes
                             </label>
                           </div>
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="no" name="fav_language" />
-                            <label for="no" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="no"
+                              name="visitedIndiaBefore"
+                              value="no"
+                            />
+                            <label htmlFor="no" className="font-semibold">
                               No
                             </label>
                           </div>
+                          <ErrorMessage
+                            name="visitedIndiaBefore"
+                            component="div"
+                            className="error-message"
+                          />
                         </div>
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Address*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Address*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="visaAddress"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="visaAddress"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label"></label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
-                        />
-                      </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label"></label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
-                        />
-                      </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
-                          Cities previously visited inIndia*
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Cities previously visited in India*
                         </label>
-                        <textarea
-                          id="message"
+                        <Field
+                          as="textarea"
+                          name="citiesVisitedInIndia"
                           rows="4"
-                          class="form-input"
-                          placeholder=""
-                        ></textarea>
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="citiesVisitedInIndia"
+                          component="div"
+                          className="error-message"
+                        />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Last Indian Visa no./Currently valid Indian Visa no.*
                         </label>
-                        <input
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="lastIndianVisaNo"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="lastIndianVisaNo"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Type of Visa*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Type of Visa*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="typeOfVisa"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="typeOfVisa"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Place of Issue*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Place of Issue*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="placeOfIssue"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="placeOfIssue"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Date of Issue*</label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                      <div className="form-input-main-div">
+                        <label className="form-label">Date of Issue*</label>
+                        <Field
+                          required
+                          type="date"
+                          name="dateOfIssue"
+                          id="dateOfIssue"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="dateOfIssue"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
                       <div className="flex items-start py-2 space-x-2">
-                        <label class=" font-semibold">
+                        <label className="font-semibold">
                           Has permission to visit or to extend stay in India
                           previously been refused?
                         </label>
-
                         <div className="flex space-x-4">
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="yes" name="fav_language" />
-                            <label for="yes" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="yes"
+                              name="permissionRefused"
+                              value="yes"
+                              checked={values.permissionRefused === 'yes'}
+                            />
+                            <label htmlFor="yes" className="font-semibold">
                               Yes
                             </label>
                           </div>
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="no" name="fav_language" />
-                            <label for="no" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="no"
+                              name="permissionRefused"
+                              value="no"
+                              checked={values.permissionRefused === 'no'}
+                            />
+                            <label htmlFor="no" className="font-semibold">
                               No
                             </label>
                           </div>
                         </div>
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
-                          If so, when and by whom (Mention Control No. and date
-                          also)
-                        </label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
-                        />
-                      </div>
+                      {/*
+            Conditionally render the refusalDetails field based on the radio button selection.
+          */}
+                      {values.permissionRefused === 'yes' && (
+                        <div className="form-input-main-div">
+                          <label className="form-label">
+                            If so, when and by whom (Mention Control No. and
+                            date also)
+                          </label>
+                          <Field
+                            type="text"
+                            name="refusalDetails"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="refusalDetails"
+                            component="div"
+                            className="error-message"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -435,51 +526,79 @@ const StepThree = ({ step }) => {
                   <div className="">
                     <div className="formMain">
                       <div className="flex items-start py-2 space-x-2">
-                        <label class=" font-semibold">
+                        <label className="font-semibold">
                           Have you visited SAARC countries (except your country)
                           during last 3 years?
                         </label>
-
                         <div className="flex space-x-4">
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="yes" name="fav_language" />
-                            <label for="yes" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="yes"
+                              name="visitedSAARCCountries"
+                              value="yes"
+                            />
+                            <label htmlFor="yes" className="font-semibold">
                               Yes
                             </label>
                           </div>
                           <div className="px-2 space-x-2">
-                            <input type="radio" id="no" name="fav_language" />
-                            <label for="no" class=" font-semibold">
+                            <Field
+                              type="radio"
+                              id="no"
+                              name="visitedSAARCCountries"
+                              value="no"
+                            />
+                            <label htmlFor="no" className="font-semibold">
                               No
                             </label>
                           </div>
                         </div>
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Name of SAARC Country*</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Name of SAARC Country*
+                        </label>
+                        <Field
+                          type="text"
+                          name="saarcCountryName"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="saarcCountryName"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Select Year*</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
+                      <div className="form-input-main-div">
+                        <label className="form-label">Select Year*</label>
+                        <Field
+                          name="selectYear"
+                          component="select"
+                          className="p-2 border rounded select-input"
+                        >
+                          <option value="">Select Year</option>
+                          <option value="2023">2023</option>
+                          <option value="2022">2022</option>
+                          <option value="2021">2021</option>
+                        </Field>
+                        <ErrorMessage
+                          name="selectYear"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">No. of Visits</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">No. of Visits</label>
+                        <Field
                           type="number"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="numberOfVisits"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="numberOfVisits"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
                     </div>
@@ -505,19 +624,26 @@ const StepThree = ({ step }) => {
               <div className="grid grid-cols-12 gap-8 ">
                 <div className="col-span-8">
                   <div className="">
-                    <form className="formMain">
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                    <div className="formMain">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Countries Visited in last 10 years
                         </label>
-                        <textarea
-                          id="message"
+                        <Field
+                          id="countriesVisited"
+                          component="textarea"
                           rows="4"
-                          class="form-input"
+                          className="form-input"
                           placeholder=""
-                        ></textarea>
+                          name=""
+                        ></Field>
+                        <ErrorMessage
+                          name="countriesVisited"
+                          component="div"
+                          className="error-message"
+                        />
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -539,116 +665,124 @@ const StepThree = ({ step }) => {
               <div className="grid grid-cols-12 gap-8 ">
                 <div className="col-span-8">
                   <div className="">
-                    <form className="formMain">
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                    <div className="formMain">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Details of the Friend/Relative
                         </label>
-                        <input
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="friendRelativeDetails"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="friendRelativeDetails"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Address</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Address</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="friendRelativeAddress"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="friendRelativeAddress"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label"></label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">State*</label>
+                        <Field
+                          name="friendRelativeState"
+                          className="p-2 border rounded select-input"
+                          component="select"
+                        >
+                          <option value="">Select State</option>
+
+                          <option value="option1">Option1</option>
+                        </Field>
+                        <ErrorMessage
+                          name="friendRelativeState"
+                          component="div"
+                          className="error-message"
+                        />
+                      </div>
+                      <div className="form-input-main-div">
+                        <label className="form-label">District*</label>
+                        <Field
+                          name="friendRelativeDistrict"
+                          className="p-2 border rounded select-input"
+                          component="select"
+                        >
+                          <option value="">Select District</option>
+
+                          <option value="option1">Option1</option>
+                        </Field>
+                        <ErrorMessage
+                          name="friendRelativeDistrict"
+                          component="div"
+                          className="error-message"
+                        />
+                      </div>
+                      <div className="form-input-main-div">
+                        <label className="form-label">Phone*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="friendRelativePhone"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="friendRelativePhone"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">State*</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
-                        />
-                      </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">District*</label>
-                        <Select
-                          placeholder="Select Nationality"
-                          options={options}
-                          className="select-input"
-                        />
-                      </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Phone*</label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
-                        />
-                      </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
                           Reference Name in FRANCE*
                         </label>
-                        <input
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="referenceNameInFrance"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="referenceNameInFrance"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Address*</label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Address*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="referenceAddressInFrance"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="referenceAddressInFrance"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label"></label>
-                        <input
+                      <div className="form-input-main-div">
+                        <label className="form-label">Phone*</label>
+                        <Field
                           type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
+                          name="referenceFrancePhone"
+                          className="form-input"
+                        />
+                        <ErrorMessage
+                          name="referenceFrancePhone"
+                          component="div"
+                          className="error-message"
                         />
                       </div>
-                      <div class="form-input-main-div">
-                        <label class="form-label">Phone*</label>
-                        <input
-                          type="text"
-                          name=""
-                          id=""
-                          class="form-input"
-                          //   value={fullName}
-                          //   onChange={(e) => setFullName(e.target.value)}
-                        />
-                      </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
@@ -683,12 +817,17 @@ const StepThree = ({ step }) => {
 
             <div className="space-x-4 text-center">
               <Link href="/visa/step-three">
-                <button class="formbtnBorder">Back</button>
+                <button className="formbtnBorder">Back</button>
               </Link>
-              <Link href="#">
-                {' '}
-                <button class="formbtn">Continue</button>
-              </Link>
+              <button
+                type="submit"
+                disabled={!isValid}
+                className={`formbtn cursor-pointer ${
+                  !isValid ? 'cursor-not-allowed opacity-50' : ''
+                }`}
+              >
+                {mutation.isPending ? 'loading' : 'Continue'}
+              </button>
             </div>
           </Form>
         )}
@@ -697,4 +836,4 @@ const StepThree = ({ step }) => {
   );
 };
 
-export default StepThree;
+export default StepFour;

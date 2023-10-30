@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 
 const StepThree = () => {
   return (
     <>
-      <div className="mx-auto py-20 max-w-3xl px-12">
-        <h2 className="py-4 text-center font-bold text-2xl underline underline-offset-8">
+      <div className="max-w-3xl px-12 py-20 mx-auto">
+        <h2 className="py-4 text-2xl font-bold text-center underline underline-offset-8">
           Third Step
         </h2>
         <form method="POST">
-          <div class="mb-5">
-            <label class="form-label">Full Name</label>
+          <div className="mb-5">
+            <label className="form-label">Full Name</label>
             <input
               type="text"
               name="name"
               id="name"
               placeholder="Full Name"
-              class="form-input"
+              className="form-input"
             />
           </div>
-          <div class="mb-5">
-            <label for="email" class="form-label">
+          <div className="mb-5">
+            <label for="email" className="form-label">
               Email Address
             </label>
             <input
@@ -27,11 +27,11 @@ const StepThree = () => {
               name="email"
               id="email"
               placeholder="example@domain.com"
-              class="form-input"
+              className="form-input"
             />
           </div>
-          <div class="mb-5">
-            <label for="subject" class="form-label">
+          <div className="mb-5">
+            <label for="subject" className="form-label">
               Subject
             </label>
             <input
@@ -39,12 +39,12 @@ const StepThree = () => {
               name="subject"
               id="subject"
               placeholder="Enter your subject"
-              class="form-input"
+              className="form-input"
             />
           </div>
 
           <div>
-            <button class="formbtn">Next</button>
+            <button className="formbtn">Next</button>
           </div>
         </form>
       </div>
