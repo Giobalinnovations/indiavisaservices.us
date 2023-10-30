@@ -5,56 +5,32 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required('First Name is required'),
-  lastName: Yup.string().required('Last Name is required'),
-  changedName: Yup.boolean().optional(),
-  gender: Yup.string().required('Gender is required'),
-  dateOfBirth: Yup.date().required('Date Of Birth is required'),
-  townCityOfBirth: Yup.string().required('Town/City of birth is required'),
-  countryRegionOfBirth: Yup.string().required(
-    'Country/Region of birth is required'
-  ),
-  citizenshipNationalID: Yup.string().required(
-    'Citizenship/National ID no. is required'
-  ),
-  religion: Yup.string().required('Religion is required'),
-  visibleIdentificationMarks: Yup.string().required(
-    'Visible identification marks is required'
-  ),
-  educationalQualification: Yup.string().required(
-    'Educational Qualification is required'
-  ),
-  nationalityRegion: Yup.string().required('Nationality/Region is required'),
-  acquisitionType: Yup.string().required('Acquisition type is required'),
-
-  // haveLivedInApplyingCountry: Yup.string().required(
-  //   'Please select whether you have lived in the country where you are applying for a visa'
-  // ),
-  placeOfIssue: Yup.string().required('Place of Issue is required'),
-  nationalityMentionedTherein: Yup.string().required(
-    'Nationality mentioned therein is required'
-  ),
-
-  passportNumber: Yup.string().required('Passport Number is required'),
-  placeOfIssuePassportIC: Yup.string().required(
-    'Place of Issue (Passport/IC) is required'
-  ),
-  dateOfIssue: Yup.date().required('Date Of issue is required'),
-  dateOfExpiry: Yup.date().required('Date Of expiry is required'),
-  // anyOtherPassport: Yup.string().required(
-  //   'Please select whether you hold another Passport/Identity Certificate (IC)'
-  // ),
-  countryOfIssue: Yup.string().required('Country of Issue is required'),
-  passportICNumber: Yup.string().required('Passport/IC No. is required'),
-  dateOfIssuePassportIC: Yup.date().required('Date Of issue is required'),
-  passportNationalityMentionedTherein: Yup.string().required(
-    'Nationality mentioned therein is required'
-  ),
-});
+import { useRouter } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
+import { step2ValidationSchema } from '@/app/lib/constants';
 
 const StepTwo = ({ step }) => {
-  const [fullName, setFullName] = useState('');
+  const router = useRouter();
+  const mutation = useMutation({
+    mutationFn: formData => {
+      return axiosInstance.post('applicant-details-form-step-3', formData);
+    },
+    onSuccess: () => {
+      console.log('Success');
+      router.push('/visa/step-three');
+    },
+  });
+
+  if (mutation.isPending) {
+    console.log('Pending');
+    return <div>pendng</div>;
+  }
+
+  if (mutation.error) {
+    // return <div>{mutation.error}</div>;
+    console.log('Error', mutation.error.message);
+  }
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -64,42 +40,15 @@ const StepTwo = ({ step }) => {
     <>
       <BannerPage heading="Applicant Detail Form" />
       <Formik
-        initialValues={{
-          firstName: '',
-          lastName: '',
-          changedName: false,
-          gender: '',
-          dateOfBirth: '',
-          townCityOfBirth: '',
-          countryRegionOfBirth: '',
-          citizenshipNationalID: '',
-          religion: '',
-          visibleIdentificationMarks: '',
-          educationalQualification: '',
-          nationalityRegion: '',
-          acquisitionType: '',
-          placeOfIssue: '',
-          nationalityMentionedTherein: '',
-          // haveLivedInApplyingCountry: '',
-          passportNumber: '',
-          placeOfIssuePassportIC: '',
-          dateOfIssue: '',
-          dateOfExpiry: '',
-          // anyOtherPassport: '',
-          countryOfIssue: '',
-          passportICNumber: '',
-          dateOfIssuePassportIC: '',
-
-          passportNationalityMentionedTherein: '',
-        }}
-        validationSchema={validationSchema}
+        initialValues={step2ValidationSchema.initialValues}
+        validationSchema={step2ValidationSchema.yupSchema}
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log(values);
-          // mutation.mutate(values);
-          // setSubmitting(false);
-          // resetForm();
+          mutation.mutate(values);
+          setSubmitting(false);
+          resetForm();
         }}
       >
         {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
@@ -675,7 +624,7 @@ const StepTwo = ({ step }) => {
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {/* {mutation.isPending ? 'loading' : 'Continue'} */}
+                {mutation.isPending ? 'loading' : 'Continue'}
                 continue
               </button>
             </div>
