@@ -114,8 +114,8 @@ const StepThree = () => {
                           Country
                         </label>
                         <Field
-                          onChange={handleChange}
                           name="country"
+                          onChange={handleChange}
                           component="select"
                           className="p-2 border rounded select-input"
                         >
@@ -1097,7 +1097,7 @@ const StepThree = () => {
 
             <div className="space-x-4 text-center">
               <Link href="/visa/step-two">
-                <button class="formbtnBorder" type="button">
+                <button className="formbtnBorder" type="button">
                   Back
                 </button>
               </Link>

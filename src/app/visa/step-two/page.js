@@ -61,8 +61,8 @@ const StepTwo = ({ step }) => {
               <div className="col-span-8">
                 <div>
                   <div className="formMain">
-                    <div class="form-input-main-div">
-                      <label class="form-label">First Name*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">First Name*</label>
                       <Field
                         required
                         type="text"
@@ -77,8 +77,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Last Name*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Last Name*</label>
                       <Field
                         required
                         type="text"
@@ -100,7 +100,7 @@ const StepTwo = ({ step }) => {
                         name="changedName"
                         onChange={handleChange}
                       />
-                      <label class="text-xs">
+                      <label className="text-xs">
                         Have you ever changed your name? If yes click the box
                       </label>
                       <ErrorMessage name="changedName">
@@ -109,8 +109,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Gender*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Gender*</label>
                       <Field
                         required
                         component="select"
@@ -132,14 +132,14 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Date Of Birth</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Date Of Birth</label>
                       <Field
                         required
                         type="date"
                         name="dateOfBirth"
                         id="dateOfBirth"
-                        class="form-input"
+                        className="form-input"
                         onChange={handleChange}
                       />
                       <ErrorMessage name="dateOfBirth">
@@ -148,8 +148,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Town/City of birth</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Town/City of birth</label>
                       <Field
                         required
                         type="text"
@@ -164,8 +164,10 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Country/Region of birth</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">
+                        Country/Region of birth
+                      </label>
                       <Field
                         required
                         component="select"
@@ -187,8 +189,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Citizenship/National ID no.
                       </label>
                       <Field
@@ -205,8 +207,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Religion</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Religion</label>
                       <Field
                         required
                         component="select"
@@ -228,8 +230,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Visible identification marks
                       </label>
                       <Field
@@ -247,8 +249,8 @@ const StepTwo = ({ step }) => {
                       </ErrorMessage>
                     </div>
 
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Educational Qualification
                       </label>
                       <Field
@@ -272,8 +274,8 @@ const StepTwo = ({ step }) => {
                       </ErrorMessage>
                     </div>
 
-                    <div class="form-input-main-div">
-                      <label class="form-label">Nationality/Region</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Nationality/Region</label>
                       <Field
                         required
                         type="text"
@@ -288,8 +290,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Did you acquire nationality by birth or by
                         naturalization?
                       </label>
@@ -313,8 +315,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Place of Issue*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Place of Issue*</label>
                       <Field
                         required
                         type="text"
@@ -330,8 +332,8 @@ const StepTwo = ({ step }) => {
                       </ErrorMessage>
                     </div>
 
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Nationality mentioned therein*
                       </label>
                       <Field
@@ -396,7 +398,7 @@ const StepTwo = ({ step }) => {
             </div>
 
             {/* <div className="flex items-start py-2 space-x-2">
-              <label class=" font-semibold">
+              <label className="font-semibold ">
                 Have you lived for at least two years in the country where you
                 are applying visa?
               </label>
@@ -404,11 +406,11 @@ const StepTwo = ({ step }) => {
               <div className="flex space-x-4">
                 <div className="px-2 space-x-2">
                   <input type="checkbox" />
-                  <label class=" font-semibold">Yes</label>
+                  <label className="font-semibold ">Yes</label>
                 </div>
                 <div className="px-2 space-x-2">
                   <input type="checkbox" />
-                  <label class=" font-semibold">No</label>
+                  <label className="font-semibold ">No</label>
                 </div>
               </div>
             </div> */}
@@ -420,8 +422,8 @@ const StepTwo = ({ step }) => {
               <div className="col-span-8">
                 <div>
                   <div className="formMain">
-                    <div class="form-input-main-div">
-                      <label class="form-label">Passport Number*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Passport Number*</label>
                       <Field
                         required
                         type="text"
@@ -436,8 +438,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Place of Issue*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Place of Issue*</label>
                       <Field
                         required
                         type="text"
@@ -452,14 +454,14 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Date of Issue*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Date of Issue*</label>
                       <Field
                         required
                         type="date"
                         name="dateOfIssue"
                         id="dateOfIssue"
-                        class="form-input"
+                        className="form-input"
                         onChange={handleChange}
                       />
                       <ErrorMessage name="dateOfIssue">
@@ -468,14 +470,14 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Date of Expiry*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Date of Expiry*</label>
                       <Field
                         required
                         type="date"
                         name="dateOfExpiry"
                         id="dateOfExpiry"
-                        class="form-input"
+                        className="form-input"
                         onChange={handleChange}
                       />
                       <ErrorMessage name="dateOfExpiry">
@@ -485,22 +487,22 @@ const StepTwo = ({ step }) => {
                       </ErrorMessage>
                     </div>
                     {/* <div className="flex items-start py-2 space-x-2">
-                      <label class=" font-semibold">
+                      <label className="font-semibold ">
                         Any other valid Passport/Identity Certificate(IC) held,
                       </label>
                       <div className="flex space-x-4">
                         <div className="px-2 space-x-2">
                           <input type="checkbox" />
-                          <label class=" font-semibold">Yes</label>
+                          <label className="font-semibold ">Yes</label>
                         </div>
                         <div className="px-2 space-x-2">
                           <input type="checkbox" />
-                          <label class=" font-semibold">No</label>
+                          <label className="font-semibold ">No</label>
                         </div>
                       </div>
                     </div> */}
-                    <div class="form-input-main-div">
-                      <label class="form-label">Country of Issue*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Country of Issue*</label>
                       <Field
                         required
                         component="select"
@@ -522,8 +524,8 @@ const StepTwo = ({ step }) => {
                       </ErrorMessage>
                     </div>
 
-                    <div class="form-input-main-div">
-                      <label class="form-label">Passport/IC No.</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Passport/IC No.</label>
                       <Field
                         required
                         type="text"
@@ -538,14 +540,14 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">Date of Issue*</label>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Date of Issue*</label>
                       <Field
                         required
                         type="date"
                         name="dateOfIssuePassportIC"
                         id="dateOfIssuePassportIC"
-                        class="form-input"
+                        className="form-input"
                         onChange={handleChange}
                       />
                       <ErrorMessage name="dateOfIssuePassportIC">
@@ -554,8 +556,8 @@ const StepTwo = ({ step }) => {
                         )}
                       </ErrorMessage>
                     </div>
-                    <div class="form-input-main-div">
-                      <label class="form-label">
+                    <div className="form-input-main-div">
+                      <label className="form-label">
                         Nationality mentioned therein*
                       </label>
                       <Field
@@ -612,7 +614,7 @@ const StepTwo = ({ step }) => {
 
             <div className="space-x-4 text-center">
               <Link href="/visa/step-one">
-                <button class="formbtnBorder" type="button">
+                <button className="formbtnBorder" type="button">
                   Back
                 </button>
               </Link>

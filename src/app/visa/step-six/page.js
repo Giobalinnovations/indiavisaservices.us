@@ -1,10 +1,10 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import React, { useState } from "react";
-import { LuImagePlus } from "react-icons/lu";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { LuImagePlus } from 'react-icons/lu';
 
-import Select from "react-select";
+import Select from 'react-select';
 
 const StepSix = ({ step }) => {
   const [images, setImages] = useState();
@@ -19,14 +19,14 @@ const StepSix = ({ step }) => {
               Upload Image
             </label>
 
-            <div className="flex items-center max-w-lg gap-8 w-full h-36 overflow-hidden mb-5 rounded-md border p-2">
+            <div className="flex items-center w-full max-w-lg gap-8 p-2 mb-5 overflow-hidden border rounded-md h-36">
               <div className="bg-gray-200 rounded-lg">
                 <input
                   type="file"
                   id="images"
                   name="images"
                   className="sr-only"
-                  onChange={(e) => setImages(e.target.files[0])}
+                  onChange={e => setImages(e.target.files[0])}
                 />
                 <label
                   htmlFor="images"
@@ -39,7 +39,7 @@ const StepSix = ({ step }) => {
                 <div className="flex items-center w-full">
                   <img
                     src={URL.createObjectURL(images)}
-                    className="w-full h-32 object-top rounded"
+                    className="object-top w-full h-32 rounded"
                   />
                 </div>
               ) : (
@@ -52,19 +52,19 @@ const StepSix = ({ step }) => {
           </div>
         </div>
         {/* upload file end  */}
-        <div className=" space-x-4">
+        <div className="space-x-4 ">
           <Link href="#">
-            {" "}
-            <button class="formbtn">Upload a Picture</button>
+            {' '}
+            <button className="formbtn">Upload a Picture</button>
           </Link>
           <Link href="#">
-            <button class="formbtnBorder">Exit</button>
+            <button className="formbtnBorder">Exit</button>
           </Link>
         </div>
 
-        <div className="py-4 font-medium space-y-2">
+        <div className="py-4 space-y-2 font-medium">
           <p>
-            Temporary Application ID:{" "}
+            Temporary Application ID:{' '}
             <span className="text-primary">987123654856123</span>
           </p>
           <p>
@@ -72,19 +72,19 @@ const StepSix = ({ step }) => {
             below.
           </p>
           <p>
-            In case you are{" "}
+            In case you are{' '}
             <span className="font-bold">
               not ready for photo upload you can do it later,
             </span>
             Please note down the
           </p>
           <p>
-            Temporary Application ID, close the window and{" "}
+            Temporary Application ID, close the window and{' '}
             <span className="font-bold">Press Save and Exit</span>.
           </p>
           <p>
-            You can complete your application later using{" "}
-            <span className="font-bold">Complete Partially Filled Dorm</span>{" "}
+            You can complete your application later using{' '}
+            <span className="font-bold">Complete Partially Filled Dorm</span>{' '}
             option on home page.
           </p>
         </div>
@@ -92,7 +92,7 @@ const StepSix = ({ step }) => {
         <div className="py-8">
           <div className="">
             <h2 className="text-3xl font-semibold">Photo Specification</h2>
-            <hr className="text-primary bg-primary w-36 h-1" />
+            <hr className="h-1 text-primary bg-primary w-36" />
           </div>
           <div className="py-4 space-y-2">
             <p>
@@ -102,7 +102,7 @@ const StepSix = ({ step }) => {
               2. Size :- <b>Minimum 10 KB, Maximum 1 MB</b>
             </p>
             <p>
-              3. The minimum dimensions are{" "}
+              3. The minimum dimensions are{' '}
               <b>350 pixels (width) x 350 pixels (height)</b>.
             </p>
             <p>
@@ -114,20 +114,20 @@ const StepSix = ({ step }) => {
               photograph. <b>Upload clear front photograph</b> with preferable
               white/light coloured background.
             </p>
-            <p className="text-primary font-medium">
+            <p className="font-medium text-primary">
               6. The application is liable to be rejected if the uploaded
               photograph are not clear and as per specification.
             </p>
           </div>
         </div>
 
-        <div className="text-center space-x-4">
+        <div className="space-x-4 text-center">
           <Link href="#">
-            <button class="formbtnBorder">Back</button>
+            <button className="formbtnBorder">Back</button>
           </Link>
           <Link href="#">
-            {" "}
-            <button class="formbtn">Next</button>
+            {' '}
+            <button className="formbtn">Next</button>
           </Link>
         </div>
       </div>
