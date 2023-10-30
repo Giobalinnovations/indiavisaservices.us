@@ -13,15 +13,22 @@ import axiosInstance from '@/services/api';
 import { useRouter } from 'next/navigation';
 import { step1ValidationSchema } from '@/app/lib/constants';
 import apiEndpoint from '@/services/apiEndpoint';
+import { useFormContext } from '@/app/context/formContext';
 
 const StepOne = () => {
+  const { state, dispatch } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP1, formData);
     },
-    onSuccess: () => {
+    onSuccess: data => {
       console.log('Success');
+      dispatch({
+        type: 'SET_FORM_ID',
+        payload: data.data.data._id,
+      });
+      console.log(data.data.data._id);
       router.push('/visa/step-two');
     },
   });
@@ -35,7 +42,7 @@ const StepOne = () => {
   }
   return (
     <>
-      <BannerPage heading="E-VISA APPLICATION FORM" />{' '}
+      <BannerPage heading="E-VISA APPLICATION FORM" />
       <p className="pt-8 font-semibold text-center">
         Note: For e-visa services to Afghan Nationals, they must select
         <span className="pl-2 pr-1 text-primary">AFGHANISTAN</span> nationality
@@ -50,7 +57,7 @@ const StepOne = () => {
             console.log(values);
             mutation.mutate(values);
             setSubmitting(false);
-            // resetForm();
+            resetForm();
           }}
         >
           {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (

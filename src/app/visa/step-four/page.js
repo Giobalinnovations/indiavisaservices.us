@@ -8,22 +8,26 @@ import { step4ValidationSchema } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
+import { useFormContext } from '@/app/context/formContext';
+import apiEndpoint from '@/services/apiEndpoint';
 
 const StepFour = () => {
+  const { state, dispatch } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.post('applicant-details-form-step-3', formData);
+      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP4, formData);
     },
     onSuccess: () => {
       console.log('Success');
-      router.push('/visa/step-four');
+      router.push('/visa/step-five');
     },
+    enabled: !!state.formId,
   });
 
   if (mutation.isPending) {
     console.log('Pending');
-    return <div>pendng</div>;
+    // return <div>pendng</div>;
   }
 
   if (mutation.error) {
@@ -42,6 +46,7 @@ const StepFour = () => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
+      formid{state.formId}
       <Formik
         initialValues={step4ValidationSchema.initialValues}
         validationSchema={step4ValidationSchema.yupSchema}
@@ -49,10 +54,9 @@ const StepFour = () => {
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log(values);
-          // mutation.mutate(values);
-          // setSubmitting(false);
-          // resetForm();
-          console.log('testing');
+          mutation.mutate({ ...values, formId: state.formId });
+          setSubmitting(false);
+          resetForm();
         }}
       >
         {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
@@ -635,7 +639,7 @@ const StepFour = () => {
                           rows="4"
                           className="form-input"
                           placeholder=""
-                          name=""
+                          name="countriesVisited"
                         ></Field>
                         <ErrorMessage
                           name="countriesVisited"

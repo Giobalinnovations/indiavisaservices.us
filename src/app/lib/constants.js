@@ -344,3 +344,29 @@ export const step4ValidationSchema = {
     referenceFrancePhone: '',
   },
 };
+
+export const step5ValidationSchema = {
+  yupSchema: Yup.object().shape({
+    haveYouBeenArrested: Yup.string().required('This field is required'),
+    haveYouBeenRefusedEntry: Yup.string().required('This field is required'),
+    haveYouBeenEngagedInTrafficking: Yup.string().required(
+      'This field is required'
+    ),
+    haveYouBeenEngagedInCrime: Yup.string().required('This field is required'),
+    haveYouExpressedViews: Yup.string().required('This field is required'),
+    haveYouSoughtAsylum: Yup.string().required('This field is required'),
+    declaration: Yup.boolean().oneOf(
+      [true],
+      'You must agree to the declaration'
+    ),
+  }),
+  initialValues: {
+    haveYouBeenArrested: '',
+    haveYouBeenRefusedEntry: '',
+    haveYouBeenEngagedInTrafficking: '',
+    haveYouBeenEngagedInCrime: '',
+    haveYouExpressedViews: '',
+    haveYouSoughtAsylum: '',
+    declaration: false,
+  },
+};
