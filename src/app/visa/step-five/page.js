@@ -80,7 +80,6 @@ const StepFive = ({ step }) => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      <h1>Form ID: {state?.formId}</h1>
 
       <Formik
         initialValues={step5ValidationSchema.initialValues}

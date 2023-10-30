@@ -46,7 +46,7 @@ const StepFour = () => {
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
-      formid{state.formId}
+
       <Formik
         initialValues={step4ValidationSchema.initialValues}
         validationSchema={step4ValidationSchema.yupSchema}
@@ -437,7 +437,6 @@ const StepFour = () => {
                               id="yes"
                               name="permissionRefused"
                               value="yes"
-                              checked={values.permissionRefused === 'yes'}
                             />
                             <label htmlFor="yes" className="font-semibold">
                               Yes
@@ -449,7 +448,6 @@ const StepFour = () => {
                               id="no"
                               name="permissionRefused"
                               value="no"
-                              checked={values.permissionRefused === 'no'}
                             />
                             <label htmlFor="no" className="font-semibold">
                               No
@@ -457,9 +455,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      {/*
-            Conditionally render the refusalDetails field based on the radio button selection.
-          */}
+
                       {values.permissionRefused === 'yes' && (
                         <div className="form-input-main-div">
                           <label className="form-label">
@@ -559,52 +555,56 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="form-input-main-div">
-                        <label className="form-label">
-                          Name of SAARC Country*
-                        </label>
-                        <Field
-                          type="text"
-                          name="saarcCountryName"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="saarcCountryName"
-                          component="div"
-                          className="error-message"
-                        />
-                      </div>
-                      <div className="form-input-main-div">
-                        <label className="form-label">Select Year*</label>
-                        <Field
-                          name="selectYear"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Year</option>
-                          <option value="2023">2023</option>
-                          <option value="2022">2022</option>
-                          <option value="2021">2021</option>
-                        </Field>
-                        <ErrorMessage
-                          name="selectYear"
-                          component="div"
-                          className="error-message"
-                        />
-                      </div>
-                      <div className="form-input-main-div">
-                        <label className="form-label">No. of Visits</label>
-                        <Field
-                          type="number"
-                          name="numberOfVisits"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="numberOfVisits"
-                          component="div"
-                          className="error-message"
-                        />
-                      </div>
+                      {values.visitedSAARCCountries === 'yes' && (
+                        <>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Name of SAARC Country*
+                            </label>
+                            <Field
+                              type="text"
+                              name="saarcCountryName"
+                              className="form-input"
+                            />
+                            <ErrorMessage
+                              name="saarcCountryName"
+                              component="div"
+                              className="error-message"
+                            />
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">Select Year*</label>
+                            <Field
+                              name="selectYear"
+                              component="select"
+                              className="p-2 border rounded select-input"
+                            >
+                              <option value="">Select Year</option>
+                              <option value="2023">2023</option>
+                              <option value="2022">2022</option>
+                              <option value="2021">2021</option>
+                            </Field>
+                            <ErrorMessage
+                              name="selectYear"
+                              component="div"
+                              className="error-message"
+                            />
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">No. of Visits</label>
+                            <Field
+                              type="number"
+                              name="numberOfVisits"
+                              className="form-input"
+                            />
+                            <ErrorMessage
+                              name="numberOfVisits"
+                              component="div"
+                              className="error-message"
+                            />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
