@@ -14,7 +14,7 @@ export const step1ValidationSchema = {
       'Expected Date of Arrival is required'
     ),
     captcha: Yup.string().required('Please enter the above text'),
-    instructionsAgreed: Yup.boolean().oneOf(
+    instructionsAccepted: Yup.boolean().oneOf(
       [true],
       'You must agree to the instructions'
     ),
@@ -28,7 +28,7 @@ export const step1ValidationSchema = {
     visaService: '',
     expectedDateOfArrival: '',
     captcha: '',
-    instructionsAgreed: false,
+    instructionsAccepted: false,
   },
 };
 
@@ -220,16 +220,33 @@ export const step3ValidationSchema = {
     spousePreviousNationality: '',
     spousePlaceOfBirth: '',
     spouseCountryOfBirth: '',
-    presentOccupation: '', // Unique key for Present Occupation
-    employerName: '', // Unique key for Employer Name/Business
-    designation: '', // Unique key for Designation
-    address: '', // Unique key for Address
-    phone: '', // Unique key for Phone
-    presentOccupationIfAny: '', // Unique key for Present Occupation, if any
-    militaryOrganization: '', // Unique key for Military Organization
-    organization: '', // Unique key for Organization
-    militaryDesignation: '', // Unique key for Military Designation
-    militaryRank: '', // Unique key for Military Rank
-    placeOfPosting: '', // Unique key for Place of Posting
+    presentOccupation: '',
+    employerName: '',
+    designation: '',
+    address: '',
+    phone: '',
+    presentOccupationIfAny: '',
+    militaryOrganization: '',
+    organization: '',
+    militaryDesignation: '',
+    militaryRank: '',
+    placeOfPosting: '',
+  },
+};
+
+export const step4ValidationSchema = {
+  yupSchema: Yup.object().shape({
+    visaType: Yup.string().required('Type of Visa is required'),
+    visaType2: Yup.string().required('Type of Visa is required'),
+    placesToVisit: Yup.string().required('Places to be visited is required'),
+    placesToVisit2: Yup.string(),
+    roomBooked: Yup.string().required('Please select an option'),
+  }),
+  initialValues: {
+    visaType: '',
+    visaType2: '',
+    placesToVisit: '',
+    placesToVisit2: '',
+    roomBooked: 'no',
   },
 };
