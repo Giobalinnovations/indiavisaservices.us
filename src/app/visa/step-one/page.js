@@ -12,12 +12,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axiosInstance from '@/services/api';
 import { useRouter } from 'next/navigation';
 import { step1ValidationSchema } from '@/app/lib/constants';
+import apiEndpoint from '@/services/apiEndpoint';
 
 const StepOne = () => {
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.post('registration', formData);
+      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP1, formData);
     },
     onSuccess: () => {
       console.log('Success');
@@ -49,7 +50,7 @@ const StepOne = () => {
             console.log(values);
             mutation.mutate(values);
             setSubmitting(false);
-            resetForm();
+            // resetForm();
           }}
         >
           {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
@@ -219,7 +220,7 @@ const StepOne = () => {
                 <Field
                   required
                   type="checkbox"
-                  name="instructionsAgreed"
+                  name="instructionsAccepted"
                   onChange={handleChange}
                 />
                 <label class="text-xs">
@@ -227,7 +228,7 @@ const StepOne = () => {
                   documents in scanned pdf format and photograph in jpg/jpeg
                   format.
                 </label>
-                <ErrorMessage name="instructionsAgreed">
+                <ErrorMessage name="instructionsAccepted">
                   {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                 </ErrorMessage>
               </div>
