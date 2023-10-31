@@ -1,8 +1,7 @@
 'use client';
+import React from 'react';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import Select from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step4ValidationSchema } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
@@ -12,7 +11,7 @@ import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
 
 const StepFour = () => {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
