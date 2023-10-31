@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  // baseURL: 'http://127.0.0.1:8081/visa/',
+  baseURL: 'https://nqcfsdj9u6.us-east-1.awsapprunner.com/',
   // baseURL: 'https://api.github.com/repos/TanStack/',
-  baseURL: 'http://localhost:3000/',
+  // baseURL: 'http://localhost:3000/api/',
   timeout: 30000,
 });
 
