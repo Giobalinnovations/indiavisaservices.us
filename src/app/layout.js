@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import Footer from '@/components/common/Footer';
 import ReactQueryProvider from '@/components/ReactQueryProvider';
 import { FormProvider } from './context/formContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +23,7 @@ export default function RootLayout({ children }) {
             <Header />
             {children}
             <Footer />
+            <ToastContainer />
           </body>
         </ReactQueryProvider>
       </FormProvider>
