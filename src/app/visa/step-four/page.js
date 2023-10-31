@@ -1,8 +1,7 @@
 'use client';
+import React from 'react';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import Select from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step4ValidationSchema } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
@@ -10,39 +9,35 @@ import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
+import { toast } from 'react-toastify';
+import { ImSpinner2 } from 'react-icons/im';
 
 const StepFour = () => {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP4, formData);
     },
     onSuccess: () => {
-      console.log('Success');
+      toast.success('step 4 completed successfully', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 500,
+      });
       router.push('/visa/step-five');
+    },
+    onError: () => {
+      toast.error(
+        'An error occurred while processing your request. Please try again later.',
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 500,
+        }
+      );
     },
     enabled: !!state.formId,
   });
 
-  if (mutation.isPending) {
-    console.log('Pending');
-    // return <div>pendng</div>;
-  }
-
-  if (mutation.error) {
-    // return <div>{mutation.error}</div>;
-    console.log('Error', mutation.error.message);
-  }
-
-  if (mutation.isSuccess) {
-    console.log(mutation.data);
-  }
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
@@ -53,13 +48,12 @@ const StepFour = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
           mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
       >
-        {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
+        {({ values, isValid, handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="container py-16">
             <div>
               <div className="">
@@ -74,59 +68,67 @@ const StepFour = () => {
                     <div className="formMain">
                       <div className="form-input-main-div">
                         <label className="form-label">Type of Visa*</label>
-                        <Field
-                          type="text"
-                          name="visaType"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="visaType"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="visaType"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="visaType"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">Type of Visa*</label>
-                        <Field
-                          type="text"
-                          name="visaType2"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="visaType2"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="visaType2"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="visaType2"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">
                           Places to be visited*
                         </label>
-                        <Field
-                          type="text"
-                          name="placesToVisit"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="placesToVisit"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="placesToVisit"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="placesToVisit"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">
                           Places to be visited 2
                         </label>
-                        <Field
-                          type="text"
-                          name="placesToVisit2"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="placesToVisit2"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="placesToVisit2"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="placesToVisit2"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="flex items-start py-2 space-x-2">
                         <label className="font-semibold">
@@ -160,7 +162,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="roomBooked"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                     </div>
@@ -190,40 +192,46 @@ const StepFour = () => {
                         <label className="form-label">
                           Details of the Friend/Relative
                         </label>
-                        <Field
-                          type="text"
-                          name="detailsOfFriendRelative"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="detailsOfFriendRelative"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="detailsOfFriendRelative"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="detailsOfFriendRelative"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">Address</label>
-                        <Field
-                          type="text"
-                          name="address"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="address"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="address"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="address"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">State</label>
-                        <Field
-                          name="state"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select </option>
-                          <option value="option1">Option1</option>
-                        </Field>
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="state"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select </option>
+                            <option value="option1">Option1</option>
+                          </Field>
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">District</label>
@@ -257,30 +265,39 @@ const StepFour = () => {
                         <label className="form-label">
                           Port of Arrival in India*
                         </label>
-                        <Field
-                          type="text"
-                          name="portOfArrival"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="portOfArrival"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="portOfArrival"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="portOfArrival"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">
                           Expected Port of Exit from India
                         </label>
-                        <Field
-                          name="expectedPortOfExit"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select </option>
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="expectedPortOfExit"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select </option>
 
-                          <option value="option1">option1 </option>
-                        </Field>
+                            <option value="option1">option1 </option>
+                          </Field>
+                          <ErrorMessage
+                            name="expectedPortOfExit"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -336,7 +353,7 @@ const StepFour = () => {
                           <ErrorMessage
                             name="visitedIndiaBefore"
                             component="div"
-                            className="error-message"
+                            className="text-red-600"
                           />
                         </div>
                       </div>
@@ -350,7 +367,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="visaAddress"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -366,7 +383,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="citiesVisitedInIndia"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -381,7 +398,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="lastIndianVisaNo"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -394,7 +411,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="typeOfVisa"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -407,7 +424,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="placeOfIssue"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -422,7 +439,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="dateOfIssue"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="flex items-start py-2 space-x-2">
@@ -470,7 +487,7 @@ const StepFour = () => {
                           <ErrorMessage
                             name="refusalDetails"
                             component="div"
-                            className="error-message"
+                            className="text-red-600"
                           />
                         </div>
                       )}
@@ -569,7 +586,7 @@ const StepFour = () => {
                             <ErrorMessage
                               name="saarcCountryName"
                               component="div"
-                              className="error-message"
+                              className="text-red-600"
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -587,7 +604,7 @@ const StepFour = () => {
                             <ErrorMessage
                               name="selectYear"
                               component="div"
-                              className="error-message"
+                              className="text-red-600"
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -600,7 +617,7 @@ const StepFour = () => {
                             <ErrorMessage
                               name="numberOfVisits"
                               component="div"
-                              className="error-message"
+                              className="text-red-600"
                             />
                           </div>
                         </>
@@ -644,7 +661,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="countriesVisited"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                     </div>
@@ -682,7 +699,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="friendRelativeDetails"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -695,7 +712,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="friendRelativeAddress"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -712,7 +729,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="friendRelativeState"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -729,7 +746,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="friendRelativeDistrict"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -742,7 +759,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="friendRelativePhone"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -757,7 +774,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="referenceNameInFrance"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -770,7 +787,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="referenceAddressInFrance"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                       <div className="form-input-main-div">
@@ -783,7 +800,7 @@ const StepFour = () => {
                         <ErrorMessage
                           name="referenceFrancePhone"
                           component="div"
-                          className="error-message"
+                          className="text-red-600"
                         />
                       </div>
                     </div>
@@ -820,17 +837,28 @@ const StepFour = () => {
             <p className="font-semibold">Mandatory Fields*</p>
 
             <div className="space-x-4 text-center">
+              {mutation.isError ? (
+                <div className="text-red-500">
+                  An error occurred: {mutation.error.message}
+                </div>
+              ) : null}
               <Link href="/visa/step-three">
                 <button className="formbtnBorder">Back</button>
               </Link>
               <button
                 type="submit"
                 disabled={!isValid}
-                className={`formbtn cursor-pointer ${
+                className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? 'loading' : 'Continue'}
+                {mutation.isPending ? (
+                  <>
+                    <ImSpinner2 className="animate-spin" /> Loading
+                  </>
+                ) : (
+                  'Continue'
+                )}
               </button>
             </div>
           </Form>
