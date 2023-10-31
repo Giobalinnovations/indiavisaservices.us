@@ -161,13 +161,21 @@ export const step3ValidationSchema = {
     ),
     motherPlaceOfBirth: Yup.string(),
     motherCountry: Yup.string(),
+
     parentsPakistanNational: Yup.string().required('Please select an option'),
-    parentDetails: Yup.string().when('parentsPakistanNational', {
-      is: 'yes',
-      then: Yup.string().required(
-        'Please provide details if parents are Pakistan Nationals.'
-      ),
-    }),
+    parentDetails: Yup.string().when(
+      'parentsPakistanNational',
+      parentsPakistanNational => {
+        if (parentsPakistanNational === 'no') {
+          return Yup.string();
+        } else {
+          return Yup.string().required(
+            'Please provide details if parents are Pakistan Nationals.'
+          );
+        }
+      }
+    ),
+
     applicantMaritalStatus: Yup.string().required(
       'Applicant’s Marital Status is required'
     ),

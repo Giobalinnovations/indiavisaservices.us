@@ -1,50 +1,43 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import Select from 'react-select';
-
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
 import { step3ValidationSchema } from '@/app/lib/constants';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
+import { ImSpinner2 } from 'react-icons/im';
+import { toast } from 'react-toastify';
 
 const StepThree = () => {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
     mutationFn: formData => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP3, formData);
     },
     onSuccess: () => {
-      console.log('Success');
+      toast.success('step 3 completed successfully', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 500,
+      });
       router.push('/visa/step-four');
+    },
+    onError: () => {
+      toast.error(
+        'An error occurred while processing your request. Please try again later.',
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 500,
+        }
+      );
     },
     enabled: !!state.formId,
   });
 
-  if (mutation.isPending) {
-    console.log('Pending');
-    // return <div>pendng</div>;
-  }
-
-  if (mutation.error) {
-    // return <div>{mutation.error}</div>;
-    console.log('Error', mutation.error.message);
-  }
-
-  if (mutation.isSuccess) {
-    console.log(mutation.data);
-  }
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
@@ -55,13 +48,12 @@ const StepThree = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
           mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
       >
-        {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
+        {({ values, isValid, handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="container py-16">
             <div>
               <div className="">
@@ -83,56 +75,60 @@ const StepThree = () => {
                         <label className="form-label" htmlFor="houseNoStreet">
                           House No. Street*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="houseNoStreet"
-                          name="houseNoStreet"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="houseNoStreet"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="houseNoStreet"
+                            name="houseNoStreet"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="houseNoStreet"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="villageTownCity">
                           Village/Town?City*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="villageTownCity"
-                          name="villageTownCity"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="villageTownCity"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="villageTownCity"
+                            name="villageTownCity"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="villageTownCity"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="country">
                           Country
                         </label>
-                        <Field
-                          name="country"
-                          onChange={handleChange}
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Country</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                          {/* Add your options dynamically if needed */}
-                        </Field>
-                        <ErrorMessage
-                          name="country"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="country"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" selected disabled>
+                              Select Country
+                            </option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="country"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -141,92 +137,96 @@ const StepThree = () => {
                         >
                           State/Province/District*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="stateProvinceDistrict"
-                          name="stateProvinceDistrict"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="stateProvinceDistrict"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="stateProvinceDistrict"
+                            name="stateProvinceDistrict"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="stateProvinceDistrict"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="postalZipCode">
                           Postal/Zip Code*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="postalZipCode"
-                          name="postalZipCode"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="postalZipCode"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="postalZipCode"
+                            name="postalZipCode"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="postalZipCode"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="phoneNo">
                           Phone No.
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="phoneNo"
-                          name="phoneNo"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="phoneNo"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="phoneNo"
+                            name="phoneNo"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="phoneNo"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="mobileNo">
                           Mobile No.
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="mobileNo"
-                          name="mobileNo"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="mobileNo"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="mobileNo"
+                            name="mobileNo"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="mobileNo"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="emailAddress">
                           Email Address
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="emailAddress"
-                          name="emailAddress"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="emailAddress"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="emailAddress"
+                            name="emailAddress"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="emailAddress"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="flex items-center w-full py-2 space-x-3 font-medium">
                         <p>Click here for the same address</p>
                         <Field
-                          onChange={handleChange}
                           type="checkbox"
                           id="sameAddress"
                           name="sameAddress"
@@ -249,35 +249,37 @@ const StepThree = () => {
                         >
                           House No. Street*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="permanentAddressHouseNoStreet"
-                          name="permanentAddressHouseNoStreet"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="permanentAddressHouseNoStreet"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="permanentAddressHouseNoStreet"
+                            name="permanentAddressHouseNoStreet"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="permanentAddressHouseNoStreet"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="villageTownCity">
                           Village/Town?City*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="permanentAddressVillageTownCity"
-                          name="permanentAddressVillageTownCity"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="permanentAddressVillageTownCity"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="permanentAddressVillageTownCity"
+                            name="permanentAddressVillageTownCity"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="permanentAddressVillageTownCity"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -286,18 +288,19 @@ const StepThree = () => {
                         >
                           State/Province/District*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="permanentAddressStateProvinceDistrict"
-                          name="permanentAddressStateProvinceDistrict"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="permanentAddressStateProvinceDistrict"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="permanentAddressStateProvinceDistrict"
+                            name="permanentAddressStateProvinceDistrict"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="permanentAddressStateProvinceDistrict"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       {/* permanent address code end here */}
                     </div>
@@ -352,13 +355,19 @@ const StepThree = () => {
                         <label className="form-label" htmlFor="fatherDetails">
                           Father’s Details
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="fatherDetails"
-                          name="fatherDetails"
-                          className="form-input"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="fatherDetails"
+                            name="fatherDetails"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="fatherDetails"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -367,21 +376,22 @@ const StepThree = () => {
                         >
                           Nationality/Region*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="fatherNationality"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Nationality</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="fatherNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="fatherNationality"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Nationality</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="fatherNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -390,21 +400,22 @@ const StepThree = () => {
                         >
                           Previous Nationality/Region*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="fatherPreviousNationality"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Nationality</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="fatherPreviousNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="fatherPreviousNationality"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Nationality</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="fatherPreviousNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -413,33 +424,35 @@ const StepThree = () => {
                         >
                           Place of birth
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="fatherPlaceOfBirth"
-                          name="fatherPlaceOfBirth"
-                          className="form-input"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="fatherPlaceOfBirth"
+                            name="fatherPlaceOfBirth"
+                            className="form-input"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="fatherCountry">
                           Country
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="fatherCountry"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Country</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="fatherCountry"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="fatherCountry"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Country</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="fatherCountry"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="text-2xl font-semibold text-primary">
                         Mother’s Details
@@ -448,18 +461,19 @@ const StepThree = () => {
                         <label className="form-label" htmlFor="motherFullName">
                           Full Name*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="motherFullName"
-                          name="motherFullName"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="motherFullName"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="motherFullName"
+                            name="motherFullName"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="motherFullName"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -468,21 +482,22 @@ const StepThree = () => {
                         >
                           Nationality/Region*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="motherNationality"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Nationality</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="motherNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="motherNationality"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Nationality</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="motherNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -491,23 +506,24 @@ const StepThree = () => {
                         >
                           Previous Nationality/Region*
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="motherPreviousNationality"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Nationality</option>
-                          <option value="option1">Option 1</option>
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="motherPreviousNationality"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Nationality</option>
+                            <option value="option1">Option 1</option>
 
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="motherPreviousNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="motherPreviousNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label
@@ -516,33 +532,35 @@ const StepThree = () => {
                         >
                           Place of birth
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          type="text"
-                          id="motherPlaceOfBirth"
-                          name="motherPlaceOfBirth"
-                          className="form-input"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="motherPlaceOfBirth"
+                            name="motherPlaceOfBirth"
+                            className="form-input"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="motherCountry">
                           Country
                         </label>
-                        <Field
-                          onChange={handleChange}
-                          name="motherCountry"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select Country</option>
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="motherCountry"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            name="motherCountry"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="">Select Country</option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="motherCountry"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
                     </div>
                     {/* father mothers details code end here */}
@@ -594,26 +612,27 @@ const StepThree = () => {
                         >
                           Applicant’s Marital Status
                         </label>
-                        <Field
-                          id="applicantMaritalStatus"
-                          name="applicantMaritalStatus"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                          onChange={handleChange}
-                        >
-                          <option value="" disabled>
-                            Select Marital Status
-                          </option>
-                          <option value="single">Single</option>
-                          <option value="married">Married</option>
-                          <option value="divorced">Divorced</option>
-                          <option value="widowed">Widowed</option>
-                        </Field>
-                        <ErrorMessage
-                          name="applicantMaritalStatus"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            id="applicantMaritalStatus"
+                            name="applicantMaritalStatus"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled>
+                              Select Marital Status
+                            </option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                          </Field>
+                          <ErrorMessage
+                            name="applicantMaritalStatus"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="pt-5 text-2xl font-semibold text-primary">
@@ -624,18 +643,19 @@ const StepThree = () => {
                         <label className="form-label" htmlFor="spouseFullName">
                           Full Name
                         </label>
-                        <Field
-                          type="text"
-                          id="spouseFullName"
-                          name="spouseFullName"
-                          className="form-input"
-                          onChange={handleChange}
-                        />
-                        <ErrorMessage
-                          name="spouseFullName"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="spouseFullName"
+                            name="spouseFullName"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="spouseFullName"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
@@ -645,23 +665,24 @@ const StepThree = () => {
                         >
                           Nationality/Region*
                         </label>
-                        <Field
-                          component="select"
-                          className="p-2 border rounded select-input"
-                          onChange={handleChange}
-                          id="spouseNationality"
-                          name="spouseNationality"
-                        >
-                          <option value="" disabled>
-                            Select Nationality
-                          </option>
-                          <option value="option1">option1</option>
-                        </Field>
-                        <ErrorMessage
-                          name="spouseNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            component="select"
+                            className="p-2 border rounded select-input"
+                            id="spouseNationality"
+                            name="spouseNationality"
+                          >
+                            <option value="" disabled>
+                              Select Nationality
+                            </option>
+                            <option value="option1">option1</option>
+                          </Field>
+                          <ErrorMessage
+                            name="spouseNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
@@ -671,23 +692,24 @@ const StepThree = () => {
                         >
                           Previous Nationality/Region*
                         </label>
-                        <Field
-                          id="spousePreviousNationality"
-                          name="spousePreviousNationality"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                          onChange={handleChange}
-                        >
-                          <option value="" disabled>
-                            Select Nationality
-                          </option>
-                          <option value="option1">option1</option>
-                        </Field>
-                        <ErrorMessage
-                          name="spousePreviousNationality"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            id="spousePreviousNationality"
+                            name="spousePreviousNationality"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled>
+                              Select Nationality
+                            </option>
+                            <option value="option1">option1</option>
+                          </Field>
+                          <ErrorMessage
+                            name="spousePreviousNationality"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
@@ -697,18 +719,19 @@ const StepThree = () => {
                         >
                           Place of Birth
                         </label>
-                        <Field
-                          type="text"
-                          id="spousePlaceOfBirth"
-                          name="spousePlaceOfBirth"
-                          className="form-input"
-                          onChange={handleChange}
-                        />
-                        <ErrorMessage
-                          name="spousePlaceOfBirth"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="spousePlaceOfBirth"
+                            name="spousePlaceOfBirth"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="spousePlaceOfBirth"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
@@ -718,24 +741,25 @@ const StepThree = () => {
                         >
                           Country/Region of birth
                         </label>
-                        <Field
-                          id="spouseCountryOfBirth"
-                          name="spouseCountryOfBirth"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                          onChange={handleChange}
-                        >
-                          <option value="" disabled>
-                            Select Country/Region
-                          </option>
-                          <option value="option1">option1</option>
-                          <option value="option2">option2</option>
-                        </Field>
-                        <ErrorMessage
-                          name="spouseCountryOfBirth"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            id="spouseCountryOfBirth"
+                            name="spouseCountryOfBirth"
+                            component="select"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled>
+                              Select Country/Region
+                            </option>
+                            <option value="option1">option1</option>
+                            <option value="option2">option2</option>
+                          </Field>
+                          <ErrorMessage
+                            name="spouseCountryOfBirth"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="flex items-start py-2 space-x-2">
@@ -747,7 +771,6 @@ const StepThree = () => {
                         <div className="flex space-x-4">
                           <div className="px-2 space-x-2">
                             <Field
-                              onChange={handleChange}
                               type="radio"
                               id="yes"
                               name="parentsPakistanNational"
@@ -760,7 +783,6 @@ const StepThree = () => {
                           </div>
                           <div className="px-2 space-x-2">
                             <Field
-                              onChange={handleChange}
                               type="radio"
                               id="no"
                               name="parentsPakistanNational"
@@ -776,7 +798,7 @@ const StepThree = () => {
                       <ErrorMessage
                         name="parentsPakistanNational"
                         component="div"
-                        className="error-message"
+                        className="text-red-500"
                       />
 
                       {values.parentsPakistanNational === 'yes' && (
@@ -784,18 +806,19 @@ const StepThree = () => {
                           <label className="form-label" htmlFor="parentDetails">
                             If Yes, give details*
                           </label>
-                          <Field
-                            onChange={handleChange}
-                            type="text"
-                            id="parentDetails"
-                            name="parentDetails"
-                            className="form-input"
-                          />
-                          <ErrorMessage
-                            name="parentDetails"
-                            component="div"
-                            className="error-message"
-                          />
+                          <div className="input-error-wrapper">
+                            <Field
+                              type="text"
+                              id="parentDetails"
+                              name="parentDetails"
+                              className="form-input"
+                            />
+                            <ErrorMessage
+                              name="parentDetails"
+                              component="div"
+                              className="text-red-500"
+                            />
+                          </div>
                         </div>
                       )}
                     </div>
@@ -848,85 +871,95 @@ const StepThree = () => {
                         >
                           Present Occupation*
                         </label>
-                        <Field
-                          type="text"
-                          id="presentOccupation"
-                          name="presentOccupation"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="presentOccupation"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="presentOccupation"
+                            name="presentOccupation"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="presentOccupation"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="employerName">
                           Employer Name/Business*
                         </label>
-                        <Field
-                          type="text"
-                          id="employerName"
-                          name="employerName"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="employerName"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="employerName"
+                            name="employerName"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="employerName"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="designation">
                           Designation
                         </label>
-                        <Field
-                          type="text"
-                          id="designation"
-                          name="designation"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="designation"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="designation"
+                            name="designation"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="designation"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="address">
                           Address*
                         </label>
-                        <Field
-                          type="text"
-                          id="address"
-                          name="address"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="address"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="address"
+                            name="address"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="address"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="phone">
                           Phone
                         </label>
-                        <Field
-                          type="text"
-                          id="phone"
-                          name="phone"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="phone"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="phone"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="form-input-main-div">
@@ -936,17 +969,19 @@ const StepThree = () => {
                         >
                           Present Occupation, if any
                         </label>
-                        <Field
-                          type="text"
-                          id="presentOccupationIfAny"
-                          name="presentOccupationIfAny"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="presentOccupationIfAny"
-                          component="div"
-                          className="error-message"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            id="presentOccupationIfAny"
+                            name="presentOccupationIfAny"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="presentOccupationIfAny"
+                            component="div"
+                            className="text-red-500"
+                          />
+                        </div>
                       </div>
 
                       <div className="flex items-start py-2 space-x-2">
@@ -996,17 +1031,19 @@ const StepThree = () => {
                             >
                               Organization
                             </label>
-                            <Field
-                              type="text"
-                              id="organization"
-                              name="organization"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="organization"
-                              component="div"
-                              className="error-message"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="organization"
+                                name="organization"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="organization"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
                           </div>
 
                           <div className="form-input-main-div">
@@ -1016,17 +1053,19 @@ const StepThree = () => {
                             >
                               Designation
                             </label>
-                            <Field
-                              type="text"
-                              id="militaryDesignation"
-                              name="militaryDesignation"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="militaryDesignation"
-                              component="div"
-                              className="error-message"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="militaryDesignation"
+                                name="militaryDesignation"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="militaryDesignation"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
                           </div>
 
                           <div className="form-input-main-div">
@@ -1036,17 +1075,19 @@ const StepThree = () => {
                             >
                               Rank
                             </label>
-                            <Field
-                              type="text"
-                              id="militaryRank"
-                              name="militaryRank"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="militaryRank"
-                              component="div"
-                              className="error-message"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="militaryRank"
+                                name="militaryRank"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="militaryRank"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
                           </div>
 
                           <div className="form-input-main-div">
@@ -1056,17 +1097,19 @@ const StepThree = () => {
                             >
                               Place of Posting
                             </label>
-                            <Field
-                              type="text"
-                              id="placeOfPosting"
-                              name="placeOfPosting"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="placeOfPosting"
-                              component="div"
-                              className="error-message"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="placeOfPosting"
+                                name="placeOfPosting"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="placeOfPosting"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
                           </div>
                         </>
                       )}
@@ -1100,6 +1143,11 @@ const StepThree = () => {
             <p className="font-semibold">Mandatory Fields*</p>
 
             <div className="space-x-4 text-center">
+              {mutation.isError ? (
+                <div className="text-red-500">
+                  An error occurred: {mutation.error.message}
+                </div>
+              ) : null}
               <Link href="/visa/step-two">
                 <button className="formbtnBorder" type="button">
                   Back
@@ -1108,11 +1156,17 @@ const StepThree = () => {
               <button
                 type="submit"
                 disabled={!isValid}
-                className={`formbtn cursor-pointer ${
+                className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? 'loading' : 'Continue'}
+                {mutation.isPending ? (
+                  <>
+                    <ImSpinner2 className="animate-spin" /> Loading
+                  </>
+                ) : (
+                  'Continue'
+                )}
               </button>
             </div>
           </Form>
