@@ -259,21 +259,21 @@ export const step4ValidationSchema = {
     visaType: Yup.string().required('Type of Visa is required'),
     visaType2: Yup.string().required('Type of Visa is required'),
     placesToVisit: Yup.string().required('Places to be visited is required'),
-    placesToVisit2: Yup.string(),
+    placesToVisit2: Yup.string().required('Places to be visited is required'),
     roomBooked: Yup.string().required('Please select an option'),
 
     detailsOfFriendRelative: Yup.string().required(
       'Details of Friend/Relative is required'
     ),
     address: Yup.string().required('Address is required'),
-    state: Yup.string(),
-    district: Yup.string(),
-    durationOfVisa: Yup.string(),
+    state: Yup.string().required('Please select an option'),
+    district: Yup.string().required('Please select an option'),
+    durationOfVisa: Yup.string().required('Duration of visa is required'),
     numberOfEntries: Yup.string(),
     portOfArrival: Yup.string().required(
       'Port of Arrival in India is required'
     ),
-    expectedPortOfExit: Yup.string(),
+    expectedPortOfExit: Yup.string().required('Please select an option'),
 
     visitedIndiaBefore: Yup.string().required('Please select an option'),
     visaAddress: Yup.string().required('Address is required'),
@@ -339,10 +339,7 @@ export const step4ValidationSchema = {
     friendRelativeState: Yup.string().required('State is required'),
     friendRelativeDistrict: Yup.string().required('District is required'),
     friendRelativePhone: Yup.string()
-      .matches(
-        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
-        'Phone number must be a valid 10-digit number'
-      )
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
     referenceNameInFrance: Yup.string().required(
       'Reference Name in France is required'
@@ -426,3 +423,43 @@ export const step5ValidationSchema = {
     declaration: false,
   },
 };
+
+// step 5 data
+export const step5data = [
+  {
+    id: 1,
+    question:
+      'Have you ever been arrested/ prosecuted/ convicted by Court of Law of any country?*',
+    name: 'haveYouBeenArrested',
+  },
+  {
+    id: 2,
+    question:
+      'Have you ever been refused entry / deported by any country including India?*',
+    name: 'haveYouBeenRefusedEntry',
+  },
+  {
+    id: 3,
+    question:
+      'Have you ever been engaged in Human trafficking/ Drug trafficking/ Child abuse/ Crime against women/ Economic offense/ Financial fraud?*',
+    name: 'haveYouBeenEngagedInTrafficking',
+  },
+  {
+    id: 4,
+    question:
+      'Have you ever been engaged in Cyber crime/ Terrorist activities / Sabotage/ Espionage/ Genocide/ Political Killing/ other act of violence?*',
+    name: 'haveYouBeenEngagedInCrime',
+  },
+  {
+    id: 5,
+    question:
+      'Have you ever by any means or medium, expressed views that justify or glorify terrorist violence or that may encourage others to terrorist acts or other serious criminal acts?*',
+    name: 'haveYouExpressedViews',
+  },
+  {
+    id: 6,
+    question:
+      'Have you sought asylum (political or otherwise) in any country?*',
+    name: 'haveYouSoughtAsylum',
+  },
+];

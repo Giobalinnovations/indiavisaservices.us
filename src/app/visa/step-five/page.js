@@ -1,6 +1,6 @@
 'use client';
 import { useFormContext } from '@/app/context/formContext';
-import { step5ValidationSchema } from '@/app/lib/constants';
+import { step5ValidationSchema, step5data } from '@/app/lib/constants';
 import BannerPage from '@/components/common/BannerPage';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -8,11 +8,12 @@ import { useMutation } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import Select from 'react-select';
+import React from 'react';
+import { ImSpinner2 } from 'react-icons/im';
+import { toast } from 'react-toastify';
 
 const StepFive = ({ step }) => {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
 
   const router = useRouter();
   const mutation = useMutation({
@@ -20,63 +21,24 @@ const StepFive = ({ step }) => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP5, formData);
     },
     onSuccess: () => {
-      console.log('Success');
+      toast.success('step 5 completed successfully', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 500,
+      });
       router.push('/visa/step-six');
+    },
+    onError: () => {
+      toast.error(
+        'An error occurred while processing your request. Please try again later.',
+        {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: 500,
+        }
+      );
     },
     enabled: !!state.formId,
   });
 
-  if (mutation.isPending) {
-    console.log('Pending');
-  }
-
-  if (mutation.error) {
-    // return <div>{mutation.error}</div>;
-    console.log('Error', mutation.error.message);
-  }
-
-  if (mutation.isSuccess) {
-    console.log(mutation.data);
-  }
-
-  const data = [
-    {
-      id: 1,
-      question:
-        'Have you ever been arrested/ prosecuted/ convicted by Court of Law of any country?*',
-      name: 'haveYouBeenArrested',
-    },
-    {
-      id: 2,
-      question:
-        'Have you ever been refused entry / deported by any country including India?*',
-      name: 'haveYouBeenRefusedEntry',
-    },
-    {
-      id: 3,
-      question:
-        'Have you ever been engaged in Human trafficking/ Drug trafficking/ Child abuse/ Crime against women/ Economic offense/ Financial fraud?*',
-      name: 'haveYouBeenEngagedInTrafficking',
-    },
-    {
-      id: 4,
-      question:
-        'Have you ever been engaged in Cyber crime/ Terrorist activities / Sabotage/ Espionage/ Genocide/ Political Killing/ other act of violence?*',
-      name: 'haveYouBeenEngagedInCrime',
-    },
-    {
-      id: 5,
-      question:
-        'Have you ever by any means or medium, expressed views that justify or glorify terrorist violence or that may encourage others to terrorist acts or other serious criminal acts?*',
-      name: 'haveYouExpressedViews',
-    },
-    {
-      id: 6,
-      question:
-        'Have you sought asylum (political or otherwise) in any country?*',
-      name: 'haveYouSoughtAsylum',
-    },
-  ];
   return (
     <>
       <BannerPage heading="Applicant Detail Form" />
@@ -87,13 +49,12 @@ const StepFive = ({ step }) => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
           mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
       >
-        {({ values, isValid, handleChange, handleSubmit, setFieldValue }) => (
+        {({ isValid, handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="container py-16">
             <div>
               <div className="">
@@ -103,7 +64,7 @@ const StepFive = ({ step }) => {
                 <hr className="h-1 text-primary bg-primary w-36" />
               </div>
               <div>
-                {data.map((e, i) => (
+                {step5data.map((e, i) => (
                   <div key={i} className="grid grid-cols-12 gap-8 py-8">
                     <div className="col-span-8">
                       <label>
@@ -153,11 +114,17 @@ const StepFive = ({ step }) => {
               <button
                 type="submit"
                 disabled={!isValid}
-                className={`formbtn cursor-pointer ${
+                className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? 'loading' : 'Next'}
+                {mutation.isPending ? (
+                  <>
+                    <ImSpinner2 className="animate-spin" /> Loading
+                  </>
+                ) : (
+                  'Continue'
+                )}
               </button>
             </div>
           </Form>
