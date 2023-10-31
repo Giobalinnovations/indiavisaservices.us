@@ -45,6 +45,9 @@ body {
 .sidetext {
   @apply text-primary font-semibold text-sm;
 }
+.PhoneInputInput{
+  outline: none;
+}
 /* form css end  */
 .container {
   padding-right: 15px;
