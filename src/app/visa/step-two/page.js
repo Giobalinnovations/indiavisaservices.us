@@ -1,35 +1,43 @@
-'use client';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import axiosInstance from '@/services/api';
-import { step2ValidationSchema } from '@/app/lib/constants';
-import { useFormContext } from '@/app/context/formContext';
-import apiEndpoint from '@/services/apiEndpoint';
-import { toast } from 'react-toastify';
-import { ImSpinner2 } from 'react-icons/im';
+"use client";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@/services/api";
+import { step2ValidationSchema } from "@/app/lib/constants";
+import { useFormContext } from "@/app/context/formContext";
+import apiEndpoint from "@/services/apiEndpoint";
+import { toast } from "react-toastify";
+import { ImSpinner2 } from "react-icons/im";
+import Select from "react-select";
+import { Country } from "country-state-city";
 
 const StepTwo = () => {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [countryOfIssue, setCountryOfIssue] = useState(null);
+  const [nationalityMentioned, setNationalityMentioned] = useState(null);
+  const [previousName, setPreviousName] = useState(false);
+  const [religionOther, setReligionOther] = useState("");
+  const [acquireNationality, setAcquireNationality] = useState("");
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: formData => {
+    mutationFn: (formData) => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP2, formData);
     },
     onSuccess: () => {
-      toast.success('step 2 completed successfully', {
+      toast.success("step 2 completed successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
 
-      router.push('/visa/step-three');
+      router.push("/visa/step-three");
     },
     onError: () => {
       toast.error(
-        'An error occurred while processing your request. Please try again later.',
+        "An error occurred while processing your request. Please try again later.",
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 500,
@@ -75,8 +83,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="firstName">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -92,22 +100,44 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="lastName">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <Field required type="checkbox" name="changedName" />
+                      <Field
+                        required
+                        type="checkbox"
+                        name="changedName"
+                        checked={previousName}
+                        onChange={() => setPreviousName(!previousName)}
+                      />
                       <label className="text-xs">
                         Have you ever changed your name? If yes click the box
                       </label>
                     </div>
+                    {previousName ? (
+                      <div className="form-input-main-div">
+                        <label className="form-label">Previous Name*</label>
+                        <div className="input-error-wrapper">
+                          <Field
+                            required
+                            type="text"
+                            id="previous-name"
+                            name="previous-name"
+                            className="p-2 border rounded select-input"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <div className="input-error-wrapper">
                       <ErrorMessage name="changedName">
-                        {errorMsg => (
-                          <div style={{ color: 'red' }}>{errorMsg}</div>
+                        {(errorMsg) => (
+                          <div style={{ color: "red" }}>{errorMsg}</div>
                         )}
                       </ErrorMessage>
                     </div>
@@ -129,8 +159,8 @@ const StepTwo = () => {
                           <option value="other">Other</option>
                         </Field>
                         <ErrorMessage name="gender">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -144,10 +174,11 @@ const StepTwo = () => {
                           name="dateOfBirth"
                           id="dateOfBirth"
                           className="form-input"
+                          value="2023-08-26"
                         />
                         <ErrorMessage name="dateOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -163,8 +194,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="townCityOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -189,8 +220,8 @@ const StepTwo = () => {
                           <option value="usa">Usa</option>
                         </Field>
                         <ErrorMessage name="countryRegionOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -208,8 +239,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="citizenshipNationalID">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -223,6 +254,7 @@ const StepTwo = () => {
                           id="religion"
                           name="religion"
                           className="p-2 border rounded select-input"
+                          onClick={(e) => setReligionOther(e.target.value)}
                         >
                           <option value="" disabled selected>
                             choose religion*
@@ -232,12 +264,26 @@ const StepTwo = () => {
                           <option value="other">Other</option>
                         </Field>
                         <ErrorMessage name="religion">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
                     </div>
+                    {religionOther === "other" ? (
+                      <div className="form-input-main-div">
+                        <label className="form-label">Religion (Other)</label>
+                        <div className="input-error-wrapper">
+                          <input
+                            required
+                            type="text"
+                            className="p-2 border rounded select-input"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <div className="form-input-main-div">
                       <label className="form-label">
                         Visible identification marks
@@ -251,8 +297,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="visibleIdentificationMarks">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -277,8 +323,8 @@ const StepTwo = () => {
                           <option value="under graduate">under graduate</option>
                         </Field>
                         <ErrorMessage name="educationalQualification">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -293,10 +339,11 @@ const StepTwo = () => {
                           id="nationalityRegion"
                           name="nationalityRegion"
                           className="p-2 border rounded select-input"
+                          value="INDIAN"
                         />
                         <ErrorMessage name="nationalityRegion">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -313,64 +360,67 @@ const StepTwo = () => {
                           name="acquisitionType"
                           className="p-2 border rounded select-input"
                           component="select"
+                          onClick={(e) => setAcquireNationality(e.target.value)}
                         >
                           <option value="" disabled selected>
                             choose*
                           </option>
-                          <option value="option1">option1</option>
-                          <option value="option2">option2</option>
+                          <option value="birth">By Birth</option>
+                          <option value="naturalization">
+                            By Naturalization
+                          </option>
                         </Field>
                         <ErrorMessage name="acquisitionType">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
-                          )}
-                        </ErrorMessage>
-                      </div>
-                    </div>
-                    <div className="form-input-main-div">
-                      <label className="form-label">Place of Issue*</label>
-                      <div className="input-error-wrapper">
-                        <Field
-                          required
-                          type="text"
-                          id="placeOfIssue"
-                          name="placeOfIssue"
-                          className="p-2 border rounded select-input"
-                        />
-                        <ErrorMessage name="placeOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
                     </div>
 
-                    <div className="form-input-main-div">
-                      <label className="form-label">
-                        Nationality mentioned therein*
-                      </label>
-                      <div className="input-error-wrapper">
-                        <Field
-                          required
-                          component="select"
-                          id="nationalityMentionedTherein"
-                          name="nationalityMentionedTherein"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="" disabled selected>
-                            choose*
-                          </option>
-                          <option value="option1">option1</option>
-                          <option value="option2">option2</option>
-                          <option value="option3">option3</option>
-                        </Field>
-                        <ErrorMessage name="nationalityMentionedTherein">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
-                          )}
-                        </ErrorMessage>
+                    {acquireNationality === "naturalization" ? (
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Previous Nationality*
+                        </label>
+                        <div className="input-error-wrapper">
+                          {/* <Field
+                            required
+                            component="select"
+                            id="nationalityMentionedTherein"
+                            name="nationalityMentionedTherein"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              choose*
+                            </option>
+                            <option value="option1">option1</option>
+                            <option value="option2">option2</option>
+                            <option value="option3">option3</option>
+                          </Field> */}
+                          <Select
+                            options={Country.getAllCountries()}
+                            getOptionLabel={(options) => {
+                              return options["name"];
+                            }}
+                            getOptionValue={(options) => {
+                              return options["name"];
+                            }}
+                            value={selectedCountry}
+                            onChange={(item) => {
+                              setSelectedCountry(item);
+                            }}
+                          />
+                          <ErrorMessage name="nationalityMentionedTherein">
+                            {(errorMsg) => (
+                              <div style={{ color: "red" }}>{errorMsg}</div>
+                            )}
+                          </ErrorMessage>
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>
@@ -411,8 +461,31 @@ const StepTwo = () => {
               </div>
             </div>
 
+            {/* check box  */}
+            <div className="flex items-start py-2 space-x-2">
+              <label className="font-semibold">
+                Have you lived for at least two years in the country where you
+                are applying visa?
+              </label>
+
+              <div className="flex space-x-4">
+                <div className="px-2 space-x-2">
+                  <input type="radio" id="yes" name="lived" value="yes" />
+                  <label htmlFor="yes" className="font-semibold">
+                    Yes
+                  </label>
+                </div>
+                <div className="px-2 space-x-2">
+                  <input type="radio" id="no" name="lived" value="no" />
+                  <label htmlFor="no" className="font-semibold">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+
             {/* passport details code start here */}
-            <div className="text-2xl font-semibold text-primary">
+            <div className="text-2xl font-semibold text-primary md:pt-6">
               Passport Details
             </div>
             <div className="grid grid-cols-12 gap-8 ">
@@ -430,8 +503,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="passportNumber">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -447,8 +520,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="placeOfIssuePassportIC">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -464,8 +537,8 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -481,8 +554,8 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfExpiry">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -491,7 +564,7 @@ const StepTwo = () => {
                     <div className="form-input-main-div">
                       <label className="form-label">Country of Issue*</label>
                       <div className="input-error-wrapper">
-                        <Field
+                        {/* <Field
                           required
                           component="select"
                           id="countryOfIssue"
@@ -503,12 +576,52 @@ const StepTwo = () => {
                           </option>
                           <option value="option1">option1</option>
                           <option value="option2">Option2</option>
-                        </Field>
+                        </Field> */}
+                        <Select
+                          options={Country.getAllCountries()}
+                          getOptionLabel={(options) => {
+                            return options["name"];
+                          }}
+                          getOptionValue={(options) => {
+                            return options["name"];
+                          }}
+                          value={countryOfIssue}
+                          onChange={(item) => {
+                            setCountryOfIssue(item);
+                          }}
+                        />
                         <ErrorMessage name="countryOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
+                      </div>
+                    </div>
+
+                    {/* check box  */}
+                    <div className="flex items-start py-2 space-x-2">
+                      <label className="font-semibold">
+                        Any other valid Passport/Identity Certificate(IC) held,
+                      </label>
+
+                      <div className="flex space-x-4">
+                        <div className="px-2 space-x-2">
+                          <input
+                            type="radio"
+                            id="yes"
+                            name="lived"
+                            value="yes"
+                          />
+                          <label htmlFor="yes" className="font-semibold">
+                            Yes
+                          </label>
+                        </div>
+                        <div className="px-2 space-x-2">
+                          <input type="radio" id="no" name="lived" value="no" />
+                          <label htmlFor="no" className="font-semibold">
+                            No
+                          </label>
+                        </div>
                       </div>
                     </div>
 
@@ -523,8 +636,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="passportICNumber">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -540,8 +653,25 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfIssuePassportIC">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
+                          )}
+                        </ErrorMessage>
+                      </div>
+                    </div>
+                    <div className="form-input-main-div">
+                      <label className="form-label">Place of Issue*</label>
+                      <div className="input-error-wrapper">
+                        <Field
+                          required
+                          type="text"
+                          id="placeOfIssue"
+                          name="placeOfIssue"
+                          className="p-2 border rounded select-input"
+                        />
+                        <ErrorMessage name="placeOfIssue">
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -551,7 +681,7 @@ const StepTwo = () => {
                         Nationality mentioned therein*
                       </label>
                       <div className="input-error-wrapper">
-                        <Field
+                        {/* <Field
                           required
                           component="select"
                           id="passportNationalityMentionedTherein"
@@ -565,10 +695,23 @@ const StepTwo = () => {
                           <option value="option2">option2</option>
                           <option value="option3">option3</option>
                           <option value="option4">option4</option>
-                        </Field>
+                        </Field> */}
+                        <Select
+                          options={Country.getAllCountries()}
+                          getOptionLabel={(options) => {
+                            return options["name"];
+                          }}
+                          getOptionValue={(options) => {
+                            return options["name"];
+                          }}
+                          value={nationalityMentioned}
+                          onChange={(item) => {
+                            setNationalityMentioned(item);
+                          }}
+                        />
                         <ErrorMessage name="passportNationalityMentionedTherein">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -619,7 +762,7 @@ const StepTwo = () => {
                 type="submit"
                 disabled={!isValid}
                 className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                  !isValid ? 'cursor-not-allowed opacity-50' : ''
+                  !isValid ? "cursor-not-allowed opacity-50" : ""
                 }`}
               >
                 {mutation.isPending ? (
@@ -627,7 +770,7 @@ const StepTwo = () => {
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
                 ) : (
-                  'Continue'
+                  "Continue"
                 )}
               </button>
             </div>
