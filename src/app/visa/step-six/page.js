@@ -11,7 +11,7 @@ const StepSix = ({ step }) => {
   return (
     <>
       <BannerPage heading="Upload Your Picture" />
-      <div className="container py-16">
+      <form className="container py-16">
         {/* upload file start  */}
         <div className="mb-6 space-y-8">
           <div className="">
@@ -130,7 +130,7 @@ const StepSix = ({ step }) => {
             <button className="formbtn">Next</button>
           </Link>
         </div>
-      </div>
+      </form>
     </>
   );
 };
