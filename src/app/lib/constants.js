@@ -203,7 +203,7 @@ export const step3ValidationSchema = {
   yupSchema: Yup.object().shape({
     houseNoStreet: Yup.string().required('House No. Street is required'),
     villageTownCity: Yup.string().required('Village/Town/City is required'),
-    country: Yup.string(),
+    country: Yup.string().required('country is required'),
     stateProvinceDistrict: Yup.string().required(
       'State/Province/District is required'
     ),
@@ -249,54 +249,88 @@ export const step3ValidationSchema = {
       'Mother Previous Nationality/Region is required'
     ),
     motherPlaceOfBirth: Yup.string(),
-    motherCountry: Yup.string(),
-
-    parentsPakistanNational: Yup.string().required('Please select an option'),
-    parentDetails: Yup.string().when(
-      'parentsPakistanNational',
-      parentsPakistanNational => {
-        if (parentsPakistanNational === 'no') {
-          return Yup.string();
-        } else {
-          return Yup.string().required(
-            'Please provide details if parents are Pakistan Nationals.'
-          );
-        }
-      }
-    ),
+    motherCountryOfBirth: Yup.string(),
 
     applicantMaritalStatus: Yup.string().required(
       'Applicant’s Marital Status is required'
     ),
-    spouseFullName: Yup.string().required("Spouse's Full Name is required"),
-    spouseNationality: Yup.string().required(
-      "Spouse's Nationality/Region is required"
-    ),
-    spousePreviousNationality: Yup.string().required(
-      "Spouse's Previous Nationality/Region is required"
-    ),
-    spousePlaceOfBirth: Yup.string().required(
-      "Spouse's Place of Birth is required"
-    ),
-    spouseCountryOfBirth: Yup.string().required(
-      "Spouse's Country/Region of Birth is required"
-    ),
+
+    spouseFullName: Yup.string().when('applicantMaritalStatus', {
+      is: 'married',
+      then: schema => schema.required("Spouse's Full Name is required"),
+      otherwise: schema => schema.notRequired(),
+    }),
+
+    spouseNationality: Yup.string().when('applicantMaritalStatus', {
+      is: 'married',
+      then: schema =>
+        schema.required("Spouse's Nationality/Region is required"),
+      otherwise: schema => schema.notRequired(),
+    }),
+    spousePreviousNationality: Yup.string().when('applicantMaritalStatus', {
+      is: 'married',
+      then: schema =>
+        schema.required("Spouse's Previous Nationality/Region is required"),
+      otherwise: schema => schema.notRequired(),
+    }),
+    spousePlaceOfBirth: Yup.string().when('applicantMaritalStatus', {
+      is: 'married',
+      then: schema => schema.required("Spouse's Place of Birth is required"),
+      otherwise: schema => schema.notRequired(),
+    }),
+    spouseCountryOfBirth: Yup.string().when('applicantMaritalStatus', {
+      is: 'married',
+      then: schema =>
+        schema.required("Spouse's Country/Region of Birth is required"),
+      otherwise: schema => schema.notRequired(),
+    }),
+
+    parentsPakistanNational: Yup.string(),
+    parentDetails: Yup.string().when('parentsPakistanNational', {
+      is: 'yes',
+      then: schema =>
+        schema.required(
+          'Please provide details if parents are Pakistan Nationals.'
+        ),
+      otherwise: schema => schema.notRequired(),
+    }),
+
     presentOccupation: Yup.string().required('Present Occupation is required'),
+    presentOtherOccupation: Yup.string().when('presentOccupation', {
+      is: 'other',
+      then: schema => schema.required('Present other Occupation is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+
     employerName: Yup.string().required('Employer Name/Business is required'),
-    designation: Yup.string(),
+    designation: Yup.string().required('desigation is required'),
     address: Yup.string().required('Address is required'),
-    phone: Yup.string()
-      .matches(
-        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
-        'Phone number must be a valid 10-digit number'
-      )
+    applicantPhone: Yup.string()
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
-    presentOccupationIfAny: Yup.string(),
+    pastOccupationIfAny: Yup.string(),
+
     militaryOrganization: Yup.string().required('Please select an option'),
-    organization: Yup.string(),
-    militaryDesignation: Yup.string(),
-    militaryRank: Yup.string(),
-    placeOfPosting: Yup.string(),
+    organization: Yup.string().when('militaryOrganization', {
+      is: 'yes',
+      then: schema => schema.required('required field'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    militaryDesignation: Yup.string().when('militaryOrganization', {
+      is: 'yes',
+      then: schema => schema.required('required field'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    militaryRank: Yup.string().when('militaryOrganization', {
+      is: 'yes',
+      then: schema => schema.required('required field'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    placeOfPosting: Yup.string().when('militaryOrganization', {
+      is: 'yes',
+      then: schema => schema.required('required field'),
+      otherwise: schema => schema.notRequired(),
+    }),
   }),
   initialValues: {
     houseNoStreet: '',
@@ -320,22 +354,27 @@ export const step3ValidationSchema = {
     motherNationality: '',
     motherPreviousNationality: '',
     motherPlaceOfBirth: '',
-    motherCountry: '',
-    parentsPakistanNational: '', // 'yes' or 'no'
-    parentDetails: '',
+    motherCountryOfBirth: '',
+
     applicantMaritalStatus: '',
     spouseFullName: '',
     spouseNationality: '',
     spousePreviousNationality: '',
     spousePlaceOfBirth: '',
     spouseCountryOfBirth: '',
+
+    parentsPakistanNational: 'no', // 'yes' or 'no'
+    parentDetails: '',
+
     presentOccupation: '',
+    presentOtherOccupation: '',
     employerName: '',
     designation: '',
     address: '',
-    phone: '',
-    presentOccupationIfAny: '',
-    militaryOrganization: '',
+    applicantPhone: '',
+    pastOccupationIfAny: '',
+
+    militaryOrganization: 'no',
     organization: '',
     militaryDesignation: '',
     militaryRank: '',
@@ -360,8 +399,8 @@ export const step4ValidationSchema = {
     durationOfVisa: Yup.string().required('Duration of visa is required'),
     numberOfEntries: Yup.string(),
     purposecontactNo: Yup.string()
-      .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
-      .required("Phone is required"),
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
+      .required('Phone is required'),
     portOfArrival: Yup.string().required(
       'Port of Arrival in India is required'
     ),

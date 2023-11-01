@@ -1,36 +1,36 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { step3ValidationSchema } from "@/app/lib/constants";
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "@/services/api";
-import apiEndpoint from "@/services/apiEndpoint";
-import { useFormContext } from "@/app/context/formContext";
-import { ImSpinner2 } from "react-icons/im";
-import { toast } from "react-toastify";
-import Select from "react-select";
-import { Country } from "country-state-city";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { step3ValidationSchema } from '@/app/lib/constants';
+import { useRouter } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useFormContext } from '@/app/context/formContext';
+import { ImSpinner2 } from 'react-icons/im';
+import { toast } from 'react-toastify';
+import { Country } from 'country-state-city';
+import MyDependentField from '@/components/MyFields';
 
 const StepThree = () => {
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: (formData) => {
+    mutationFn: formData => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP3, formData);
     },
     onSuccess: () => {
-      toast.success("step 3 completed successfully", {
+      toast.success('step 3 completed successfully', {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
-      router.push("/visa/step-four");
+      router.push('/visa/step-four');
     },
     onError: () => {
       toast.error(
-        "An error occurred while processing your request. Please try again later.",
+        'An error occurred while processing your request. Please try again later.',
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 500,
@@ -39,12 +39,6 @@ const StepThree = () => {
     },
     enabled: !!state.formId,
   });
-
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
 
   return (
     <>
@@ -56,9 +50,10 @@ const StepThree = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
+          console.log(values);
           mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
-          resetForm();
+          // resetForm();
         }}
       >
         {({ values, isValid, handleSubmit }) => (
@@ -120,17 +115,6 @@ const StepThree = () => {
                           Country
                         </label>
                         <div className="input-error-wrapper">
-                          {/* <Field
-                            name="country"
-                            component="select"
-                            className="p-2 border rounded select-input"
-                          >
-                            <option value="" selected disabled>
-                              Select Country
-                            </option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                          </Field> */}
                           <Field
                             component="select"
                             id="country"
@@ -240,7 +224,6 @@ const StepThree = () => {
                             id="emailAddress"
                             name="emailAddress"
                             className="form-input"
-                            value="gagan@gmail.com"
                           />
                           <ErrorMessage
                             name="emailAddress"
@@ -276,16 +259,10 @@ const StepThree = () => {
                           House No. Street*
                         </label>
                         <div className="input-error-wrapper">
-                          <Field
-                            type="text"
-                            id="permanentAddressHouseNoStreet"
+                          <MyDependentField
                             name="permanentAddressHouseNoStreet"
-                            className="form-input"
-                          />
-                          <ErrorMessage
-                            name="permanentAddressHouseNoStreet"
-                            component="div"
-                            className="text-red-500"
+                            dependentFields={values.houseNoStreet}
+                            sameAddress={values.sameAddress}
                           />
                         </div>
                       </div>
@@ -294,16 +271,10 @@ const StepThree = () => {
                           Village/Town?City*
                         </label>
                         <div className="input-error-wrapper">
-                          <Field
-                            type="text"
-                            id="permanentAddressVillageTownCity"
+                          <MyDependentField
                             name="permanentAddressVillageTownCity"
-                            className="form-input"
-                          />
-                          <ErrorMessage
-                            name="permanentAddressVillageTownCity"
-                            component="div"
-                            className="text-red-500"
+                            dependentFields={values.villageTownCity}
+                            sameAddress={values.sameAddress}
                           />
                         </div>
                       </div>
@@ -315,16 +286,10 @@ const StepThree = () => {
                           State/Province/District*
                         </label>
                         <div className="input-error-wrapper">
-                          <Field
-                            type="text"
-                            id="permanentAddressStateProvinceDistrict"
+                          <MyDependentField
                             name="permanentAddressStateProvinceDistrict"
-                            className="form-input"
-                          />
-                          <ErrorMessage
-                            name="permanentAddressStateProvinceDistrict"
-                            component="div"
-                            className="text-red-500"
+                            dependentFields={values.stateProvinceDistrict}
+                            sameAddress={values.sameAddress}
                           />
                         </div>
                       </div>
@@ -647,15 +612,18 @@ const StepThree = () => {
                         </div>
                       </div>
                       <div className="form-input-main-div">
-                        <label className="form-label" htmlFor="motherCountry">
-                          Country cf Birth
+                        <label
+                          className="form-label"
+                          htmlFor="motherCountryOfBirth"
+                        >
+                          Country of Birth
                         </label>
                         <div className="input-error-wrapper">
                           <Field
                             required
                             component="select"
-                            id="motherCountry"
-                            name="motherCountry"
+                            id="motherCountryOfBirth"
+                            name="motherCountryOfBirth"
                             className="p-2 border rounded select-input"
                           >
                             <option value="" disabled selected>
@@ -670,7 +638,7 @@ const StepThree = () => {
                             )}
                           </Field>
                           <ErrorMessage
-                            name="motherCountry"
+                            name="motherCountryOfBirth"
                             component="div"
                             className="text-red-500"
                           />
@@ -749,7 +717,7 @@ const StepThree = () => {
                         </div>
                       </div>
 
-                      {values.applicantMaritalStatus === "married" ? (
+                      {values.applicantMaritalStatus === 'married' && (
                         <div className="space-y-4">
                           <div className="pt-5 text-2xl font-semibold text-primary">
                             Spouse’s Details
@@ -819,17 +787,6 @@ const StepThree = () => {
                               Previous Nationality/Region*
                             </label>
                             <div className="input-error-wrapper">
-                              {/* <Field
-                                id="spousePreviousNationality"
-                                name="spousePreviousNationality"
-                                component="select"
-                                className="p-2 border rounded select-input"
-                              >
-                                <option value="" disabled>
-                                  Select Nationality
-                                </option>
-                                <option value="option1">option1</option>
-                              </Field> */}
                               <Field
                                 required
                                 component="select"
@@ -912,8 +869,6 @@ const StepThree = () => {
                             </div>
                           </div>
                         </div>
-                      ) : (
-                        ""
                       )}
 
                       <div className="flex items-start py-2 space-x-2">
@@ -926,24 +881,28 @@ const StepThree = () => {
                           <div className="px-2 space-x-2">
                             <Field
                               type="radio"
-                              id="yes"
+                              id="parentsPakistanNationalYes"
                               name="parentsPakistanNational"
                               value="yes"
-                              checked={values.parentsPakistanNational === "yes"}
                             />
-                            <label htmlFor="yes" className="font-semibold">
+                            <label
+                              htmlFor="parentsPakistanNationalYes"
+                              className="font-semibold"
+                            >
                               Yes
                             </label>
                           </div>
                           <div className="px-2 space-x-2">
                             <Field
                               type="radio"
-                              id="no"
+                              id="parentsPakistanNationalNo"
                               name="parentsPakistanNational"
                               value="no"
-                              checked={values.parentsPakistanNational === "no"}
                             />
-                            <label htmlFor="no" className="font-semibold">
+                            <label
+                              htmlFor="parentsPakistanNationalNo"
+                              className="font-semibold"
+                            >
                               No
                             </label>
                           </div>
@@ -955,7 +914,7 @@ const StepThree = () => {
                         className="text-red-500"
                       />
 
-                      {values.parentsPakistanNational === "yes" && (
+                      {values.parentsPakistanNational === 'yes' && (
                         <div className="form-input-main-div">
                           <label className="form-label" htmlFor="parentDetails">
                             If Yes, give details*
@@ -1047,7 +1006,7 @@ const StepThree = () => {
                             <option value="Veterinarian">Veterinarian</option>
                             <option value="Teacher">Teacher</option>
                             <option value="Musician">Musician</option>
-                            <option value="Other">Other</option>
+                            <option value="other">Other</option>
                           </Field>
                           <ErrorMessage
                             name="presentOccupation"
@@ -1057,7 +1016,7 @@ const StepThree = () => {
                         </div>
                       </div>
 
-                      {values.presentOccupation === "Other" ? (
+                      {values.presentOccupation === 'other' ? (
                         <div className="form-input-main-div">
                           <label
                             className="form-label"
@@ -1066,15 +1025,20 @@ const StepThree = () => {
                           <div className="input-error-wrapper">
                             <Field
                               type="text"
-                              id="otherOccupation"
+                              id="presentOtherOccupation"
                               placeholder="Enter occupation"
-                              name="otherOccupation"
+                              name="presentOtherOccupation"
                               className="form-input"
+                            />
+                            <ErrorMessage
+                              name="presentOtherOccupation"
+                              component="div"
+                              className="text-red-500"
                             />
                           </div>
                         </div>
                       ) : (
-                        ""
+                        ''
                       )}
 
                       <div className="form-input-main-div">
@@ -1141,12 +1105,12 @@ const StepThree = () => {
                         <div className="input-error-wrapper">
                           <Field
                             type="text"
-                            id="phone"
-                            name="phone"
+                            id="applicantPhone"
+                            name="applicantPhone"
                             className="form-input"
                           />
                           <ErrorMessage
-                            name="phone"
+                            name="applicantPhone"
                             component="div"
                             className="text-red-500"
                           />
@@ -1214,7 +1178,7 @@ const StepThree = () => {
                         </div>
                       </div>
 
-                      {values.militaryOrganization === "yes" && (
+                      {values.militaryOrganization === 'yes' && (
                         <>
                           <div className="form-input-main-div">
                             <label
@@ -1349,7 +1313,7 @@ const StepThree = () => {
                 type="submit"
                 disabled={!isValid}
                 className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                  !isValid ? "cursor-not-allowed opacity-50" : ""
+                  !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
                 {mutation.isPending ? (
@@ -1357,7 +1321,7 @@ const StepThree = () => {
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
                 ) : (
-                  "Continue"
+                  'Continue'
                 )}
               </button>
             </div>
