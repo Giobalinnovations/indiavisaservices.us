@@ -15,21 +15,6 @@ import Select from "react-select";
 import { Country } from "country-state-city";
 
 const StepThree = () => {
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const [fatherNationality, setFatherNationality] = useState(null);
-  const [fatherPreviousNationality, setFatherPreviousNationality] =
-    useState(null);
-  const [selectedMotherNationality, setSelectedMotherNationality] =
-    useState(null);
-  const [previousMotherCountry, setPreviousMotherCountry] = useState(null);
-  const [selectedMotherCountry, setSelectedMotherCountry] = useState(null);
-  const [fatherCountry, setFatherCountry] = useState(null);
-  const [statusMarried, setStatusMarried] = useState("");
-  //spouse
-  const [spouseNationality, setSpouseNationality] = useState(null);
-  const [spousePreviousNationality, setSpousePreviousNationality] =
-    useState(null);
-  const [spouseCountryOfBirth, setSpouseCountryOfBirth] = useState(null);
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
