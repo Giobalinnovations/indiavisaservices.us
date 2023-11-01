@@ -1,7 +1,7 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
 import React from 'react';
-import { Country, State, City } from 'country-state-city';
+import { Country } from 'country-state-city';
 import { toast } from 'react-toastify';
 import { useMutation } from '@tanstack/react-query';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -12,8 +12,6 @@ import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
 import { ImSpinner2 } from 'react-icons/im';
 import { useState } from 'react';
-import { useEffect } from 'react';
-import Select from 'react-select';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
