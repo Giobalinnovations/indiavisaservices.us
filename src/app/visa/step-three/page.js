@@ -512,7 +512,7 @@ const StepThree = () => {
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="fatherCountry">
-                          Country
+                          Country of Birth
                         </label>
                         <div className="input-error-wrapper">
                           {/* <Field
@@ -663,7 +663,7 @@ const StepThree = () => {
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="motherCountry">
-                          Country
+                          Country cf Birth
                         </label>
                         <div className="input-error-wrapper">
                           <Field
@@ -1044,16 +1044,25 @@ const StepThree = () => {
                           <Field
                             required
                             component="select"
-                            id="spouseCountryOfBirth"
-                            name="spouseCountryOfBirth"
+                            id="presentOccupation"
+                            name="presentOccupation"
                             className="p-2 border rounded select-input"
                           >
-                            <option value="" disabled selected>
+                            <option value="" disabled>
                               Select Occupation*
                             </option>
-                            <option value="Army">Army</option>
-                            <option value="Busninessman">Busninessman</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Architect">Architect</option>
+                            <option value="Scientist">Scientist</option>
+                            <option value="Technician">Technician</option>
+                            <option value="Consultant">Consultant</option>
+                            <option value="Civil engineer">
+                              Civil engineer
+                            </option>
+                            <option value="Veterinarian">Veterinarian</option>
                             <option value="Teacher">Teacher</option>
+                            <option value="Musician">Musician</option>
+                            <option value="Other">Other</option>
                           </Field>
                           <ErrorMessage
                             name="presentOccupation"
@@ -1062,6 +1071,26 @@ const StepThree = () => {
                           />
                         </div>
                       </div>
+
+                      {values.presentOccupation === "Other" ? (
+                        <div className="form-input-main-div">
+                          <label
+                            className="form-label"
+                            htmlFor="employerName"
+                          ></label>
+                          <div className="input-error-wrapper">
+                            <Field
+                              type="text"
+                              id="otherOccupation"
+                              placeholder="Enter occupation"
+                              name="otherOccupation"
+                              className="form-input"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="employerName">
