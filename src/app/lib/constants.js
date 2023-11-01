@@ -91,7 +91,6 @@ export const step1ValidationSchema = {
 
     expectedDateOfArrival: '',
     captcha: '',
-    // instructionsAccepted: false,
   },
 };
 

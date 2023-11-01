@@ -26,6 +26,7 @@ const StepOne = () => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP1, formData);
     },
     onSuccess: data => {
+      console.log('data', data);
       dispatch({
         type: 'SET_FORM_ID',
         payload: data.data.data._id,
@@ -39,6 +40,7 @@ const StepOne = () => {
       router.push('/visa/step-two');
     },
     onError: error => {
+      console.log(error);
       toast.error(
         'An error occurred while processing your request. Please try again later.',
         {
@@ -64,10 +66,9 @@ const StepOne = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            console.log(values);
-            // mutation.mutate(values);
-            // setSubmitting(false);
-            // resetForm();
+            mutation.mutate(values);
+            setSubmitting(false);
+            resetForm();
           }}
         >
           {({ values, isValid, handleSubmit, handleChange }) => (
