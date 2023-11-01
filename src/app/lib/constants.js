@@ -359,6 +359,9 @@ export const step4ValidationSchema = {
     district: Yup.string().required('Please select an option'),
     durationOfVisa: Yup.string().required('Duration of visa is required'),
     numberOfEntries: Yup.string(),
+    purposecontactNo: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
+      .required("Phone is required"),
     portOfArrival: Yup.string().required(
       'Port of Arrival in India is required'
     ),
