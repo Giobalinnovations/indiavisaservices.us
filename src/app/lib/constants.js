@@ -325,23 +325,28 @@ export const step3ValidationSchema = {
 
 export const step4ValidationSchema = {
   yupSchema: Yup.object().shape({
-    visaType: Yup.string().required("Type of Visa is required"),
-    visaType2: Yup.string().required("Type of Visa is required"),
+    contactNo: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
+      .required("Phone is required"),
     placesToVisit: Yup.string().required("Places to be visited is required"),
     placesToVisit2: Yup.string().required("Places to be visited is required"),
     roomBooked: Yup.string().required("Please select an option"),
 
-    detailsOfFriendRelative: Yup.string().required(
-      "Details of Friend/Relative is required"
-    ),
+    detailsOfFriendRelative: Yup.string().required("Enter Name"),
     address: Yup.string().required("Address is required"),
     state: Yup.string().required("Please select an option"),
     district: Yup.string().required("Please select an option"),
     durationOfVisa: Yup.string().required("Duration of visa is required"),
     numberOfEntries: Yup.string(),
+    purposecontactNo: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
+      .required("Phone is required"),
     portOfArrival: Yup.string().required(
       "Port of Arrival in India is required"
     ),
+    expectedPortOfExit: Yup.string().required("Please select an option"),
+    website: Yup.string().required("Enter Website"),
+    natureOfBusiness: Yup.string().required("Enter Nature Of Business"),
     expectedPortOfExit: Yup.string().required("Please select an option"),
 
     visitedIndiaBefore: Yup.string().required("Please select an option"),
@@ -424,8 +429,7 @@ export const step4ValidationSchema = {
       .required("Phone is required"),
   }),
   initialValues: {
-    visaType: "",
-    visaType2: "",
+    contactNo: "",
     placesToVisit: "",
     placesToVisit2: "",
     roomBooked: "no",
@@ -438,7 +442,7 @@ export const step4ValidationSchema = {
     numberOfEntries: "",
     portOfArrival: "",
     expectedPortOfExit: "",
-
+    purposecontactNo: "",
     visitedIndiaBefore: "no",
     visaAddress: "",
     citiesVisitedInIndia: "",
