@@ -1,41 +1,40 @@
-'use client';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import axiosInstance from '@/services/api';
+"use client";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@/services/api";
 import {
   nationalityRegionData,
   step2ValidationSchema,
-} from '@/app/lib/constants';
-import { useFormContext } from '@/app/context/formContext';
-import apiEndpoint from '@/services/apiEndpoint';
-import { toast } from 'react-toastify';
-import { ImSpinner2 } from 'react-icons/im';
-
-import { Country } from 'country-state-city';
+} from "@/app/lib/constants";
+import { useFormContext } from "@/app/context/formContext";
+import apiEndpoint from "@/services/apiEndpoint";
+import { toast } from "react-toastify";
+import { ImSpinner2 } from "react-icons/im";
+import { Country } from "country-state-city";
 
 const StepTwo = () => {
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: formData => {
+    mutationFn: (formData) => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP2, formData);
     },
-    onSuccess: data => {
+    onSuccess: (data) => {
       console.log(data);
-      toast.success('step 2 completed successfully', {
+      toast.success("step 2 completed successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
 
-      router.push('/visa/step-three');
+      router.push("/visa/step-three");
     },
     onError: () => {
       toast.error(
-        'An error occurred while processing your request. Please try again later.',
+        "An error occurred while processing your request. Please try again later.",
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 500,
@@ -80,8 +79,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="firstName">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -96,8 +95,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="lastName">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -119,8 +118,8 @@ const StepTwo = () => {
                             className="p-2 border rounded select-input"
                           />
                           <ErrorMessage name="previousName">
-                            {errorMsg => (
-                              <div style={{ color: 'red' }}>{errorMsg}</div>
+                            {(errorMsg) => (
+                              <div style={{ color: "red" }}>{errorMsg}</div>
                             )}
                           </ErrorMessage>
                         </div>
@@ -144,8 +143,8 @@ const StepTwo = () => {
                           <option value="other">Other</option>
                         </Field>
                         <ErrorMessage name="gender">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -160,8 +159,8 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -176,8 +175,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="townCityOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -203,8 +202,8 @@ const StepTwo = () => {
                           ))}
                         </Field>
                         <ErrorMessage name="countryRegionOfBirth">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -221,8 +220,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="citizenshipNationalID">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -239,18 +238,25 @@ const StepTwo = () => {
                           <option value="" disabled selected>
                             Select Religion*
                           </option>
-                          <option value="hindu">Hindu</option>
-                          <option value="muslim">Muslim</option>
+                          <option value="hinduism">Hinduism</option>
+                          <option value="islam">Islam</option>
+                          <option value="buddhism">Buddhism</option>
+                          <option value="taoism">Taoism</option>
+                          <option value="judaism">Judaism</option>
+                          <option value="catholicism">Catholicism</option>
+                          <option value="christianity">Christianity</option>
+                          <option value="jainism">Jainism</option>
+                          <option value="Sikhism">Sikhism</option>
                           <option value="other">Other</option>
                         </Field>
                         <ErrorMessage name="religion">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
                     </div>
-                    {values.religion === 'other' && (
+                    {values.religion === "other" && (
                       <div className="form-input-main-div">
                         <label className="form-label">Religion (Other)</label>
                         <div className="input-error-wrapper">
@@ -275,8 +281,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="visibleIdentificationMarks">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -296,12 +302,30 @@ const StepTwo = () => {
                           <option value="" disabled selected>
                             Select Educational Qualification*
                           </option>
-                          <option value="graduate">graduate</option>
-                          <option value="under graduate">under graduate</option>
+                          <option value="Doctoral degree">
+                            Doctoral degree
+                          </option>
+                          <option value="Masters degree">Masters degree</option>
+                          <option value="Graduate diploma">
+                            Graduate diploma
+                          </option>
+                          <option value="Graduate certificate">
+                            Graduate certificate
+                          </option>
+                          <option value="Bachelor degree">
+                            Bachelor degree
+                          </option>
+                          <option value="Advanced diploma/Associates degree">
+                            Advanced diploma/Associates degree
+                          </option>
+                          <option value="Diploma">Diploma</option>
+                          <option value="Senior school certificate">
+                            Senior school certificate
+                          </option>
                         </Field>
                         <ErrorMessage name="educationalQualification">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -327,8 +351,8 @@ const StepTwo = () => {
                         </Field>
 
                         <ErrorMessage name="nationalityRegion">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -354,14 +378,14 @@ const StepTwo = () => {
                           </option>
                         </Field>
                         <ErrorMessage name="acquireNationality">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
                     </div>
 
-                    {values.acquireNationality === 'naturalization' ? (
+                    {values.acquireNationality === "naturalization" ? (
                       <div className="form-input-main-div">
                         <label className="form-label">
                           Previous Nationality*
@@ -386,14 +410,14 @@ const StepTwo = () => {
                           </Field>
 
                           <ErrorMessage name="previousNationality">
-                            {errorMsg => (
-                              <div style={{ color: 'red' }}>{errorMsg}</div>
+                            {(errorMsg) => (
+                              <div style={{ color: "red" }}>{errorMsg}</div>
                             )}
                           </ErrorMessage>
                         </div>
                       </div>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
                 </div>
@@ -494,8 +518,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="passportNumber">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -510,8 +534,8 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         />
                         <ErrorMessage name="placeOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -526,8 +550,8 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -542,8 +566,8 @@ const StepTwo = () => {
                           className="form-input"
                         />
                         <ErrorMessage name="dateOfExpiry">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -569,8 +593,8 @@ const StepTwo = () => {
                         </Field>
 
                         <ErrorMessage name="countryOfIssue">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
+                          {(errorMsg) => (
+                            <div style={{ color: "red" }}>{errorMsg}</div>
                           )}
                         </ErrorMessage>
                       </div>
@@ -616,9 +640,9 @@ const StepTwo = () => {
                       </div>
                     </div>
 
-                    {values.anyOtherPassport === 'yes' && (
+                    {values.anyOtherPassport === "yes" && (
                       <>
-                        {' '}
+                        {" "}
                         <div className="form-input-main-div">
                           <label className="form-label">Passport/IC No.</label>
                           <div className="input-error-wrapper">
@@ -640,8 +664,8 @@ const StepTwo = () => {
                               className="form-input"
                             />
                             <ErrorMessage name="dateOfIssuePassportIC">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -656,8 +680,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="placeOfIssuePassportIC">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -686,8 +710,8 @@ const StepTwo = () => {
                             </Field>
 
                             <ErrorMessage name="passportNationalityMentionedTherein">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -740,7 +764,7 @@ const StepTwo = () => {
                 type="submit"
                 disabled={!isValid}
                 className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                  !isValid ? 'cursor-not-allowed opacity-50' : ''
+                  !isValid ? "cursor-not-allowed opacity-50" : ""
                 }`}
               >
                 {mutation.isPending ? (
@@ -748,7 +772,7 @@ const StepTwo = () => {
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
                 ) : (
-                  'Continue'
+                  "Continue"
                 )}
               </button>
             </div>
