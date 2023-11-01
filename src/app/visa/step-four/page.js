@@ -331,91 +331,138 @@ const StepFour = () => {
                         <div className="space-y-4">
                           <div className="form-input-main-div">
                             <label className="form-label">Address*</label>
-                            <Field
-                              type="text"
-                              name="visaAddress"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="visaAddress"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="visaAddress"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="visaAddress"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Cities previously visited in India*
                             </label>
-                            <Field
-                              as="textarea"
-                              name="citiesVisitedInIndia"
-                              rows="4"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="citiesVisitedInIndia"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                as="textarea"
+                                name="citiesVisitedInIndia"
+                                rows="4"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="citiesVisitedInIndia"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Last Indian Visa no./Currently valid Indian Visa
                               no.*
                             </label>
-                            <Field
-                              type="text"
-                              name="lastIndianVisaNo"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="lastIndianVisaNo"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="lastIndianVisaNo"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="lastIndianVisaNo"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
                           </div>
+                          {/* <div className="form-input-main-div">
+                            <label className="form-label">Type of Visa*</label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="typeOfVisa"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="typeOfVisa"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div> */}
                           <div className="form-input-main-div">
                             <label className="form-label">Type of Visa*</label>
-                            <Field
-                              type="text"
-                              name="typeOfVisa"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="typeOfVisa"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                required
+                                component="select"
+                                id="typeOfVisa"
+                                name="typeOfVisa"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option disabled selected value="">
+                                  Select*
+                                </option>
+                                <option value="Bussiness">Business Visa</option>
+                                <option value="Medical">Medical Visa </option>
+                                <option value="Student">Student Visa </option>
+                                <option value="Tourist">Tourist Visa </option>
+                                <option value="Tourist">Tansit Visa </option>
+                                <option value="Conference">
+                                  Conference Visa{" "}
+                                </option>
+                                <option value="Journalist">
+                                  Journalist Visa{" "}
+                                </option>
+                                <option value="Employment">
+                                  Employment Visa{" "}
+                                </option>
+                              </Field>
+                              <ErrorMessage name="typeOfVisa">
+                                {(errorMsg) => (
+                                  <div style={{ color: "red" }}>{errorMsg}</div>
+                                )}
+                              </ErrorMessage>
+                            </div>
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Place of Issue*
                             </label>
-                            <Field
-                              type="text"
-                              name="placeOfIssue"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="placeOfIssue"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="placeOfIssue"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="placeOfIssue"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label">Date of Issue*</label>
-                            <Field
-                              required
-                              type="date"
-                              name="dateOfIssue"
-                              id="dateOfIssue"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="dateOfIssue"
-                              component="div"
-                              className="text-red-600"
-                            />
+                            <div className="input-error-wrapper">
+                              <Field
+                                required
+                                type="date"
+                                name="dateOfIssue"
+                                id="dateOfIssue"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="dateOfIssue"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
                           </div>
                         </div>
                       )}
@@ -456,16 +503,18 @@ const StepFour = () => {
                             If so, when and by whom (Mention Control No. and
                             date also)
                           </label>
-                          <Field
-                            type="text"
-                            name="refusalDetails"
-                            className="form-input"
-                          />
-                          <ErrorMessage
-                            name="refusalDetails"
-                            component="div"
-                            className="text-red-600"
-                          />
+                          <div className="input-error-wrapper">
+                            <Field
+                              type="text"
+                              name="refusalDetails"
+                              className="form-input"
+                            />
+                            <ErrorMessage
+                              name="refusalDetails"
+                              component="div"
+                              className="text-red-600"
+                            />
+                          </div>
                         </div>
                       )}
                     </div>
@@ -643,6 +692,53 @@ const StepFour = () => {
 
             <div>
               <div className="">
+                <h2 className="text-3xl font-semibold">Other Information</h2>
+                <hr className="h-1 text-primary bg-primary w-36" />
+              </div>
+              <div className="grid grid-cols-12 gap-8 ">
+                <div className="col-span-8">
+                  <div className="">
+                    <div className="formMain">
+                      <div className="form-input-main-div">
+                        <label className="form-label">
+                          Countries Visited in last 10 years
+                        </label>
+                        {/* <Field
+                          id="countriesVisited"
+                          component="textarea"
+                          rows="4"
+                          className="form-input"
+                          placeholder=""
+                          name="countriesVisited"
+                        ></Field> */}
+                        <div className="input-error-wrapper">
+                          <Select
+                            options={otherCountryOptions}
+                            isMulti
+                            className="w-96"
+                          />
+                          <ErrorMessage
+                            name="countriesVisited"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                  <h2 className="sidetext">
+                    If information furnished is found to be incorrect at the
+                    time of entry or anything during stay in India, you will be
+                    refused entry.
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="">
                 <h2 className="text-3xl font-semibold">
                   SAARC Country Visit Details{" "}
                 </h2>
@@ -778,53 +874,6 @@ const StepFour = () => {
 
             <div>
               <div className="">
-                <h2 className="text-3xl font-semibold">Other Information</h2>
-                <hr className="h-1 text-primary bg-primary w-36" />
-              </div>
-              <div className="grid grid-cols-12 gap-8 ">
-                <div className="col-span-8">
-                  <div className="">
-                    <div className="formMain">
-                      <div className="form-input-main-div">
-                        <label className="form-label">
-                          Countries Visited in last 10 years
-                        </label>
-                        {/* <Field
-                          id="countriesVisited"
-                          component="textarea"
-                          rows="4"
-                          className="form-input"
-                          placeholder=""
-                          name="countriesVisited"
-                        ></Field> */}
-                        <div className="input-error-wrapper">
-                          <Select
-                            options={otherCountryOptions}
-                            isMulti
-                            className="w-96"
-                          />
-                          <ErrorMessage
-                            name="countriesVisited"
-                            component="div"
-                            className="text-red-600"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                  <h2 className="sidetext">
-                    If information furnished is found to be incorrect at the
-                    time of entry or anything during stay in India, you will be
-                    refused entry.
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="">
                 <h2 className="text-3xl font-semibold">Reference</h2>
                 <hr className="h-1 text-primary bg-primary w-36" />
               </div>
@@ -834,9 +883,7 @@ const StepFour = () => {
                   <div className="">
                     <div className="formMain">
                       <div className="form-input-main-div">
-                        <label className="form-label">
-                          Details of the Friend/Relative
-                        </label>
+                        <label className="form-label">Reference Name in India</label>
                         <div className="input-error-wrapper">
                           <Field
                             type="text"
