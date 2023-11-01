@@ -98,7 +98,12 @@ export const step2ValidationSchema = {
   yupSchema: Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
     lastName: Yup.string().required('Last Name is required'),
-    changedName: Yup.boolean().optional(),
+    changedName: Yup.boolean(),
+    previousName: Yup.string().when('changedName', {
+      is: true,
+      then: schema => schema.required('previous Name is required'),
+      otherwise: schema => schema.default(''),
+    }),
     gender: Yup.string().required('Gender is required'),
     dateOfBirth: Yup.date().required('Date Of Birth is required'),
     townCityOfBirth: Yup.string().required('Town/City of birth is required'),
@@ -120,8 +125,10 @@ export const step2ValidationSchema = {
     educationalQualification: Yup.string().required(
       'Educational Qualification is required'
     ),
-    nationalityRegion: Yup.string().required('Nationality/Region is required'),
-    acquireNationality: Yup.string().required('Acquisition type is required'),
+    nationalityRegion: Yup.string(),
+    acquireNationality: Yup.string().required(
+      'acquire Nationality is required'
+    ),
     previousNationality: Yup.string().when('acquireNationality', {
       is: 'naturalization',
       then: schema => schema.required('nationality required'),
@@ -135,24 +142,37 @@ export const step2ValidationSchema = {
     dateOfIssue: Yup.date().required('Date Of issue is required'),
     dateOfExpiry: Yup.date().required('Date Of expiry is required'),
     countryOfIssue: Yup.string().required('Country of Issue is required'),
+    anyOtherPassport: Yup.string(),
 
-    placeOfIssuePassportIC: Yup.string().required(
-      'Place of Issue (Passport/IC) is required'
-    ),
-    // anyOtherPassport: Yup.string().required(
-    //   'Please select whether you hold another Passport/Identity Certificate (IC)'
-    // ),
+    passportICNumber: Yup.string().when('anyOtherPassport', {
+      is: 'yes',
+      then: schema => schema,
+      otherwise: schema => schema,
+    }),
 
-    passportICNumber: Yup.string().required('Passport/IC No. is required'),
-    dateOfIssuePassportIC: Yup.date().required('Date Of issue is required'),
-    passportNationalityMentionedTherein: Yup.string().required(
-      'Nationality mentioned therein is required'
-    ),
+    dateOfIssuePassportIC: Yup.date().when('anyOtherPassport', {
+      is: 'yes',
+      then: schema => schema.required('Date Of issue is required'),
+      otherwise: schema => schema,
+    }),
+    placeOfIssuePassportIC: Yup.string().when('anyOtherPassport', {
+      is: 'yes',
+      then: schema =>
+        schema.required('Place of Issue (Passport/IC) is required'),
+      otherwise: schema => schema.default(''),
+    }),
+    passportNationalityMentionedTherein: Yup.string().when('anyOtherPassport', {
+      is: 'yes',
+      then: schema =>
+        schema.required('Nationality mentioned therein is required'),
+      otherwise: schema => schema,
+    }),
   }),
   initialValues: {
     firstName: '',
     lastName: '',
     changedName: false,
+    previousName: '',
     gender: '',
     dateOfBirth: '',
     townCityOfBirth: '',
@@ -165,13 +185,13 @@ export const step2ValidationSchema = {
     nationalityRegion: '',
     acquireNationality: '',
     previousNationality: '',
-    haveLivedInApplyingCountry: '',
+    haveLivedInApplyingCountry: 'no',
     passportNumber: '',
     placeOfIssue: '',
     dateOfIssue: '',
     dateOfExpiry: '',
     countryOfIssue: '',
-    anyOtherPassport: '',
+    anyOtherPassport: 'no',
     passportICNumber: '',
     dateOfIssuePassportIC: '',
     placeOfIssuePassportIC: '',
