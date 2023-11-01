@@ -11,8 +11,19 @@ import { useFormContext } from "@/app/context/formContext";
 import apiEndpoint from "@/services/apiEndpoint";
 import { toast } from "react-toastify";
 import { ImSpinner2 } from "react-icons/im";
+import { Country } from "country-state-city";
+import Select from "react-select";
 
 const StepFour = () => {
+  // year start
+  // Get the current year and create an array of years from some starting year (e.g., 1900) to the current year.
+  const currentYear = new Date().getFullYear();
+  const startYear = 1900;
+  const years = Array.from(
+    { length: currentYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
+  // year end
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
@@ -37,6 +48,12 @@ const StepFour = () => {
     },
     enabled: !!state.formId,
   });
+
+  const otherCountryOptions = [
+    { value: "India", label: "India" },
+    { value: "Pakistan", label: "Pakistan" },
+    { value: "Usa", label: "USA" },
+  ];
 
   return (
     <>
@@ -667,54 +684,81 @@ const StepFour = () => {
                       </div>
                       {values.visitedSAARCCountries === "yes" && (
                         <div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name of SAARC Country*
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="saarcCountryName"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="saarcCountryName"
-                                component="div"
-                                className="text-red-600"
-                              />
+                          <div className="space-y-4">
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name of SAARC Country*
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  required
+                                  component="select"
+                                  id="saarcCountryName"
+                                  name="saarcCountryName"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="" disabled selected>
+                                    Select Country*
+                                  </option>
+                                  {Country?.getAllCountries()?.map(
+                                    (country, index) => (
+                                      <option key={index} value={country?.name}>
+                                        {country?.name}
+                                      </option>
+                                    )
+                                  )}
+                                </Field>
+                                <ErrorMessage
+                                  name="saarcCountryName"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
+                            </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">Select Year*</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  name="selectYear"
+                                  component="select"
+                                  id="selectYear"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="" disabled selected>
+                                    Select Year*
+                                  </option>
+                                  {years.map((year) => (
+                                    <option key={year} value={year}>
+                                      {year}
+                                    </option>
+                                  ))}
+                                </Field>
+                                <ErrorMessage
+                                  name="selectYear"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
+                            </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                No. of Visits
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="number"
+                                  name="numberOfVisits"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="numberOfVisits"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
                           </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Select Year*</label>
-                            <Field
-                              name="selectYear"
-                              component="select"
-                              className="p-2 border rounded select-input"
-                            >
-                              <option value="">Select Year</option>
-                              <option value="2023">2023</option>
-                              <option value="2022">2022</option>
-                              <option value="2021">2021</option>
-                            </Field>
-                            <ErrorMessage
-                              name="selectYear"
-                              component="div"
-                              className="text-red-600"
-                            />
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">No. of Visits</label>
-                            <Field
-                              type="number"
-                              name="numberOfVisits"
-                              className="form-input"
-                            />
-                            <ErrorMessage
-                              name="numberOfVisits"
-                              component="div"
-                              className="text-red-600"
-                            />
-                          </div>
+                          <button className="formbtn">Add</button>
                         </div>
                       )}
                     </div>
@@ -745,19 +789,26 @@ const StepFour = () => {
                         <label className="form-label">
                           Countries Visited in last 10 years
                         </label>
-                        <Field
+                        {/* <Field
                           id="countriesVisited"
                           component="textarea"
                           rows="4"
                           className="form-input"
                           placeholder=""
                           name="countriesVisited"
-                        ></Field>
-                        <ErrorMessage
-                          name="countriesVisited"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        ></Field> */}
+                        <div className="input-error-wrapper">
+                          <Select
+                            options={otherCountryOptions}
+                            isMulti
+                            className="w-96"
+                          />
+                          <ErrorMessage
+                            name="countriesVisited"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -786,31 +837,35 @@ const StepFour = () => {
                         <label className="form-label">
                           Details of the Friend/Relative
                         </label>
-                        <Field
-                          type="text"
-                          name="friendRelativeDetails"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="friendRelativeDetails"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="friendRelativeDetails"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="friendRelativeDetails"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">Address</label>
-                        <Field
-                          type="text"
-                          name="friendRelativeAddress"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="friendRelativeAddress"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="friendRelativeAddress"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="friendRelativeAddress"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
-                      <div className="form-input-main-div">
+                      {/* <div className="form-input-main-div">
                         <label className="form-label">State*</label>
                         <Field
                           name="friendRelativeState"
@@ -826,8 +881,8 @@ const StepFour = () => {
                           component="div"
                           className="text-red-600"
                         />
-                      </div>
-                      <div className="form-input-main-div">
+                      </div> */}
+                      {/* <div className="form-input-main-div">
                         <label className="form-label">District*</label>
                         <Field
                           name="friendRelativeDistrict"
@@ -843,60 +898,68 @@ const StepFour = () => {
                           component="div"
                           className="text-red-600"
                         />
-                      </div>
+                      </div> */}
                       <div className="form-input-main-div">
                         <label className="form-label">Phone*</label>
-                        <Field
-                          type="text"
-                          name="friendRelativePhone"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="friendRelativePhone"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="friendRelativePhone"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="friendRelativePhone"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">
-                          Reference Name in FRANCE*
+                          Reference Name in Home Country*
                         </label>
-                        <Field
-                          type="text"
-                          name="referenceNameInFrance"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="referenceNameInFrance"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="referenceNameInFrance"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="referenceNameInFrance"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">Address*</label>
-                        <Field
-                          type="text"
-                          name="referenceAddressInFrance"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="referenceAddressInFrance"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="referenceAddressInFrance"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="referenceAddressInFrance"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label">Phone*</label>
-                        <Field
-                          type="text"
-                          name="referenceFrancePhone"
-                          className="form-input"
-                        />
-                        <ErrorMessage
-                          name="referenceFrancePhone"
-                          component="div"
-                          className="text-red-600"
-                        />
+                        <div className="input-error-wrapper">
+                          <Field
+                            type="text"
+                            name="referenceFrancePhone"
+                            className="form-input"
+                          />
+                          <ErrorMessage
+                            name="referenceFrancePhone"
+                            component="div"
+                            className="text-red-600"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
