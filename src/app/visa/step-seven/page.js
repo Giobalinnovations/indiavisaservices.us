@@ -22,10 +22,10 @@ const page = () => {
                             legal action (including refusal to enter India or deportation) in case of provision of wrong information.
                         </p>
                         <p className='text-center'>
-                            Please verify your Registration Details. If all details are correct please Press <span className='text-primary'>"Verified and Continue".</span>
+                            Please verify your Registration Details. If all details are correct please Press <span className='text-primary'>&quot;Verified and Continue&quot;.</span>
                         </p>
                         <p className='text-center'>
-                            For any corrections press <span className='text-primary'>"Modify/Edit"</span>
+                            For any corrections press <span className='text-primary'>&quot;Modify/Edit&quot;</span>
                         </p>
                         <p className='text-center'>
                             Please note down the Temporary Application ID:<span className='text-primary'> 02ALB14245596BA</span>
@@ -215,7 +215,7 @@ const page = () => {
                 </div>
 
                 <div className='px-4 pt-10'>
-                    <h2 className="text-3xl font-semibold">Applicant's Address Details</h2>
+                    <h2 className="text-3xl font-semibold">Applicant&apos;s Address Details</h2>
                     <hr className="h-1 text-primary bg-primary w-full" />
                     <div className='space-y-2 divide-y-[1px] pt-5'>
                         <div className=" grid grid-cols-2 space-x-20 justify-between items-center">
@@ -428,7 +428,7 @@ const page = () => {
                     <div className='space-y-2 divide-y-[1px] pt-5'>
                         <div className=" grid grid-cols-2 space-x-20 justify-between items-center">
                             <h2 className=" font-semibold text-sm text-secondary py-1">
-                                Applicant's Marital Status
+                                Applicant&apos;s Marital Status
                             </h2>
                             <p className="text-justify font-bold  leading-relaxed tracking-wide capitalize ">
                                 Married

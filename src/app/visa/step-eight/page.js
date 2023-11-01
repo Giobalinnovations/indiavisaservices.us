@@ -39,8 +39,8 @@ const page = () => {
         </div>
         <div className="p-4">
           <p className="text-center leading-relaxed tracking-wide">
-            On pressing "Pay Now",the application will be redirected to Payment Gateway to pay the visa fee and will be outside the control of Visa Online Application. The responsibility of security of transaction process and details on payment page will be of Payment gateway. Bank Payment Gateway accepts both OTP (One Time Password) and non-OTP transactions.<br />
-            In case of any issue, please contact your Bank. Application ID will be blocked after three failed attempts of payment, in such case applicant has to apply again. On pressing "Pay Later", you can pay the visa fee later using your Application ID and date of birth.<br />
+            On pressing &quot;Pay Now&quot;,the application will be redirected to Payment Gateway to pay the visa fee and will be outside the control of Visa Online Application. The responsibility of security of transaction process and details on payment page will be of Payment gateway. Bank Payment Gateway accepts both OTP (One Time Password) and non-OTP transactions.<br />
+            In case of any issue, please contact your Bank. Application ID will be blocked after three failed attempts of payment, in such case applicant has to apply again. On pressing &quot;Pay Later&quot;, you can pay the visa fee later using your Application ID and date of birth.<br />
             Please note that your application for e-Visa will not be submitted without fee payment. It should be done prior to 4 days of Journey date.
           </p>
         </div>
