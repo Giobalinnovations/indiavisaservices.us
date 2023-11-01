@@ -15,21 +15,6 @@ import Select from "react-select";
 import { Country } from "country-state-city";
 
 const StepThree = () => {
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const [fatherNationality, setFatherNationality] = useState(null);
-  const [fatherPreviousNationality, setFatherPreviousNationality] =
-    useState(null);
-  const [selectedMotherNationality, setSelectedMotherNationality] =
-    useState(null);
-  const [previousMotherCountry, setPreviousMotherCountry] = useState(null);
-  const [selectedMotherCountry, setSelectedMotherCountry] = useState(null);
-  const [fatherCountry, setFatherCountry] = useState(null);
-  const [statusMarried, setStatusMarried] = useState("");
-  //spouse
-  const [spouseNationality, setSpouseNationality] = useState(null);
-  const [spousePreviousNationality, setSpousePreviousNationality] =
-    useState(null);
-  const [spouseCountryOfBirth, setSpouseCountryOfBirth] = useState(null);
   const { state } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
@@ -146,19 +131,23 @@ const StepThree = () => {
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                           </Field> */}
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={selectedCountry}
-                            onChange={(item) => {
-                              setSelectedCountry(item);
-                            }}
-                          />
+                          <Field
+                            component="select"
+                            id="country"
+                            name="country"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option disabled selected value="">
+                              Country
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="country"
                             component="div"
@@ -389,18 +378,18 @@ const StepThree = () => {
                     {/* father mothers details */}
                     <div className="formMain">
                       <div className="form-input-main-div">
-                        <label className="form-label" htmlFor="fatherDetails">
-                          Father’s Details
+                        <label className="form-label" htmlFor="fatherFullName">
+                          Full Name
                         </label>
                         <div className="input-error-wrapper">
                           <Field
                             type="text"
-                            id="fatherDetails"
-                            name="fatherDetails"
+                            id="fatherFullName"
+                            name="fatherFullName"
                             className="form-input"
                           />
                           <ErrorMessage
-                            name="fatherDetails"
+                            name="fatherFullName"
                             component="div"
                             className="text-red-500"
                           />
@@ -423,19 +412,24 @@ const StepThree = () => {
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                           </Field> */}
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={fatherNationality}
-                            onChange={(item) => {
-                              setFatherNationality(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="fatherNationality"
+                            name="fatherNationality"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="fatherNationality"
                             component="div"
@@ -460,19 +454,24 @@ const StepThree = () => {
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                           </Field> */}
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={fatherPreviousNationality}
-                            onChange={(item) => {
-                              setFatherPreviousNationality(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="fatherPreviousNationality"
+                            name="fatherPreviousNationality"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="fatherPreviousNationality"
                             component="div"
@@ -498,7 +497,7 @@ const StepThree = () => {
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="fatherCountry">
-                          Country
+                          Country of Birth
                         </label>
                         <div className="input-error-wrapper">
                           {/* <Field
@@ -510,19 +509,24 @@ const StepThree = () => {
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                           </Field> */}
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={fatherCountry}
-                            onChange={(item) => {
-                              setFatherCountry(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="fatherCountry"
+                            name="fatherCountry"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="fatherCountry"
                             component="div"
@@ -538,7 +542,12 @@ const StepThree = () => {
                           Full Name*
                         </label>
                         <div className="input-error-wrapper">
-                          <input type="text" className="form-input" />
+                          <Field
+                            type="text"
+                            id="motherFullName"
+                            name="motherFullName"
+                            className="form-input"
+                          />
                           <ErrorMessage
                             name="motherFullName"
                             component="div"
@@ -563,19 +572,24 @@ const StepThree = () => {
                             <option value="option1">Option 1</option>
                             <option value="option2">Option 2</option>
                           </Field> */}
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={previousMotherCountry}
-                            onChange={(item) => {
-                              setPreviousMotherCountry(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="motherNationality"
+                            name="motherNationality"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="motherNationality"
                             component="div"
@@ -591,19 +605,24 @@ const StepThree = () => {
                           Previous Nationality/Region*
                         </label>
                         <div className="input-error-wrapper">
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={selectedMotherCountry}
-                            onChange={(item) => {
-                              setSelectedMotherCountry(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="motherPreviousNationality"
+                            name="motherPreviousNationality"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="motherPreviousNationality"
                             component="div"
@@ -629,22 +648,27 @@ const StepThree = () => {
                       </div>
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="motherCountry">
-                          Country
+                          Country cf Birth
                         </label>
                         <div className="input-error-wrapper">
-                          <Select
-                            options={Country.getAllCountries()}
-                            getOptionLabel={(options) => {
-                              return options["name"];
-                            }}
-                            getOptionValue={(options) => {
-                              return options["name"];
-                            }}
-                            value={selectedMotherNationality}
-                            onChange={(item) => {
-                              setSelectedMotherNationality(item);
-                            }}
-                          />
+                          <Field
+                            required
+                            component="select"
+                            id="motherCountry"
+                            name="motherCountry"
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled selected>
+                              Select Country*
+                            </option>
+                            {Country?.getAllCountries()?.map(
+                              (country, index) => (
+                                <option key={index} value={country?.name}>
+                                  {country?.name}
+                                </option>
+                              )
+                            )}
+                          </Field>
                           <ErrorMessage
                             name="motherCountry"
                             component="div"
@@ -708,7 +732,6 @@ const StepThree = () => {
                             name="applicantMaritalStatus"
                             component="select"
                             className="p-2 border rounded select-input"
-                            onClick={(e) => setStatusMarried(e.target.value)}
                           >
                             <option value="" disabled>
                               Select Marital Status
@@ -726,7 +749,7 @@ const StepThree = () => {
                         </div>
                       </div>
 
-                      {statusMarried === "married" ? (
+                      {values.applicantMaritalStatus === "married" ? (
                         <div className="space-y-4">
                           <div className="pt-5 text-2xl font-semibold text-primary">
                             Spouse’s Details
@@ -762,19 +785,24 @@ const StepThree = () => {
                               Nationality/Region*
                             </label>
                             <div className="input-error-wrapper">
-                              <Select
-                                options={Country.getAllCountries()}
-                                getOptionLabel={(options) => {
-                                  return options["name"];
-                                }}
-                                getOptionValue={(options) => {
-                                  return options["name"];
-                                }}
-                                value={spouseNationality}
-                                onChange={(item) => {
-                                  setSpouseNationality(item);
-                                }}
-                              />
+                              <Field
+                                required
+                                component="select"
+                                id="spouseNationality"
+                                name="spouseNationality"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option value="" disabled selected>
+                                  Select Country*
+                                </option>
+                                {Country?.getAllCountries()?.map(
+                                  (country, index) => (
+                                    <option key={index} value={country?.name}>
+                                      {country?.name}
+                                    </option>
+                                  )
+                                )}
+                              </Field>
                               <ErrorMessage
                                 name="spouseNationality"
                                 component="div"
@@ -802,19 +830,24 @@ const StepThree = () => {
                                 </option>
                                 <option value="option1">option1</option>
                               </Field> */}
-                              <Select
-                                options={Country.getAllCountries()}
-                                getOptionLabel={(options) => {
-                                  return options["name"];
-                                }}
-                                getOptionValue={(options) => {
-                                  return options["name"];
-                                }}
-                                value={spousePreviousNationality}
-                                onChange={(item) => {
-                                  setSpousePreviousNationality(item);
-                                }}
-                              />
+                              <Field
+                                required
+                                component="select"
+                                id="spousePreviousNationality"
+                                name="spousePreviousNationality"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option value="" disabled selected>
+                                  Select Country*
+                                </option>
+                                {Country?.getAllCountries()?.map(
+                                  (country, index) => (
+                                    <option key={index} value={country?.name}>
+                                      {country?.name}
+                                    </option>
+                                  )
+                                )}
+                              </Field>
                               <ErrorMessage
                                 name="spousePreviousNationality"
                                 component="div"
@@ -853,19 +886,24 @@ const StepThree = () => {
                               Country/Region of birth
                             </label>
                             <div className="input-error-wrapper">
-                              <Select
-                                options={Country.getAllCountries()}
-                                getOptionLabel={(options) => {
-                                  return options["name"];
-                                }}
-                                getOptionValue={(options) => {
-                                  return options["name"];
-                                }}
-                                value={spouseCountryOfBirth}
-                                onChange={(item) => {
-                                  setSpouseCountryOfBirth(item);
-                                }}
-                              />
+                              <Field
+                                required
+                                component="select"
+                                id="spouseCountryOfBirth"
+                                name="spouseCountryOfBirth"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option value="" disabled selected>
+                                  Select Country*
+                                </option>
+                                {Country?.getAllCountries()?.map(
+                                  (country, index) => (
+                                    <option key={index} value={country?.name}>
+                                      {country?.name}
+                                    </option>
+                                  )
+                                )}
+                              </Field>
                               <ErrorMessage
                                 name="spouseCountryOfBirth"
                                 component="div"
@@ -988,13 +1026,29 @@ const StepThree = () => {
                           Present Occupation*
                         </label>
                         <div className="input-error-wrapper">
-                          {/* <Field
-                            type="text"
+                          <Field
+                            required
+                            component="select"
                             id="presentOccupation"
                             name="presentOccupation"
-                            className="form-input"
-                          /> */}
-                          <Select options={options} />
+                            className="p-2 border rounded select-input"
+                          >
+                            <option value="" disabled>
+                              Select Occupation*
+                            </option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Architect">Architect</option>
+                            <option value="Scientist">Scientist</option>
+                            <option value="Technician">Technician</option>
+                            <option value="Consultant">Consultant</option>
+                            <option value="Civil engineer">
+                              Civil engineer
+                            </option>
+                            <option value="Veterinarian">Veterinarian</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Musician">Musician</option>
+                            <option value="Other">Other</option>
+                          </Field>
                           <ErrorMessage
                             name="presentOccupation"
                             component="div"
@@ -1002,6 +1056,26 @@ const StepThree = () => {
                           />
                         </div>
                       </div>
+
+                      {values.presentOccupation === "Other" ? (
+                        <div className="form-input-main-div">
+                          <label
+                            className="form-label"
+                            htmlFor="employerName"
+                          ></label>
+                          <div className="input-error-wrapper">
+                            <Field
+                              type="text"
+                              id="otherOccupation"
+                              placeholder="Enter occupation"
+                              name="otherOccupation"
+                              className="form-input"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
 
                       <div className="form-input-main-div">
                         <label className="form-label" htmlFor="employerName">

@@ -231,7 +231,7 @@ export const step3ValidationSchema = {
       'State/Province/District is required'
     ),
 
-    fatherDetails: Yup.string(),
+    fatherFullName: Yup.string().required('Father Full Name is required'),
     fatherNationality: Yup.string().required(
       'Father Nationality/Region is required'
     ),
@@ -311,7 +311,7 @@ export const step3ValidationSchema = {
     permanentAddressHouseNoStreet: '',
     permanentAddressVillageTownCity: '',
     permanentAddressStateProvinceDistrict: '',
-    fatherDetails: '',
+    fatherFullName: '',
     fatherNationality: '',
     fatherPreviousNationality: '',
     fatherPlaceOfBirth: '',
