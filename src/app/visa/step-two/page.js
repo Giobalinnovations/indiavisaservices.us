@@ -160,7 +160,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose gender*
+                            Select Gender*
                           </option>
                           <option value="male">Male</option>
                           <option value="female">Female</option>
@@ -220,7 +220,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose country*
+                            Select Country*
                           </option>
                           {Country?.getAllCountries()?.map((country, index) => (
                             <option key={index} value={country?.name}>
@@ -265,7 +265,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose religion*
+                            Select Religion*
                           </option>
                           <option value="hindu">Hindu</option>
                           <option value="muslim">Muslim</option>
@@ -325,7 +325,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose educational qualification*
+                            Select Educational Qualification*
                           </option>
                           <option value="graduate">graduate</option>
                           <option value="under graduate">under graduate</option>
@@ -379,7 +379,7 @@ const StepTwo = () => {
                           component="select"
                         >
                           <option value="" disabled selected>
-                            choose*
+                            Select*
                           </option>
                           <option value="birth">By Birth</option>
                           <option value="naturalization">
@@ -408,7 +408,7 @@ const StepTwo = () => {
                             className="p-2 border rounded select-input"
                           >
                             <option value="" disabled selected>
-                              choose*
+                              Select*
                             </option>
                             {Country?.getAllCountries()?.map(
                               (country, index) => (
@@ -598,7 +598,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose*
+                            Select*
                           </option>
                           {Country?.getAllCountries()?.map((country, index) => (
                             <option key={index} value={country?.name}>
@@ -706,7 +706,7 @@ const StepTwo = () => {
                           className="p-2 border rounded select-input"
                         >
                           <option value="" disabled selected>
-                            choose*
+                            Select*
                           </option>
                           <option value="option1">option1</option>
                           <option value="option2">option2</option>

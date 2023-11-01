@@ -82,7 +82,7 @@ const StepOne = () => {
                     className="p-2 border rounded select-input"
                   >
                     <option disabled selected value="">
-                      select*
+                      Select*
                     </option>
                     <option value="Bussiness">
                       Normal Processing(4 to 7 Business Days)
@@ -107,7 +107,7 @@ const StepOne = () => {
                     className="p-2 border rounded select-input"
                   >
                     <option disabled selected value="">
-                      country
+                      Country
                     </option>
                     {Country?.getAllCountries()?.map((country, index) => (
                       <option key={index} value={country?.name}>
@@ -132,7 +132,7 @@ const StepOne = () => {
                     className="p-2 border rounded select-input"
                   >
                     <option disabled selected value="">
-                      select*
+                      Select*
                     </option>
                     <option value="ordinary passport">ORDINARY PASSPORT</option>
                   </Field>
@@ -152,7 +152,7 @@ const StepOne = () => {
                     className="p-2 border rounded select-input"
                   >
                     <option disabled selected value="">
-                      select
+                      Select
                     </option>
                     <option value="arrone">arrone</option>
                     <option value="arrtwo">arrtwo</option>
@@ -216,7 +216,7 @@ const StepOne = () => {
               </div>
               <div className="form-input-main-div">
                 <label className="form-label">Contact no*</label>
-                <div className="input-error-wrapper">
+                <div className="input-error-wrapper form-input">
                   {/* <PhoneInput
                     placeholder="Enter phone number"
                     value={contactValue}
