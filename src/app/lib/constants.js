@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 export const step1ValidationSchema = {
   yupSchema: Yup.object().shape({
+    applicationType: Yup.string().required('Application type is required'),
     nationalityRegion: Yup.string().required('Select Country is required'),
     passportType: Yup.string().required('Passport Type is required'),
     portOfArrival: Yup.string().required('portOfArrival is required'),
@@ -9,26 +10,88 @@ export const step1ValidationSchema = {
     emailId: Yup.string()
       .email('Invalid email format')
       .required('Email ID is required'),
+    reEmailId: Yup.string().oneOf([Yup.ref('emailId')], 'Email do not match'),
+    contactNo: Yup.string()
+      .required('Phone number is required')
+      .matches(
+        /^\+[1-9]\d{1,14}$/,
+        'Invalid phone number format. Please use the international format.'
+      ),
+
     visaService: Yup.string().required('Visa Service is required'),
+    eTouristVisa: Yup.string().when('visaService', {
+      is: 'eTOURIST VISA',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eTouristVisa30Days: Yup.string().when('eTouristVisa', {
+      is: 'visa30days',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eTouristVisa1Year: Yup.string().when('eTouristVisa', {
+      is: 'visa1Year',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eTouristVisa5Years: Yup.string().when('eTouristVisa', {
+      is: 'visa5Years',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eMedicalVisa: Yup.string().when('visaService', {
+      is: 'eMEDICAL VISA',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eBusinessVisa: Yup.string().when('visaService', {
+      is: 'eBUSINESS VISA',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eConferenceVisa: Yup.string().when('visaService', {
+      is: 'eCONFERENCE VISA',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+    eMedicalAttendantVisa: Yup.string().when('visaService', {
+      is: 'eMEDICAL ATTENDANT VISA',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.default(''),
+    }),
+
     expectedDateOfArrival: Yup.date().required(
       'Expected Date of Arrival is required'
     ),
     captcha: Yup.string().required('Please enter the above text'),
-    instructionsAccepted: Yup.boolean().oneOf(
-      [true],
-      'You must agree to the instructions'
-    ),
+    // instructionsAccepted: Yup.boolean().oneOf(
+    //   [true],
+    //   'You must agree to the instructions'
+    // ),
   }),
   initialValues: {
+    applicationType: '',
     nationalityRegion: '',
     passportType: '',
     portOfArrival: '',
     dateOfBirth: '',
     emailId: '',
+    reEmailId: '',
+    contactNo: '',
+
     visaService: '',
+    eTouristVisa: '',
+    eTouristVisa30Days: '',
+    eTouristVisa1Year: '',
+    eTouristVisa5Years: '',
+    eMedicalVisa: '',
+    eBusinessVisa: '',
+    eConferenceVisa: '',
+    eMedicalAttendantVisa: '',
+
     expectedDateOfArrival: '',
     captcha: '',
-    instructionsAccepted: false,
+    // instructionsAccepted: false,
   },
 };
 
