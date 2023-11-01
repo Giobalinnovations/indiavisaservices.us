@@ -91,34 +91,10 @@ const StepSix = ({ step }) => {
 
         <div className="py-8">
           <div className="">
-            <h2 className="text-3xl font-semibold">Photo Specification</h2>
+            <h2 className="text-3xl font-semibold">Upload Documents</h2>
             <hr className="h-1 text-primary bg-primary w-36" />
           </div>
-          <div className="py-4 space-y-2">
-            <p>
-              1. Format :- <b>JPEG</b>
-            </p>
-            <p>
-              2. Size :- <b>Minimum 10 KB, Maximum 1 MB</b>
-            </p>
-            <p>
-              3. The minimum dimensions are{' '}
-              <b>350 pixels (width) x 350 pixels (height)</b>.
-            </p>
-            <p>
-              4. Recent front facing photograph <b>with white background</b> to
-              be uploaded by the applicant.
-            </p>
-            <p>
-              5. <b>Do not crop the passport image</b> to use it as your recent
-              photograph. <b>Upload clear front photograph</b> with preferable
-              white/light coloured background.
-            </p>
-            <p className="font-medium text-primary">
-              6. The application is liable to be rejected if the uploaded
-              photograph are not clear and as per specification.
-            </p>
-          </div>
+         
         </div>
 
         <div className="space-x-4 text-center">
