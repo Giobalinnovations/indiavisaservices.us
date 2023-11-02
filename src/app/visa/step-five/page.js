@@ -1,35 +1,35 @@
-'use client';
-import { useFormContext } from '@/app/context/formContext';
-import { step5ValidationSchema, step5data } from '@/app/lib/constants';
-import BannerPage from '@/components/common/BannerPage';
-import axiosInstance from '@/services/api';
-import apiEndpoint from '@/services/apiEndpoint';
-import { useMutation } from '@tanstack/react-query';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { ImSpinner2 } from 'react-icons/im';
-import { toast } from 'react-toastify';
+"use client";
+import { useFormContext } from "@/app/context/formContext";
+import { step5ValidationSchema, step5data } from "@/app/lib/constants";
+import BannerPage from "@/components/common/BannerPage";
+import axiosInstance from "@/services/api";
+import apiEndpoint from "@/services/apiEndpoint";
+import { useMutation } from "@tanstack/react-query";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { ImSpinner2 } from "react-icons/im";
+import { toast } from "react-toastify";
 
 const StepFive = ({ step }) => {
   const { state } = useFormContext();
 
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: formData => {
+    mutationFn: (formData) => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP5, formData);
     },
     onSuccess: () => {
-      toast.success('step 5 completed successfully', {
+      toast.success("step 5 completed successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
-      router.push('/visa/step-six');
+      router.push("/visa/step-six");
     },
     onError: () => {
       toast.error(
-        'An error occurred while processing your request. Please try again later.',
+        "An error occurred while processing your request. Please try again later.",
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 500,
@@ -54,7 +54,7 @@ const StepFive = ({ step }) => {
           resetForm();
         }}
       >
-        {({ isValid, handleSubmit }) => (
+        {({ values, isValid, handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="container py-16">
             <div>
               <div className="">
@@ -65,23 +65,43 @@ const StepFive = ({ step }) => {
               </div>
               <div>
                 {step5data.map((e, i) => (
-                  <div key={i} className="grid grid-cols-12 gap-8 py-8">
-                    <div className="col-span-8">
-                      <label>
-                        <span className="pr-2">{e.id}.</span>
-                        {e.question}
-                      </label>
-                    </div>
+                  <div key={i}>
+                    <div className="grid grid-cols-12 gap-8 py-8">
+                      <div className="col-span-8">
+                        <label>
+                          <span className="pr-2">{e.id}.</span>
+                          {e.question}
+                        </label>
+                      </div>
 
-                    <div className="flex col-span-4 space-x-4">
-                      <div className="px-2 space-x-2">
-                        <Field type="radio" name={`${e.name}`} value="Yes" />
-                        <label htmlFor={`question${e.name}Yes`}>Yes</label>
+                      <div className="flex col-span-4 space-x-4">
+                        <div className="px-2 space-x-2">
+                          <Field
+                            type="radio"
+                            id={`${e.name}`}
+                            name={`${e.name}`}
+                            value="yes"
+                          />
+                          <label htmlFor={`question${e.name}Yes`}>Yes</label>
+                        </div>
+                        <div className="px-2 space-x-2">
+                          <Field type="radio" name={`${e.name}`} value="no" />
+                          <label htmlFor={`${e.name}`}>No</label>
+                        </div>
                       </div>
-                      <div className="px-2 space-x-2">
-                        <Field type="radio" name={`${e.name}`} value="No" />
-                        <label htmlFor={`${e.name}`}>No</label>
-                      </div>
+                    </div>
+                    <div>
+                      <h2>input here:</h2>
+                      {console.log(values[e.name])}
+                      {values[e.name] === "yes" && (
+                        <>
+                          <Field
+                            type="text"
+                            placeholder="Enter Text"
+                            className="form-input"
+                          />
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -115,7 +135,7 @@ const StepFive = ({ step }) => {
                 type="submit"
                 disabled={!isValid}
                 className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                  !isValid ? 'cursor-not-allowed opacity-50' : ''
+                  !isValid ? "cursor-not-allowed opacity-50" : ""
                 }`}
               >
                 {mutation.isPending ? (
@@ -123,7 +143,7 @@ const StepFive = ({ step }) => {
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
                 ) : (
-                  'Continue'
+                  "Continue"
                 )}
               </button>
             </div>
