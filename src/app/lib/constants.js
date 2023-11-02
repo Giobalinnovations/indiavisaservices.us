@@ -385,100 +385,120 @@ export const step3ValidationSchema = {
 export const step4ValidationSchema = {
   yupSchema: Yup.object().shape({
     visaType: Yup.string().required('Type of Visa is required'),
-    visaType2: Yup.string().required('Type of Visa is required'),
+    visaService: Yup.string().required('Type of Visa service is required'),
+    contactNo: Yup.string()
+      .required('Phone number is required')
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number'),
+
     placesToVisit: Yup.string().required('Places to be visited is required'),
     placesToVisit2: Yup.string().required('Places to be visited is required'),
-    roomBooked: Yup.string().required('Please select an option'),
-
-    detailsOfFriendRelative: Yup.string().required(
-      'Details of Friend/Relative is required'
-    ),
-    address: Yup.string().required('Address is required'),
-    state: Yup.string().required('Please select an option'),
-    district: Yup.string().required('Please select an option'),
     durationOfVisa: Yup.string().required('Duration of visa is required'),
     numberOfEntries: Yup.string(),
-    purposecontactNo: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
-      .required('Phone is required'),
     portOfArrival: Yup.string().required(
       'Port of Arrival in India is required'
     ),
     expectedPortOfExit: Yup.string().required('Please select an option'),
 
-    visitedIndiaBefore: Yup.string().required('Please select an option'),
-    visaAddress: Yup.string().required('Address is required'),
-    citiesVisitedInIndia: Yup.string().required(
-      'Cities previously visited in India is required'
+    visitedIndiaBefore: Yup.string(),
+    visitedIndiaBeforeVisaAddress: Yup.string().when('visitedIndiaBefore', {
+      is: 'yes',
+      then: schema => schema.required('Address is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    visitedIndiaBeforeCitiesVisitedInIndia: Yup.string().when(
+      'visitedIndiaBefore',
+      {
+        is: 'yes',
+        then: schema =>
+          schema.required('Cities previously visited in India is required'),
+        otherwise: schema => schema.notRequired(),
+      }
     ),
-    lastIndianVisaNo: Yup.string().required(
-      'Last Indian Visa no./Currently valid Indian Visa no. is required'
+    visitedIndiaBeforeLastIndianVisaNo: Yup.string().when(
+      'visitedIndiaBefore',
+      {
+        is: 'yes',
+        then: schema =>
+          schema.required(
+            'Last Indian Visa no./Currently valid Indian Visa no. is required'
+          ),
+        otherwise: schema => schema.notRequired(),
+      }
     ),
-    typeOfVisa: Yup.string().required('Type of Visa is required'),
-    placeOfIssue: Yup.string().required('Place of Issue is required'),
-    dateOfIssue: Yup.date().required('Date Of issue is required'),
+    visitedIndiaBeforeTypeOfVisa: Yup.string().when('visitedIndiaBefore', {
+      is: 'yes',
+      then: schema => schema.required('Type of Visa is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    visitedIndiaBeforePlaceOfIssue: Yup.string().when('visitedIndiaBefore', {
+      is: 'yes',
+      then: schema => schema.required('Place of Issue is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    visitedIndiaBeforeDateOfIssue: Yup.date().when('visitedIndiaBefore', {
+      is: 'yes',
+      then: schema => schema.required('Date Of issue is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
 
     permissionRefused: Yup.string(),
-    refusalDetails: Yup.string().when(
-      'permissionRefused',
-      permissionRefused => {
-        if (permissionRefused === 'no') {
-          return Yup.string();
-        } else {
-          return Yup.string().required('field required');
-        }
-      }
-    ),
-    visitedSAARCCountries: Yup.string(),
-    saarcCountryName: Yup.string().when(
-      'visitedSAARCCountries',
-      (visitedSAARCCountries, schema) => {
-        if (visitedSAARCCountries === 'no') {
-          return schema;
-        } else {
-          return schema.required('Please enter the name of the SAARC country');
-        }
-      }
-    ),
-    selectYear: Yup.string().when(
-      'visitedSAARCCountries',
-      (visitedSAARCCountries, schema) => {
-        if (visitedSAARCCountries === 'no') {
-          return schema;
-        } else {
-          return schema.required('Please select a year');
-        }
-      }
-    ),
+    refusalDetails: Yup.string().when('permissionRefused', {
+      is: 'yes',
+      then: schema => schema.required('refusalDetails is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
 
-    numberOfVisits: Yup.string().when(
-      'visitedSAARCCountries',
-      (visitedSAARCCountries, schema) => {
-        if (visitedSAARCCountries === 'no') {
-          return schema;
-        } else {
-          return schema.required('Please enter a valid number');
-        }
-      }
+    detailsOfFriendRelativeName: Yup.string().required(
+      'Details of Friend/Relative is required'
     ),
-
-    countriesVisited: Yup.string(),
-    friendRelativeDetails: Yup.string().required(
-      'Details of the Friend/Relative is required'
+    detailsOfFriendRelativeAddress: Yup.string().required(
+      'Address is required'
     ),
-    friendRelativeAddress: Yup.string().required('Address is required'),
-    friendRelativeState: Yup.string().required('State is required'),
-    friendRelativeDistrict: Yup.string().required('District is required'),
-    friendRelativePhone: Yup.string()
+    detailsOfFriendRelativePhoneNo: Yup.string()
       .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
-    referenceNameInFrance: Yup.string().required(
+    detailsOfFriendRelativeWebsite: Yup.string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        'Enter correct url!'
+      )
+      .required('Please enter website'),
+
+    detailsOfFriendRelativeBusiness: Yup.string().required(
+      'nature of business required'
+    ),
+
+    countryVisitedInLast10Years: Yup.array(),
+
+    visitedSAARCCountries: Yup.string(),
+    visitedSAARCCountriesLists: Yup.array().when('visitedSAARCCountries', {
+      is: 'yes',
+      then: schema =>
+        schema.min(1, 'Pick at least 1').of(
+          Yup.object().shape({
+            saarcCountryName: Yup.string().required(),
+            selectYear: Yup.string().required(),
+            numberOfVisits: Yup.string().required(),
+          })
+        ),
+      otherwise: schema => schema.notRequired(),
+    }),
+
+    referenceNameInIndia: Yup.string().required(
+      'Details of the Friend/Relative is required'
+    ),
+    referenceAddress: Yup.string().required('Address is required'),
+
+    referencePhone: Yup.string()
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
+      .required('Phone is required'),
+    referenceNameInHomeCountry: Yup.string().required(
       'Reference Name in France is required'
     ),
-    referenceAddressInFrance: Yup.string().required(
+    referenceAddressInHomeCountry: Yup.string().required(
       'Address in France is required'
     ),
-    referenceFrancePhone: Yup.string()
+    referencePhoneInHomeCountry: Yup.string()
       .matches(
         /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
         'Phone number must be a valid 10-digit number'
@@ -487,45 +507,47 @@ export const step4ValidationSchema = {
   }),
   initialValues: {
     visaType: '',
-    visaType2: '',
+    visaService: '',
+    contactNo: '',
     placesToVisit: '',
     placesToVisit2: '',
-    roomBooked: 'no',
-
-    detailsOfFriendRelative: '',
-    address: '',
-    state: '',
-    district: '',
     durationOfVisa: '',
     numberOfEntries: '',
     portOfArrival: '',
     expectedPortOfExit: '',
 
     visitedIndiaBefore: 'no',
-    visaAddress: '',
-    citiesVisitedInIndia: '',
-    lastIndianVisaNo: '',
-    typeOfVisa: '',
-    placeOfIssue: '',
-    dateOfIssue: '',
+    visitedIndiaBeforeVisaAddress: '',
+    visitedIndiaBeforeCitiesVisitedInIndia: '',
+    visitedIndiaBeforeLastIndianVisaNo: '',
+    visitedIndiaBeforeTypeOfVisa: '',
+    visitedIndiaBeforePlaceOfIssue: '',
+    visitedIndiaBeforeDateOfIssue: '',
     permissionRefused: 'no',
     refusalDetails: '',
 
+    detailsOfFriendRelativeName: '',
+    detailsOfFriendRelativeAddress: '',
+    detailsOfFriendRelativePhoneNo: '',
+    detailsOfFriendRelativeWebsite: '',
+    detailsOfFriendRelativeBusiness: '',
+    countryVisitedInLast10Years: [],
+
     visitedSAARCCountries: 'no',
-    saarcCountryName: '',
-    selectYear: '',
-    numberOfVisits: '',
+    visitedSAARCCountriesLists: [
+      {
+        saarcCountryName: '',
+        selectYear: '',
+        numberOfVisits: '',
+      },
+    ],
 
-    countriesVisited: '',
-
-    friendRelativeDetails: '',
-    friendRelativeAddress: '',
-    friendRelativeState: '',
-    friendRelativeDistrict: '',
-    friendRelativePhone: '',
-    referenceNameInFrance: '',
-    referenceAddressInFrance: '',
-    referenceFrancePhone: '',
+    referenceNameInIndia: '',
+    referenceAddress: '',
+    referencePhone: '',
+    referenceNameInHomeCountry: '',
+    referenceAddressInHomeCountry: '',
+    referencePhoneInHomeCountry: '',
   },
 };
 
