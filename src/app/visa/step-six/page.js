@@ -1,10 +1,10 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import React, { useState } from "react";
-import { LuImagePlus } from "react-icons/lu";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { LuImagePlus } from 'react-icons/lu';
 
-import Select from "react-select";
+import Select from 'react-select';
 
 const StepSix = () => {
   const [images, setImages] = useState();
@@ -26,7 +26,7 @@ const StepSix = () => {
                   id="images"
                   name="images"
                   className="sr-only"
-                  onChange={(e) => setImages(e.target.files[0])}
+                  onChange={e => setImages(e.target.files[0])}
                 />
                 <label
                   htmlFor="images"
@@ -54,7 +54,7 @@ const StepSix = () => {
         {/* upload file end  */}
         <div className="space-x-4 ">
           <Link href="#">
-            {" "}
+            {' '}
             <button className="formbtn">Upload a Picture</button>
           </Link>
           <Link href="#">
@@ -64,7 +64,7 @@ const StepSix = () => {
 
         <div className="py-4 space-y-2 font-medium">
           <p>
-            Temporary Application ID:{" "}
+            Temporary Application ID:{' '}
             <span className="text-primary">987123654856123</span>
           </p>
           <p>
@@ -72,19 +72,19 @@ const StepSix = () => {
             below.
           </p>
           <p>
-            In case you are{" "}
+            In case you are{' '}
             <span className="font-bold">
               not ready for photo upload you can do it later,
             </span>
             Please note down the
           </p>
           <p>
-            Temporary Application ID, close the window and{" "}
+            Temporary Application ID, close the window and{' '}
             <span className="font-bold">Press Save and Exit</span>.
           </p>
           <p>
-            You can complete your application later using{" "}
-            <span className="font-bold">Complete Partially Filled Dorm</span>{" "}
+            You can complete your application later using{' '}
+            <span className="font-bold">Complete Partially Filled Dorm</span>{' '}
             option on home page.
           </p>
         </div>
@@ -97,10 +97,10 @@ const StepSix = () => {
 
           <div className="space-y-2 divide-y-2 divide-primary">
             {/* passport upload start  */}
-            <div className="grid grid-cols-3 text-sm py-8">
+            <div className="grid grid-cols-3 py-8 text-sm">
               <div>
                 <b>Document Description</b>
-                <h2 className="font-medium py-4">Copy of Passport</h2>
+                <h2 className="py-4 font-medium">Copy of Passport</h2>
               </div>
               <div>
                 <b>Upload File</b>
@@ -117,10 +117,10 @@ const StepSix = () => {
             {/* passport upload end  */}
             <div className="py-8">
               {/* business card upload start  */}
-              <div className="grid grid-cols-3 text-sm py-8">
+              <div className="grid grid-cols-3 py-8 text-sm">
                 <div>
                   <b>Document Description</b>
-                  <h2 className="font-medium py-4">Copy of Business card</h2>
+                  <h2 className="py-4 font-medium">Copy of Business card</h2>
                 </div>
                 <div>
                   <b>Upload File</b>
@@ -134,26 +134,30 @@ const StepSix = () => {
                   </div>
                 </div>
                 <div>
-                  <button className="formbtn mt-8">+ Add more</button>
+                  <button className="mt-8 formbtn">+ Add more</button>
                 </div>
               </div>
               {/* uploaded files in business  */}
-              <div class="overflow-x-auto border-x border-t text-sm">
-                <table class="table-auto w-full">
-                  <thead class="border-b">
-                    <tr class="bg-gray-100">
-                      <th class="text-left p-4 font-medium">File</th>
-                      <th class="text-left p-4 font-medium">Name Of Company</th>
-                      <th class="text-left p-4 font-medium">Company Address</th>
-                      <th class="text-left p-4 font-medium">
+              <div className="overflow-x-auto text-sm border-t border-x">
+                <table className="w-full table-auto">
+                  <thead className="border-b">
+                    <tr className="bg-gray-100">
+                      <th className="p-4 font-medium text-left">File</th>
+                      <th className="p-4 font-medium text-left">
+                        Name Of Company
+                      </th>
+                      <th className="p-4 font-medium text-left">
+                        Company Address
+                      </th>
+                      <th className="p-4 font-medium text-left">
                         Company Phone Number
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b hover:bg-gray-50">
-                      <td class="p-4">dummy.png</td>
-                      <td class="p-4">
+                    <tr className="border-b hover:bg-gray-50">
+                      <td className="p-4">dummy.png</td>
+                      <td className="p-4">
                         <input
                           type="text"
                           id="companyName"
@@ -162,7 +166,7 @@ const StepSix = () => {
                           className="p-2 border rounded select-input"
                         />
                       </td>
-                      <td class="p-4">
+                      <td className="p-4">
                         <input
                           type="text"
                           id="companyAddress"
@@ -171,7 +175,7 @@ const StepSix = () => {
                           className="p-2 border rounded select-input"
                         />
                       </td>
-                      <td class="p-4">
+                      <td className="p-4">
                         <input
                           type="text"
                           id="companyNumber"
@@ -189,10 +193,10 @@ const StepSix = () => {
             {/* e-medical section  start */}
             <div className="py-8">
               {/* business card upload start  */}
-              <div className="grid grid-cols-3 text-sm py-8">
+              <div className="grid grid-cols-3 py-8 text-sm">
                 <div>
                   <b>Document Description</b>
-                  <h2 className="font-medium py-4">Copy of E-medical card</h2>
+                  <h2 className="py-4 font-medium">Copy of E-medical card</h2>
                 </div>
                 <div>
                   <b>Upload File</b>
@@ -206,30 +210,30 @@ const StepSix = () => {
                   </div>
                 </div>
                 <div>
-                  <button className="formbtn mt-8">+ Add more</button>
+                  <button className="mt-8 formbtn">+ Add more</button>
                 </div>
               </div>
               {/* uploaded files in business  */}
-              <div class="overflow-x-auto border-x border-t text-sm">
-                <table class="table-auto w-full">
-                  <thead class="border-b">
-                    <tr class="bg-gray-100">
-                      <th class="text-left p-4 font-medium">File</th>
-                      <th class="text-left p-4 font-medium">
+              <div className="overflow-x-auto text-sm border-t border-x">
+                <table className="w-full table-auto">
+                  <thead className="border-b">
+                    <tr className="bg-gray-100">
+                      <th className="p-4 font-medium text-left">File</th>
+                      <th className="p-4 font-medium text-left">
                         Name Of Hospital
                       </th>
-                      <th class="text-left p-4 font-medium">
+                      <th className="p-4 font-medium text-left">
                         Hospital Address
                       </th>
-                      <th class="text-left p-4 font-medium">
+                      <th className="p-4 font-medium text-left">
                         Hospital Phone Number
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b hover:bg-gray-50">
-                      <td class="p-4">dummy.png</td>
-                      <td class="p-4">
+                    <tr className="border-b hover:bg-gray-50">
+                      <td className="p-4">dummy.png</td>
+                      <td className="p-4">
                         <input
                           type="text"
                           id="HospitalName"
@@ -238,7 +242,7 @@ const StepSix = () => {
                           className="p-2 border rounded select-input"
                         />
                       </td>
-                      <td class="p-4">
+                      <td className="p-4">
                         <input
                           type="text"
                           id="hospitalAddress"
@@ -247,7 +251,7 @@ const StepSix = () => {
                           className="p-2 border rounded select-input"
                         />
                       </td>
-                      <td class="p-4">
+                      <td className="p-4">
                         <input
                           type="text"
                           id="hospitalNumber"
@@ -271,7 +275,7 @@ const StepSix = () => {
             <button className="formbtnBorder">Back</button>
           </Link>
           <Link href="#">
-            {" "}
+            {' '}
             <button className="formbtn">Next</button>
           </Link>
         </div>
