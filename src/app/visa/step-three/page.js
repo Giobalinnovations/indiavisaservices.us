@@ -50,10 +50,9 @@ const StepThree = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(values);
           mutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
-          // resetForm();
+          resetForm();
         }}
       >
         {({ values, isValid, handleSubmit }) => (
