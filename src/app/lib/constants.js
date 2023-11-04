@@ -588,6 +588,28 @@ export const step5ValidationSchema = {
   },
 };
 
+export const step6ValidationSchema = {
+  yupSchema: Yup.object().shape({
+    images: Yup.array()
+      .of(
+        Yup.mixed()
+          .test(
+            'fileFormat',
+            'Only PNG and JPG files are allowed',
+            value => value && ['image/png', 'image/jpeg'].includes(value.type)
+          )
+          .required('Please select a file')
+      )
+      .min(1, 'At least one image is required'),
+  }),
+  initialValues: {
+    profilePicture: '',
+    passport: [],
+    businessCard: [],
+    eMedicalCard: [],
+  },
+};
+
 // step 5 data
 export const step5data = [
   {
