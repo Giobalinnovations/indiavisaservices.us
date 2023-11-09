@@ -1,22 +1,11 @@
 'use client';
 import ApplySection from '@/components/homepage/ApplySection';
 import Banner from '@/components/homepage/Banner';
-import axiosInstance from '@/services/api';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import React from 'react';
 
 const Home = () => {
-  const { isPending, error, data } = useQuery({
-    queryKey: ['repoData'],
-    queryFn: () => axiosInstance.get('query').then(res => res.json()),
-  });
-
-  // if (isPending) return 'Loading...';
-
-  // if (error) return 'An error has occurred: ' + error.message;
-  // console.log(data);
-
   return (
     <div>
       <Banner />

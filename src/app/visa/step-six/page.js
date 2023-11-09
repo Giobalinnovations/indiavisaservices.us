@@ -17,7 +17,6 @@ import FileUploadMain from '@/components/FileUploadMain';
 import SingleFileUpload from '@/components/SingleFileUpload';
 
 const StepSix = () => {
-  const [images, setImages] = useState();
   const { state } = useFormContext();
 
   const router = useRouter();
@@ -31,7 +30,7 @@ const StepSix = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
-      router.push('/visa/step-six');
+      // router.push('/visa/step-six');
     },
     onError: () => {
       toast.error(
@@ -92,6 +91,7 @@ const StepSix = () => {
                 <div className="flex items-center w-full max-w-lg gap-8 p-2 mb-5 overflow-hidden border rounded-md h-36">
                   <div className="bg-gray-200 rounded-lg">
                     <SingleFileUpload
+                      id="uploadPicture"
                       name="profilePicture"
                       setFieldValue={setFieldValue}
                       value={values.profilePicture}
@@ -102,18 +102,26 @@ const StepSix = () => {
                     />
 
                     <label
-                      htmlFor="images"
+                      htmlFor="uploadPicture"
                       className="relative flex items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
                     >
                       <LuImagePlus size={40} className="text-gray-500" />
                     </label>
                   </div>
-                  {images ? (
+                  {values.profilePicture ? (
                     <div className="flex items-center w-full">
-                      <img
-                        src={URL.createObjectURL(images)}
-                        className="object-top w-full h-32 rounded"
-                      />
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        <div>
+                          <div className="relative overflow-hidden">
+                            <Image
+                              src={URL.createObjectURL(values.profilePicture)}
+                              alt={`Uploaded Image`}
+                              width={100}
+                              height={100}
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <div className="text-sm">
@@ -219,7 +227,7 @@ const StepSix = () => {
                     </div>
                   </div>
                   {/* uploaded files in business  */}
-                  <div className="overflow-x-auto text-sm border-t border-x">
+                  {/* <div className="overflow-x-auto text-sm border-t border-x">
                     <table className="w-full table-auto">
                       <thead className="border-b">
                         <tr className="bg-gray-100">
@@ -268,7 +276,7 @@ const StepSix = () => {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                  </div> */}
                 </div>
                 {/* business card upload end  */}
                 {/* e-medical section  start */}
@@ -299,7 +307,7 @@ const StepSix = () => {
                     </div>
                   </div>
                   {/* uploaded files in business  */}
-                  <div className="overflow-x-auto text-sm border-t border-x">
+                  {/* <div className="overflow-x-auto text-sm border-t border-x">
                     <table className="w-full table-auto">
                       <thead className="border-b">
                         <tr className="bg-gray-100">
@@ -348,7 +356,7 @@ const StepSix = () => {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                  </div> */}
                 </div>
                 {/* business card upload end  */}
                 {/* e-medical section end  */}
@@ -356,7 +364,7 @@ const StepSix = () => {
             </div>
 
             <div className="space-x-4 text-center">
-              <Link href="#">
+              <Link href="/visa/step-five/update">
                 <button className="formbtnBorder">Back</button>
               </Link>
               <button

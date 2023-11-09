@@ -5,12 +5,15 @@ const FormContext = createContext();
 
 const initialState = {
   formId: null,
+  allStepsData: null,
 };
 
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'SET_FORM_ID':
       return { ...state, formId: action.payload };
+    case 'SET_ALL_STEPS_DATA':
+      return { ...state, allStepsData: action.payload };
     default:
       return state;
   }

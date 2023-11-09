@@ -16,16 +16,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <FormProvider>
-        <ReactQueryProvider>
-          <body className={inter.className}>
+      <body className={inter.className}>
+        <FormProvider>
+          <ReactQueryProvider>
             <Header />
             {children}
             <Footer />
             <ToastContainer />
-          </body>
-        </ReactQueryProvider>
-      </FormProvider>
+          </ReactQueryProvider>
+        </FormProvider>
+      </body>
     </html>
   );
 }

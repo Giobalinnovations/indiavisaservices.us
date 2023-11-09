@@ -13,32 +13,16 @@ import { ImSpinner2 } from 'react-icons/im';
 import { toast } from 'react-toastify';
 import { Country } from 'country-state-city';
 import MyDependentField from '@/components/MyFields';
+import usePost from '@/hooks/usePost';
 
 const StepThree = () => {
   const { state } = useFormContext();
-  const router = useRouter();
-  const mutation = useMutation({
-    mutationFn: formData => {
-      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP3, formData);
-    },
-    onSuccess: () => {
-      toast.success('step 3 completed successfully', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 500,
-      });
-      router.push('/visa/step-four');
-    },
-    onError: () => {
-      toast.error(
-        'An error occurred while processing your request. Please try again later.',
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 500,
-        }
-      );
-    },
-    enabled: !!state.formId,
-  });
+
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP3,
+    3,
+    '/visa/step-four'
+  );
 
   return (
     <>
@@ -50,7 +34,7 @@ const StepThree = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          mutation.mutate({ ...values, formId: state.formId });
+          postMutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
@@ -1298,12 +1282,12 @@ const StepThree = () => {
             <p className="font-semibold">Mandatory Fields*</p>
 
             <div className="space-x-4 text-center">
-              {mutation.isError ? (
+              {postMutation.isError ? (
                 <div className="text-red-500">
-                  An error occurred: {mutation.error.message}
+                  An error occurred: {postMutation.error.message}
                 </div>
               ) : null}
-              <Link href="/visa/step-two">
+              <Link href="/visa/step-two/update">
                 <button className="formbtnBorder" type="button">
                   Back
                 </button>
@@ -1315,7 +1299,7 @@ const StepThree = () => {
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? (
+                {postMutation.isPending ? (
                   <>
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>

@@ -14,10 +14,9 @@ import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
 
 import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
+import usePost from '@/hooks/usePost';
 
 const StepFour = () => {
-  // year start
-  // Get the current year and create an array of years from some starting year (e.g., 1900) to the current year.
   const currentYear = new Date().getFullYear();
   const startYear = 1900;
   const years = Array.from(
@@ -26,35 +25,12 @@ const StepFour = () => {
   );
   // year end
   const { state } = useFormContext();
-  const router = useRouter();
-  const mutation = useMutation({
-    mutationFn: formData => {
-      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP4, formData);
-    },
-    onSuccess: () => {
-      toast.success('step 4 completed successfully', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 500,
-      });
-      router.push('/visa/step-five');
-    },
-    onError: () => {
-      toast.error(
-        'An error occurred while processing your request. Please try again later.',
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 500,
-        }
-      );
-    },
-    enabled: !!state.formId,
-  });
 
-  const otherCountryOptions = [
-    { value: 'India', label: 'India' },
-    { value: 'Pakistan', label: 'Pakistan' },
-    { value: 'Usa', label: 'USA' },
-  ];
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP4,
+    4,
+    '/visa/step-five'
+  );
 
   return (
     <>
@@ -66,7 +42,7 @@ const StepFour = () => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          mutation.mutate({
+          postMutation.mutate({
             ...values,
             formId: state.formId,
             countryVisitedInLast10Years: values.countryVisitedInLast10Years.map(
@@ -1059,12 +1035,12 @@ const StepFour = () => {
             <p className="font-semibold">Mandatory Fields*</p>
 
             <div className="space-x-4 text-center">
-              {mutation.isError ? (
+              {postMutation.isError ? (
                 <div className="text-red-500">
-                  An error occurred: {mutation.error.message}
+                  An error occurred: {postMutation.error.message}
                 </div>
               ) : null}
-              <Link href="/visa/step-three">
+              <Link href="/visa/step-three/update">
                 <button className="formbtnBorder">Back</button>
               </Link>
               <button
@@ -1074,7 +1050,7 @@ const StepFour = () => {
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? (
+                {postMutation.isPending ? (
                   <>
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>

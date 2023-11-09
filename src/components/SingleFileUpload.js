@@ -7,6 +7,7 @@ const SingleFileUpload = ({
   value,
   accept,
   errorMessage,
+  id,
 }) => {
   const handleFileChange = event => {
     const file = event.target.files[0];
@@ -20,18 +21,10 @@ const SingleFileUpload = ({
         accept={accept}
         name={name}
         onChange={handleFileChange}
+        className="hidden"
+        id={id}
       />
       {errorMessage}
-      {value && (
-        <div className="relative overflow-hidden">
-          <Image
-            src={URL.createObjectURL(value)}
-            alt="Uploaded Image"
-            width={100}
-            height={100}
-          />
-        </div>
-      )}
     </div>
   );
 };
