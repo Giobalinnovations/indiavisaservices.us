@@ -1,52 +1,31 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
-import React from 'react';
-import { Country } from 'country-state-city';
+import React, { useEffect } from 'react';
+
 import { toast } from 'react-toastify';
-import { useMutation } from '@tanstack/react-query';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import { useRouter } from 'next/navigation';
 import { step1ValidationSchema } from '@/app/lib/constants';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
-import { ImSpinner2 } from 'react-icons/im';
 import { useState } from 'react';
 import 'react-phone-number-input/style.css';
+import FormikForm from './FormikForm';
+import usePost from '@/hooks/usePost';
+import useUpdate from '@/hooks/useUpdate';
+import { ImSpinner2 } from 'react-icons/im';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import PhoneInput from 'react-phone-number-input';
+import { Country } from 'country-state-city';
 
 const StepOne = () => {
-  const { dispatch } = useFormContext();
-  const router = useRouter();
-  const mutation = useMutation({
-    mutationFn: formData => {
-      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP1, formData);
-    },
-    onSuccess: data => {
-      console.log('data', data);
-      dispatch({
-        type: 'SET_FORM_ID',
-        payload: data.data.data._id,
-      });
-
-      toast.success('step 1 completed successfully', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 500,
-      });
-
-      router.push('/visa/step-two');
-    },
-    onError: error => {
-      console.log(error);
-      toast.error(
-        'An error occurred while processing your request. Please try again later.',
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 500,
-        }
-      );
-    },
-  });
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP1,
+    1,
+    '/visa/step-two',
+    true
+  );
 
   return (
     <>
@@ -63,7 +42,7 @@ const StepOne = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            mutation.mutate(values);
+            postMutation.mutate(values);
             setSubmitting(false);
             resetForm();
           }}
@@ -928,19 +907,20 @@ const StepOne = () => {
                 as per guidelines issued by Govt of India from time to time.
               </p> */}
               <div className="text-center">
-                {mutation.isError ? (
+                {postMutation.isError ? (
                   <div className="text-red-500">
-                    An error occurred: {mutation.error.message}
+                    An error occurred: {postMutation.error.message}
                   </div>
                 ) : null}
+
                 <button
                   type="submit"
-                  // disabled={!isValid}
+                  disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                     !isValid ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                 >
-                  {mutation.isPending ? (
+                  {postMutation.isPending ? (
                     <>
                       <ImSpinner2 className="animate-spin" /> Loading
                     </>

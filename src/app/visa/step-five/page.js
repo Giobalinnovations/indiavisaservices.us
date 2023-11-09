@@ -2,6 +2,7 @@
 import { useFormContext } from '@/app/context/formContext';
 import { step5ValidationSchema, step5data } from '@/app/lib/constants';
 import BannerPage from '@/components/common/BannerPage';
+import usePost from '@/hooks/usePost';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useMutation } from '@tanstack/react-query';
@@ -15,29 +16,7 @@ import { toast } from 'react-toastify';
 const StepFive = ({ step }) => {
   const { state } = useFormContext();
 
-  const router = useRouter();
-  const mutation = useMutation({
-    mutationFn: formData => {
-      return axiosInstance.post(apiEndpoint.VISA_ADD_STEP5, formData);
-    },
-    onSuccess: () => {
-      toast.success('step 5 completed successfully', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 500,
-      });
-      router.push('/visa/step-six');
-    },
-    onError: () => {
-      toast.error(
-        'An error occurred while processing your request. Please try again later.',
-        {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 500,
-        }
-      );
-    },
-    enabled: !!state.formId,
-  });
+  const postMutation = usePost(apiEndpoint.VISA_ADD_STEP5, 5, '/visa/step-six');
 
   return (
     <>
@@ -49,7 +28,7 @@ const StepFive = ({ step }) => {
         validateOnChange={true}
         validateOnMount={true}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          mutation.mutate({ ...values, formId: state.formId });
+          postMutation.mutate({ ...values, formId: state.formId });
           setSubmitting(false);
           resetForm();
         }}
@@ -130,7 +109,7 @@ const StepFive = ({ step }) => {
             </div>
 
             <div className="space-x-4 text-center">
-              <Link href="/visa/step-four">
+              <Link href="/visa/step-four/update">
                 <button className="formbtnBorder" type="button">
                   Back
                 </button>
@@ -142,7 +121,7 @@ const StepFive = ({ step }) => {
                   !isValid ? 'cursor-not-allowed opacity-50' : ''
                 }`}
               >
-                {mutation.isPending ? (
+                {postMutation.isPending ? (
                   <>
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
