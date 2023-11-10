@@ -1,32 +1,32 @@
-import React from 'react';
-import Button from '../common/Button';
-import Link from 'next/link';
-import ApplySectionUrgentHelp from './ApplySectionUrgentHelp';
-import ApplySectionContentSection from './ApplySectionContentSection';
-import { GiBottomRight3DArrow } from 'react-icons/gi';
-import UnderlineTextCenter from '../common/UnderlineTextCenter';
+import React from "react";
+import Button from "../common/Button";
+import Link from "next/link";
+import ApplySectionUrgentHelp from "./ApplySectionUrgentHelp";
+import ApplySectionContentSection from "./ApplySectionContentSection";
+import { GiBottomRight3DArrow } from "react-icons/gi";
+import UnderlineTextCenter from "../common/UnderlineTextCenter";
 
 const ApplySection = () => {
   const stepData = [
     {
       id: 1,
-      title: 'Apply Online',
-      imgSrc: '/images/common/apply-online.jpg',
-      pera: 'Secure online application saves time and check status online.',
+      title: "Apply Online",
+      imgSrc: "/images/common/apply-online.jpg",
+      pera: "Secure online application saves time and check status online.",
       arrow: true,
     },
     {
       id: 2,
-      title: 'Submit documents',
-      imgSrc: '/images/common/doc.jpg',
-      pera: 'Submit your application with required documents at Indian Misison/Visa collection centre.',
+      title: "Submit documents",
+      imgSrc: "/images/common/doc.jpg",
+      pera: "Submit your application with required documents at Indian Misison/Visa collection centre.",
       arrow: true,
     },
     {
       id: 3,
-      title: 'Receive passport, visa',
-      imgSrc: '/images/common/visaImg.jpg',
-      pera: 'Collect your passport/visa from Indian Mission/Collection Centre or by post.',
+      title: "Receive passport, visa",
+      imgSrc: "/images/common/visaImg.jpg",
+      pera: "Collect your passport/visa from Indian Mission/Collection Centre or by post.",
       arrow: false,
     },
   ];
@@ -75,7 +75,7 @@ const ApplySection = () => {
                   className="w-16 h-8 pl-2 -mb-8 text-primary"
                 />
               ) : (
-                ''
+                ""
               )}
             </div>
           ))}
