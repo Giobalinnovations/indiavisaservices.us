@@ -44,6 +44,7 @@ export default function StepOneUpdate() {
 
   if (getAllStepsDataIsSuccess) {
     const { __v, _id, ...cleanedStep1Data } = getAllStepsData?.data?.step1Data;
+    console.log(cleanedStep1Data);
     return (
       <>
         <BannerPage heading="E-VISA APPLICATION FORM" />
