@@ -39,7 +39,8 @@ export default function Step5Update() {
   );
 
   if (getAllStepsDataIsSuccess) {
-    const { __v, _id, ...cleanedStep55Data } = getAllStepsData?.data?.step5Data;
+    const { __v, _id, ...cleanedStep55Data } =
+      getAllStepsData?.data?.step5Data ?? {};
 
     return (
       <>
