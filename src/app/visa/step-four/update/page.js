@@ -1096,4 +1096,12 @@ export default function StepFourUpdate() {
       </>
     );
   }
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center flex-1 h-full pt-20">
+        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
+        loading
+      </div>
+    );
+  }
 }
