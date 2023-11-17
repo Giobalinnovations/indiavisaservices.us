@@ -588,9 +588,56 @@ export const step5ValidationSchema = {
   },
 };
 
+export const step6ValidationSchemaMedicalBusiness = {
+  yupSchema: Yup.object().shape({
+    eMedicalCard: Yup.array()
+      .min(1, 'Pick at least 1')
+      .of(
+        Yup.object().shape({
+          eMedicalCardPhoto: Yup.mixed()
+            .test(
+              'fileFormat',
+              'Only PNG and JPG files are allowed',
+              value => value && ['image/png', 'image/jpeg'].includes(value.type)
+            )
+            .required('Please select a file'),
+          hospitalName: Yup.string().required(),
+          hospitalAddress: Yup.string().required(),
+          hospitalNumber: Yup.string()
+            .matches(
+              /^[0-9]{10}$/,
+              'Phone number must be a valid 10-digit number'
+            )
+            .required('Phone is required'),
+        })
+      ),
+    eBusinessVisa: Yup.array()
+      .min(1, 'Pick at least 1')
+      .of(
+        Yup.object().shape({
+          eBusinessVisaPhoto: Yup.mixed()
+            .test(
+              'fileFormat',
+              'Only PNG and JPG files are allowed',
+              value => value && ['image/png', 'image/jpeg'].includes(value.type)
+            )
+            .required('Please select a file'),
+          companyName: Yup.string().required(),
+          companyAddress: Yup.string().required(),
+          companyNumber: Yup.string()
+            .matches(
+              /^[0-9]{10}$/,
+              'Phone number must be a valid 10-digit number'
+            )
+            .required('Phone is required'),
+        })
+      ),
+  }),
+};
+
 export const step6ValidationSchema = {
   yupSchema: Yup.object().shape({
-    images: Yup.array()
+    passport: Yup.array()
       .of(
         Yup.mixed()
           .test(
@@ -601,12 +648,35 @@ export const step6ValidationSchema = {
           .required('Please select a file')
       )
       .min(1, 'At least one image is required'),
+    profilePicture: Yup.mixed()
+      .test(
+        'fileFormat',
+        'Only PNG and JPG files are allowed',
+        value => value && ['image/png', 'image/jpeg'].includes(value.type)
+      )
+      .required('Please select a file'),
   }),
   initialValues: {
+    eMedicalCard: [
+      {
+        eMedicalCardPhoto: '',
+        hospitalName: '',
+        hospitalAddress: '',
+        hospitalNumber: '',
+      },
+    ],
+    eBusinessVisa: [
+      {
+        eBusinessVisaPhoto: '',
+        companyName: '',
+        companyAddress: '',
+        companyNumber: '',
+      },
+    ],
     profilePicture: '',
     passport: [],
-    businessCard: [],
-    eMedicalCard: [],
+    // businessCard: [],
+    // eMedicalCard: [],
   },
 };
 

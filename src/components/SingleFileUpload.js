@@ -21,7 +21,7 @@ const SingleFileUpload = ({
         accept={accept}
         name={name}
         onChange={handleFileChange}
-        className="hidden"
+        // className="hidden"
         id={id}
       />
       {errorMessage}
