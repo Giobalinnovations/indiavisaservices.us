@@ -1,32 +1,32 @@
-'use client';
-import FileUpload from '@/components/FileUpload';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { LuImagePlus } from 'react-icons/lu';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useFormContext } from '@/app/context/formContext';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@tanstack/react-query';
-import axiosInstance from '@/services/api';
-import apiEndpoint from '@/services/apiEndpoint';
-import { step6ValidationSchema } from '@/app/lib/constants';
-import { ImSpinner2 } from 'react-icons/im';
-import Image from 'next/image';
-import FileUploadMain from '@/components/FileUploadMain';
-import SingleFileUpload from '@/components/SingleFileUpload';
+"use client";
+import FileUpload from "@/components/FileUpload";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import React, { useState } from "react";
+import { LuImagePlus } from "react-icons/lu";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useFormContext } from "@/app/context/formContext";
+import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "@/services/api";
+import apiEndpoint from "@/services/apiEndpoint";
+import { step6ValidationSchema } from "@/app/lib/constants";
+import { ImSpinner2 } from "react-icons/im";
+import Image from "next/image";
+import FileUploadMain from "@/components/FileUploadMain";
+import SingleFileUpload from "@/components/SingleFileUpload";
 
 const StepSix = () => {
   const { state } = useFormContext();
 
   const router = useRouter();
   const mutation = useMutation({
-    mutationFn: formData => {
+    mutationFn: (formData) => {
       return axiosInstance.post(apiEndpoint.VISA_ADD_STEP6, formData);
     },
-    onSuccess: data => {
+    onSuccess: (data) => {
       console.log(data);
-      toast.success('step 5 completed successfully', {
+      toast.success("step 5 completed successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
@@ -34,7 +34,7 @@ const StepSix = () => {
     },
     onError: () => {
       toast.error(
-        'An error occurred while processing your request. Please try again later.',
+        "An error occurred while processing your request. Please try again later.",
         {
           position: toast.POSITION.BOTTOM_RIGHT,
           autoClose: 500,
@@ -56,23 +56,23 @@ const StepSix = () => {
 
           // Append the profilePicture as a single file
           if (values.profilePicture instanceof File) {
-            formData.append('profilePicture', values.profilePicture);
+            formData.append("profilePicture", values.profilePicture);
           }
 
           // Append passport, businessCard, and eMedicalCard files as arrays
           for (const file of values.passport) {
-            formData.append('passport', file);
+            formData.append("passport", file);
           }
 
           for (const file of values.businessCard) {
-            formData.append('businessCard', file);
+            formData.append("businessCard", file);
           }
 
           for (const file of values.eMedicalCard) {
-            formData.append('eMedicalCard', file);
+            formData.append("eMedicalCard", file);
           }
 
-          formData.append('formId', state.formId);
+          formData.append("formId", state.formId);
 
           mutation.mutate(formData);
           setSubmitting(false);
@@ -135,7 +135,7 @@ const StepSix = () => {
             {/* upload file end  */}
             <div className="space-x-4 ">
               <Link href="#">
-                {' '}
+                {" "}
                 <button className="formbtn">Upload a Picture</button>
               </Link>
               <Link href="#">
@@ -145,7 +145,7 @@ const StepSix = () => {
 
             <div className="py-4 space-y-2 font-medium">
               <p>
-                Temporary Application ID:{' '}
+                Temporary Application ID:{" "}
                 <span className="text-primary">987123654856123</span>
               </p>
               <p>
@@ -153,21 +153,21 @@ const StepSix = () => {
                 below.
               </p>
               <p>
-                In case you are{' '}
+                In case you are{" "}
                 <span className="font-bold">
                   not ready for photo upload you can do it later,
                 </span>
                 Please note down the
               </p>
               <p>
-                Temporary Application ID, close the window and{' '}
+                Temporary Application ID, close the window and{" "}
                 <span className="font-bold">Press Save and Exit</span>.
               </p>
               <p>
-                You can complete your application later using{' '}
+                You can complete your application later using{" "}
                 <span className="font-bold">
                   Complete Partially Filled Dorm
-                </span>{' '}
+                </span>{" "}
                 option on home page.
               </p>
             </div>
@@ -371,7 +371,7 @@ const StepSix = () => {
                 type="submit"
                 disabled={!isValid}
                 className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                  !isValid ? 'cursor-not-allowed opacity-50' : ''
+                  !isValid ? "cursor-not-allowed opacity-50" : ""
                 }`}
               >
                 {mutation.isPending ? (
@@ -379,7 +379,7 @@ const StepSix = () => {
                     <ImSpinner2 className="animate-spin" /> Loading
                   </>
                 ) : (
-                  'Next'
+                  "Next"
                 )}
               </button>
             </div>
