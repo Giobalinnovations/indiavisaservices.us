@@ -40,7 +40,8 @@ export default function Step3Update() {
   );
 
   if (getAllStepsDataIsSuccess) {
-    const { __v, _id, ...cleanedStep3Data } = getAllStepsData?.data?.step3Data;
+    const { __v, _id, ...cleanedStep3Data } =
+      getAllStepsData?.data?.step3Data ?? {};
 
     return (
       <>

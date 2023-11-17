@@ -42,7 +42,8 @@ export default function StepTwoUpdate() {
   );
 
   if (getAllStepsDataIsSuccess) {
-    const { __v, _id, ...cleanedStep2Data } = getAllStepsData?.data?.step2Data;
+    const { __v, _id, ...cleanedStep2Data } =
+      getAllStepsData?.data?.step2Data ?? {};
 
     return (
       <>

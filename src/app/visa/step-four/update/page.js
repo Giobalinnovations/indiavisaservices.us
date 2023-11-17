@@ -47,7 +47,8 @@ export default function StepFourUpdate() {
   );
 
   if (getAllStepsDataIsSuccess) {
-    const { __v, _id, ...cleanedStep4Data } = getAllStepsData?.data?.step4Data;
+    const { __v, _id, ...cleanedStep4Data } =
+      getAllStepsData?.data?.step4Data ?? {};
     console.log(cleanedStep4Data);
     return (
       <>
