@@ -34,10 +34,11 @@ const StepSix = () => {
   const postMutation = usePost(apiEndpoint.VISA_ADD_STEP6, 6, '/visa/step-six');
 
   if (getAllStepsDataIsSuccess) {
-    console.log(getAllStepsData.data.step1Data);
+    // console.log(getAllStepsData?.data?.step1Data);
   }
   if (postMutation.error) {
-    console.log(error.message);
+    console.log(error?.message);
+    console.log(error);
   }
   return (
     <>
@@ -68,12 +69,10 @@ const StepSix = () => {
             hospitalNumber: eMedi.hospitalNumber,
           }));
 
-          // Append the profilePicture as a single file
           if (values.profilePicture instanceof File) {
             formData.append('profilePicture', values.profilePicture);
           }
 
-          // Append passport, businessCard, and eMedicalCard files as arrays
           for (const file of values.passport) {
             formData.append('passport', file);
           }
@@ -95,21 +94,14 @@ const StepSix = () => {
             'eMedicalCardContent',
             JSON.stringify(eMedicalCardContent)
           );
-          // console.log(businessCardContent);
-          // console.log(eMedicalCardContent);
 
-          postMutation.mutate({
-            formData,
-            businessCardContent,
-            eMedicalCardContent,
-          });
+          postMutation.mutate(formData);
           setSubmitting(false);
-          // resetForm();
+          resetForm();
         }}
       >
         {({ values, isValid, handleSubmit, setFieldValue }) => (
           <Form onSubmit={handleSubmit} className="container py-16">
-            {console.log(values)}
             {/* upload file start  */}
             <div className="mb-6 space-y-8">
               <div className="">
@@ -221,7 +213,7 @@ const StepSix = () => {
 
                 {/* e business visa */}
                 {getAllStepsDataIsSuccess &&
-                getAllStepsData?.data?.step1Data.visaService !==
+                getAllStepsData?.data?.step1Data.visaService ===
                   'eBUSINESS VISA' ? (
                   <FieldArray name="eBusinessVisa">
                     {({ insert, remove, push }) => (
@@ -365,28 +357,26 @@ const StepSix = () => {
 
                 {/* business card upload end  */}
                 {/* e-medical section  start */}
-                {/* {getAllStepsDataIsSuccess &&
-                getAllStepsData?.data?.step1Data.visaService !==
+                {getAllStepsDataIsSuccess &&
+                getAllStepsData?.data?.step1Data.visaService ===
                   'eMEDICAL VISA' ? (
-
-                ) : null} */}
-                <FieldArray name="eMedicalCard">
-                  {({ insert, remove, push }) => (
-                    <div>
-                      {values.eMedicalCard.length > 0 &&
-                        values.eMedicalCard.map((visited, index) => (
-                          <div className="py-8" key={index}>
-                            {/* business card upload start  */}
-                            <div className="grid grid-cols-3 py-8 text-sm">
-                              <div>
-                                <b>Document Description</b>
-                                <h2 className="py-4 font-medium">
-                                  Copy of E-medical card
-                                </h2>
-                              </div>
-                              <div>
-                                <b>Upload File</b>
-                                {/* <FileUploadMain
+                  <FieldArray name="eMedicalCard">
+                    {({ insert, remove, push }) => (
+                      <div>
+                        {values.eMedicalCard.length > 0 &&
+                          values.eMedicalCard.map((visited, index) => (
+                            <div className="py-8" key={index}>
+                              {/* business card upload start  */}
+                              <div className="grid grid-cols-3 py-8 text-sm">
+                                <div>
+                                  <b>Document Description</b>
+                                  <h2 className="py-4 font-medium">
+                                    Copy of E-medical card
+                                  </h2>
+                                </div>
+                                <div>
+                                  <b>Upload File</b>
+                                  {/* <FileUploadMain
                                     name="eMedicalCard"
                                     setFieldValue={setFieldValue}
                                     values={values}
@@ -399,114 +389,115 @@ const StepSix = () => {
                                     accept="image/png, image/jpeg"
                                     multiple="multiple"
                                   /> */}
-                                <SingleFileUpload
-                                  id={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                  name={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                  setFieldValue={setFieldValue}
-                                  // value={values.profilePicture}
-                                  value={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                  errorMessage={
-                                    <ErrorMessage
-                                      name={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                      component="div"
-                                    />
-                                  }
-                                  accept="image/png, image/jpeg"
-                                />
+                                  <SingleFileUpload
+                                    id={`eMedicalCard.${index}.eMedicalCardPhoto`}
+                                    name={`eMedicalCard.${index}.eMedicalCardPhoto`}
+                                    setFieldValue={setFieldValue}
+                                    // value={values.profilePicture}
+                                    value={`eMedicalCard.${index}.eMedicalCardPhoto`}
+                                    errorMessage={
+                                      <ErrorMessage
+                                        name={`eMedicalCard.${index}.eMedicalCardPhoto`}
+                                        component="div"
+                                      />
+                                    }
+                                    accept="image/png, image/jpeg"
+                                  />
+                                </div>
                               </div>
+                              {/* uploaded files in business  */}
+                              <div className="overflow-x-auto text-sm border-t border-x">
+                                <table className="w-full table-auto">
+                                  <thead className="border-b">
+                                    <tr className="bg-gray-100">
+                                      <th className="p-4 font-medium text-left">
+                                        Name Of Hospital
+                                      </th>
+                                      <th className="p-4 font-medium text-left">
+                                        Hospital Address
+                                      </th>
+                                      <th className="p-4 font-medium text-left">
+                                        Hospital Phone Number
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr className="border-b hover:bg-gray-50">
+                                      <td className="p-4">
+                                        <div className="input-error-wrapper">
+                                          <Field
+                                            className="form-input"
+                                            name={`eMedicalCard.${index}.hospitalName`}
+                                            placeholder="visits"
+                                          />
+                                          <ErrorMessage
+                                            name={`eMedicalCard.${index}.hospitalName`}
+                                            component="div"
+                                            className="text-red-600"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td className="p-4">
+                                        <div className="input-error-wrapper">
+                                          <Field
+                                            className="form-input"
+                                            name={`eMedicalCard.${index}.hospitalAddress`}
+                                            placeholder="visits"
+                                          />
+                                          <ErrorMessage
+                                            name={`eMedicalCard.${index}.hospitalAddress`}
+                                            component="div"
+                                            className="text-red-600"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td className="p-4">
+                                        <div className="input-error-wrapper">
+                                          <Field
+                                            className="form-input"
+                                            name={`eMedicalCard.${index}.hospitalNumber`}
+                                            placeholder="visits"
+                                          />
+                                          <ErrorMessage
+                                            name={`eMedicalCard.${index}.hospitalNumber`}
+                                            component="div"
+                                            className="text-red-600"
+                                          />
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              {values.eMedicalCard.length > 1 ? (
+                                <button
+                                  type="button"
+                                  className="formbtn"
+                                  onClick={() => remove(index)}
+                                >
+                                  Remove
+                                </button>
+                              ) : null}
                             </div>
-                            {/* uploaded files in business  */}
-                            <div className="overflow-x-auto text-sm border-t border-x">
-                              <table className="w-full table-auto">
-                                <thead className="border-b">
-                                  <tr className="bg-gray-100">
-                                    <th className="p-4 font-medium text-left">
-                                      Name Of Hospital
-                                    </th>
-                                    <th className="p-4 font-medium text-left">
-                                      Hospital Address
-                                    </th>
-                                    <th className="p-4 font-medium text-left">
-                                      Hospital Phone Number
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr className="border-b hover:bg-gray-50">
-                                    <td className="p-4">
-                                      <div className="input-error-wrapper">
-                                        <Field
-                                          className="form-input"
-                                          name={`eMedicalCard.${index}.hospitalName`}
-                                          placeholder="visits"
-                                        />
-                                        <ErrorMessage
-                                          name={`eMedicalCard.${index}.hospitalName`}
-                                          component="div"
-                                          className="text-red-600"
-                                        />
-                                      </div>
-                                    </td>
-                                    <td className="p-4">
-                                      <div className="input-error-wrapper">
-                                        <Field
-                                          className="form-input"
-                                          name={`eMedicalCard.${index}.hospitalAddress`}
-                                          placeholder="visits"
-                                        />
-                                        <ErrorMessage
-                                          name={`eMedicalCard.${index}.hospitalAddress`}
-                                          component="div"
-                                          className="text-red-600"
-                                        />
-                                      </div>
-                                    </td>
-                                    <td className="p-4">
-                                      <div className="input-error-wrapper">
-                                        <Field
-                                          className="form-input"
-                                          name={`eMedicalCard.${index}.hospitalNumber`}
-                                          placeholder="visits"
-                                        />
-                                        <ErrorMessage
-                                          name={`eMedicalCard.${index}.hospitalNumber`}
-                                          component="div"
-                                          className="text-red-600"
-                                        />
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            {values.eMedicalCard.length > 1 ? (
-                              <button
-                                type="button"
-                                className="formbtn"
-                                onClick={() => remove(index)}
-                              >
-                                Remove
-                              </button>
-                            ) : null}
-                          </div>
-                        ))}
-                      <button
-                        type="button"
-                        className="formbtn"
-                        onClick={() =>
-                          push({
-                            eMedicalCardPhoto: '',
-                            hospitalName: '',
-                            hospitalAddress: '',
-                            hospitalNumber: '',
-                          })
-                        }
-                      >
-                        Add
-                      </button>
-                    </div>
-                  )}
-                </FieldArray>
+                          ))}
+                        <button
+                          type="button"
+                          className="formbtn"
+                          onClick={() =>
+                            push({
+                              eMedicalCardPhoto: '',
+                              hospitalName: '',
+                              hospitalAddress: '',
+                              hospitalNumber: '',
+                            })
+                          }
+                        >
+                          Add
+                        </button>
+                      </div>
+                    )}
+                  </FieldArray>
+                ) : null}
 
                 {/* business card upload end  */}
                 {/* e-medical section end  */}
