@@ -22,42 +22,42 @@ export const step1ValidationSchema = {
     eTouristVisa: Yup.string().when('visaService', {
       is: 'eTOURIST VISA',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eTouristVisa30Days: Yup.string().when('eTouristVisa', {
       is: 'visa30days',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eTouristVisa1Year: Yup.string().when('eTouristVisa', {
       is: 'visa1Year',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eTouristVisa5Years: Yup.string().when('eTouristVisa', {
       is: 'visa5Years',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eMedicalVisa: Yup.string().when('visaService', {
       is: 'eMEDICAL VISA',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eBusinessVisa: Yup.string().when('visaService', {
       is: 'eBUSINESS VISA',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eConferenceVisa: Yup.string().when('visaService', {
       is: 'eCONFERENCE VISA',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     eMedicalAttendantVisa: Yup.string().when('visaService', {
       is: 'eMEDICAL ATTENDANT VISA',
       then: schema => schema.required('required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
 
     expectedDateOfArrival: Yup.date().required(
@@ -102,7 +102,7 @@ export const step2ValidationSchema = {
     previousName: Yup.string().when('changedName', {
       is: true,
       then: schema => schema.required('previous Name is required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     gender: Yup.string().required('Gender is required'),
     dateOfBirth: Yup.date().required('Date Of Birth is required'),
@@ -117,7 +117,7 @@ export const step2ValidationSchema = {
     religionOther: Yup.string().when('religion', {
       is: 'other',
       then: schema => schema.optional(),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     visibleIdentificationMarks: Yup.string().required(
       'Visible identification marks is required'
@@ -132,7 +132,7 @@ export const step2ValidationSchema = {
     previousNationality: Yup.string().when('acquireNationality', {
       is: 'naturalization',
       then: schema => schema.required('nationality required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
 
     haveLivedInApplyingCountry: Yup.string().optional(),
@@ -159,7 +159,7 @@ export const step2ValidationSchema = {
       is: 'yes',
       then: schema =>
         schema.required('Place of Issue (Passport/IC) is required'),
-      otherwise: schema => schema.default(''),
+      otherwise: schema => schema.notRequired(),
     }),
     passportNationalityMentionedTherein: Yup.string().when('anyOtherPassport', {
       is: 'yes',

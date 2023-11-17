@@ -719,60 +719,60 @@ export default function StepOneUpdate() {
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`TO SET UP INDUSTRIAL/BUSINESS VENTURE`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue">
+                                  <label htmlFor="eBusinessVisaValue">
                                     TO SET UP INDUSTRIAL/BUSINESS VENTURE
                                   </label>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue2"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue2"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`SALE/PURCHASE/TRADE`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue2">
+                                  <label htmlFor="eBusinessVisaValue2">
                                     SALE/PURCHASE/TRADE
                                   </label>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue3"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue3"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`ATTEND TECHNICAL/BUSINESS MEETINGS`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue3">
+                                  <label htmlFor="eBusinessVisaValue3">
                                     ATTEND TECHNICAL/BUSINESS MEETINGS
                                   </label>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue4"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue4"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`TO RECRUIT MANPOWER`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue4">
+                                  <label htmlFor="eBusinessVisaValue4">
                                     TO RECRUIT MANPOWER
                                   </label>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue5"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue5"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue5">
+                                  <label htmlFor="eBusinessVisaValue5">
                                     PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE
                                     FAIRS
                                   </label>
@@ -780,13 +780,13 @@ export default function StepOneUpdate() {
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue6"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue6"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING
                               PROJECT`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue6">
+                                  <label htmlFor="eBusinessVisaValue6">
                                     EXPERT/SPECIALIST IN CONNECTION WITH AN
                                     ONGOING PROJECT
                                   </label>
@@ -794,25 +794,25 @@ export default function StepOneUpdate() {
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue7"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue7"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`CONDUCTING TOURS`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue7">
+                                  <label htmlFor="eBusinessVisaValue7">
                                     CONDUCTING TOURS
                                   </label>
                                 </div>
                                 <div className="flex items-start space-x-2">
                                   <Field
                                     type="radio"
-                                    id="eBUSINESSVisaValue8"
-                                    name="eBUSINESSVisa"
+                                    id="eBusinessVisaValue8"
+                                    name="eBusinessVisa"
                                     className="mt-1"
                                     value={`TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR
                               ACADEMIC NETWORKS (GIAN)`}
                                   />
-                                  <label htmlFor="eBUSINESSVisaValue8">
+                                  <label htmlFor="eBusinessVisaValue8">
                                     TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE
                                     FOR ACADEMIC NETWORKS (GIAN)
                                   </label>
