@@ -4,17 +4,13 @@ import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import { step4ValidationSchema } from '@/app/lib/constants';
-import { useRouter } from 'next/navigation';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
-import { toast } from 'react-toastify';
 import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
-
 import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
-import usePost from '@/hooks/usePost';
 import useUpdate from '@/hooks/useUpdate';
 
 export default function StepFourUpdate() {
@@ -98,11 +94,6 @@ export default function StepFourUpdate() {
                                 name="visaType"
                                 className="form-input"
                               />
-                              {/* <ErrorMessage
-                            name="visaType"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
                             </div>
                           </div>
                           <div className="form-input-main-div">
@@ -200,11 +191,6 @@ export default function StepFourUpdate() {
                                 name="portOfArrival"
                                 className="form-input"
                               />
-                              {/* <ErrorMessage
-                            name="portOfArrival"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
                             </div>
                           </div>
                           <div className="form-input-main-div">
@@ -229,48 +215,8 @@ export default function StepFourUpdate() {
                                   Delhi Airport{' '}
                                 </option>
                               </Field>
-                              {/* <ErrorMessage
-                            name="expectedPortOfExit"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
                             </div>
                           </div>
-                          {/* <div className="flex items-start py-2 space-x-2">
-                        <label className="font-semibold">
-                          Have you booked any room in Hotel/Resort etc. through
-                          any Tour Operator?
-                        </label>
-                        <div className="flex space-x-4">
-                          <div className="px-2 space-x-2">
-                            <Field
-                              type="radio"
-                              id="yes"
-                              name="roomBooked"
-                              value="yes"
-                            />
-                            <label htmlFor="yes" className="font-semibold">
-                              Yes
-                            </label>
-                          </div>
-                          <div className="px-2 space-x-2">
-                            <Field
-                              type="radio"
-                              id="no"
-                              name="roomBooked"
-                              value="no"
-                            />
-                            <label htmlFor="no" className="font-semibold">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                        <ErrorMessage
-                          name="roomBooked"
-                          component="div"
-                          className="text-red-600"
-                        />
-                      </div> */}
                         </div>
                       </div>
                     </div>
@@ -631,31 +577,7 @@ export default function StepFourUpdate() {
                               />
                             </div>
                           </div>
-                          {/* <div className="form-input-main-div">
-                        <label className="form-label">State</label>
-                        <div className="input-error-wrapper">
-                          <Field
-                            name="state"
-                            component="select"
-                            className="p-2 border rounded select-input"
-                          >
-                            <option value="">Select </option>
-                            <option value="option1">Option1</option>
-                          </Field>
-                        </div>
-                      </div>
-                      <div className="form-input-main-div">
-                        <label className="form-label">District</label>
-                        <Field
-                          name="district"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select </option>
 
-                          <option value="option1">Option1 </option>
-                        </Field>
-                      </div> */}
                           <div className="form-input-main-div">
                             <label className="form-label">Website</label>
                             <div className="input-error-wrapper">
@@ -720,7 +642,10 @@ export default function StepFourUpdate() {
                             <label className="form-label">
                               Countries Visited in last 10 years
                             </label>
-
+                            {console.log(
+                              'visited',
+                              values.countryVisitedInLast10Years
+                            )}
                             <div className="input-error-wrapper">
                               <MultiReactSelectFormik
                                 options={Country?.getAllCountries()?.map(
@@ -729,7 +654,12 @@ export default function StepFourUpdate() {
                                     label: country?.name,
                                   })
                                 )}
-                                value={values.countryVisitedInLast10Years}
+                                value={values.countryVisitedInLast10Years.map(
+                                  country => ({
+                                    value: country,
+                                    label: country,
+                                  })
+                                )}
                                 onChange={setFieldValue}
                                 onBlur={setFieldTouched}
                                 error={errors.countryVisitedInLast10Years}
