@@ -101,23 +101,23 @@ const Footer = () => {
                             <span className="">Home</span>
                           </li>
                         </Link>
-                        <Link href="/about-us">
+                        <Link href="/">
                           <li className="mt-2 text-base text-white hover:text-primary">
                             <span className="">About Us</span>
                           </li>
                         </Link>
 
-                        <Link href="/contact-us#contact-form">
+                        <Link href="/visa/step-one">
                           <li className="mt-2 text-base text-white hover:text-primary">
                             <span className="">Apply VISA</span>
                           </li>
                         </Link>
-                        <Link href="/privacy-policy">
+                        <Link href="/">
                           <li className="mt-2 text-base text-white hover:text-primary">
                             <span className="">Ongoing Application</span>
                           </li>
                         </Link>
-                        <Link href="/terms-and-condition">
+                        <Link href="/">
                           <li className="mt-2 text-base text-white hover:text-primary">
                             <span className="">Contact Us</span>
                           </li>
@@ -133,22 +133,22 @@ const Footer = () => {
                     Apply For Indian VISA
                   </h2>
                   <ul className="">
-                    <Link href="/">
+                    <Link href="/visa/step-one">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className=""> Indian eVisa Online</span>
                       </li>
                     </Link>
-                    <Link href="/">
+                    <Link href="/visa/step-one">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className="">Indian Tourist eVisa</span>
                       </li>
                     </Link>
-                    <Link href="/">
+                    <Link href="/visa/step-one">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className="">Indian Medical eVisa</span>
                       </li>
                     </Link>
-                    <Link href="/">
+                    <Link href="/visa/step-one">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className=""> Indian Business eVisa</span>
                       </li>
@@ -162,17 +162,17 @@ const Footer = () => {
                     Support
                   </h2>
                   <ul className="">
-                    <Link href="/">
+                    <Link href="/terms-and-conditions">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className=""> Terms & Conditions</span>
                       </li>
                     </Link>
-                    <Link href="/">
+                    <Link href="/privacy-policy">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className="">Privacy Policy</span>
                       </li>
                     </Link>
-                    <Link href="/">
+                    <Link href="/cookie-policy">
                       <li className="mt-2 text-base text-white hover:text-primary">
                         <span className="">Cookies Policy</span>
                       </li>
