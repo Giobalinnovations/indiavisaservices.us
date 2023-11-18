@@ -11,19 +11,24 @@ const ApplySectionContentSection = () => {
           Welcome to India:-
         </h2>
         <p className="text-justify leading-relaxed tracking-wide">
-          India is a country that attracts millions of tourists every year and
-          is considered one of the most popular tourist destinations in the
-          world. These visitors are attracted to its natural beauty and cultural
-          heritage. It has many historic sites as well like the Taj Mahal,
-          Golden Temple, Red Fort, etc. With so much to offer, it’s no surprise
-          that tourism is one of the main sources of revenue for the country!
-          Tourism in India has been seen as a major tool to bring about
-          socio-economic development to the people of the country. India’s
-          tourism industry has grown steadily in recent years. Not only this,
-          India Tourism industry also provides employment opportunities to
-          several people from all parts of the world. There are ample numbers of
-          hotels, resorts, food joints and various other amenities available for
-          tourists arriving in India.
+          India Travel services is a unit of Ackrolix Innovations Pvt Ltd
+          India is a country that attracts millions of tourists and job seekers
+          every year and is considered one of the most popular tourist
+          destinations in the world. These visitors are attracted to its natural
+          beauty and cultural heritage. The country has many historic sites like
+          the Taj Mahal, Golden Temple, Red Fort, etc and a leading software
+          developmet hub where comapanies like Ackrolix Innovations Private
+          Limited are making waves. With so much to offer, it’s no surprise that
+          tourism is one of the main sources of revenue for the country! Tourism
+          in India has been seen as a major tool to bring about socio-economic
+          development to the people of the country. India’s tourism industry has
+          grown steadily in recent years. Not only this, India Tourism industry
+          also provides employment opportunities to several people from all
+          parts of the world. For exampel they can work with digital marketing
+          companies like Ackrolix Innovations while travelling around India and
+          making notes of its incredible beauty. Also, there are ample numbers
+          of hotels, resorts, food joints and various other amenities available
+          for tourists arriving in India.
         </p>
       </div>
       <div className="p-4">
@@ -83,18 +88,19 @@ const ApplySectionContentSection = () => {
           About India
         </h2>
         <p className="text-justify leading-relaxed tracking-wide">
-          India is a vast country with a lot to offer. Therefore, it comes as no
-          surprise that millions of people pay India a visit every year. The
-          country offers a variety of sights and sounds to enjoy, from the
-          vibrant cities to the peaceful countryside. With its diversity of
-          tourist attractions, India is also known for yoga and meditation. From
-          the snow-capped Himalayas to the tropical beaches of Goa, from the
-          wildlife of Assam to the largest tea field of Kerala, there is
-          something new in every corner of this country. Moreover, with major
-          cities such as Mumbai, Bangalore, Chandigarh, and Delhi being so well
-          connected by air, road, and rail networks from across the globe, it’s
-          easy to get around and explore some of the most iconic landmarks in
-          India.
+          India is a vast country with a lot to offer other than software
+          applications and digital marketing tips from companies like Ackrolix
+          Innovations Pvt Ltd. Therefore, it comes as no surprise that millions
+          of people pay India a visit every year. The country offers a variety
+          of sights and sounds to enjoy, from the vibrant cities to the peaceful
+          countryside. With its diversity of tourist attractions, India is also
+          known for yoga and meditation. From the snow-capped Himalayas to the
+          tropical beaches of Goa, from the wildlife of Assam to the largest tea
+          field of Kerala, there is something new happening in every corner of
+          this country. Moreover, with major cities such as Mumbai, Bangalore,
+          Chandigarh, and Delhi being so well connected by air, road, and rail
+          networks from across the globe, it’s easy to get around and explore
+          some of the most iconic landmarks in India.
         </p>
       </div>
     </div>
