@@ -15,12 +15,6 @@ import useUpdate from '@/hooks/useUpdate';
 
 export default function StepFourUpdate() {
   const { state } = useFormContext();
-  const currentYear = new Date().getFullYear();
-  const startYear = 1900;
-  const years = Array.from(
-    { length: currentYear - startYear + 1 },
-    (_, index) => startYear + index
-  );
   const {
     isPending,
     error,
@@ -42,11 +36,18 @@ export default function StepFourUpdate() {
     refetch
   );
 
+  const currentYear = new Date().getFullYear();
+  const startYear = 1900;
+  const years = Array.from(
+    { length: currentYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
+
   if (getAllStepsDataIsSuccess) {
     if (getAllStepsData.data.step4Data) {
       const { __v, _id, ...cleanedStep4Data } =
         getAllStepsData?.data?.step4Data;
-      console.log(cleanedStep4Data);
+
       return (
         <>
           <BannerPage heading="Applicant Detail Form" />
@@ -92,7 +93,8 @@ export default function StepFourUpdate() {
                               <Field
                                 type="text"
                                 name="visaType"
-                                className="form-input"
+                                className="opacity-50 form-input"
+                                disabled={true}
                               />
                             </div>
                           </div>
@@ -102,7 +104,8 @@ export default function StepFourUpdate() {
                               <Field
                                 type="text"
                                 name="visaService"
-                                className="form-input"
+                                className="opacity-50 form-input"
+                                disabled={true}
                               />
                               <ErrorMessage
                                 name="visaService"
@@ -170,7 +173,8 @@ export default function StepFourUpdate() {
                             <Field
                               type="text"
                               name="durationOfVisa"
-                              className="form-input"
+                              className="opacity-50 form-input"
+                              disabled={true}
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -178,7 +182,8 @@ export default function StepFourUpdate() {
                             <Field
                               type="text"
                               name="numberOfEntries"
-                              className="form-input"
+                              className="opacity-50 form-input"
+                              disabled={true}
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -189,7 +194,8 @@ export default function StepFourUpdate() {
                               <Field
                                 type="text"
                                 name="portOfArrival"
-                                className="form-input"
+                                className="opacity-50 form-input"
+                                disabled={true}
                               />
                             </div>
                           </div>

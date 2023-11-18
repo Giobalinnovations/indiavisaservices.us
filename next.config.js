@@ -2,8 +2,16 @@
 const nextConfig = {
   env: {
     //RazorPay keys
-    RAZORPAY_KEY: "rzp_test_MPk03m4RFBEKxh",
-    RAZORPAY_SECRET: "hmlyM2C6m5GwTy6iuozCBfBe",
+    RAZORPAY_KEY: 'rzp_test_MPk03m4RFBEKxh',
+    RAZORPAY_SECRET: 'hmlyM2C6m5GwTy6iuozCBfBe',
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'evisastorage.s3.ap-south-1.amazonaws.com',
+      },
+    ],
   },
 };
 

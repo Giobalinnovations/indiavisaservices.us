@@ -4,16 +4,13 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step3ValidationSchema } from '@/app/lib/constants';
-import { useRouter } from 'next/navigation';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
 import { ImSpinner2 } from 'react-icons/im';
-import { toast } from 'react-toastify';
 import { Country } from 'country-state-city';
 import MyDependentField from '@/components/MyFields';
-import usePost from '@/hooks/usePost';
 import useUpdate from '@/hooks/useUpdate';
 
 export default function Step3Update() {
@@ -239,7 +236,8 @@ export default function Step3Update() {
                                 type="text"
                                 id="emailAddress"
                                 name="emailAddress"
-                                className="form-input"
+                                className="opacity-50 form-input"
+                                disabled={true}
                               />
                               <ErrorMessage
                                 name="emailAddress"

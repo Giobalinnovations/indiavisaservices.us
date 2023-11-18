@@ -513,13 +513,13 @@ export const step4ValidationSchema = {
       .required('Phone is required'),
   }),
   initialValues: {
-    visaType: '',
+    visaType: 'evisa',
     visaService: '',
     contactNo: '',
     placesToVisit: '',
     placesToVisit2: '',
-    durationOfVisa: '',
-    numberOfEntries: '',
+    durationOfVisa: '1 year',
+    numberOfEntries: 'multiple',
     portOfArrival: '',
     expectedPortOfExit: '',
 
