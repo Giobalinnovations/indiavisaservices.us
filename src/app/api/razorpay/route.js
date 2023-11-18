@@ -1,8 +1,9 @@
 //razorpay.js
-import razorpay from "razorpay";
+import { NextResponse } from "next/server";
+import Razorpay from "razorpay";
 import shortid from "shortid";
 
-export default async function handler(req, res) {
+export async function POST(req, res) {
   const { taxAmt } = req.body;
   //console.log('taxAmt',taxAmt*100)
   if (req.method === "POST") {
@@ -26,14 +27,22 @@ export default async function handler(req, res) {
 
     try {
       const response = await razorpay.orders.create(options);
-      res.status(200).json({
-        id: response.id,
-        currency: response.currency,
-        amount: response.amount,
-      });
+      return NextResponse.json(
+        {
+          message: "message ok",
+          id: response.id,
+          currency: response.currency,
+          amount: response.amount,
+          data: {
+            id: response.id,
+            currency: response.currency,
+            amount: response.amount,
+          },
+        },
+        { status: 201 }
+      );
     } catch (err) {
-      //console.log(err);
-      res.status(400).json(err);
+      return NextResponse.json({ message: "message ok" }, { status: 400 });
     }
   } else {
     // Handle any other HTTP method
