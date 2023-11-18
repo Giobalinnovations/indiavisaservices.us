@@ -6,7 +6,7 @@ const page = () => {
             <div className=" mx-auto">
                 <h1 className="text-4xl lg:py-6 font-semibold mb-3">Privacy Policy</h1>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed">
-                    Welcome to Visas Avenue's Privacy Policy. We value your privacy and want to be transparent about how we collect, use, and share your information. This policy applies to our website, https://www.india-travelservices.com/, and all our products and services.                </p>
+                    Welcome to Visas Avenue&apos;s Privacy Policy. We value your privacy and want to be transparent about how we collect, use, and share your information. This policy applies to our website, https://www.india-travelservices.com/, and all our products and services.                </p>
 
             </div>
 

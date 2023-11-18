@@ -6,7 +6,7 @@ const page = () => {
             <div className=" mx-auto">
                 <h1 className="text-4xl lg:py-6 font-semibold mb-3">Terms and Condition</h1>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed">
-                    Welcome to India Travel Services! We're glad you're here. By using our website, you agree to follow our User Agreement and Privacy Policy. We may update our content without notice, so please check periodically. Your continued use of the site means you accept any changes.                                   </p>
+                    Welcome to India Travel Services! We&apos;re glad you&apos;re here. By using our website, you agree to follow our User Agreement and Privacy Policy. We may update our content without notice, so please check periodically. Your continued use of the site means you accept any changes.                                   </p>
 
             </div>
 
@@ -23,10 +23,10 @@ const page = () => {
                     Keep your login information confidential.
                 </p>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
-                Don't access our resources through unauthorised means.
+                Don&apos;t access our resources through unauthorised means.
                 </p>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
-                Don't disrupt or interfere with our resources.
+                Don&apos;t disrupt or interfere with our resources.
 
                 </p>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
@@ -49,7 +49,7 @@ const page = () => {
                     Limitation of Warranties and Liability
                 </h3>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
-                    We provide resources "as is" and "as available." We're not responsible for any damage resulting from the use of our resources. We limit our liability to the amount you paid for our products/services.
+                    We provide resources &quot;as is&quot; and &quot;as available.&quot; We&apos;re not responsible for any damage resulting from the use of our resources. We limit our liability to the amount you paid for our products/services.
 
                 </p>
             </div>
@@ -68,7 +68,7 @@ const page = () => {
                     Governing Law
                 </h3>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
-                    By accessing our website, you agree to follow our country's laws. Any legal action related to this User Agreement will be brought to the courts in the same city as India Travel Services Pvt Ltd's corporate office.
+                    By accessing our website, you agree to follow our country&apos;s laws. Any legal action related to this User Agreement will be brought to the courts in the same city as India Travel Services Pvt Ltd&apos;s corporate office.
                 </p>
             </div>
 
@@ -88,7 +88,7 @@ const page = () => {
                     Guarantee
                 </h3>
                 <p className="text-base my-2 text-justify font-medium leading-relaxed" >
-                    We don't provide any warranties or guarantees of any kind.
+                    We don&apos;t provide any warranties or guarantees of any kind.
                 </p>
             </div>
 
