@@ -1,13 +1,11 @@
 'use client';
-import FileUpload from '@/components/FileUpload';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { LuImagePlus } from 'react-icons/lu';
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import { useFormContext } from '@/app/context/formContext';
-import { useRouter } from 'next/navigation';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { step6ValidationSchema } from '@/app/lib/constants';
@@ -18,7 +16,7 @@ import SingleFileUpload from '@/components/SingleFileUpload';
 import usePost from '@/hooks/usePost';
 
 const StepSix = () => {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
   const {
     isPending,
     error,
@@ -31,15 +29,12 @@ const StepSix = () => {
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
-  const postMutation = usePost(apiEndpoint.VISA_ADD_STEP6, 6, '/visa/step-six');
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP6,
+    6,
+    '/visa/step-seven'
+  );
 
-  if (getAllStepsDataIsSuccess) {
-    // console.log(getAllStepsData?.data?.step1Data);
-  }
-  if (postMutation.error) {
-    console.log(error?.message);
-    console.log(error);
-  }
   return (
     <>
       <BannerPage heading="Upload Your Picture" />

@@ -1,45 +1,45 @@
-"use client";
-import MakePaymentComponent from "@/components/MakePaymentComponent";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
+'use client';
+import MakePaymentComponent from '@/components/MakePaymentComponent';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
 
-import React from "react";
+import React from 'react';
 
 const page = () => {
   return (
     <div>
       <BannerPage heading="E-VISA APPLICATION FORM" />
 
-      <div className="text-sm container py-12">
-        <h2 className="bg-secondary rounded-t text-white font-semibold text-lg text-center py-3">
+      <div className="container py-12 text-sm">
+        <h2 className="py-3 text-lg font-semibold text-center text-white rounded-t bg-secondary">
           Online VISA Fee Payment
         </h2>
-        <div className=" flex space-x-4 justify-center items-center">
-          <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <div className="flex items-center justify-center space-x-4 ">
+          <h2 className="py-1 text-lg italic font-semibold text-secondary">
             Applicant Name :-
           </h2>
-          <p className="text-justify font-bold leading-relaxed tracking-wide text-primary">
+          <p className="font-bold leading-relaxed tracking-wide text-justify text-primary">
             BHARDWAJ PANKAJ
           </p>
         </div>
-        <div className=" flex space-x-4 justify-center items-center">
-          <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <div className="flex items-center justify-center space-x-4 ">
+          <h2 className="py-1 text-lg italic font-semibold text-secondary">
             Application Id :-
           </h2>
-          <p className="text-justify font-bold leading-relaxed tracking-wide text-primary">
+          <p className="font-bold leading-relaxed tracking-wide text-justify text-primary">
             41ALB11314908CH
           </p>
         </div>
-        <div className=" flex space-x-4 justify-center items-center">
-          <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <div className="flex items-center justify-center space-x-4 ">
+          <h2 className="py-1 text-lg italic font-semibold text-secondary">
             Application Fees :-
           </h2>
-          <p className="text-justify font-bold leading-relaxed tracking-wide text-primary">
+          <p className="font-bold leading-relaxed tracking-wide text-justify text-primary">
             89.00 USD / 7120 INR
           </p>
         </div>
         <div className="p-4">
-          <p className="text-center leading-relaxed tracking-wide">
+          <p className="leading-relaxed tracking-wide text-center">
             On pressing &quot;Pay Now&quot;,the application will be redirected
             to Payment Gateway to pay the visa fee and will be outside the
             control of Visa Online Application. The responsibility of security
@@ -59,10 +59,10 @@ const page = () => {
           </p>
         </div>
         <div className="p-4">
-          <h2 className="italic font-semibold text-lg text-secondary py-1">
+          <h2 className="py-1 text-lg italic font-semibold text-secondary">
             Disclaimer
           </h2>
-          <p className="text-justify leading-relaxed tracking-wide">
+          <p className="leading-relaxed tracking-wide text-justify">
             All travelers seeking admission to India under the e-Visa (e-Visa)
             scheme are required to carry printout of the Electronic Travel
             Authorization (ETA) sent through email by Bureau of Immigration.
@@ -89,22 +89,22 @@ const page = () => {
           </p>
         </div>
         <div className="px-4">
-          <h2 className="italic font-semibold text-lg text-secondary">
+          <h2 className="text-lg italic font-semibold text-secondary">
             Undertaking
           </h2>
-          <p className="text-justify leading-relaxed tracking-wide">
+          <p className="leading-relaxed tracking-wide text-justify">
             <input
               type="checkbox"
               id="sameAddress"
               name="sameAddress"
               className="w-4 h-4"
-            />{" "}
+            />{' '}
             I, the applicant, hereby certify that I agree to all the terms and
             conditions given on the website indiavisasonline.org.in and
             understand all the questions and statements of this application. The
             answers and information furnished in this application are true and
             correct to the best of my knowledge and belief. I understand and
-            agree that once the fee is paid towards the Temporary application ID{" "}
+            agree that once the fee is paid towards the Temporary application ID{' '}
             <span className="font-bold">41ALB11314908CH</span> is 100%
             non-refundable and I will not claim a refund or dispute the
             transaction incase of cancellation request raised at my end. I also
@@ -113,38 +113,14 @@ const page = () => {
             the indian government. I authorized them to take the payment from my
             card online.
           </p>
-          <div className="flex space-x-4 pt-5 justify-center">
-            <div className="px-2 space-x-2">
-              <input
-                type="radio"
-                id="yes"
-                name="parentsPakistanNational"
-                value="yes"
-              />
-              <label htmlFor="yes" className="font-semibold">
-                Yes
-              </label>
-            </div>
-            <div className="px-2 space-x-2">
-              <input
-                type="radio"
-                id="no"
-                name="parentsPakistanNational"
-                value="no"
-              />
-              <label htmlFor="no" className="font-semibold">
-                No
-              </label>
-            </div>
-          </div>
         </div>
 
         <div className="p-4">
-          <p className="text-justify leading-relaxed tracking-wide pt-12 font-bold">
+          <p className="pt-12 font-bold leading-relaxed tracking-wide text-justify">
             Please note down the Application ID :
-            <span className="text-primary font-bold">41ALB11314908CH</span>{" "}
+            <span className="font-bold text-primary">41ALB11314908CH</span>{' '}
             which will be required for Status Enquiry, e-Visa Printing and
-            Payment of visa processing fee.{" "}
+            Payment of visa processing fee.{' '}
           </p>
         </div>
 
