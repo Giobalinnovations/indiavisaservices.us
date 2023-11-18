@@ -244,6 +244,46 @@ const StepSeven = () => {
                   {step2Data?.anyOtherPassport}
                 </p>
               </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Country of Issue
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Country
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Passport/IC No.
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  123456789
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Date of Issue*
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  18/11/2023
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Place of Issue
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Paris
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Nationality mentioned therein
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Paris
+                </p>
+              </div>
             </div>
           </div>
 
