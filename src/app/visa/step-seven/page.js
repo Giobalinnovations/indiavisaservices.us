@@ -1153,7 +1153,7 @@ const StepSeven = () => {
             </div>
           </div>
 
-          <div className="pt-5 space-x-4 text-center">
+          <div className="pt-5 space-x-4 text-center mt-4">
             <Link href="/visa/step-one/update">
               <button className="formbtnBorder" type="button">
                 Modify
@@ -1167,6 +1167,10 @@ const StepSeven = () => {
                 Continue
               </button>
             </Link>
+            {/* save and temporary exit button  */}
+            <button className="formbtnDark" type="button">
+              Save and Temporarily Exit
+            </button>
           </div>
         </div>
       </div>
