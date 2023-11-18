@@ -44,7 +44,7 @@ const Footer = () => {
                   <div>
                     <Image
                       src="/images/common/logo-white.png"
-                      width="140"
+                      width="240"
                       height="140"
                       alt="logo-white"
                     />

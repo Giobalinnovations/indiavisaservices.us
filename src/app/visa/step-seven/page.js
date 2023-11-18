@@ -1,13 +1,13 @@
-'use client';
-import { useFormContext } from '@/app/context/formContext';
-import BannerPage from '@/components/common/BannerPage';
-import axiosInstance from '@/services/api';
-import apiEndpoint from '@/services/apiEndpoint';
-import { useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { ImSpinner2 } from 'react-icons/im';
+"use client";
+import { useFormContext } from "@/app/context/formContext";
+import BannerPage from "@/components/common/BannerPage";
+import axiosInstance from "@/services/api";
+import apiEndpoint from "@/services/apiEndpoint";
+import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { ImSpinner2 } from "react-icons/im";
 
 const StepSeven = () => {
   const { state } = useFormContext();
@@ -18,14 +18,13 @@ const StepSeven = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getAllStepsData'],
+    queryKey: ["getAllStepsData"],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
 
   if (getAllStepsDataIsSuccess) {
-    console.log(getAllStepsData.data);
     const { step1Data, step2Data, step3Data, step4Data, step5Data, step6Data } =
       getAllStepsData.data;
 
@@ -48,13 +47,13 @@ const StepSeven = () => {
               </p>
               <p className="text-center">
                 Please verify your Registration Details. If all details are
-                correct please Press{' '}
+                correct please Press{" "}
                 <span className="text-primary">
                   &quot;Verified and Continue&quot;.
                 </span>
               </p>
               <p className="text-center">
-                For any corrections press{' '}
+                For any corrections press{" "}
                 <span className="text-primary">&quot;Modify/Edit&quot;</span>
               </p>
               <p className="text-center">
@@ -62,13 +61,22 @@ const StepSeven = () => {
                 <span className="text-primary"> 02ALB14245596BA</span>
               </p>
             </div>
-            <Image
-              src="/images/common/logo.png"
+            {step6Data ? (
+              <Image
+                src={step6Data?.profilePicture}
+                width={140}
+                height={100}
+                className="object-cover"
+                alt="profile picture"
+              />
+            ) : null}
+            {/* <Image
+              src={step6Data.profilePicture}
               width={140}
               height={100}
               className="object-cover"
-              alt="img"
-            />
+              alt="profile picture"
+            /> */}
           </div>
 
           <div className="px-4 pt-5">
@@ -96,7 +104,7 @@ const StepSeven = () => {
                   Have you ever changed your name? *
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.changedName ? 'YES' : 'NO'}
+                  {step2Data?.changedName ? "YES" : "NO"}
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -246,7 +254,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Country of Issue
+                  Country of Issue
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Country
@@ -254,7 +262,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Passport/IC No.
+                  Passport/IC No.
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   123456789
@@ -262,7 +270,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Date of Issue*
+                  Date of Issue*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   18/11/2023
@@ -270,7 +278,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Place of Issue
+                  Place of Issue
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Paris
@@ -278,7 +286,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Nationality mentioned therein
+                  Nationality mentioned therein
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Paris
@@ -493,9 +501,9 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step3Data?.applicantMaritalStatus === 'married' ? (
+              {step3Data?.applicantMaritalStatus === "married" ? (
                 <>
-                  {' '}
+                  {" "}
                   <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Name*
@@ -549,7 +557,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step3Data?.parentsPakistanNational === 'yes' ? (
+              {step3Data?.parentsPakistanNational === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     If Yes, give details*
@@ -624,9 +632,9 @@ const StepSeven = () => {
                   {step3Data?.militaryOrganization}
                 </p>
               </div>
-              {step3Data?.militaryOrganization === 'yes' ? (
+              {step3Data?.militaryOrganization === "yes" ? (
                 <>
-                  {' '}
+                  {" "}
                   <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Organization*
@@ -772,7 +780,7 @@ const StepSeven = () => {
                   {step4Data?.visitedIndiaBefore}
                 </p>
               </div>
-              {step4Data?.visitedIndiaBefore === 'yes' ? (
+              {step4Data?.visitedIndiaBefore === "yes" ? (
                 <>
                   <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
@@ -824,7 +832,7 @@ const StepSeven = () => {
                       {step4Data?.permissionRefused}
                     </p>
                   </div>
-                  {step4Data?.permissionRefused === 'yes' ? (
+                  {step4Data?.permissionRefused === "yes" ? (
                     <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         If so, when and by whom (Mention Control No. and date
@@ -911,7 +919,7 @@ const StepSeven = () => {
 
           <div className="px-4 pt-10">
             <h2 className="text-3xl font-semibold">
-              SAARC Country Visit Details{' '}
+              SAARC Country Visit Details{" "}
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
@@ -925,7 +933,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step4Data?.visitedSAARCCountries === 'yes' ? (
+              {step4Data?.visitedSAARCCountries === "yes" ? (
                 <table className="w-full table-auto">
                   <thead className="border-b">
                     <tr className="bg-gray-100">
@@ -942,7 +950,7 @@ const StepSeven = () => {
                   </thead>
                   <tbody>
                     {step4Data?.visitedSAARCCountriesLists.length > 0
-                      ? step4Data?.visitedSAARCCountriesLists.map(country => (
+                      ? step4Data?.visitedSAARCCountriesLists.map((country) => (
                           <tr
                             className="border-b hover:bg-gray-50"
                             key={country._id}
@@ -1015,7 +1023,7 @@ const StepSeven = () => {
           </div>
           <div className="px-4 pt-10">
             <h2 className="text-3xl font-semibold">
-              Additional Question Details{' '}
+              Additional Question Details{" "}
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
@@ -1028,7 +1036,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenArrested}
                 </p>
               </div>
-              {step5Data?.haveYouBeenArrested === 'yes' ? (
+              {step5Data?.haveYouBeenArrested === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1049,7 +1057,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step5Data?.haveYouBeenRefusedEntry === 'yes' ? (
+              {step5Data?.haveYouBeenRefusedEntry === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1070,7 +1078,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenEngagedInTrafficking}
                 </p>
               </div>
-              {step5Data?.haveYouBeenEngagedInTrafficking === 'yes' ? (
+              {step5Data?.haveYouBeenEngagedInTrafficking === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1091,7 +1099,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenEngagedInCrime}
                 </p>
               </div>
-              {step5Data?.haveYouBeenEngagedInCrime === 'yes' ? (
+              {step5Data?.haveYouBeenEngagedInCrime === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1112,7 +1120,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouExpressedViews}
                 </p>
               </div>
-              {step5Data?.haveYouExpressedViews === 'yes' ? (
+              {step5Data?.haveYouExpressedViews === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1132,7 +1140,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouSoughtAsylum}
                 </p>
               </div>
-              {step5Data?.haveYouSoughtAsylum === 'yes' ? (
+              {step5Data?.haveYouSoughtAsylum === "yes" ? (
                 <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*

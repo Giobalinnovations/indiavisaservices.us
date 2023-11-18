@@ -159,7 +159,7 @@ export default function StepTwoUpdate() {
                               type="date"
                               name="dateOfBirth"
                               id="dateOfBirth"
-                              className="form-input"
+                              className="opacity-50 form-input"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
@@ -350,7 +350,7 @@ export default function StepTwoUpdate() {
                               component="select"
                               id="nationalityRegion"
                               name="nationalityRegion"
-                              className="p-2 border rounded select-input"
+                              className="p-2 border rounded opacity-50 select-input"
                               disabled={true}
                             >
                               <option value="" disabled selected>
