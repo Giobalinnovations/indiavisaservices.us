@@ -19,8 +19,8 @@ import PhoneInput from 'react-phone-number-input';
 import { Country } from 'country-state-city';
 
 export default function StepOneUpdate() {
-  const { state, dispatch } = useFormContext();
-  console.log(state.formId);
+  const { state } = useFormContext();
+
   const {
     isPending,
     error,
@@ -32,7 +32,6 @@ export default function StepOneUpdate() {
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
-    // refetchOnMount: 'always',
   });
 
   const updateMutation = useUpdate(
@@ -47,7 +46,7 @@ export default function StepOneUpdate() {
     if (getAllStepsData.data.step1Data) {
       const { __v, _id, ...cleanedStep1Data } =
         getAllStepsData?.data?.step1Data;
-
+      console.log(cleanedStep1Data);
       return (
         <>
           <BannerPage heading="E-VISA APPLICATION FORM" />
@@ -164,10 +163,92 @@ export default function StepOneUpdate() {
                           <option disabled selected value="">
                             Select
                           </option>
-                          <option value="arrone">arrone</option>
-                          <option value="arrtwo">arrtwo</option>
-                          <option value="arrthree">arrthree</option>
-                          <option value="arrfour">arrfour</option>
+                          <option value="Indira Gandhi International Airport">
+                            Indira Gandhi International Airport
+                          </option>
+                          <option value="Chhatrapati Shivaji International Airport">
+                            Chhatrapati Shivaji International Airport
+                          </option>
+                          <option value="Chennai International Airport">
+                            Chennai International Airport
+                          </option>
+                          <option value="Kempegowda International Airport">
+                            Kempegowda International Airport
+                          </option>
+                          <option value="Cochin International Airport">
+                            Cochin International Airport
+                          </option>
+                          <option value="Rajiv Gandhi International Airport">
+                            Rajiv Gandhi International Airport
+                          </option>
+                          <option value="Netaji Subhash Chandra Bose International Airport">
+                            Netaji Subhash Chandra Bose International Airport
+                          </option>
+                          <option value="Trivandrum International Airport">
+                            Trivandrum International Airport
+                          </option>
+                          <option value="Calicut International Airport">
+                            Calicut International Airport
+                          </option>
+                          <option value="Dabolim Airport">
+                            Dabolim Airport
+                          </option>
+                          <option value="Sri Guru Ram Dass Jee International Airport">
+                            Sri Guru Ram Dass Jee International Airport
+                          </option>
+                          <option value="Sardar Vallabhbhai Patel International Airport">
+                            Sardar Vallabhbhai Patel International Airport
+                          </option>
+                          <option value="Jaipur International Airport">
+                            Jaipur International Airport
+                          </option>
+                          <option value="Chaudhary Charan Singh International Airport">
+                            Chaudhary Charan Singh International Airport
+                          </option>
+                          <option value="Tiruchirapally Civil Airport Airport">
+                            Tiruchirapally Civil Airport Airport
+                          </option>
+                          <option value="Coimbatore International Airport">
+                            Coimbatore International Airport
+                          </option>
+                          <option value="Lokpriya Gopinath Bordoloi International Airport">
+                            Lokpriya Gopinath Bordoloi International Airport
+                          </option>
+                          <option value="Bagdogra Airport">
+                            Bagdogra Airport
+                          </option>
+                          <option value="Pune Airport">Pune Airport</option>
+                          <option value="Dr. Babasaheb Ambedkar International Airport">
+                            Dr. Babasaheb Ambedkar International Airport
+                          </option>
+                          <option value="Madurai Airport">
+                            Madurai Airport
+                          </option>
+                          <option value="Sheikh ul Alam Airport">
+                            Sheikh ul Alam Airport
+                          </option>
+                          <option value="Jammu Airport">Jammu Airport</option>
+                          <option value="Chandigarh Airport">
+                            Chandigarh Airport
+                          </option>
+                          <option value="Mangalore International Airport">
+                            Mangalore International Airport
+                          </option>
+                          <option value="Agartala Airport">
+                            Agartala Airport
+                          </option>
+                          <option value="Lal Bahadur Shastri Airport">
+                            Lal Bahadur Shastri Airport
+                          </option>
+                          <option value="Devi Ahilyabai Holkar Airport">
+                            Devi Ahilyabai Holkar Airport
+                          </option>
+                          <option value="Vir Savarkar International Airport">
+                            Vir Savarkar International Airport
+                          </option>
+                          <option value="Birsa Munda Airport">
+                            Birsa Munda Airport
+                          </option>
                         </Field>
                         <ErrorMessage name="portOfArrival">
                           {errorMsg => (

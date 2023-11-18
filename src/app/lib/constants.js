@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 export const step1ValidationSchema = {
   yupSchema: Yup.object().shape({
     applicationType: Yup.string().required('Application type is required'),
@@ -60,9 +63,9 @@ export const step1ValidationSchema = {
       otherwise: schema => schema.notRequired(),
     }),
 
-    expectedDateOfArrival: Yup.date().required(
-      'Expected Date of Arrival is required'
-    ),
+    expectedDateOfArrival: Yup.date()
+      .required('Expected Date of Arrival is required')
+      .min(today, 'Date cannot be in the past'),
     captcha: Yup.string().required('Please enter the above text'),
     // instructionsAccepted: Yup.boolean().oneOf(
     //   [true],
@@ -141,9 +144,13 @@ export const step2ValidationSchema = {
     placeOfIssue: Yup.string().required('Place of Issue is required'),
     dateOfIssue: Yup.date().required('Date Of issue is required'),
     dateOfExpiry: Yup.date().required('Date Of expiry is required'),
-    countryOfIssue: Yup.string().required('Country of Issue is required'),
-    anyOtherPassport: Yup.string(),
 
+    anyOtherPassport: Yup.string(),
+    countryOfIssue: Yup.string().when('anyOtherPassport', {
+      is: 'yes',
+      then: schema => schema.required('Country of Issue is required'),
+      otherwise: schema => schema,
+    }),
     passportICNumber: Yup.string().when('anyOtherPassport', {
       is: 'yes',
       then: schema => schema,
@@ -190,8 +197,8 @@ export const step2ValidationSchema = {
     placeOfIssue: '',
     dateOfIssue: '',
     dateOfExpiry: '',
-    countryOfIssue: '',
     anyOtherPassport: 'no',
+    countryOfIssue: '',
     passportICNumber: '',
     dateOfIssuePassportIC: '',
     placeOfIssuePassportIC: '',

@@ -160,6 +160,7 @@ export default function StepTwoUpdate() {
                               name="dateOfBirth"
                               id="dateOfBirth"
                               className="form-input"
+                              disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
                               {errorMsg => (
@@ -343,15 +344,14 @@ export default function StepTwoUpdate() {
                         </div>
 
                         <div className="form-input-main-div">
-                          <label className="form-label">
-                            Nationality/Region
-                          </label>
+                          <label className="form-label">Nationality</label>
                           <div className="input-error-wrapper">
                             <Field
                               component="select"
                               id="nationalityRegion"
                               name="nationalityRegion"
                               className="p-2 border rounded select-input"
+                              disabled={true}
                             >
                               <option value="" disabled selected>
                                 choose*
@@ -597,37 +597,6 @@ export default function StepTwoUpdate() {
                           </div>
                         </div>
 
-                        <div className="form-input-main-div">
-                          <label className="form-label">
-                            Country of Issue*
-                          </label>
-                          <div className="input-error-wrapper">
-                            <Field
-                              component="select"
-                              id="countryOfIssue"
-                              name="countryOfIssue"
-                              className="p-2 border rounded select-input"
-                            >
-                              <option value="" disabled selected>
-                                Select*
-                              </option>
-                              {Country?.getAllCountries()?.map(
-                                (country, index) => (
-                                  <option key={index} value={country?.name}>
-                                    {country?.name}
-                                  </option>
-                                )
-                              )}
-                            </Field>
-
-                            <ErrorMessage name="countryOfIssue">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
-                              )}
-                            </ErrorMessage>
-                          </div>
-                        </div>
-
                         {/* check box  */}
                         <div className="flex items-start py-2 space-x-2">
                           <label className="font-semibold">
@@ -671,7 +640,38 @@ export default function StepTwoUpdate() {
 
                         {values.anyOtherPassport === 'yes' && (
                           <>
-                            {' '}
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Country of Issue*
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  component="select"
+                                  id="countryOfIssue"
+                                  name="countryOfIssue"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="" disabled selected>
+                                    Select*
+                                  </option>
+                                  {Country?.getAllCountries()?.map(
+                                    (country, index) => (
+                                      <option key={index} value={country?.name}>
+                                        {country?.name}
+                                      </option>
+                                    )
+                                  )}
+                                </Field>
+
+                                <ErrorMessage name="countryOfIssue">
+                                  {errorMsg => (
+                                    <div style={{ color: 'red' }}>
+                                      {errorMsg}
+                                    </div>
+                                  )}
+                                </ErrorMessage>
+                              </div>
+                            </div>
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Passport/IC No.
