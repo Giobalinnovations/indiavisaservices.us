@@ -45,7 +45,7 @@ const Header = ({ bgcolor }) => {
                   src="/images/common/logo.png"
                   width={500}
                   height={500}
-                  className="w-28"
+                  className="w-36"
                   alt="logo"
                 />
                 <Image
@@ -62,7 +62,7 @@ const Header = ({ bgcolor }) => {
                   src="/images/common/logo.png"
                   width={500}
                   height={500}
-                  className="w-28"
+                  className="w-36"
                   alt="logo2"
                 />
                 <Image
