@@ -1,11 +1,11 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
-import { Disclosure } from '@headlessui/react';
-import Link from 'next/link';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import Image from 'next/image';
-import { FaBars, FaTimes } from 'react-icons/fa';
+"use client";
+import React, { useEffect, useState } from "react";
+import { FiChevronDown } from "react-icons/fi";
+import { Disclosure } from "@headlessui/react";
+import Link from "next/link";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import Image from "next/image";
+import { FaBars, FaTimes } from "react-icons/fa";
 // import logoImg from "@/public/images/logo.png"
 // import Image from "next/image";
 const Header = ({ bgcolor }) => {
@@ -28,41 +28,59 @@ const Header = ({ bgcolor }) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div className={`header bg-white shadow-md ${scrolled ? 'bg-white' : ''}`}>
+    <div className={`header bg-white shadow-md ${scrolled ? "bg-white" : ""}`}>
       <nav className="container navbar ">
         <div className="flex items-center w-full md:justify-between md:space-x-12">
-          <Link href="/" className="logo">
+          <Link href="/" className="logo flex space-x-4">
             {scrolled ? (
-              <Image
-                src="/images/common/logo.png"
-                width={500}
-                height={500}
-                className="w-28"
-                alt="logo"
-              />
+              <>
+                <Image
+                  src="/images/common/logo.png"
+                  width={500}
+                  height={500}
+                  className="w-28"
+                  alt="logo"
+                />
+                <Image
+                  src="/images/common/logo-ackrolix.png"
+                  width={500}
+                  height={500}
+                  className="w-28"
+                  alt="logo"
+                />
+              </>
             ) : (
-              <Image
-                src="/images/common/logo.png"
-                width={500}
-                height={500}
-                className="w-28"
-                alt="logo2"
-              />
+              <>
+                <Image
+                  src="/images/common/logo.png"
+                  width={500}
+                  height={500}
+                  className="w-28"
+                  alt="logo2"
+                />
+                <Image
+                  src="/images/common/logo-ackrolix.png"
+                  width={500}
+                  height={500}
+                  className="w-28"
+                  alt="logo"
+                />
+              </>
             )}
           </Link>
 
           <ul
             className={
               click
-                ? 'nav-menu active md:space-y-0 space-y-0 py-5 '
-                : 'nav-menu'
+                ? "nav-menu active md:space-y-0 space-y-0 py-5 "
+                : "nav-menu"
             }
           >
             <Link href="/">
@@ -137,16 +155,16 @@ const Header = ({ bgcolor }) => {
 
         <div className="hamburger" onClick={handleClick}>
           {click ? (
-            <FaTimes size={30} style={{ color: '#000' }} />
+            <FaTimes size={30} style={{ color: "#000" }} />
           ) : (
-            <FaBars size={30} style={{ color: '#000' }} />
+            <FaBars size={30} style={{ color: "#000" }} />
           )}
         </div>
       </nav>
       {bgcolor ? (
         <hr
           className={
-            scrolled ? 'bg-black text-black' : 'bg-black  w-[93%] mx-auto'
+            scrolled ? "bg-black text-black" : "bg-black  w-[93%] mx-auto"
           }
         />
       ) : null}
