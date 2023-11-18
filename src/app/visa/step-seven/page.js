@@ -25,7 +25,6 @@ const StepSeven = () => {
   });
 
   if (getAllStepsDataIsSuccess) {
-    console.log(getAllStepsData.data);
     const { step1Data, step2Data, step3Data, step4Data, step5Data, step6Data } =
       getAllStepsData.data;
 
@@ -63,11 +62,11 @@ const StepSeven = () => {
               </p>
             </div>
             <Image
-              src="/images/common/logo.png"
+              src={step6Data.profilePicture}
               width={140}
               height={100}
               className="object-cover"
-              alt="img"
+              alt="profile picture"
             />
           </div>
 
@@ -246,7 +245,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Country of Issue
+                  Country of Issue
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Country
@@ -254,7 +253,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Passport/IC No.
+                  Passport/IC No.
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   123456789
@@ -262,7 +261,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Date of Issue*
+                  Date of Issue*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   18/11/2023
@@ -270,7 +269,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Place of Issue
+                  Place of Issue
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Paris
@@ -278,7 +277,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                Nationality mentioned therein
+                  Nationality mentioned therein
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Paris
