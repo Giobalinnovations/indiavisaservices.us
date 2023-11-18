@@ -435,8 +435,8 @@ const StepTwo = () => {
 
                 <h2 className="py-6 sidetext ">Educational Qualification</h2>
 
-                <h2 className="py-4 sidetext ">Nationality/Region</h2>
-                <h2 className="sidetext py-7 ">Nationality/Region</h2>
+                <h2 className="py-4 sidetext ">Nationality</h2>
+                <h2 className="sidetext py-7 ">Nationality</h2>
               </div>
             </div>
 
