@@ -2,7 +2,6 @@ export default {
   VISA_ADD_STEP1: '/visa/add/step-one',
   UPDATE_VISA_ADD_STEP1: '/visa/viewVisaRequestForm/',
   GET_VISA_STEP1_BY_ID: '/visa/viewVisaRequestForm/',
-
   VISA_ADD_STEP2: '/visa/add/step-two',
   UPDATE_VISA_ADD_STEP2: '/visa/viewVisaRequestForm2/',
   VISA_ADD_STEP3: '/visa/add/step-three',
@@ -12,5 +11,7 @@ export default {
   VISA_ADD_STEP5: '/visa/add/step-five',
   UPDATE_VISA_ADD_STEP5: '/visa/viewVisaRequestForm5/',
   VISA_ADD_STEP6: '/visa/add/step-six',
+  VISA_ADD_STEP8: '/visa/add/step-eight',
+  GET_VISA_STEP8_BY_FORM_ID: '/visa/viewVisaRequestForm8ByFormId/',
   GET_ALL_STEPS_DATA: '/visa/getAllStepData/',
 };
