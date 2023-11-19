@@ -1,11 +1,47 @@
 'use client';
+import { useFormContext } from '@/app/context/formContext';
 import MakePaymentComponent from '@/components/MakePaymentComponent';
 import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
+import usePost from '@/hooks/usePost';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useQuery } from '@tanstack/react-query';
 
-import React from 'react';
+const StepEight = () => {
+  const { state } = useFormContext();
+  const {
+    isPending,
+    error,
+    data: step8Data,
+    isSuccess: getSteps8DataIsSuccess,
+    refetch,
+  } = useQuery({
+    queryKey: ['step8Data'],
+    queryFn: () =>
+      axiosInstance.get(
+        `${apiEndpoint.GET_VISA_STEP8_BY_FORM_ID}${state.formId}`
+      ),
+    enabled: !!state.formId,
+  });
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP8,
+    8,
+    '/visa/step-eight'
+  );
 
-const page = () => {
+  if (getSteps8DataIsSuccess) {
+    console.log(step8Data);
+  }
+
+  const handleChange = e => {
+    const { checked } = e.target;
+
+    postMutation.mutate({
+      termsAndConditions: `I, the applicant, hereby certify that I agree to all the terms and conditions given on the website indiavisasonline.org.in and understand all the questions and statements of this application. The answers and information furnished in this application are true and correct to the best of my knowledge and belief. I understand and agree that once the fee is paid towards the Temporary application ID 41ALB11314908CH is 100% non-refundable and I will not claim a refund or dispute the transaction incase of cancellation request raised at my end. I also understand that indiansvisaonline.org.in is only responsible for processing my application and the visa may be granted or rejected by the indian government. I authorized them to take the payment from my card online.`,
+      termsAndConditionsAgree: checked,
+      formId: state.formId,
+    });
+  };
   return (
     <div>
       <BannerPage heading="E-VISA APPLICATION FORM" />
@@ -95,9 +131,11 @@ const page = () => {
           <p className="leading-relaxed tracking-wide text-justify">
             <input
               type="checkbox"
-              id="sameAddress"
-              name="sameAddress"
+              id="termsAndConditionsAgree"
+              name="termsAndConditionsAgree"
               className="w-4 h-4"
+              onChange={handleChange}
+              checked={step8Data?.data?.termsAndConditions}
             />{' '}
             I, the applicant, hereby certify that I agree to all the terms and
             conditions given on the website indiavisasonline.org.in and
@@ -125,10 +163,12 @@ const page = () => {
         </div>
 
         {/* dummy test payment  */}
-        <MakePaymentComponent />
+        {getSteps8DataIsSuccess && step8Data?.data?.termsAndConditionsAgree ? (
+          <MakePaymentComponent />
+        ) : null}
       </div>
     </div>
   );
 };
 
-export default page;
+export default StepEight;
