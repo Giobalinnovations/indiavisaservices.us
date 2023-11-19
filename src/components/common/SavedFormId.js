@@ -1,11 +1,14 @@
-import React from "react";
+'use client';
+import { useFormContext } from '@/app/context/formContext';
+import React from 'react';
 
 const SavedFormId = () => {
+  const { state } = useFormContext();
   return (
-    <div className="font-medium text-white text-center mb-4 p-4 bg-black">
+    <div className="p-4 mb-4 font-medium text-center text-white bg-black">
       <div className="">
-        Form Saved Succeffsully. Please note down the Application id:{" "}
-        <span className="text-primary font-bold px-2">evisa456789</span>
+        Form Saved Succeffsully. Please note down the Application id:{' '}
+        <span className="px-2 font-bold text-primary">{state?.formId}</span>
       </div>
     </div>
   );

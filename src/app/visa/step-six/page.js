@@ -1,20 +1,20 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import React from "react";
-import { LuImagePlus } from "react-icons/lu";
-import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
-import { useFormContext } from "@/app/context/formContext";
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "@/services/api";
-import apiEndpoint from "@/services/apiEndpoint";
-import { step6ValidationSchema } from "@/app/lib/constants";
-import { ImSpinner2 } from "react-icons/im";
-import Image from "next/image";
-import FileUploadMain from "@/components/FileUploadMain";
-import SingleFileUpload from "@/components/SingleFileUpload";
-import usePost from "@/hooks/usePost";
-import SavedFormId from "@/components/common/SavedFormId";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import React from 'react';
+import { LuImagePlus } from 'react-icons/lu';
+import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
+import { useFormContext } from '@/app/context/formContext';
+import { useQuery } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { step6ValidationSchema } from '@/app/lib/constants';
+import { ImSpinner2 } from 'react-icons/im';
+import Image from 'next/image';
+import FileUploadMain from '@/components/FileUploadMain';
+import SingleFileUpload from '@/components/SingleFileUpload';
+import usePost from '@/hooks/usePost';
+import SavedFormId from '@/components/common/SavedFormId';
 
 const StepSix = () => {
   const { state } = useFormContext();
@@ -25,7 +25,7 @@ const StepSix = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["getAllStepsData"],
+    queryKey: ['getAllStepsData'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
@@ -33,7 +33,7 @@ const StepSix = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP6,
     6,
-    "/visa/step-seven"
+    '/visa/step-seven'
   );
 
   return (
@@ -48,46 +48,46 @@ const StepSix = () => {
           const formData = new FormData();
 
           const businessCard = values?.eBusinessVisa?.map(
-            (eBusi) => eBusi.eBusinessVisaPhoto
+            eBusi => eBusi.eBusinessVisaPhoto
           );
           const eMedicalCard = values?.eMedicalCard?.map(
-            (eMedi) => eMedi.eMedicalCardPhoto
+            eMedi => eMedi.eMedicalCardPhoto
           );
-          const businessCardContent = values?.eBusinessVisa?.map((eBusi) => ({
+          const businessCardContent = values?.eBusinessVisa?.map(eBusi => ({
             companyName: eBusi.companyName,
             companyAddress: eBusi.companyAddress,
             companyNumber: eBusi.companyNumber,
           }));
 
-          const eMedicalCardContent = values?.eMedicalCard?.map((eMedi) => ({
+          const eMedicalCardContent = values?.eMedicalCard?.map(eMedi => ({
             hospitalName: eMedi.hospitalName,
             hospitalAddress: eMedi.hospitalAddress,
             hospitalNumber: eMedi.hospitalNumber,
           }));
 
           if (values.profilePicture instanceof File) {
-            formData.append("profilePicture", values.profilePicture);
+            formData.append('profilePicture', values.profilePicture);
           }
 
           for (const file of values.passport) {
-            formData.append("passport", file);
+            formData.append('passport', file);
           }
 
           for (const file of businessCard) {
-            formData.append("businessCard", file);
+            formData.append('businessCard', file);
           }
 
           for (const file of eMedicalCard) {
-            formData.append("eMedicalCard", file);
+            formData.append('eMedicalCard', file);
           }
 
-          formData.append("formId", state.formId);
+          formData.append('formId', state.formId);
           formData.append(
-            "businessCardContent",
+            'businessCardContent',
             JSON.stringify(businessCardContent)
           );
           formData.append(
-            "eMedicalCardContent",
+            'eMedicalCardContent',
             JSON.stringify(eMedicalCardContent)
           );
 
@@ -154,29 +154,29 @@ const StepSix = () => {
               {/* upload file end  */}
               <div className="py-4 space-y-2 font-medium">
                 <p>
-                  Temporary Application ID:{" "}
-                  <span className="text-primary">987123654856123</span>
+                  Temporary Application ID:{' '}
+                  <span className="text-primary">{state?.formId}</span>
                 </p>
                 <p>
                   Kindly ensure that the photo is as per specifications
                   mentioned below.
                 </p>
                 <p>
-                  In case you are{" "}
+                  In case you are{' '}
                   <span className="font-bold">
                     not ready for photo upload you can do it later,
                   </span>
                   Please note down the
                 </p>
                 <p>
-                  Temporary Application ID, close the window and{" "}
+                  Temporary Application ID, close the window and{' '}
                   <span className="font-bold">Press Save and Exit</span>.
                 </p>
                 <p>
-                  You can complete your application later using{" "}
+                  You can complete your application later using{' '}
                   <span className="font-bold">
                     Complete Partially Filled Dorm
-                  </span>{" "}
+                  </span>{' '}
                   option on home page.
                 </p>
               </div>
@@ -212,7 +212,7 @@ const StepSix = () => {
                   {/* e business visa */}
                   {getAllStepsDataIsSuccess &&
                   getAllStepsData?.data?.step1Data.visaService ===
-                    "eBUSINESS VISA" ? (
+                    'eBUSINESS VISA' ? (
                     <FieldArray name="eBusinessVisa">
                       {({ insert, remove, push }) => (
                         <div>
@@ -338,10 +338,10 @@ const StepSix = () => {
                             className="formbtn"
                             onClick={() =>
                               push({
-                                eBusinessVisaPhoto: "",
-                                companyName: "",
-                                companyAddress: "",
-                                companyNumber: "",
+                                eBusinessVisaPhoto: '',
+                                companyName: '',
+                                companyAddress: '',
+                                companyNumber: '',
                               })
                             }
                           >
@@ -357,7 +357,7 @@ const StepSix = () => {
                   {/* e-medical section  start */}
                   {getAllStepsDataIsSuccess &&
                   getAllStepsData?.data?.step1Data.visaService ===
-                    "eMEDICAL VISA" ? (
+                    'eMEDICAL VISA' ? (
                     <FieldArray name="eMedicalCard">
                       {({ insert, remove, push }) => (
                         <div>
@@ -483,10 +483,10 @@ const StepSix = () => {
                             className="formbtn"
                             onClick={() =>
                               push({
-                                eMedicalCardPhoto: "",
-                                hospitalName: "",
-                                hospitalAddress: "",
-                                hospitalNumber: "",
+                                eMedicalCardPhoto: '',
+                                hospitalName: '',
+                                hospitalAddress: '',
+                                hospitalNumber: '',
                               })
                             }
                           >
@@ -509,7 +509,7 @@ const StepSix = () => {
                   type="submit"
                   disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                    !isValid ? "cursor-not-allowed opacity-50" : ""
+                    !isValid ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                 >
                   {postMutation.isPending ? (
@@ -517,7 +517,7 @@ const StepSix = () => {
                       <ImSpinner2 className="animate-spin" /> Loading
                     </>
                   ) : (
-                    "Next"
+                    'Next'
                   )}
                 </button>
                 {/* save and temporary exit button  */}
