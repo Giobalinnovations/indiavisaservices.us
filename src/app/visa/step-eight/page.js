@@ -37,7 +37,7 @@ const StepEight = () => {
     const { checked } = e.target;
 
     postMutation.mutate({
-      termsAndConditions: `I, the applicant, hereby certify that I agree to all the terms and conditions given on the website indiavisasonline.org.in and understand all the questions and statements of this application. The answers and information furnished in this application are true and correct to the best of my knowledge and belief. I understand and agree that once the fee is paid towards the Temporary application ID 41ALB11314908CH is 100% non-refundable and I will not claim a refund or dispute the transaction incase of cancellation request raised at my end. I also understand that indiansvisaonline.org.in is only responsible for processing my application and the visa may be granted or rejected by the indian government. I authorized them to take the payment from my card online.`,
+      termsAndConditions: `I, the applicant, hereby certify that I agree to all the terms and conditions given on the website indiavisasonline.org.in and understand all the questions and statements of this application. The answers and information furnished in this application are true and correct to the best of my knowledge and belief. I understand and agree that once the fee is paid towards the Temporary application ID ${state?.formId} is 100% non-refundable and I will not claim a refund or dispute the transaction incase of cancellation request raised at my end. I also understand that indiansvisaonline.org.in is only responsible for processing my application and the visa may be granted or rejected by the indian government. I authorized them to take the payment from my card online.`,
       termsAndConditionsAgree: checked,
       formId: state.formId,
     });
@@ -63,7 +63,7 @@ const StepEight = () => {
             Application Id :-
           </h2>
           <p className="font-bold leading-relaxed tracking-wide text-justify text-primary">
-            41ALB11314908CH
+            {state?.formId}
           </p>
         </div>
         <div className="flex items-center justify-center space-x-4 ">
@@ -74,6 +74,7 @@ const StepEight = () => {
             89.00 USD / 7120 INR
           </p>
         </div>
+
         <div className="p-4">
           <p className="leading-relaxed tracking-wide text-center">
             On pressing &quot;Pay Now&quot;,the application will be redirected
@@ -129,21 +130,23 @@ const StepEight = () => {
             Undertaking
           </h2>
           <p className="leading-relaxed tracking-wide text-justify">
-            <input
-              type="checkbox"
-              id="termsAndConditionsAgree"
-              name="termsAndConditionsAgree"
-              className="w-4 h-4"
-              onChange={handleChange}
-              checked={step8Data?.data?.termsAndConditions}
-            />{' '}
+            {!step8Data?.data?.termsAndConditions ? (
+              <input
+                type="checkbox"
+                id="termsAndConditionsAgree"
+                name="termsAndConditionsAgree"
+                className="w-4 h-4"
+                onChange={handleChange}
+                checked={step8Data?.data?.termsAndConditions}
+              />
+            ) : null}
             I, the applicant, hereby certify that I agree to all the terms and
             conditions given on the website indiavisasonline.org.in and
             understand all the questions and statements of this application. The
             answers and information furnished in this application are true and
             correct to the best of my knowledge and belief. I understand and
             agree that once the fee is paid towards the Temporary application ID{' '}
-            <span className="font-bold">41ALB11314908CH</span> is 100%
+            <span className="font-bold">{state?.formId}</span> is 100%
             non-refundable and I will not claim a refund or dispute the
             transaction incase of cancellation request raised at my end. I also
             understand that indiansvisaonline.org.in is only responsible for
@@ -156,7 +159,7 @@ const StepEight = () => {
         <div className="p-4">
           <p className="pt-12 font-bold leading-relaxed tracking-wide text-justify">
             Please note down the Application ID :
-            <span className="font-bold text-primary">41ALB11314908CH</span>{' '}
+            <span className="font-bold text-primary">{state?.formId}</span>{' '}
             which will be required for Status Enquiry, e-Visa Printing and
             Payment of visa processing fee.{' '}
           </p>
