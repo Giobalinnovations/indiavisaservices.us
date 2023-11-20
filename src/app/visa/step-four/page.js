@@ -949,7 +949,7 @@ const StepFour = () => {
 
                           <div className="form-input-main-div">
                             <label className="form-label">
-                              Natures of Business/ Product (Dynamic)
+                              Natures of Business/ Product
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -960,6 +960,147 @@ const StepFour = () => {
                               />
                               <ErrorMessage
                                 name="eBUSINESSCompanyNatures"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <b>Details of Indian Firm</b>
+                          <span className="lowercase">
+                            (ONLY FOR ATTEND TECHNICAL/BUSINESS MEETINGS
+                            ,And////, EXPERT/SPECIALIST IN CONNECTION WITH AN
+                            ONGOING PROJECT Replace with nature of business)
+                          </span>
+
+                          <div className="form-input-main-div">
+                            <label className="form-label">Name</label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessAttendTechMeetingName"
+                                name="eBusinessAttendTechMeetingName"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessAttendTechMeetingName"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">Address</label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessAttendTechMeetingAddress"
+                                name="eBusinessAttendTechMeetingAddress"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessAttendTechMeetingAddress"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">Phone</label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessAttendTechMeetingPhone"
+                                name="eBusinessAttendTechMeetingPhone"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessAttendTechMeetingPhone"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+
+                          <span>
+                            (ONLY TO RECRUIT MANPOWER Replace with nature of
+                            business)
+                          </span>
+
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Name and contact number of the company
+                              representative in India
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Nature of Job for which recruiting
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessRecruitManpowerNatureOfJob"
+                                name="eBusinessRecruitManpowerNatureOfJob"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessRecruitManpowerNatureOfJob"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Places where recruitment is to be conducted
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+
+                          <b>
+                            (ONLY FOR PARTICIPATION IN
+                            EXHIBITIONS,BUSINESS/TRADE FAIRS Replace with nature
+                            of business)
+                          </b>
+
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Name and address of the exhibition/trade fair
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessParticipationInExhibitionsNameAndAddress"
+                                name="eBusinessParticipationInExhibitionsNameAndAddress"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessParticipationInExhibitionsNameAndAddress"
                                 component="div"
                                 className="text-red-600"
                               />
@@ -979,7 +1120,135 @@ const StepFour = () => {
                     </div>
                   </div>
                 </div>
+                {/* feild for  */}
+                <div>
+                  <div className="">
+                    <b> (Only For CONDUCTING TOURS)</b>
+                    <h2 className="text-3xl font-semibold">
+                      Details of Purpose
+                    </h2>
+                    <hr className="h-1 text-primary bg-primary w-36" />
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-8 ">
+                    <div className="col-span-8">
+                      <div className="">
+                        <div className="formMain">
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Name and address of the Travel Agency in native
+                              country
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="eBusinessConductingToursNameAndAddress"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessConductingToursNameAndAddress"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Cities to be visited during the tour
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                name="eBusinessConductingToursCities"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessConductingToursCities"
+                                component="div"
+                                className="text-red-600"
+                              />
+                            </div>
+                          </div>
+                          <b>Details of the Travel agent/associate in India</b>
+                          <div className="form-input-main-div">
+                            <label
+                              className="form-label"
+                              htmlFor="purposecontactNo"
+                            >
+                              Name
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessConductingToursTravelAgencyName"
+                                name="eBusinessConductingToursTravelAgencyName"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessConductingToursTravelAgencyName"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label
+                              className="form-label"
+                              htmlFor="purposecontactNo"
+                            >
+                              Phone
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessConductingToursTravelAgencyPhone"
+                                name="eBusinessConductingToursTravelAgencyPhone"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessConductingToursTravelAgencyPhone"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label
+                              className="form-label"
+                              htmlFor="purposecontactNo"
+                            >
+                              Address
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                type="text"
+                                id="eBusinessConductingToursTravelAgencyAddress"
+                                name="eBusinessConductingToursTravelAgencyAddress"
+                                className="form-input"
+                              />
+                              <ErrorMessage
+                                name="eBusinessConductingToursTravelAgencyAddress"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <h2 className="py-6 sidetext ">No. of entries</h2>
+                      <h2 className="py-4 sidetext ">
+                        Port of arrival in India
+                      </h2>
+                      <h2 className="py-4 sidetext ">
+                        Expected port of exit from India
+                      </h2>
+                    </div>
+                  </div>
+                </div>
                 {/* feilds for visa type--- e-bussiness end  */}
+
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA start */}
                 <div>
                   <div className="">

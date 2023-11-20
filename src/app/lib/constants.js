@@ -498,8 +498,21 @@ export const step4ValidationSchema = {
     eBUSINESSCompanyPhone: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
       .required("Phone is required"),
-    eBUSINESSCompanyWebsite: Yup.string().required("Website Required"),
-    eBUSINESSCompanyNatures: Yup.string().required("Required"),
+    eBusinessAttendTechMeetingName: Yup.string().required("Required"),
+    eBusinessAttendTechMeetingAddress: Yup.string().required("Required"),
+    eBusinessAttendTechMeetingPhone: Yup.string()
+      .matches(/^[0-9]{10}$/, "Phone number must be a valid 10-digit number")
+      .required("Phone is required"),
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative:
+      Yup.string().required("Required"),
+    eBusinessRecruitManpowerNatureOfJob: Yup.string().required("Required"),
+    eBusinessRecruitManpowerPlacesRecruitmentConducted:
+      Yup.string().required("Required"),
+    eBusinessParticipationInExhibitionsNameAndAddress:
+      Yup.string().required("Required"),
+    eBusinessConductingToursNameAndAddress: Yup.string().required("Required"),
+    eBusinessConductingToursCities: Yup.string().required("Required"),
+
     //for visa type eMEDICAL ATTENDANT VISA
     eMEDICALATTENDANTNameVisaHolder: Yup.string().required("Name Required"),
     eMEDICALATTENDANTVisaNumberOfVisaHolder: Yup.string().required(
