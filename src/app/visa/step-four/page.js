@@ -51,6 +51,59 @@ const StepFour = () => {
     console.log(visaServiceSelectedValue);
     console.log(visaServiceSelected);
 
+    const getDurationOfVisa = (
+      visaServiceSelected,
+      visaServiceSelectedValue
+    ) => {
+      const value =
+        visaServiceSelected === 'eTouristVisa'
+          ? visaServiceSelectedValue
+          : visaServiceSelected;
+
+      switch (value) {
+        case 'visa1Year':
+        case 'eBusinessVisa':
+          return '1 Year';
+        case 'visa5Years':
+          return '5 Years';
+        case 'visa30days':
+        case 'eConferenceVisa':
+          return '30 Days';
+        case 'eMedicalVisa':
+        case 'eMedicalAttendantVisa':
+          return '60 Days';
+
+        default:
+          return '';
+      }
+    };
+    const getNumberOfEntries = (
+      visaServiceSelected,
+      visaServiceSelectedValue
+    ) => {
+      const value =
+        visaServiceSelected === 'eTouristVisa'
+          ? visaServiceSelectedValue
+          : visaServiceSelected;
+
+      switch (value) {
+        case 'visa30days':
+          return 'Double';
+        case 'visa1Year':
+        case 'visa5Years':
+        case 'eBusinessVisa':
+          return 'Multiple';
+        case 'eConferenceVisa':
+          return 'Single';
+        case 'eMedicalVisa':
+        case 'eMedicalAttendantVisa':
+          return 'Triple';
+
+        default:
+          return '';
+      }
+    };
+
     return (
       <>
         <BannerPage heading="Applicant Detail Form" />
@@ -60,7 +113,18 @@ const StepFour = () => {
             ...step4ValidationSchema.initialValues,
             visaService: step1Data.data ? step1Data.data.visaService : '',
             portOfArrival: step1Data.data ? step1Data.data.portOfArrival : '',
-            visaServiceSelectedValue: visaServiceSelectedValue ?? '',
+            durationOfVisa: getDurationOfVisa(
+              visaServiceSelected,
+              visaServiceSelectedValue
+            ),
+            numberOfEntries: getNumberOfEntries(
+              visaServiceSelected,
+              visaServiceSelectedValue
+            ),
+            visaServiceSelectedValueValidation:
+              visaServiceSelected !== 'eBusinessVisa'
+                ? visaServiceSelected
+                : visaServiceSelectedValue,
           }}
           validationSchema={step4ValidationSchema.yupSchema}
           validateOnChange={true}
@@ -86,6 +150,11 @@ const StepFour = () => {
             touched,
           }) => (
             <>
+              {console.log(
+                '===',
+                values.visaServiceSelectedValueValidation,
+                '==='
+              )}
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 <div>
@@ -1186,7 +1255,7 @@ const StepFour = () => {
                                     type="radio"
                                     id="eMEDICALATTENDANTVisaNo"
                                     name="eMEDICALATTENDANTAppOrVisa"
-                                    value="eMEDICALATTENDANTVisaNo"
+                                    value="visaNo"
                                   />
                                   <label htmlFor="eMEDICALATTENDANTVisaNo">
                                     Visa No.
@@ -1197,7 +1266,7 @@ const StepFour = () => {
                                     type="radio"
                                     id="eMEDICALATTENDANTAppId"
                                     name="eMEDICALATTENDANTAppOrVisa"
-                                    value="eMEDICALATTENDANTAppId"
+                                    value="applicationId"
                                   />
                                   <label htmlFor="eMEDICALATTENDANTAppId">
                                     Application id
@@ -1205,47 +1274,53 @@ const StepFour = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="form-input-main-div">
-                              <label className="form-label">
-                                Visa number of principal e-Medical Visa holder
-                                (only on select Visa No.)
-                              </label>
-                              <div className="input-error-wrapper">
-                                <Field
-                                  type="text"
-                                  name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
-                                  className="form-input"
-                                />
-                                <ErrorMessage
-                                  name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
-                                  component="div"
-                                  className="text-red-600"
-                                />
+                            {values.eMEDICALATTENDANTAppOrVisa === 'visaNo' ? (
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Visa number of principal e-Medical Visa holder
+                                  (only on select Visa No.)
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
                               </div>
-                            </div>
+                            ) : null}
 
-                            <div className="form-input-main-div">
-                              <label
-                                className="form-label"
-                                htmlFor="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                              >
-                                Application id of principal e-Medical Visa
-                                holder (only on select Application id)
-                              </label>
-                              <div className="input-error-wrapper">
-                                <Field
-                                  type="text"
-                                  id="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                  name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                  className="form-input"
-                                />
-                                <ErrorMessage
-                                  name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                  component="div"
-                                  className="text-red-500"
-                                />
+                            {values.eMEDICALATTENDANTAppOrVisa ===
+                            'applicationId' ? (
+                              <div className="form-input-main-div">
+                                <label
+                                  className="form-label"
+                                  htmlFor="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                >
+                                  Application id of principal e-Medical Visa
+                                  holder (only on select Application id)
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    id="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                    name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                    component="div"
+                                    className="text-red-500"
+                                  />
+                                </div>
                               </div>
-                            </div>
+                            ) : null}
+
                             <div className="form-input-main-div">
                               <label
                                 className="form-label"
@@ -1275,7 +1350,7 @@ const StepFour = () => {
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
-                                  type="text"
+                                  type="date"
                                   id="eMEDICALATTENDANTDobOfVisaHolder"
                                   name="eMEDICALATTENDANTDobOfVisaHolder"
                                   className="form-input"
@@ -1330,7 +1405,7 @@ const StepFour = () => {
                       <h2 className="text-3xl font-semibold">
                         Details of Purpose
                         <span className="text-lg">
-                          (eCONFERENCE VISA text only for refrence)
+                          ({visaServiceSelectedValue})
                         </span>
                       </h2>
                       <hr className="h-1 text-primary bg-primary w-36" />
