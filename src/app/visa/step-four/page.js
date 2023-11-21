@@ -48,8 +48,6 @@ const StepFour = () => {
       ? lodash.camelCase(step1Data?.data?.visaService)
       : '';
     const visaServiceSelectedValue = step1Data?.data?.[visaServiceSelected];
-    console.log(visaServiceSelectedValue);
-    console.log(visaServiceSelected);
 
     const getDurationOfVisa = (
       visaServiceSelected,
@@ -128,7 +126,7 @@ const StepFour = () => {
           }}
           validationSchema={step4ValidationSchema.yupSchema}
           validateOnChange={true}
-          validateOnMount={true}
+          // validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             postMutation.mutate({
               ...values,
@@ -150,11 +148,12 @@ const StepFour = () => {
             touched,
           }) => (
             <>
-              {console.log(
+              {/* {console.log(
                 '===',
                 values.visaServiceSelectedValueValidation,
                 '==='
-              )}
+              )} */}
+              {console.log(values)}
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 <div>
@@ -312,11 +311,11 @@ const StepFour = () => {
                                   Delhi Airport{' '}
                                 </option>
                               </Field>
-                              {/* <ErrorMessage
-                            name="expectedPortOfExit"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                              <ErrorMessage
+                                name="expectedPortOfExit"
+                                component="div"
+                                className="text-red-600"
+                              />
                             </div>
                           </div>
                           {/* <div className="flex items-start py-2 space-x-2">
@@ -474,7 +473,6 @@ const StepFour = () => {
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
-                                    required
                                     component="select"
                                     id="visitedIndiaBeforeTypeOfVisa"
                                     name="visitedIndiaBeforeTypeOfVisa"
@@ -540,7 +538,6 @@ const StepFour = () => {
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
-                                    required
                                     type="date"
                                     name="visitedIndiaBeforeDateOfIssue"
                                     id="visitedIndiaBeforeDateOfIssue"

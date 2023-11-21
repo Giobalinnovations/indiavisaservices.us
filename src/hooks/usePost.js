@@ -17,6 +17,7 @@ export default function usePost(
       return axiosInstance.post(apiEndpointUrl, formData);
     },
     onSuccess: data => {
+      console.log(data);
       if (isDispatch) {
         dispatch({
           type: 'SET_FORM_ID',
