@@ -823,8 +823,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue8"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR
-                              ACADEMIC NETWORKS (GIAN)`}
+                              value="TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)"
                             />
                             <label htmlFor="eBusinessVisaValue8">
                               TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR

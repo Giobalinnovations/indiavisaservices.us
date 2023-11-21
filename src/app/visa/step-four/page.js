@@ -733,7 +733,9 @@ const StepFour = () => {
 
                 {/* feilds for visa type--- e-bussiness start */}
                 {visaServiceSelected === 'eBusinessVisa' &&
-                visaServiceSelectedValue !== 'CONDUCTING TOURS' ? (
+                visaServiceSelectedValue !== 'CONDUCTING TOURS' &&
+                visaServiceSelectedValue !==
+                  'TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)' ? (
                   <div>
                     <div>
                       <h2 className="text-3xl font-semibold">
@@ -1010,7 +1012,7 @@ const StepFour = () => {
                   <div>
                     <div className="">
                       <h2 className="text-3xl font-semibold">
-                        Details of Purpose
+                        Details of Purpose ({visaServiceSelectedValue})
                       </h2>
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
