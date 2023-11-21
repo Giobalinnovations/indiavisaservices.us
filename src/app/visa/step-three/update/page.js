@@ -38,7 +38,6 @@ export default function Step3Update() {
 
   if (getAllStepsDataIsSuccess) {
     if (getAllStepsData.data.step3Data) {
-      console.log(getAllStepsData);
       const { __v, _id, ...cleanedStep3Data } =
         getAllStepsData?.data?.step3Data;
 

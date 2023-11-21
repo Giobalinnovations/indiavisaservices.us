@@ -648,10 +648,7 @@ export default function StepFourUpdate() {
                             <label className="form-label">
                               Countries Visited in last 10 years
                             </label>
-                            {console.log(
-                              'visited',
-                              values.countryVisitedInLast10Years
-                            )}
+
                             <div className="input-error-wrapper">
                               <MultiReactSelectFormik
                                 options={Country?.getAllCountries()?.map(

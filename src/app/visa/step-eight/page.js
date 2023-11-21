@@ -29,10 +29,6 @@ const StepEight = () => {
     '/visa/step-eight'
   );
 
-  if (getSteps8DataIsSuccess) {
-    console.log(step8Data);
-  }
-
   const handleChange = e => {
     const { checked } = e.target;
 

@@ -17,7 +17,6 @@ export default function usePost(
       return axiosInstance.post(apiEndpointUrl, formData);
     },
     onSuccess: data => {
-      console.log(data);
       if (isDispatch) {
         dispatch({
           type: 'SET_FORM_ID',
@@ -31,9 +30,9 @@ export default function usePost(
       });
 
       router.push(`${routeUrl}`);
+      router.refresh();
     },
     onError: error => {
-      console.log(error.message);
       toast.error(
         'An error occurred while processing your request. Please try again later.',
         {
