@@ -117,6 +117,14 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Gender
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  gender
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
                   Date of Birth*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
@@ -291,6 +299,7 @@ const StepSeven = () => {
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   Paris
                 </p>
+
               </div>
             </div>
           </div>
@@ -426,10 +435,10 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                  {step3Data?.fatherPlaceOfBirth}
+                Place of Birth
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  DELHI
+                {step3Data?.fatherPlaceOfBirth}
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -845,13 +854,269 @@ const StepSeven = () => {
                   ) : null}
                 </>
               ) : null}
+
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                Has permission to visit or to extend stay in India previously been refused?
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Yes
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                If so, when and by whom (Mention Control No. and date also)
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  detail
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="px-4 pt-10">
-            <h2 className="text-3xl font-semibold">Details of Purpose</h2>
+            <h2 className="text-3xl font-semibold">Details of Purpose <span className='text-lg'>(SHORT TERM MEDICAL TREATMENT OF SELF)</span></h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
+
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name of the Hospital where Medical treatment is to be carried out
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Name
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address of Hospital
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Address
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Phone No.
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  phone
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  State
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  State
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  District
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  District
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Type of Medical Treatment required
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Type
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="px-4 pt-10">
+            <h2 className="text-3xl font-semibold">Details of Purpose <span className='text-lg'>(eCONFERENCE VISA)</span></h2>
+            <hr className="w-full h-1 text-primary bg-primary" />
+            <div className="space-y-2 divide-y-[1px] pt-5">
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name/subject of the conference
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  name
+                </p>
+              </div>
+              <div className="pt-5 text-2xl font-semibold text-primary">
+                Duration of conference
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Start date
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  11/11/2023
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  End date
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  12/11/2024
+                </p>
+              </div>
+              <div className="pt-5 text-2xl font-semibold text-primary">
+                Venue of conference
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  address
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  State
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  state
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Ditrict
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  district
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Pincode
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  pin
+                </p>
+              </div>
+
+              <div className="pt-5 text-2xl font-semibold text-primary">
+                Details of organizer of conference
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name of organizer
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  address
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  state
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Phone no
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  district
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Email id
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  pin
+                </p>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div className="px-4 pt-10">
+            <h2 className="text-3xl font-semibold">Details of Purpose<span className='text-lg'>(TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL VISA)</span></h2>
+            <hr className="w-full h-1 text-primary bg-primary" />
+            <div className="space-y-2 divide-y-[1px] pt-5">
+
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name of the principal e-Medical Visa holder (i.e. the patient)
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  anme
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address*
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  address
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Visa No. / Application id of principal e-Medical Visa holder
+
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  Visa No.
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Visa number of principal e-Medical Visa holder (only on select Visa No.)
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  no.
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Application id of principal e-Medical Visa holder (only on select Application id)
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  id
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Passport number of principal e-Medical Visa holder
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  id
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Date of birth of principal e-Medical Visa holder
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  id
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Nationality of principal e-Medical Visa Select nationality v holder
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  id
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="px-4 pt-10">
+            <h2 className="text-3xl font-semibold">Details of Purpose<span className='text-lg'>(TO SET UP INDUSTRIAL/BUSINESS VENTURE)</span></h2>
+            <hr className="w-full h-1 text-primary bg-primary" />
+            <div className="space-y-2 divide-y-[1px] pt-5">
+              <div className="text-black text-sm pt-5">
+                for  TO SET UP INDUSTRIAL/BUSINESS VENTURE and SALE/PURCHASE/TRADE (text for your reference)
+              </div>
               <div className="pt-5 text-2xl font-semibold text-primary">
                 Detials of the Applicants Company
               </div>
@@ -860,7 +1125,7 @@ const StepSeven = () => {
                   Name*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step4Data?.detailsOfFriendRelativeName}
+                  name
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -868,7 +1133,7 @@ const StepSeven = () => {
                   Address*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step4Data?.detailsOfFriendRelativeAddress}
+                  address
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -876,7 +1141,7 @@ const StepSeven = () => {
                   Phone No.*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step4Data?.detailsOfFriendRelativePhoneNo}
+                  number
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -884,7 +1149,7 @@ const StepSeven = () => {
                   Website*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step4Data?.detailsOfFriendRelativeWebsite}
+                  website
                 </p>
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
@@ -892,11 +1157,194 @@ const StepSeven = () => {
                   Nature of Business/Product*
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step4Data?.detailsOfFriendRelativeBusiness}
+                  nature
+                </p>
+              </div>
+              <div className="text-black text-sm pt-5">
+                for  ATTEND TECHNICAL/BUSINESS MEETINGS and EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT (text for your reference)
+              </div>
+              <div className="pt-5 text-2xl font-semibold text-primary">
+                Detials of Indian Firm
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Phone
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+              <div className="text-black text-sm pt-5">
+                for TO RECRUIT MANPOWER  (text for your reference)
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name and contact number of the company representative in India
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Nature of Job for which recruiting
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Places where recruitment is to be conducted
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
+                </p>
+              </div>
+
+              <div className="text-black text-sm pt-5">
+                for PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS  (text for your reference)
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name and address of the exhibition/trade fair
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  nature
                 </p>
               </div>
             </div>
           </div>
+
+          <div className="px-4 pt-10">
+            <h2 className="text-3xl font-semibold">Details of Purpose<span className='text-lg'>(CONDUCTING TOURS)</span></h2>
+            <hr className="w-full h-1 text-primary bg-primary" />
+            <div className="space-y-2 divide-y-[1px] pt-5">
+
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name and address of the Travel Agency in native country
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  name
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Cities to be visited during the tour
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  cities
+                </p>
+              </div>
+              <div className="pt-5 text-2xl font-semibold text-primary">
+                Details of the Travel agent/associate in India
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Name
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  name
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Phone
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  phone
+                </p>
+              </div>
+              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <h2 className="py-1 text-sm font-semibold text-secondary">
+                  Address
+                </h2>
+                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                  address
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           <div className="px-4 pt-10">
             <h2 className="text-3xl font-semibold">Other Information</h2>
@@ -909,8 +1357,8 @@ const StepSeven = () => {
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   {step4Data?.countryVisitedInLast10Years.length > 0
                     ? step4Data?.countryVisitedInLast10Years.map(
-                        (country, index) => <span key={index}>{country}, </span>
-                      )
+                      (country, index) => <span key={index}>{country}, </span>
+                    )
                     : null}
                 </p>
               </div>
@@ -951,15 +1399,15 @@ const StepSeven = () => {
                   <tbody>
                     {step4Data?.visitedSAARCCountriesLists.length > 0
                       ? step4Data?.visitedSAARCCountriesLists.map(country => (
-                          <tr
-                            className="border-b hover:bg-gray-50"
-                            key={country._id}
-                          >
-                            <td className="p-4">{country?.saarcCountryName}</td>
-                            <td className="p-4">{country?.selectYear}</td>
-                            <td className="p-4">{country?.numberOfVisits}</td>
-                          </tr>
-                        ))
+                        <tr
+                          className="border-b hover:bg-gray-50"
+                          key={country._id}
+                        >
+                          <td className="p-4">{country?.saarcCountryName}</td>
+                          <td className="p-4">{country?.selectYear}</td>
+                          <td className="p-4">{country?.numberOfVisits}</td>
+                        </tr>
+                      ))
                       : null}
                   </tbody>
                 </table>
