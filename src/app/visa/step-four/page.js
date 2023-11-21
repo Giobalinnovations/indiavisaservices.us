@@ -311,11 +311,11 @@ const StepFour = () => {
                                   Delhi Airport{' '}
                                 </option>
                               </Field>
-                              {/* <ErrorMessage
-                            name="expectedPortOfExit"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                              <ErrorMessage
+                                name="expectedPortOfExit"
+                                component="div"
+                                className="text-red-600"
+                              />
                             </div>
                           </div>
                           {/* <div className="flex items-start py-2 space-x-2">
@@ -2012,7 +2012,7 @@ const StepFour = () => {
                   </Link>
                   <button
                     type="submit"
-                    // disabled={!isValid}
+                    disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                       !isValid ? 'cursor-not-allowed opacity-50' : ''
                     }`}
