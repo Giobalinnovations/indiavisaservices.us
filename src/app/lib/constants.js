@@ -534,25 +534,187 @@ export const step4ValidationSchema = {
     ),
 
     //for visa type e-bussiness VISA
-    eBUSINESSCompanyName: Yup.string().required('Name Required'),
-    eBUSINESSCompanyAddress: Yup.string().required('Address Required'),
-    eBUSINESSCompanyPhone: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
-      .required('Phone is required'),
-    eBusinessAttendTechMeetingName: Yup.string().required('Required'),
-    eBusinessAttendTechMeetingAddress: Yup.string().required('Required'),
-    eBusinessAttendTechMeetingPhone: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
-      .required('Phone is required'),
-    eBusinessRecruitManpowerNamecontactCompanyRepresentative:
-      Yup.string().required('Required'),
-    eBusinessRecruitManpowerNatureOfJob: Yup.string().required('Required'),
-    eBusinessRecruitManpowerPlacesRecruitmentConducted:
-      Yup.string().required('Required'),
-    eBusinessParticipationInExhibitionsNameAndAddress:
-      Yup.string().required('Required'),
-    eBusinessConductingToursNameAndAddress: Yup.string().required('Required'),
-    eBusinessConductingToursCities: Yup.string().required('Required'),
+
+    eBUSINESSCompanyName: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+            value === 'SALE/PURCHASE/TRADE' ||
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'TO RECRUIT MANPOWER' ||
+            value === 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+
+        then: schema => schema.required('Visa Name Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBUSINESSCompanyAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+            value === 'SALE/PURCHASE/TRADE' ||
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'TO RECRUIT MANPOWER' ||
+            value === 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+
+        then: schema => schema.required('Address Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBUSINESSCompanyPhone: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+            value === 'SALE/PURCHASE/TRADE' ||
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'TO RECRUIT MANPOWER' ||
+            value === 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+
+        then: schema =>
+          schema
+            .matches(
+              /^[0-9]{10}$/,
+              'Phone number must be a valid 10-digit number'
+            )
+            .required('Phone is required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBUSINESSCompanyWebsite: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+            value === 'SALE/PURCHASE/TRADE' ||
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'TO RECRUIT MANPOWER' ||
+            value === 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+    eBUSINESSCompanyNatures: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+            value === 'SALE/PURCHASE/TRADE'
+          );
+        },
+
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessAttendTechMeetingName: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+    eBusinessAttendTechMeetingAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+    eBusinessAttendTechMeetingPhone: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: value => {
+          return (
+            value === 'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+            value === 'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT'
+          );
+        },
+        then: schema =>
+          schema
+            .matches(
+              /^[0-9]{10}$/,
+              'Phone number must be a valid 10-digit number'
+            )
+            .required('Phone is required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessRecruitManpowerNatureOfJob: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessRecruitManpowerPlacesRecruitmentConducted: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessParticipationInExhibitionsNameAndAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    // eBusinessConductingToursNameAndAddress: Yup.string().required('Required'),
+    // eBusinessConductingToursCities: Yup.string().required('Required'),
 
     //for visa type eMEDICAL ATTENDANT VISA
 
@@ -778,6 +940,24 @@ export const step4ValidationSchema = {
     detailsOfFriendRelativeWebsite: '',
     detailsOfFriendRelativeBusiness: '',
 
+    countryVisitedInLast10Years: [],
+
+    visitedSAARCCountries: 'no',
+    visitedSAARCCountriesLists: [
+      {
+        saarcCountryName: '',
+        selectYear: '',
+        numberOfVisits: '',
+      },
+    ],
+
+    referenceNameInIndia: '',
+    referenceAddress: '',
+    referencePhone: '',
+    referenceNameInHomeCountry: '',
+    referenceAddressInHomeCountry: '',
+    referencePhoneInHomeCountry: '',
+
     // feild according visa type
     visaServiceSelectedValueValidation: '',
     //for visa type eMEDICAL VISA
@@ -793,9 +973,19 @@ export const step4ValidationSchema = {
     eBUSINESSCompanyPhone: '',
     eBUSINESSCompanyWebsite: '',
     eBUSINESSCompanyNatures: '',
+
+    eBusinessAttendTechMeetingName: '',
+    eBusinessAttendTechMeetingAddress: '',
+    eBusinessAttendTechMeetingPhone: '',
+
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative: '',
+    eBusinessRecruitManpowerPlacesRecruitmentConducted: '',
+    eBusinessRecruitManpowerNatureOfJob: '',
+
+    eBusinessParticipationInExhibitionsNameAndAddress: '',
     //for visa type eMEDICAL ATTENDANT VISA
     eMEDICALATTENDANTNameVisaHolder: '',
-    eMEDICALATTENDANTAppOrVisa: 'applicationId',
+    eMEDICALATTENDANTAppOrVisa: '',
     eMEDICALATTENDANTVisaNumberOfVisaHolder: '',
     eMEDICALATTENDANTApplicationIdOfVisaHolder: '',
     eMEDICALATTENDANTPassportNumberOfVisaHolder: '',
@@ -814,24 +1004,6 @@ export const step4ValidationSchema = {
     eCONFERENCEAddressOfOrganizer: '',
     eCONFERENCEPhoneOfOrganizer: '',
     eCONFERENCEEmailOfOrganizer: '',
-
-    countryVisitedInLast10Years: [],
-
-    visitedSAARCCountries: 'no',
-    visitedSAARCCountriesLists: [
-      {
-        saarcCountryName: '',
-        selectYear: '',
-        numberOfVisits: '',
-      },
-    ],
-
-    referenceNameInIndia: '',
-    referenceAddress: '',
-    referencePhone: '',
-    referenceNameInHomeCountry: '',
-    referenceAddressInHomeCountry: '',
-    referencePhoneInHomeCountry: '',
   },
 };
 
