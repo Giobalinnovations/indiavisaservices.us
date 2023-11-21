@@ -21,7 +21,7 @@ export default function FileUpload() {
   const removeImage = i => {
     setFile(files.filter(x => x.name !== i));
   };
-  console.log(files);
+
   return (
     <>
       <div className="flex items-center justify-center h-screen px-2 bg-gray-300">

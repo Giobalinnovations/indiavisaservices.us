@@ -18,7 +18,6 @@ export default function useUpdate(
       return axiosInstance.put(`${apiEndpointUrl}${updateId}`, formData);
     },
     onSuccess: data => {
-      console.log(data);
       toast.success(`step ${step} Updated successfully`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
@@ -30,7 +29,6 @@ export default function useUpdate(
       refetch();
     },
     onError: error => {
-      console.log(error);
       toast.error(
         'An error occurred while processing your request. Please try again later.',
         {
@@ -41,6 +39,6 @@ export default function useUpdate(
     },
     enabled: !!updateId,
   });
-  console.log(`${apiEndpointUrl}${updateId}`);
+
   return updateMutation;
 }

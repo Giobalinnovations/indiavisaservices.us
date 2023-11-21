@@ -40,7 +40,6 @@ const StepOne = () => {
         >
           {({ values, isValid, handleSubmit, handleChange }) => (
             <Form onSubmit={handleSubmit} className="formMain">
-              {console.log(values)}
               <div className="form-input-main-div">
                 <label className="form-label">Application Type*</label>
                 <div className="input-error-wrapper">
@@ -799,8 +798,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue6"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING
-                              PROJECT`}
+                              value="EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT"
                             />
                             <label htmlFor="eBusinessVisaValue6">
                               EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING

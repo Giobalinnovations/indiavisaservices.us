@@ -46,7 +46,7 @@ export default function StepOneUpdate() {
     if (getAllStepsData.data.step1Data) {
       const { __v, _id, ...cleanedStep1Data } =
         getAllStepsData?.data?.step1Data;
-      console.log(cleanedStep1Data);
+
       return (
         <>
           <BannerPage heading="E-VISA APPLICATION FORM" />
@@ -66,7 +66,7 @@ export default function StepOneUpdate() {
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   updateMutation.mutate(values);
                   setSubmitting(false);
-                  console.log('updateSubmitting');
+
                   resetForm();
                 }}
               >
@@ -864,8 +864,7 @@ export default function StepOneUpdate() {
                                     id="eBusinessVisaValue6"
                                     name="eBusinessVisa"
                                     className="mt-1"
-                                    value={`EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING
-                              PROJECT`}
+                                    value="EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT"
                                   />
                                   <label htmlFor="eBusinessVisaValue6">
                                     EXPERT/SPECIALIST IN CONNECTION WITH AN

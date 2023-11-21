@@ -19,13 +19,10 @@ export default function FormikForm({
         if (step1FormIdData) {
           updateMutation.mutate(values);
           setSubmitting(false);
-          console.log('updateSubmitting');
         } else {
           postMutation.mutate(values);
           setSubmitting(false);
           resetForm();
-          console.log('post', step1FormIdData);
-          console.log('postSubmitting');
         }
       }}
     >

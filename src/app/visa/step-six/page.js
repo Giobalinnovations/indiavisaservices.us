@@ -39,6 +39,8 @@ const StepSix = () => {
   return (
     <>
       <BannerPage heading="Upload Your Picture" />
+      <SavedFormId />
+
       <Formik
         initialValues={step6ValidationSchema.initialValues}
         validationSchema={step6ValidationSchema.yupSchema}
@@ -98,7 +100,6 @@ const StepSix = () => {
       >
         {({ values, isValid, handleSubmit, setFieldValue }) => (
           <>
-            <SavedFormId />
             <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
               {/* upload file start  */}
               <div className="mb-6 space-y-8">

@@ -1,18 +1,19 @@
-"use client";
-import React from "react";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-import { step4ValidationSchema } from "@/app/lib/constants";
-import axiosInstance from "@/services/api";
-import { useFormContext } from "@/app/context/formContext";
-import apiEndpoint from "@/services/apiEndpoint";
-import { ImSpinner2 } from "react-icons/im";
-import { Country } from "country-state-city";
-import MultiReactSelectFormik from "@/components/MultiReactSelectFormik";
-import usePost from "@/hooks/usePost";
-import { useQuery } from "@tanstack/react-query";
-import SavedFormId from "@/components/common/SavedFormId";
+'use client';
+import React from 'react';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { step4ValidationSchema } from '@/app/lib/constants';
+import axiosInstance from '@/services/api';
+import { useFormContext } from '@/app/context/formContext';
+import apiEndpoint from '@/services/apiEndpoint';
+import { ImSpinner2 } from 'react-icons/im';
+import { Country } from 'country-state-city';
+import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
+import usePost from '@/hooks/usePost';
+import { useQuery } from '@tanstack/react-query';
+import SavedFormId from '@/components/common/SavedFormId';
+import lodash from 'lodash';
 
 const StepFour = () => {
   const { state } = useFormContext();
@@ -24,7 +25,7 @@ const StepFour = () => {
     isSuccess: getStep1DataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["getStep1Data"],
+    queryKey: ['getStep1Data'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
     enabled: !!state.formId,
@@ -33,7 +34,7 @@ const StepFour = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
     4,
-    "/visa/step-five"
+    '/visa/step-five'
   );
 
   const currentYear = new Date().getFullYear();
@@ -43,6 +44,13 @@ const StepFour = () => {
     (_, index) => startYear + index
   );
   if (getStep1DataIsSuccess) {
+    const visaServiceSelected = step1Data?.data?.visaService
+      ? lodash.camelCase(step1Data?.data?.visaService)
+      : '';
+    const visaServiceSelectedValue = step1Data?.data?.[visaServiceSelected];
+    console.log(visaServiceSelectedValue);
+    console.log(visaServiceSelected);
+
     return (
       <>
         <BannerPage heading="Applicant Detail Form" />
@@ -50,8 +58,9 @@ const StepFour = () => {
         <Formik
           initialValues={{
             ...step4ValidationSchema.initialValues,
-            visaService: step1Data.data ? step1Data.data.visaService : "",
-            portOfArrival: step1Data.data ? step1Data.data.portOfArrival : "",
+            visaService: step1Data.data ? step1Data.data.visaService : '',
+            portOfArrival: step1Data.data ? step1Data.data.portOfArrival : '',
+            visaServiceSelectedValue: visaServiceSelectedValue ?? '',
           }}
           validationSchema={step4ValidationSchema.yupSchema}
           validateOnChange={true}
@@ -61,9 +70,7 @@ const StepFour = () => {
               ...values,
               formId: state.formId,
               countryVisitedInLast10Years:
-                values.countryVisitedInLast10Years.map(
-                  (option) => option.value
-                ),
+                values.countryVisitedInLast10Years.map(option => option.value),
             });
             setSubmitting(false);
             resetForm();
@@ -227,13 +234,13 @@ const StepFour = () => {
                                 <option value="">Select </option>
 
                                 <option value="Jaipur Airport">
-                                  Jaipur Airport{" "}
+                                  Jaipur Airport{' '}
                                 </option>
                                 <option value="Udaipur Airport">
-                                  Udaipur Airport{" "}
+                                  Udaipur Airport{' '}
                                 </option>
                                 <option value="Delhi Airport ">
-                                  Delhi Airport{" "}
+                                  Delhi Airport{' '}
                                 </option>
                               </Field>
                               {/* <ErrorMessage
@@ -313,7 +320,7 @@ const StepFour = () => {
                                   id="yes"
                                   name="visitedIndiaBefore"
                                   value="yes"
-                                  checked={values.visitedIndiaBefore === "yes"}
+                                  checked={values.visitedIndiaBefore === 'yes'}
                                 />
                                 <label htmlFor="yes" className="font-semibold">
                                   Yes
@@ -325,7 +332,7 @@ const StepFour = () => {
                                   id="no"
                                   name="visitedIndiaBefore"
                                   value="no"
-                                  checked={values.visitedIndiaBefore === "no"}
+                                  checked={values.visitedIndiaBefore === 'no'}
                                 />
                                 <label htmlFor="no" className="font-semibold">
                                   No
@@ -338,7 +345,7 @@ const StepFour = () => {
                               />
                             </div>
                           </div>
-                          {values.visitedIndiaBefore === "yes" && (
+                          {values.visitedIndiaBefore === 'yes' && (
                             <div className="space-y-4">
                               <div className="form-input-main-div">
                                 <label className="form-label">Address*</label>
@@ -411,30 +418,30 @@ const StepFour = () => {
                                       Business Visa
                                     </option>
                                     <option value="Medical">
-                                      Medical Visa{" "}
+                                      Medical Visa{' '}
                                     </option>
                                     <option value="Student">
-                                      Student Visa{" "}
+                                      Student Visa{' '}
                                     </option>
                                     <option value="Tourist">
-                                      Tourist Visa{" "}
+                                      Tourist Visa{' '}
                                     </option>
                                     <option value="Tourist">
-                                      Tansit Visa{" "}
+                                      Tansit Visa{' '}
                                     </option>
                                     <option value="Conference">
-                                      Conference Visa{" "}
+                                      Conference Visa{' '}
                                     </option>
                                     <option value="Journalist">
-                                      Journalist Visa{" "}
+                                      Journalist Visa{' '}
                                     </option>
                                     <option value="Employment">
-                                      Employment Visa{" "}
+                                      Employment Visa{' '}
                                     </option>
                                   </Field>
                                   <ErrorMessage name="visitedIndiaBeforeTypeOfVisa">
-                                    {(errorMsg) => (
-                                      <div style={{ color: "red" }}>
+                                    {errorMsg => (
+                                      <div style={{ color: 'red' }}>
                                         {errorMsg}
                                       </div>
                                     )}
@@ -510,7 +517,7 @@ const StepFour = () => {
                             </div>
                           </div>
 
-                          {values.permissionRefused === "yes" && (
+                          {values.permissionRefused === 'yes' && (
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 If so, when and by whom (Mention Control No. and
@@ -533,7 +540,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    {values.visitedIndiaBefore === "yes" && (
+                    {values.visitedIndiaBefore === 'yes' && (
                       <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <div>
                           <h2 className="py-5 sidetext ">
@@ -575,1080 +582,968 @@ const StepFour = () => {
                   </div>
                 </div>
 
-                <div>
-                  <div className="">
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose(remove this)
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
-
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <div className="form-input-main-div">
-                            <label className="form-label">Name</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="detailsOfFriendRelativeName"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="detailsOfFriendRelativeName"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Address</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="detailsOfFriendRelativeAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="detailsOfFriendRelativeAddress"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="purposecontactNo"
-                            >
-                              Phone No.
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="detailsOfFriendRelativePhoneNo"
-                                name="detailsOfFriendRelativePhoneNo"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="detailsOfFriendRelativePhoneNo"
-                                component="div"
-                                className="text-red-500"
-                              />
-                            </div>
-                          </div>
-                          {/* <div className="form-input-main-div">
-                        <label className="form-label">State</label>
-                        <div className="input-error-wrapper">
-                          <Field
-                            name="state"
-                            component="select"
-                            className="p-2 border rounded select-input"
-                          >
-                            <option value="">Select </option>
-                            <option value="option1">Option1</option>
-                          </Field>
-                        </div>
-                      </div>
-                      <div className="form-input-main-div">
-                        <label className="form-label">District</label>
-                        <Field
-                          name="district"
-                          component="select"
-                          className="p-2 border rounded select-input"
-                        >
-                          <option value="">Select </option>
-
-                          <option value="option1">Option1 </option>
-                        </Field>
-                      </div> */}
-                          <div className="form-input-main-div">
-                            <label className="form-label">Website</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="detailsOfFriendRelativeWebsite"
-                                name="detailsOfFriendRelativeWebsite"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="detailsOfFriendRelativeWebsite"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Nature Of Business
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="detailsOfFriendRelativeBusiness"
-                                name="detailsOfFriendRelativeBusiness"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="detailsOfFriendRelativeBusiness"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-
                 {/* feilds for visa type--- e-medical start */}
-                <div>
-                  <div className="">
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose{" "}
-                      <span className="text-lg">
-                        (SHORT TERM MEDICAL TREATMENT OF SELF )
-                      </span>
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
+                {visaServiceSelected === 'eMedicalVisa' &&
+                visaServiceSelectedValue ===
+                  'SHORT TERM MEDICAL TREATMENT OF SELF' ? (
+                  <div>
+                    <div>
+                      <h2 className="text-3xl font-semibold">
+                        Details of Purpose{' '}
+                        <span className="text-lg">
+                          ({visaServiceSelectedValue})
+                        </span>
+                      </h2>
+                      <hr className="h-1 text-primary bg-primary w-36" />
+                    </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name of the Hospital where Medical treatment is to
-                              be carried out
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eMEDICALNameOfHospital"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALNameOfHospital"
-                                component="div"
-                                className="text-red-600"
-                              />
+                    <div className="grid grid-cols-12 gap-8 ">
+                      <div className="col-span-8">
+                        <div className="">
+                          <div className="formMain">
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name of the Hospital where Medical treatment is
+                                to be carried out
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eMEDICALNameOfHospital"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALNameOfHospital"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Address of Hospital
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eMEDICALAddressOfHospital"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALAddressOfHospital"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Address of Hospital
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eMEDICALAddressOfHospital"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALAddressOfHospital"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eMEDICALPhoneOfHospital"
-                            >
-                              Phone No.
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALPhoneOfHospital"
-                                name="eMEDICALPhoneOfHospital"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALPhoneOfHospital"
-                                component="div"
-                                className="text-red-500"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">State</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                name="eMEDICALStateOfHospital"
-                                component="select"
-                                className="p-2 border rounded select-input"
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eMEDICALPhoneOfHospital"
                               >
-                                <option value="">Select </option>
-                                <option value="option1">Option1</option>
-                              </Field>
-                              <ErrorMessage
-                                name="eMEDICALStateOfHospital"
-                                component="div"
-                                className="text-red-500"
-                              />
+                                Phone No.
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALPhoneOfHospital"
+                                  name="eMEDICALPhoneOfHospital"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALPhoneOfHospital"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">District</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                name="eMEDICALDistrictOfHospital"
-                                component="select"
-                                className="p-2 border rounded select-input"
-                              >
-                                <option value="">Select </option>
+                            <div className="form-input-main-div">
+                              <label className="form-label">State</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  name="eMEDICALStateOfHospital"
+                                  component="select"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="">Select </option>
+                                  <option value="option1">Option1</option>
+                                </Field>
+                                <ErrorMessage
+                                  name="eMEDICALStateOfHospital"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
+                            </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">District</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  name="eMEDICALDistrictOfHospital"
+                                  component="select"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="">Select </option>
 
-                                <option value="option1">Option1 </option>
-                              </Field>
-                              <ErrorMessage
-                                name="eMEDICALDistrictOfHospital"
-                                component="div"
-                                className="text-red-500"
-                              />
+                                  <option value="option1">Option1 </option>
+                                </Field>
+                                <ErrorMessage
+                                  name="eMEDICALDistrictOfHospital"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Type of Medical Treatment required
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALtypeOfMedicalTreatment"
-                                name="eMEDICALtypeOfMedicalTreatment"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALtypeOfMedicalTreatment"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Type of Medical Treatment required
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALtypeOfMedicalTreatment"
+                                  name="eMEDICALtypeOfMedicalTreatment"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALtypeOfMedicalTreatment"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
+                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                        <h2 className="py-6 sidetext ">No. of entries</h2>
+                        <h2 className="py-4 sidetext ">
+                          Port of arrival in India
+                        </h2>
+                        <h2 className="py-4 sidetext ">
+                          Expected port of exit from India
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
+
                 {/* feilds for visa type--- e-medical end  */}
 
                 {/* feilds for visa type--- e-bussiness start */}
-                <div>
-                  <div className="">
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose{" "}
-                      <span className="text-lg">
-                        (TO SET UP INDUSTRIAL/BUSINESS VENTURE )
-                      </span>
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
+                {visaServiceSelected === 'eBusinessVisa' &&
+                visaServiceSelectedValue !== 'CONDUCTING TOURS' ? (
+                  <div>
+                    <div>
+                      <h2 className="text-3xl font-semibold">
+                        Details of Purpose{' '}
+                        <span className="text-lg">
+                          ({visaServiceSelectedValue} )
+                        </span>
+                      </h2>
+                      <hr className="h-1 text-primary bg-primary w-36" />
+                    </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <b>Details of the Applicants Company</b>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Name</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eBUSINESSCompanyName"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBUSINESSCompanyName"
-                                component="div"
-                                className="text-red-600"
-                              />
+                    <div className="grid grid-cols-12 gap-8 ">
+                      <div className="col-span-8">
+                        <div className="">
+                          <div className="formMain">
+                            <b>Details of the Applicants Company</b>
+                            <div className="form-input-main-div">
+                              <label className="form-label">Name</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eBUSINESSCompanyName"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBUSINESSCompanyName"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Address</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eBUSINESSCompanyAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBUSINESSCompanyAddress"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">Address</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eBUSINESSCompanyAddress"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBUSINESSCompanyAddress"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eBUSINESSCompanyPhone"
-                            >
-                              Phone No.
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBUSINESSCompanyPhone"
-                                name="eBUSINESSCompanyPhone"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBUSINESSCompanyPhone"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eBUSINESSCompanyPhone"
+                              >
+                                Phone No.
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eBUSINESSCompanyPhone"
+                                  name="eBUSINESSCompanyPhone"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBUSINESSCompanyPhone"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eBUSINESSCompanyWebsite"
-                            >
-                              Website
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBUSINESSCompanyWebsite"
-                                name="eBUSINESSCompanyWebsite"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBUSINESSCompanyWebsite"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eBUSINESSCompanyWebsite"
+                              >
+                                Website
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eBUSINESSCompanyWebsite"
+                                  name="eBUSINESSCompanyWebsite"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBUSINESSCompanyWebsite"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Natures of Business/ Product
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBUSINESSCompanyNatures"
-                                name="eBUSINESSCompanyNatures"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBUSINESSCompanyNatures"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <b>Details of Indian Firm</b>
-                          <span className="lowercase">
-                            (ONLY FOR ATTEND TECHNICAL/BUSINESS MEETINGS
-                            ,And////, EXPERT/SPECIALIST IN CONNECTION WITH AN
-                            ONGOING PROJECT Replace with nature of business)
-                          </span>
+                            {visaServiceSelectedValue ===
+                              'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+                            visaServiceSelectedValue ===
+                              'SALE/PURCHASE/TRADE' ? (
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Natures of Business/ Product
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    id="eBUSINESSCompanyNatures"
+                                    name="eBUSINESSCompanyNatures"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="eBUSINESSCompanyNatures"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                            ) : null}
+                            {visaServiceSelectedValue ===
+                              'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+                            visaServiceSelectedValue ===
+                              'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT' ? (
+                              <>
+                                {' '}
+                                <b>Details of Indian Firm</b>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">Name</label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessAttendTechMeetingName"
+                                      name="eBusinessAttendTechMeetingName"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessAttendTechMeetingName"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">Address</label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessAttendTechMeetingAddress"
+                                      name="eBusinessAttendTechMeetingAddress"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessAttendTechMeetingAddress"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">Phone</label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessAttendTechMeetingPhone"
+                                      name="eBusinessAttendTechMeetingPhone"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessAttendTechMeetingPhone"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ) : null}
 
-                          <div className="form-input-main-div">
-                            <label className="form-label">Name</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessAttendTechMeetingName"
-                                name="eBusinessAttendTechMeetingName"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessAttendTechMeetingName"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Address</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessAttendTechMeetingAddress"
-                                name="eBusinessAttendTechMeetingAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessAttendTechMeetingAddress"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Phone</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessAttendTechMeetingPhone"
-                                name="eBusinessAttendTechMeetingPhone"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessAttendTechMeetingPhone"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
+                            {visaServiceSelectedValue ===
+                            'TO RECRUIT MANPOWER' ? (
+                              <>
+                                {' '}
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Name and contact number of the company
+                                    representative in India
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                      name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Nature of Job for which recruiting
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessRecruitManpowerNatureOfJob"
+                                      name="eBusinessRecruitManpowerNatureOfJob"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessRecruitManpowerNatureOfJob"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Places where recruitment is to be conducted
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      id="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                      name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ) : null}
 
-                          <span>
-                            (ONLY TO RECRUIT MANPOWER Replace with nature of
-                            business)
-                          </span>
-
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name and contact number of the company
-                              representative in India
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
-                                name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessRecruitManpowerNamecontactCompanyRepresentative"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Nature of Job for which recruiting
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessRecruitManpowerNatureOfJob"
-                                name="eBusinessRecruitManpowerNatureOfJob"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessRecruitManpowerNatureOfJob"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Places where recruitment is to be conducted
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessRecruitManpowerPlacesRecruitmentConducted"
-                                name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessRecruitManpowerPlacesRecruitmentConducted"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-
-                          <b>
-                            (ONLY FOR PARTICIPATION IN
-                            EXHIBITIONS,BUSINESS/TRADE FAIRS Replace with nature
-                            of business)
-                          </b>
-
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name and address of the exhibition/trade fair
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessParticipationInExhibitionsNameAndAddress"
-                                name="eBusinessParticipationInExhibitionsNameAndAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessParticipationInExhibitionsNameAndAddress"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
+                            {visaServiceSelectedValue ===
+                            'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ? (
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Name and address of the exhibition/trade fair
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    id="eBusinessParticipationInExhibitionsNameAndAddress"
+                                    name="eBusinessParticipationInExhibitionsNameAndAddress"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="eBusinessParticipationInExhibitionsNameAndAddress"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
+                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                        <h2 className="py-6 sidetext ">No. of entries</h2>
+                        <h2 className="py-4 sidetext ">
+                          Port of arrival in India
+                        </h2>
+                        <h2 className="py-4 sidetext ">
+                          Expected port of exit from India
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
+
                 {/* feild for  */}
-                <div>
-                  <div className="">
-                    <b> (Only For CONDUCTING TOURS)</b>
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
+                {visaServiceSelected === 'eBusinessVisa' &&
+                visaServiceSelectedValue === 'CONDUCTING TOURS' ? (
+                  <div>
+                    <div className="">
+                      <h2 className="text-3xl font-semibold">
+                        Details of Purpose
+                      </h2>
+                      <hr className="h-1 text-primary bg-primary w-36" />
+                    </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name and address of the Travel Agency in native
-                              country
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eBusinessConductingToursNameAndAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessConductingToursNameAndAddress"
-                                component="div"
-                                className="text-red-600"
-                              />
+                    <div className="grid grid-cols-12 gap-8 ">
+                      <div className="col-span-8">
+                        <div className="">
+                          <div className="formMain">
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name and address of the Travel Agency in native
+                                country
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eBusinessConductingToursNameAndAddress"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBusinessConductingToursNameAndAddress"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Cities to be visited during the tour
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eBusinessConductingToursCities"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessConductingToursCities"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Cities to be visited during the tour
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eBusinessConductingToursCities"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBusinessConductingToursCities"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <b>Details of the Travel agent/associate in India</b>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="purposecontactNo"
-                            >
-                              Name
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessConductingToursTravelAgencyName"
-                                name="eBusinessConductingToursTravelAgencyName"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessConductingToursTravelAgencyName"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <b>
+                              Details of the Travel agent/associate in India
+                            </b>
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="purposecontactNo"
+                              >
+                                Name
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eBusinessConductingToursTravelAgencyName"
+                                  name="eBusinessConductingToursTravelAgencyName"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBusinessConductingToursTravelAgencyName"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="purposecontactNo"
-                            >
-                              Phone
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessConductingToursTravelAgencyPhone"
-                                name="eBusinessConductingToursTravelAgencyPhone"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessConductingToursTravelAgencyPhone"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="purposecontactNo"
+                              >
+                                Phone
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eBusinessConductingToursTravelAgencyPhone"
+                                  name="eBusinessConductingToursTravelAgencyPhone"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBusinessConductingToursTravelAgencyPhone"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="purposecontactNo"
-                            >
-                              Address
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eBusinessConductingToursTravelAgencyAddress"
-                                name="eBusinessConductingToursTravelAgencyAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eBusinessConductingToursTravelAgencyAddress"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="purposecontactNo"
+                              >
+                                Address
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eBusinessConductingToursTravelAgencyAddress"
+                                  name="eBusinessConductingToursTravelAgencyAddress"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eBusinessConductingToursTravelAgencyAddress"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
+                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                        <h2 className="py-6 sidetext ">No. of entries</h2>
+                        <h2 className="py-4 sidetext ">
+                          Port of arrival in India
+                        </h2>
+                        <h2 className="py-4 sidetext ">
+                          Expected port of exit from India
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
+
                 {/* feilds for visa type--- e-bussiness end  */}
 
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA start */}
-                <div>
-                  <div className="">
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose{" "}
-                      <span className="text-lg">
-                        (TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL
-                        VISA)
-                      </span>
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
+                {visaServiceSelected === 'eMedicalAttendantVisa' ? (
+                  <div>
+                    <div>
+                      <h2 className="text-3xl font-semibold">
+                        Details of Purpose{' '}
+                        <span className="text-lg">
+                          ({visaServiceSelectedValue})
+                        </span>
+                      </h2>
+                      <hr className="h-1 text-primary bg-primary w-36" />
+                    </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name of the principal e-Medical Visa holder (i.e.
-                              the patient)
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eMEDICALATTENDANTNameVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTNameVisaHolder"
-                                component="div"
-                                className="text-red-600"
-                              />
-                            </div>
-                          </div>
-                          <div className="flex items-start py-2 space-x-2">
-                            <label className="">
-                              Visa No. / Application id of principal e-Medical
-                              Visa holder
-                            </label>
-                            <div className="flex space-x-4">
-                              <div className="px-2 space-x-2">
+                    <div className="grid grid-cols-12 gap-8 ">
+                      <div className="col-span-8">
+                        <div className="">
+                          <div className="formMain">
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name of the principal e-Medical Visa holder
+                                (i.e. the patient)
+                              </label>
+                              <div className="input-error-wrapper">
                                 <Field
-                                  type="radio"
-                                  id="eMEDICALATTENDANTVisaNo"
-                                  name="eMEDICALATTENDANTAppOrVisa"
-                                  value="eMEDICALATTENDANTVisaNo"
+                                  type="text"
+                                  name="eMEDICALATTENDANTNameVisaHolder"
+                                  className="form-input"
                                 />
-                                <label htmlFor="eMEDICALATTENDANTVisaNo">
-                                  Visa No.
-                                </label>
-                              </div>
-                              <div className="px-2 space-x-2">
-                                <Field
-                                  type="radio"
-                                  id="eMEDICALATTENDANTAppId"
-                                  name="eMEDICALATTENDANTAppOrVisa"
-                                  value="eMEDICALATTENDANTAppId"
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTNameVisaHolder"
+                                  component="div"
+                                  className="text-red-600"
                                 />
-                                <label htmlFor="eMEDICALATTENDANTAppId">
-                                  Application id
-                                </label>
                               </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Visa number of principal e-Medical Visa holder
-                              (only on select Visa No.)
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="flex items-start py-2 space-x-2">
+                              <label className="">
+                                Visa No. / Application id of principal e-Medical
+                                Visa holder
+                              </label>
+                              <div className="flex space-x-4">
+                                <div className="px-2 space-x-2">
+                                  <Field
+                                    type="radio"
+                                    id="eMEDICALATTENDANTVisaNo"
+                                    name="eMEDICALATTENDANTAppOrVisa"
+                                    value="eMEDICALATTENDANTVisaNo"
+                                  />
+                                  <label htmlFor="eMEDICALATTENDANTVisaNo">
+                                    Visa No.
+                                  </label>
+                                </div>
+                                <div className="px-2 space-x-2">
+                                  <Field
+                                    type="radio"
+                                    id="eMEDICALATTENDANTAppId"
+                                    name="eMEDICALATTENDANTAppOrVisa"
+                                    value="eMEDICALATTENDANTAppId"
+                                  />
+                                  <label htmlFor="eMEDICALATTENDANTAppId">
+                                    Application id
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Visa number of principal e-Medical Visa holder
+                                (only on select Visa No.)
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
+                            </div>
 
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                            >
-                              Application id of principal e-Medical Visa holder
-                              (only on select Application id)
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                              >
+                                Application id of principal e-Medical Visa
+                                holder (only on select Application id)
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                  name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eMEDICALATTENDANTPassportNumberOfVisaHolder"
-                            >
-                              Passport number of principal e-Medical Visa holder
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALATTENDANTPassportNumberOfVisaHolder"
-                                name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
-                                component="div"
-                                className="text-red-500"
-                              />
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                              >
+                                Passport number of principal e-Medical Visa
+                                holder
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                                  name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Date of birth of principal e-Medical Visa holder
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALATTENDANTDobOfVisaHolder"
-                                name="eMEDICALATTENDANTDobOfVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTDobOfVisaHolder"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Date of birth of principal e-Medical Visa holder
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALATTENDANTDobOfVisaHolder"
+                                  name="eMEDICALATTENDANTDobOfVisaHolder"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTDobOfVisaHolder"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Nationality of principal e-Medical Visa Select
-                              nationality v holder
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eMEDICALATTENDANTNationalityOfVisaHolder"
-                                name="eMEDICALATTENDANTNationalityOfVisaHolder"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eMEDICALATTENDANTNationalityOfVisaHolder"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Nationality of principal e-Medical Visa Select
+                                nationality v holder
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eMEDICALATTENDANTNationalityOfVisaHolder"
+                                  name="eMEDICALATTENDANTNationalityOfVisaHolder"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eMEDICALATTENDANTNationalityOfVisaHolder"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
+                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                        <h2 className="py-6 sidetext ">No. of entries</h2>
+                        <h2 className="py-4 sidetext ">
+                          Port of arrival in India
+                        </h2>
+                        <h2 className="py-4 sidetext ">
+                          Expected port of exit from India
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
+
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA end  */}
                 {/* feilds for visa type ---confrence visa start  */}
-                <div>
-                  <div className="">
-                    <h2 className="text-3xl font-semibold">
-                      Details of Purpose
-                      <span className="text-lg">
-                        (eCONFERENCE VISA text only for refrence)
-                      </span>
-                    </h2>
-                    <hr className="h-1 text-primary bg-primary w-36" />
-                  </div>
+                {visaServiceSelected === 'eConferenceVisa' ? (
+                  <div>
+                    <div className="">
+                      <h2 className="text-3xl font-semibold">
+                        Details of Purpose
+                        <span className="text-lg">
+                          (eCONFERENCE VISA text only for refrence)
+                        </span>
+                      </h2>
+                      <hr className="h-1 text-primary bg-primary w-36" />
+                    </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
-                    <div className="col-span-8">
-                      <div className="">
-                        <div className="formMain">
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name/subject of the conference
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                name="eCONFERENCENameOfConference"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCENameOfConference"
-                                component="div"
-                                className="text-red-600"
-                              />
+                    <div className="grid grid-cols-12 gap-8 ">
+                      <div className="col-span-8">
+                        <div className="">
+                          <div className="formMain">
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name/subject of the conference
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  name="eCONFERENCENameOfConference"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCENameOfConference"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <b>Duration of conference</b>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Start date</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="date"
-                                name="eCONFERENCEStartDate"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEStartDate"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <b>Duration of conference</b>
+                            <div className="form-input-main-div">
+                              <label className="form-label">Start date</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="date"
+                                  name="eCONFERENCEStartDate"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEStartDate"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">End date</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="date"
-                                name="eCONFERENCEEndDate"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEEndDate"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">End date</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="date"
+                                  name="eCONFERENCEEndDate"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEEndDate"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <b>Venue of conference</b>
-                          <div className="form-input-main-div">
-                            <label
-                              className="form-label"
-                              htmlFor="eCONFERENCEAddress"
-                            >
-                              Address
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCEAddress"
-                                name="eCONFERENCEAddress"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEAddress"
-                                component="div"
-                                className="text-red-500"
-                              />
-                            </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">State</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                name="eCONFERENCEState"
-                                component="select"
-                                className="p-2 border rounded select-input"
+                            <b>Venue of conference</b>
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="eCONFERENCEAddress"
                               >
-                                <option value="">Select </option>
-                                <option value="option1">Option1</option>
-                              </Field>
-                              <ErrorMessage
-                                name="eCONFERENCEState"
-                                component="div"
-                                className="text-red-500"
-                              />
+                                Address
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCEAddress"
+                                  name="eCONFERENCEAddress"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEAddress"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">District</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                name="eCONFERENCEDistrict"
-                                component="select"
-                                className="p-2 border rounded select-input"
-                              >
-                                <option value="">Select </option>
+                            <div className="form-input-main-div">
+                              <label className="form-label">State</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  name="eCONFERENCEState"
+                                  component="select"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="">Select </option>
+                                  <option value="option1">Option1</option>
+                                </Field>
+                                <ErrorMessage
+                                  name="eCONFERENCEState"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
+                            </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">District</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  name="eCONFERENCEDistrict"
+                                  component="select"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option value="">Select </option>
 
-                                <option value="option1">Option1 </option>
-                              </Field>
-                              <ErrorMessage
-                                name="eCONFERENCEDistrict"
-                                component="div"
-                                className="text-red-500"
-                              />
+                                  <option value="option1">Option1 </option>
+                                </Field>
+                                <ErrorMessage
+                                  name="eCONFERENCEDistrict"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Pincode</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCEPincode"
-                                name="eCONFERENCEPincode"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEPincode"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">Pincode</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCEPincode"
+                                  name="eCONFERENCEPincode"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEPincode"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <b>Details of organizer of conference</b>
-                          <div className="form-input-main-div">
-                            <label className="form-label">
-                              Name of organizer
-                            </label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCENameOfOrganizer"
-                                name="eCONFERENCENameOfOrganizer"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCENameOfOrganizer"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <b>Details of organizer of conference</b>
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Name of organizer
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCENameOfOrganizer"
+                                  name="eCONFERENCENameOfOrganizer"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCENameOfOrganizer"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Address</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCEAddressOfOrganizer"
-                                name="eCONFERENCEAddressOfOrganizer"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEAddressOfOrganizer"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">Address</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCEAddressOfOrganizer"
+                                  name="eCONFERENCEAddressOfOrganizer"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEAddressOfOrganizer"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Phone no</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCEPhoneOfOrganizer"
-                                name="eCONFERENCEPhoneOfOrganizer"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEPhoneOfOrganizer"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">Phone no</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCEPhoneOfOrganizer"
+                                  name="eCONFERENCEPhoneOfOrganizer"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEPhoneOfOrganizer"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div className="form-input-main-div">
-                            <label className="form-label">Email id</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="eCONFERENCEEmailOfOrganizer"
-                                name="eCONFERENCEEmailOfOrganizer"
-                                className="form-input"
-                              />
-                              <ErrorMessage
-                                name="eCONFERENCEEmailOfOrganizer"
-                                component="div"
-                                className="text-red-600"
-                              />
+                            <div className="form-input-main-div">
+                              <label className="form-label">Email id</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="eCONFERENCEEmailOfOrganizer"
+                                  name="eCONFERENCEEmailOfOrganizer"
+                                  className="form-input"
+                                />
+                                <ErrorMessage
+                                  name="eCONFERENCEEmailOfOrganizer"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
-                      <h2 className="py-6 sidetext ">No. of entries</h2>
-                      <h2 className="py-4 sidetext ">
-                        Port of arrival in India
-                      </h2>
-                      <h2 className="py-4 sidetext ">
-                        Expected port of exit from India
-                      </h2>
+                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                        <h2 className="py-6 sidetext ">No. of entries</h2>
+                        <h2 className="py-4 sidetext ">
+                          Port of arrival in India
+                        </h2>
+                        <h2 className="py-4 sidetext ">
+                          Expected port of exit from India
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : null}
+
                 {/* feilds for visa type ---confrence visa end  */}
 
                 <div>
@@ -1670,7 +1565,7 @@ const StepFour = () => {
                             <div className="input-error-wrapper">
                               <MultiReactSelectFormik
                                 options={Country?.getAllCountries()?.map(
-                                  (country) => ({
+                                  country => ({
                                     value: country?.name,
                                     label: country?.name,
                                   })
@@ -1699,7 +1594,7 @@ const StepFour = () => {
                 <div>
                   <div className="">
                     <h2 className="text-3xl font-semibold">
-                      SAARC Country Visit Details{" "}
+                      SAARC Country Visit Details{' '}
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
@@ -1737,7 +1632,7 @@ const StepFour = () => {
                               </div>
                             </div>
                           </div>
-                          {values.visitedSAARCCountries === "yes" && (
+                          {values.visitedSAARCCountries === 'yes' && (
                             <div>
                               <FieldArray name="visitedSAARCCountriesLists">
                                 {({ insert, remove, push }) => (
@@ -1811,7 +1706,7 @@ const StepFour = () => {
                                                   >
                                                     Select Year*
                                                   </option>
-                                                  {years.map((year) => (
+                                                  {years.map(year => (
                                                     <option
                                                       key={year}
                                                       value={year}
@@ -1866,9 +1761,9 @@ const StepFour = () => {
                                       className="formbtn"
                                       onClick={() =>
                                         push({
-                                          saarcCountryName: "",
-                                          selectYear: "",
-                                          numberOfVisits: "",
+                                          saarcCountryName: '',
+                                          selectYear: '',
+                                          numberOfVisits: '',
                                         })
                                       }
                                     >
@@ -2045,7 +1940,7 @@ const StepFour = () => {
                     type="submit"
                     disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? "cursor-not-allowed opacity-50" : ""
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
                     }`}
                   >
                     {postMutation.isPending ? (
@@ -2053,7 +1948,7 @@ const StepFour = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      "Continue"
+                      'Continue'
                     )}
                   </button>
                   {/* save and temporary exit button  */}
