@@ -1012,12 +1012,6 @@ export const step4ValidationSchema = {
     referenceNameInHomeCountry: '',
     referenceAddressInHomeCountry: '',
     referencePhoneInHomeCountry: '',
-
-    // detailsOfFriendRelativeName: "",
-    // detailsOfFriendRelativeAddress: "",
-    // detailsOfFriendRelativePhoneNo: "",
-    // detailsOfFriendRelativeWebsite: "",
-    // detailsOfFriendRelativeBusiness: "",
   },
 };
 
