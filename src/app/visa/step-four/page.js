@@ -149,18 +149,6 @@ const StepFour = () => {
             touched,
           }) => (
             <>
-              {console.log(
-                '===',
-                values.visaServiceSelectedValueValidation,
-                '==='
-              )}
-              {console.log(
-                '===',
-                values.visaServiceSelectedValueValidation ===
-                  'CONDUCTING TOURS',
-                '==='
-              )}
-              {console.log(values)}
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 <div>

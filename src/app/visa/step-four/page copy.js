@@ -128,6 +128,7 @@ const StepFour = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            console.log(values);
             postMutation.mutate({
               ...values,
               formId: state.formId,
@@ -148,11 +149,17 @@ const StepFour = () => {
             touched,
           }) => (
             <>
-              {/* {console.log(
+              {console.log(
                 '===',
                 values.visaServiceSelectedValueValidation,
                 '==='
-              )} */}
+              )}
+              {console.log(
+                '===',
+                values.visaServiceSelectedValueValidation ===
+                  'CONDUCTING TOURS',
+                '==='
+              )}
               {console.log(values)}
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
@@ -976,7 +983,6 @@ const StepFour = () => {
                             {visaServiceSelectedValue ===
                             'TO RECRUIT MANPOWER' ? (
                               <>
-                                {' '}
                                 <div className="form-input-main-div">
                                   <label className="form-label">
                                     Name and contact number of the company
