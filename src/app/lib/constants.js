@@ -396,7 +396,7 @@ export const step4ValidationSchema = {
     placesToVisit: Yup.string().required('Places to be visited is required'),
     placesToVisit2: Yup.string().required('Places to be visited is required'),
     durationOfVisa: Yup.string().required('Duration of visa is required'),
-    numberOfEntries: Yup.string(),
+    numberOfEntries: Yup.string().required('Number of entries is required'),
     portOfArrival: Yup.string().required(
       'Port of Arrival in India is required'
     ),
@@ -652,50 +652,91 @@ export const step4ValidationSchema = {
       }
     ),
 
-    // eBusinessRecruitManpowerNatureOfJob: Yup.string().when(
-    //   'visaServiceSelectedValueValidation',
-    //   {
-    //     is: 'TO RECRUIT MANPOWER',
-    //     then: schema => schema.required('Required'),
-    //     otherwise: schema => schema.notRequired(),
-    //   }
-    // ),
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
 
-    // eBusinessRecruitManpowerNamecontactCompanyRepresentative: Yup.string().when(
-    //   'visaServiceSelectedValueValidation',
-    //   {
-    //     is: 'TO RECRUIT MANPOWER',
-    //     then: schema => schema.required('Required'),
-    //     otherwise: schema => schema.notRequired(),
-    //   }
-    // ),
+    eBusinessRecruitManpowerNatureOfJob: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
 
-    // eBusinessRecruitManpowerPlacesRecruitmentConducted: Yup.string().when(
-    //   'visaServiceSelectedValueValidation',
-    //   {
-    //     is: 'TO RECRUIT MANPOWER',
-    //     then: schema => schema.required('Required'),
-    //     otherwise: schema => schema.notRequired(),
-    //   }
-    // ),
+    eBusinessRecruitManpowerPlacesRecruitmentConducted: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'TO RECRUIT MANPOWER',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
 
-    // eBusinessParticipationInExhibitionsNameAndAddress: Yup.string().when(
-    //   'visaServiceSelectedValueValidation',
-    //   {
-    //     is: 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS',
-    //     then: schema => schema.required('Required'),
-    //     otherwise: schema => schema.notRequired(),
-    //   }
-    // ),
+    eBusinessParticipationInExhibitionsNameAndAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
 
-    // eBusinessConductingToursNameAndAddress: Yup.string().required('Required'),
-    // eBusinessConductingToursCities: Yup.string(),
-    // eBusinessConductingToursTravelAgencyNam: Yup.string(),
+    eBusinessConductingToursNameAndAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'CONDUCTING TOURS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
 
-    // eBusinessConductingToursTravelAgencyPhone: Yup.string()
-    //   .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
-    //   .required('Phone is required'),
-    // eBusinessConductingToursTravelAgencyAddress: Yup.string(),
+    eBusinessConductingToursCities: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'CONDUCTING TOURS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+    eBusinessConductingToursTravelAgencyName: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'CONDUCTING TOURS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+    eBusinessConductingToursTravelAgencyPhone: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'CONDUCTING TOURS',
+        then: schema =>
+          schema
+            .matches(
+              /^[0-9]{10}$/,
+              'Phone number must be a valid 10-digit number'
+            )
+            .required('Phone is required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
+    eBusinessConductingToursTravelAgencyAddress: Yup.string().when(
+      'visaServiceSelectedValueValidation',
+      {
+        is: 'CONDUCTING TOURS',
+        then: schema => schema.required('Required'),
+        otherwise: schema => schema.notRequired(),
+      }
+    ),
+
     //for visa type e-bussiness VISA code end here
 
     //for visa type eMEDICAL ATTENDANT VISA code start

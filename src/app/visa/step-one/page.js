@@ -704,7 +704,7 @@ const StepOne = () => {
                               id="eMedicalVisaValue"
                               name="eMedicalVisa"
                               className="mt-1"
-                              value={`SHORT TERM MEDICAL TREATMENT OF SELF`}
+                              value="SHORT TERM MEDICAL TREATMENT OF SELF"
                             />
                             <label htmlFor="eMedicalVisaValue">
                               SHORT TERM MEDICAL TREATMENT OF SELF
@@ -738,7 +738,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`TO SET UP INDUSTRIAL/BUSINESS VENTURE`}
+                              value="TO SET UP INDUSTRIAL/BUSINESS VENTURE"
                             />
                             <label htmlFor="eBusinessVisaValue">
                               TO SET UP INDUSTRIAL/BUSINESS VENTURE
@@ -750,7 +750,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue2"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`SALE/PURCHASE/TRADE`}
+                              value="SALE/PURCHASE/TRADE"
                             />
                             <label htmlFor="eBusinessVisaValue2">
                               SALE/PURCHASE/TRADE
@@ -762,7 +762,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue3"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`ATTEND TECHNICAL/BUSINESS MEETINGS`}
+                              value="ATTEND TECHNICAL/BUSINESS MEETINGS"
                             />
                             <label htmlFor="eBusinessVisaValue3">
                               ATTEND TECHNICAL/BUSINESS MEETINGS
@@ -774,7 +774,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue4"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`TO RECRUIT MANPOWER`}
+                              value="TO RECRUIT MANPOWER"
                             />
                             <label htmlFor="eBusinessVisaValue4">
                               TO RECRUIT MANPOWER
@@ -786,7 +786,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue5"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS`}
+                              value="PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS"
                             />
                             <label htmlFor="eBusinessVisaValue5">
                               PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS
@@ -811,7 +811,7 @@ const StepOne = () => {
                               id="eBusinessVisaValue7"
                               name="eBusinessVisa"
                               className="mt-1"
-                              value={`CONDUCTING TOURS`}
+                              value="CONDUCTING TOURS"
                             />
                             <label htmlFor="eBusinessVisaValue7">
                               CONDUCTING TOURS
@@ -858,10 +858,7 @@ const StepOne = () => {
                               id="eConferenceVisaValue"
                               name="eConferenceVisa"
                               className="mt-1"
-                              value={`TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED
-                              BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF
-                              INDIA,STATE GOVERNMENTS OR UT ADMINISTRATIONS AND
-                              THEIR SUBORDINATE/ ATTACHED ORGANIZATIONS AND PSUS`}
+                              value="TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF INDIA,STATE GOVERNMENTS OR UT ADMINISTRATIONS AND THEIR SUBORDINATE/ ATTACHED ORGANIZATIONS AND PSUS"
                             />
                             <label htmlFor="eConferenceVisaValue">
                               TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED
@@ -898,8 +895,7 @@ const StepOne = () => {
                               id="eMedicalAttendantVisaValue"
                               name="eMedicalAttendantVisa"
                               className="mt-1"
-                              value={`TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON
-                              EMEDICAL VISA`}
+                              value="TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL VISA"
                             />
                             <label htmlFor="eMedicalAttendantVisaValue">
                               TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON
