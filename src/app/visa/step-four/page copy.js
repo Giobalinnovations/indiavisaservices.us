@@ -128,15 +128,14 @@ const StepFour = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            console.log(values);
-            // postMutation.mutate({
-            //   ...values,
-            //   formId: state.formId,
-            //   countryVisitedInLast10Years:
-            //     values.countryVisitedInLast10Years.map(option => option.value),
-            // });
-            // setSubmitting(false);
-            // resetForm();
+            postMutation.mutate({
+              ...values,
+              formId: state.formId,
+              countryVisitedInLast10Years:
+                values.countryVisitedInLast10Years.map(option => option.value),
+            });
+            setSubmitting(false);
+            resetForm();
           }}
         >
           {({
@@ -149,11 +148,11 @@ const StepFour = () => {
             touched,
           }) => (
             <>
-              {console.log(
+              {/* {console.log(
                 '===',
                 values.visaServiceSelectedValueValidation,
                 '==='
-              )}
+              )} */}
               {console.log(values)}
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
