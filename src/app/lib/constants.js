@@ -908,11 +908,56 @@ export const step4ValidationSchema = {
     permissionRefused: 'no',
     refusalDetails: '',
 
-    detailsOfFriendRelativeName: '',
-    detailsOfFriendRelativeAddress: '',
-    detailsOfFriendRelativePhoneNo: '',
-    detailsOfFriendRelativeWebsite: '',
-    detailsOfFriendRelativeBusiness: '',
+    // feild according visa type
+    visaServiceSelectedValueValidation: '',
+    //for visa type eMEDICAL VISA
+    eMedicalNameOfHospital: '',
+    eMedicalAddressOfHospital: '',
+    eMedicalPhoneOfHospital: '',
+    eMedicalStateOfHospital: '',
+    eMedicalDistrictOfHospital: '',
+    eMedicalTypeOfMedicalTreatment: '',
+    //for visa type eBusiness VISA
+    eBusinessCompanyName: '',
+    eBusinessCompanyAddress: '',
+    eBusinessCompanyPhone: '',
+    eBusinessCompanyWebsite: '',
+    eBusinessCompanyNatures: '',
+
+    eBusinessAttendTechMeetingName: '',
+    eBusinessAttendTechMeetingAddress: '',
+    eBusinessAttendTechMeetingPhone: '',
+
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative: '',
+    eBusinessRecruitManpowerNatureOfJob: '',
+    eBusinessRecruitManpowerPlacesRecruitmentConducted: '',
+    eBusinessParticipationInExhibitionsNameAndAddress: '',
+    eBusinessConductingToursNameAndAddress: '',
+    eBusinessConductingToursCities: '',
+    eBusinessConductingToursTravelAgencyName: '',
+    eBusinessConductingToursTravelAgencyPhone: '',
+    eBusinessConductingToursTravelAgencyAddress: '',
+    //for visa type eMEDICAL ATTENDANT VISA
+    eMedicalAttendantNameVisaHolder: '',
+    eMedicalAttendantAppOrVisa: '',
+    eMedicalAttendantVisaNumberOfVisaHolder: '',
+    eMedicalAttendantApplicationIdOfVisaHolder: '',
+    eMedicalAttendantPassportNumberOfVisaHolder: '',
+    eMedicalAttendantDobOfVisaHolder: '',
+    eMedicalAttendantNationalityOfVisaHolder: '',
+    //for visa type eCONFERENCE VISA
+    eConferenceNameOfConference: '',
+    eConferenceStartDate: '',
+    eConferenceEndDate: '',
+    eConferenceAddress: '',
+
+    eConferenceState: '',
+    eConferenceDistrict: '',
+    eConferencePincode: '',
+    eConferenceNameOfOrganizer: '',
+    eConferenceAddressOfOrganizer: '',
+    eConferencePhoneOfOrganizer: '',
+    eConferenceEmailOfOrganizer: '',
 
     countryVisitedInLast10Years: [],
 
@@ -932,52 +977,11 @@ export const step4ValidationSchema = {
     referenceAddressInHomeCountry: '',
     referencePhoneInHomeCountry: '',
 
-    // feild according visa type
-    visaServiceSelectedValueValidation: '',
-    //for visa type eMEDICAL VISA
-    eMEDICALNameOfHospital: '',
-    eMEDICALAddressOfHospital: '',
-    eMEDICALPhoneOfHospital: '',
-    eMEDICALStateOfHospital: '',
-    eMEDICALDistrictOfHospital: '',
-    eMEDICALtypeOfMedicalTreatment: '',
-    //for visa type eBusiness VISA
-    eBUSINESSCompanyName: '',
-    eBUSINESSCompanyAddress: '',
-    eBUSINESSCompanyPhone: '',
-    eBUSINESSCompanyWebsite: '',
-    eBUSINESSCompanyNatures: '',
-
-    eBusinessAttendTechMeetingName: '',
-    eBusinessAttendTechMeetingAddress: '',
-    eBusinessAttendTechMeetingPhone: '',
-
-    eBusinessRecruitManpowerNamecontactCompanyRepresentative: '',
-    eBusinessRecruitManpowerPlacesRecruitmentConducted: '',
-    eBusinessRecruitManpowerNatureOfJob: '',
-
-    eBusinessParticipationInExhibitionsNameAndAddress: '',
-    //for visa type eMEDICAL ATTENDANT VISA
-    eMEDICALATTENDANTNameVisaHolder: '',
-    eMEDICALATTENDANTAppOrVisa: '',
-    eMEDICALATTENDANTVisaNumberOfVisaHolder: '',
-    eMEDICALATTENDANTApplicationIdOfVisaHolder: '',
-    eMEDICALATTENDANTPassportNumberOfVisaHolder: '',
-    eMEDICALATTENDANTDobOfVisaHolder: '',
-    eMEDICALATTENDANTNationalityOfVisaHolder: '',
-    //for visa type eCONFERENCE VISA
-    eCONFERENCENameOfConference: '',
-    eCONFERENCEStartDate: '',
-    eCONFERENCEEndDate: '',
-    eCONFERENCEAddress: '',
-
-    eCONFERENCEState: '',
-    eCONFERENCEDistrict: '',
-    eCONFERENCEPincode: '',
-    eCONFERENCENameOfOrganizer: '',
-    eCONFERENCEAddressOfOrganizer: '',
-    eCONFERENCEPhoneOfOrganizer: '',
-    eCONFERENCEEmailOfOrganizer: '',
+    // detailsOfFriendRelativeName: "",
+    // detailsOfFriendRelativeAddress: "",
+    // detailsOfFriendRelativePhoneNo: "",
+    // detailsOfFriendRelativeWebsite: "",
+    // detailsOfFriendRelativeBusiness: "",
   },
 };
 

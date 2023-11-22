@@ -675,11 +675,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eMEDICALNameOfHospital"
+                                  name="eMedicalNameOfHospital"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALNameOfHospital"
+                                  name="eMedicalNameOfHospital"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -692,11 +692,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eMEDICALAddressOfHospital"
+                                  name="eMedicalAddressOfHospital"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALAddressOfHospital"
+                                  name="eMedicalAddressOfHospital"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -714,11 +714,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eMEDICALPhoneOfHospital"
-                                  name="eMEDICALPhoneOfHospital"
+                                  name="eMedicalPhoneOfHospital"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALPhoneOfHospital"
+                                  name="eMedicalPhoneOfHospital"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -728,7 +728,7 @@ const StepFour = () => {
                               <label className="form-label">State</label>
                               <div className="input-error-wrapper">
                                 <Field
-                                  name="eMEDICALStateOfHospital"
+                                  name="eMedicalStateOfHospital"
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
@@ -736,7 +736,7 @@ const StepFour = () => {
                                   <option value="option1">Option1</option>
                                 </Field>
                                 <ErrorMessage
-                                  name="eMEDICALStateOfHospital"
+                                  name="eMedicalStateOfHospital"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -746,7 +746,7 @@ const StepFour = () => {
                               <label className="form-label">District</label>
                               <div className="input-error-wrapper">
                                 <Field
-                                  name="eMEDICALDistrictOfHospital"
+                                  name="eMedicalDistrictOfHospital"
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
@@ -755,7 +755,7 @@ const StepFour = () => {
                                   <option value="option1">Option1 </option>
                                 </Field>
                                 <ErrorMessage
-                                  name="eMEDICALDistrictOfHospital"
+                                  name="eMedicalDistrictOfHospital"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -769,11 +769,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eMEDICALtypeOfMedicalTreatment"
-                                  name="eMEDICALtypeOfMedicalTreatment"
+                                  name="eMedicalTypeOfMedicalTreatment"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALtypeOfMedicalTreatment"
+                                  name="eMedicalTypeOfMedicalTreatment"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -823,11 +823,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eBUSINESSCompanyName"
+                                  name="eBusinessCompanyName"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eBUSINESSCompanyName"
+                                  name="eBusinessCompanyName"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -838,11 +838,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eBUSINESSCompanyAddress"
+                                  name="eBusinessCompanyAddress"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eBUSINESSCompanyAddress"
+                                  name="eBusinessCompanyAddress"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -860,11 +860,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eBUSINESSCompanyPhone"
-                                  name="eBUSINESSCompanyPhone"
+                                  name="eBusinessCompanyPhone"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eBUSINESSCompanyPhone"
+                                  name="eBusinessCompanyPhone"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -881,11 +881,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eBUSINESSCompanyWebsite"
-                                  name="eBUSINESSCompanyWebsite"
+                                  name="eBusinessCompanyWebsite"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eBUSINESSCompanyWebsite"
+                                  name="eBusinessCompanyWebsite"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -904,11 +904,11 @@ const StepFour = () => {
                                   <Field
                                     type="text"
                                     id="eBUSINESSCompanyNatures"
-                                    name="eBUSINESSCompanyNatures"
+                                    name="eBusinessCompanyNatures"
                                     className="form-input"
                                   />
                                   <ErrorMessage
-                                    name="eBUSINESSCompanyNatures"
+                                    name="eBusinessCompanyNatures"
                                     component="div"
                                     className="text-red-600"
                                   />
@@ -1231,11 +1231,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eMEDICALATTENDANTNameVisaHolder"
+                                  name="eMedicalAttendantNameVisaHolder"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALATTENDANTNameVisaHolder"
+                                  name="eMedicalAttendantNameVisaHolder"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1251,7 +1251,7 @@ const StepFour = () => {
                                   <Field
                                     type="radio"
                                     id="eMEDICALATTENDANTVisaNo"
-                                    name="eMEDICALATTENDANTAppOrVisa"
+                                    name="eMedicalAttendantAppOrVisa"
                                     value="visaNo"
                                   />
                                   <label htmlFor="eMEDICALATTENDANTVisaNo">
@@ -1262,7 +1262,7 @@ const StepFour = () => {
                                   <Field
                                     type="radio"
                                     id="eMEDICALATTENDANTAppId"
-                                    name="eMEDICALATTENDANTAppOrVisa"
+                                    name="eMedicalAttendantAppOrVisa"
                                     value="applicationId"
                                   />
                                   <label htmlFor="eMEDICALATTENDANTAppId">
@@ -1280,11 +1280,11 @@ const StepFour = () => {
                                 <div className="input-error-wrapper">
                                   <Field
                                     type="text"
-                                    name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                    name="eMedicalAttendantVisaNumberOfVisaHolder"
                                     className="form-input"
                                   />
                                   <ErrorMessage
-                                    name="eMEDICALATTENDANTVisaNumberOfVisaHolder"
+                                    name="eMedicalAttendantVisaNumberOfVisaHolder"
                                     component="div"
                                     className="text-red-600"
                                   />
@@ -1306,11 +1306,11 @@ const StepFour = () => {
                                   <Field
                                     type="text"
                                     id="eMEDICALATTENDANTApplicationIdOfVisaHolder"
-                                    name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                    name="eMedicalAttendantApplicationIdOfVisaHolder"
                                     className="form-input"
                                   />
                                   <ErrorMessage
-                                    name="eMEDICALATTENDANTApplicationIdOfVisaHolder"
+                                    name="eMedicalAttendantApplicationIdOfVisaHolder"
                                     component="div"
                                     className="text-red-500"
                                   />
@@ -1330,11 +1330,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eMEDICALATTENDANTPassportNumberOfVisaHolder"
-                                  name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                                  name="eMedicalAttendantPassportNumberOfVisaHolder"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALATTENDANTPassportNumberOfVisaHolder"
+                                  name="eMedicalAttendantPassportNumberOfVisaHolder"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -1349,11 +1349,11 @@ const StepFour = () => {
                                 <Field
                                   type="date"
                                   id="eMEDICALATTENDANTDobOfVisaHolder"
-                                  name="eMEDICALATTENDANTDobOfVisaHolder"
+                                  name="eMedicalAttendantDobOfVisaHolder"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALATTENDANTDobOfVisaHolder"
+                                  name="eMedicalAttendantDobOfVisaHolder"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1368,11 +1368,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eMEDICALATTENDANTNationalityOfVisaHolder"
-                                  name="eMEDICALATTENDANTNationalityOfVisaHolder"
+                                  name="eMedicalAttendantNationalityOfVisaHolder"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eMEDICALATTENDANTNationalityOfVisaHolder"
+                                  name="eMedicalAttendantNationalityOfVisaHolder"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1419,11 +1419,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
-                                  name="eCONFERENCENameOfConference"
+                                  name="eConferenceNameOfConference"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCENameOfConference"
+                                  name="eConferenceNameOfConference"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1435,11 +1435,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="date"
-                                  name="eCONFERENCEStartDate"
+                                  name="eConferenceStartDate"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEStartDate"
+                                  name="eConferenceStartDate"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1450,11 +1450,11 @@ const StepFour = () => {
                               <div className="input-error-wrapper">
                                 <Field
                                   type="date"
-                                  name="eCONFERENCEEndDate"
+                                  name="eConferenceEndDate"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEEndDate"
+                                  name="eConferenceEndDate"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1472,11 +1472,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCEAddress"
-                                  name="eCONFERENCEAddress"
+                                  name="eConferenceAddress"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEAddress"
+                                  name="eConferenceAddress"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -1486,7 +1486,7 @@ const StepFour = () => {
                               <label className="form-label">State</label>
                               <div className="input-error-wrapper">
                                 <Field
-                                  name="eCONFERENCEState"
+                                  name="eConferenceState"
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
@@ -1494,7 +1494,7 @@ const StepFour = () => {
                                   <option value="option1">Option1</option>
                                 </Field>
                                 <ErrorMessage
-                                  name="eCONFERENCEState"
+                                  name="eConferenceState"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -1504,7 +1504,7 @@ const StepFour = () => {
                               <label className="form-label">District</label>
                               <div className="input-error-wrapper">
                                 <Field
-                                  name="eCONFERENCEDistrict"
+                                  name="eConferenceDistrict"
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
@@ -1513,7 +1513,7 @@ const StepFour = () => {
                                   <option value="option1">Option1 </option>
                                 </Field>
                                 <ErrorMessage
-                                  name="eCONFERENCEDistrict"
+                                  name="eConferenceDistrict"
                                   component="div"
                                   className="text-red-500"
                                 />
@@ -1525,11 +1525,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCEPincode"
-                                  name="eCONFERENCEPincode"
+                                  name="eConferencePincode"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEPincode"
+                                  name="eConferencePincode"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1544,11 +1544,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCENameOfOrganizer"
-                                  name="eCONFERENCENameOfOrganizer"
+                                  name="eConferenceNameOfOrganizer"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCENameOfOrganizer"
+                                  name="eConferenceNameOfOrganizer"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1560,11 +1560,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCEAddressOfOrganizer"
-                                  name="eCONFERENCEAddressOfOrganizer"
+                                  name="eConferenceAddressOfOrganizer"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEAddressOfOrganizer"
+                                  name="eConferenceAddressOfOrganizer"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1576,11 +1576,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCEPhoneOfOrganizer"
-                                  name="eCONFERENCEPhoneOfOrganizer"
+                                  name="eConferencePhoneOfOrganizer"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEPhoneOfOrganizer"
+                                  name="eConferencePhoneOfOrganizer"
                                   component="div"
                                   className="text-red-600"
                                 />
@@ -1592,11 +1592,11 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   id="eCONFERENCEEmailOfOrganizer"
-                                  name="eCONFERENCEEmailOfOrganizer"
+                                  name="eConferenceEmailOfOrganizer"
                                   className="form-input"
                                 />
                                 <ErrorMessage
-                                  name="eCONFERENCEEmailOfOrganizer"
+                                  name="eConferenceEmailOfOrganizer"
                                   component="div"
                                   className="text-red-600"
                                 />
