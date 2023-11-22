@@ -15,11 +15,11 @@ export const step1ValidationSchema = {
       .required('Email ID is required'),
     reEmailId: Yup.string().oneOf([Yup.ref('emailId')], 'Email do not match'),
     contactNo: Yup.string()
-      .required('Phone number is required')
       .matches(
         /^\+[1-9]\d{1,14}$/,
         'Invalid phone number format. Please use the international format.'
-      ),
+      )
+      .required(),
 
     visaService: Yup.string().required('Visa Service is required'),
     eTouristVisa: Yup.string().when('visaService', {
@@ -219,10 +219,7 @@ export const step3ValidationSchema = {
       .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
     mobileNo: Yup.string()
-      .matches(
-        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
-        'Phone number must be a valid 10-digit number'
-      )
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
     emailAddress: Yup.string()
       .email('Invalid email address')
@@ -394,8 +391,8 @@ export const step4ValidationSchema = {
     visaType: Yup.string().required('Type of Visa is required'),
     visaService: Yup.string().required('Type of Visa service is required'),
     contactNo: Yup.string()
-      .required('Phone number is required')
-      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number'),
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
+      .required('Phone number is required'),
     placesToVisit: Yup.string().required('Places to be visited is required'),
     placesToVisit2: Yup.string().required('Places to be visited is required'),
     durationOfVisa: Yup.string().required('Duration of visa is required'),
@@ -696,10 +693,9 @@ export const step4ValidationSchema = {
     eBusinessConductingToursCities: Yup.string(),
     eBusinessConductingToursTravelAgencyNam: Yup.string(),
 
-    eBusinessConductingToursTravelAgencyPhone: Yup.matches(
-      /^[0-9]{10}$/,
-      'Phone number must be a valid 10-digit number'
-    ).required('Phone is required'),
+    eBusinessConductingToursTravelAgencyPhone: Yup.string()
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
+      .required('Phone is required'),
     eBusinessConductingToursTravelAgencyAddress: Yup.string(),
 
     //for visa type eMEDICAL ATTENDANT VISA
