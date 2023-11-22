@@ -396,7 +396,6 @@ export const step4ValidationSchema = {
     contactNo: Yup.string()
       .required('Phone number is required')
       .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number'),
-
     placesToVisit: Yup.string().required('Places to be visited is required'),
     placesToVisit2: Yup.string().required('Places to be visited is required'),
     durationOfVisa: Yup.string().required('Duration of visa is required'),
@@ -405,7 +404,6 @@ export const step4ValidationSchema = {
       'Port of Arrival in India is required'
     ),
     expectedPortOfExit: Yup.string().required('Please select an option'),
-
     visitedIndiaBefore: Yup.string(),
     visitedIndiaBeforeVisaAddress: Yup.string().when('visitedIndiaBefore', {
       is: 'yes',
@@ -455,30 +453,11 @@ export const step4ValidationSchema = {
       otherwise: schema => schema.notRequired(),
     }),
 
-    detailsOfFriendRelativeName: Yup.string().required(
-      'Details of Friend/Relative is required'
-    ),
-    detailsOfFriendRelativeAddress: Yup.string().required(
-      'Address is required'
-    ),
-    detailsOfFriendRelativePhoneNo: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
-      .required('Phone is required'),
-    detailsOfFriendRelativeWebsite: Yup.string()
-      .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-        'Enter correct url!'
-      )
-      .required('Please enter website'),
-
-    detailsOfFriendRelativeBusiness: Yup.string().required(
-      'nature of business required'
-    ),
     // feild according visa type
     //for visa type eMEDICAL VISA
     visaServiceSelectedValueValidation: Yup.string(),
 
-    eMEDICALNameOfHospital: Yup.string().when(
+    eMedicalNameOfHospital: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -486,7 +465,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALAddressOfHospital: Yup.string().when(
+    eMedicalAddressOfHospital: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -494,7 +473,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALPhoneOfHospital: Yup.string().when(
+    eMedicalPhoneOfHospital: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -508,7 +487,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALStateOfHospital: Yup.string().when(
+    eMedicalStateOfHospital: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -516,7 +495,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALDistrictOfHospital: Yup.string().when(
+    eMedicalDistrictOfHospital: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -524,7 +503,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALtypeOfMedicalTreatment: Yup.string().when(
+    eMedicalTypeOfMedicalTreatment: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalVisa',
@@ -535,7 +514,7 @@ export const step4ValidationSchema = {
 
     //for visa type e-bussiness VISA
 
-    eBUSINESSCompanyName: Yup.string().when(
+    eBusinessCompanyName: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: value => {
@@ -554,7 +533,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eBUSINESSCompanyAddress: Yup.string().when(
+    eBusinessCompanyAddress: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: value => {
@@ -573,7 +552,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eBUSINESSCompanyPhone: Yup.string().when(
+    eBusinessCompanyPhone: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: value => {
@@ -598,7 +577,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eBUSINESSCompanyWebsite: Yup.string().when(
+    eBusinessCompanyWebsite: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: value => {
@@ -616,7 +595,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eBUSINESSCompanyNatures: Yup.string().when(
+    eBusinessCompanyNatures: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: value => {
@@ -677,7 +656,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eBusinessRecruitManpowerNamecontactCompanyRepresentative: Yup.string().when(
+    eBusinessRecruitManpowerNatureOfJob: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'TO RECRUIT MANPOWER',
@@ -686,7 +665,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eBusinessRecruitManpowerNatureOfJob: Yup.string().when(
+    eBusinessRecruitManpowerNamecontactCompanyRepresentative: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'TO RECRUIT MANPOWER',
@@ -713,12 +692,18 @@ export const step4ValidationSchema = {
       }
     ),
 
-    // eBusinessConductingToursNameAndAddress: Yup.string().required('Required'),
-    // eBusinessConductingToursCities: Yup.string().required('Required'),
+    eBusinessConductingToursNameAndAddress: Yup.string().required('Required'),
+    eBusinessConductingToursCities: Yup.string(),
+    eBusinessConductingToursTravelAgencyNam: Yup.string(),
+
+    eBusinessConductingToursTravelAgencyPhone: Yup.matches(
+      /^[0-9]{10}$/,
+      'Phone number must be a valid 10-digit number'
+    ).required('Phone is required'),
+    eBusinessConductingToursTravelAgencyAddress: Yup.string(),
 
     //for visa type eMEDICAL ATTENDANT VISA
-
-    eMEDICALATTENDANTNameVisaHolder: Yup.string().when(
+    eMedicalAttendantNameVisaHolder: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalAttendantVisa',
@@ -727,9 +712,9 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eMEDICALATTENDANTAppOrVisa: Yup.string(),
-    eMEDICALATTENDANTVisaNumberOfVisaHolder: Yup.string().when(
-      'eMEDICALATTENDANTAppOrVisa',
+    eMedicalAttendantAppOrVisa: Yup.string(),
+    eMedicalAttendantVisaNumberOfVisaHolder: Yup.string().when(
+      'eMedicalAttendantAppOrVisa',
       {
         is: 'visaNo',
         then: schema => schema.required('Visa number Required'),
@@ -737,8 +722,8 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eMEDICALATTENDANTApplicationIdOfVisaHolder: Yup.string().when(
-      'eMEDICALATTENDANTAppOrVisa',
+    eMedicalAttendantApplicationIdOfVisaHolder: Yup.string().when(
+      'eMedicalAttendantAppOrVisa',
       {
         is: 'applicationId',
         then: schema => schema.required('Application id Required'),
@@ -746,7 +731,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eMEDICALATTENDANTPassportNumberOfVisaHolder: Yup.string().when(
+    eMedicalAttendantPassportNumberOfVisaHolder: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalAttendantVisa',
@@ -755,7 +740,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eMEDICALATTENDANTDobOfVisaHolder: Yup.date().when(
+    eMedicalAttendantDobOfVisaHolder: Yup.date().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalAttendantVisa',
@@ -763,7 +748,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eMEDICALATTENDANTNationalityOfVisaHolder: Yup.string().when(
+    eMedicalAttendantNationalityOfVisaHolder: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eMedicalAttendantVisa',
@@ -774,7 +759,7 @@ export const step4ValidationSchema = {
 
     //for visa type eCONFERENCE VISA
 
-    eCONFERENCENameOfConference: Yup.string().when(
+    eConferenceNameOfConference: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -783,7 +768,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eCONFERENCEStartDate: Yup.date().when(
+    eConferenceStartDate: Yup.date().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -791,12 +776,12 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCEEndDate: Yup.date().when('visaServiceSelectedValueValidation', {
+    eConferenceEndDate: Yup.date().when('visaServiceSelectedValueValidation', {
       is: 'eConferenceVisa',
       then: schema => schema.required('End Date Required'),
       otherwise: schema => schema.notRequired(),
     }),
-    eCONFERENCEAddress: Yup.string().when(
+    eConferenceAddress: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -804,12 +789,12 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCEState: Yup.string().when('visaServiceSelectedValueValidation', {
+    eConferenceState: Yup.string().when('visaServiceSelectedValueValidation', {
       is: 'eConferenceVisa',
       then: schema => schema.required('Required'),
       otherwise: schema => schema.notRequired(),
     }),
-    eCONFERENCEDistrict: Yup.string().when(
+    eConferenceDistrict: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -817,7 +802,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCEPincode: Yup.string().when(
+    eConferencePincode: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -825,7 +810,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCENameOfOrganizer: Yup.string().when(
+    eConferenceNameOfOrganizer: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -833,7 +818,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCEAddressOfOrganizer: Yup.string().when(
+    eConferenceAddressOfOrganizer: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -841,7 +826,7 @@ export const step4ValidationSchema = {
         otherwise: schema => schema.notRequired(),
       }
     ),
-    eCONFERENCEPhoneOfOrganizer: Yup.string().when(
+    eConferencePhoneOfOrganizer: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -856,15 +841,7 @@ export const step4ValidationSchema = {
       }
     ),
 
-    eCONFERENCENameOfOrganizer: Yup.string().when(
-      'visaServiceSelectedValueValidation',
-      {
-        is: 'eConferenceVisa',
-        then: schema => schema.required('Required'),
-        otherwise: schema => schema.notRequired(),
-      }
-    ),
-    eCONFERENCEEmailOfOrganizer: Yup.string().when(
+    eConferenceEmailOfOrganizer: Yup.string().when(
       'visaServiceSelectedValueValidation',
       {
         is: 'eConferenceVisa',
@@ -907,10 +884,7 @@ export const step4ValidationSchema = {
       'Address in France is required'
     ),
     referencePhoneInHomeCountry: Yup.string()
-      .matches(
-        /^[0-9]{10}$/, // You can adjust this regex pattern based on your phone number format
-        'Phone number must be a valid 10-digit number'
-      )
+      .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
       .required('Phone is required'),
   }),
   initialValues: {
