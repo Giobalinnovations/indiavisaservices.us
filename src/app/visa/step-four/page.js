@@ -129,14 +129,14 @@ const StepFour = () => {
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             console.log(values);
-            // postMutation.mutate({
-            //   ...values,
-            //   formId: state.formId,
-            //   countryVisitedInLast10Years:
-            //     values.countryVisitedInLast10Years.map(option => option.value),
-            // });
-            // setSubmitting(false);
-            // resetForm();
+            postMutation.mutate({
+              ...values,
+              formId: state.formId,
+              countryVisitedInLast10Years:
+                values.countryVisitedInLast10Years.map(option => option.value),
+            });
+            setSubmitting(false);
+            resetForm();
           }}
         >
           {({
