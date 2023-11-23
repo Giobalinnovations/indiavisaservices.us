@@ -56,9 +56,10 @@ const StepOne = () => {
                     <option value="Bussiness">
                       Normal Processing(4 to 7 Business Days)
                     </option>
-                    <option value="Education">
-                      Urgent Processing(24 to 72 Business Hours)
+                    <option value="Bussiness">
+                      Normal Processing(4 to 7 Business Days)
                     </option>
+                    <option value="Rush">Rush</option>
                   </Field>
                   <ErrorMessage name="applicationType">
                     {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
