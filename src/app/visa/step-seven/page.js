@@ -197,7 +197,7 @@ const StepSeven = () => {
               </div>
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                  eConferenceVisa
+                  eConference Visa
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   {step1Data?.eConferenceVisa}
@@ -1246,48 +1246,54 @@ const StepSeven = () => {
               </div>
             </div>
           ) : (
-            <div className="px-4 pt-10">
-              <h2 className="text-3xl font-semibold">
-                Details of Purpose
-                <span className="text-lg">({step1Data?.eBusinessVisa})</span>
-              </h2>
-              <hr className="w-full h-1 text-primary bg-primary" />
+            <div className="pt-10">
               <div className="space-y-2 divide-y-[1px] pt-5">
-                <div className="pt-5 text-2xl font-semibold text-primary">
-                  Detials of the Applicants Company
-                </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                  <h2 className="py-1 text-sm font-semibold text-secondary">
-                    Name*
-                  </h2>
-                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                    {step4Data?.eBusinessCompanyName}
-                  </p>
-                </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                  <h2 className="py-1 text-sm font-semibold text-secondary">
-                    Address*
-                  </h2>
-                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                    {step4Data?.eBusinessCompanyAddress}
-                  </p>
-                </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                  <h2 className="py-1 text-sm font-semibold text-secondary">
-                    Phone No.*
-                  </h2>
-                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                    {step4Data?.eBusinessCompanyPhone}
-                  </p>
-                </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                  <h2 className="py-1 text-sm font-semibold text-secondary">
-                    Website*
-                  </h2>
-                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                    {step4Data?.eBusinessCompanyWebsite}
-                  </p>
-                </div>
+                {step2Data?.visaService === "eBusinessVisa" ? (
+                  <>
+                    <h2 className="text-3xl font-semibold">
+                      Details of Purpose
+                      <span className="text-lg">
+                        ({step1Data?.eBusinessVisa})
+                      </span>
+                    </h2>
+                    <hr className="w-full h-1 text-primary bg-primary" />
+                    <div className="pt-5 text-2xl font-semibold text-primary">
+                      Detials of the Applicants Company
+                    </div>
+                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                      <h2 className="py-1 text-sm font-semibold text-secondary">
+                        Name*
+                      </h2>
+                      <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                        {step4Data?.eBusinessCompanyName}
+                      </p>
+                    </div>
+                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                      <h2 className="py-1 text-sm font-semibold text-secondary">
+                        Address*
+                      </h2>
+                      <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                        {step4Data?.eBusinessCompanyAddress}
+                      </p>
+                    </div>
+                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                      <h2 className="py-1 text-sm font-semibold text-secondary">
+                        Phone No.*
+                      </h2>
+                      <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                        {step4Data?.eBusinessCompanyPhone}
+                      </p>
+                    </div>
+                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                      <h2 className="py-1 text-sm font-semibold text-secondary">
+                        Website*
+                      </h2>
+                      <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                        {step4Data?.eBusinessCompanyWebsite}
+                      </p>
+                    </div>
+                  </>
+                ) : null}
                 {step1Data?.eBusinessVisa ===
                   "TO SET UP INDUSTRIAL/BUSINESS VENTURE" ||
                 step1Data?.eBusinessVisa === "SALE/PURCHASE/TRADE" ? (
