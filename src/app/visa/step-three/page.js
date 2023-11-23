@@ -1,20 +1,22 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { step3ValidationSchema } from "@/app/lib/constants";
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "@/services/api";
-import apiEndpoint from "@/services/apiEndpoint";
-import { useFormContext } from "@/app/context/formContext";
-import { ImSpinner2 } from "react-icons/im";
-import { Country } from "country-state-city";
-import MyDependentField from "@/components/MyFields";
-import usePost from "@/hooks/usePost";
-import SavedFormId from "@/components/common/SavedFormId";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { step3ValidationSchema } from '@/app/lib/constants';
+import { useQuery } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useFormContext } from '@/app/context/formContext';
+import { ImSpinner2 } from 'react-icons/im';
+import { Country } from 'country-state-city';
+import MyDependentField from '@/components/MyFields';
+import usePost from '@/hooks/usePost';
+import SavedFormId from '@/components/common/SavedFormId';
+import { usePathname } from 'next/navigation';
 
 const StepThree = () => {
+  const pathName = usePathname();
   const { state } = useFormContext();
 
   const {
@@ -24,7 +26,7 @@ const StepThree = () => {
     isSuccess: getStep1DataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["getStep1Data"],
+    queryKey: ['getStep1Data'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
     enabled: !!state.formId,
@@ -33,9 +35,20 @@ const StepThree = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP3,
     3,
-    "/visa/step-four"
+    '/visa/step-four'
+  );
+  const temporaryExitPostMutation = usePost(
+    apiEndpoint.VISA_ADD_TEMPORARY_EXIT,
+    'temporary exit url saved successfully',
+    '/'
   );
 
+  const handleTemporaryExit = () => {
+    temporaryExitPostMutation.mutate({
+      visaLastTemporaryUrl: pathName,
+      formId: state.formId,
+    });
+  };
   if (getStep1DataIsSuccess) {
     return (
       <>
@@ -43,7 +56,7 @@ const StepThree = () => {
         <Formik
           initialValues={{
             ...step3ValidationSchema.initialValues,
-            emailAddress: step1Data.data ? step1Data.data.emailId : "",
+            emailAddress: step1Data.data ? step1Data.data.emailId : '',
           }}
           validationSchema={step3ValidationSchema.yupSchema}
           validateOnChange={true}
@@ -746,7 +759,7 @@ const StepThree = () => {
                             </div>
                           </div>
 
-                          {values.applicantMaritalStatus === "married" && (
+                          {values.applicantMaritalStatus === 'married' && (
                             <div className="space-y-4">
                               <div className="pt-5 text-2xl font-semibold text-primary">
                                 Spouse’s Details
@@ -953,7 +966,7 @@ const StepThree = () => {
                             className="text-red-500"
                           />
 
-                          {values.parentsPakistanNational === "yes" && (
+                          {values.parentsPakistanNational === 'yes' && (
                             <div className="form-input-main-div">
                               <label
                                 className="form-label"
@@ -1063,7 +1076,7 @@ const StepThree = () => {
                             </div>
                           </div>
 
-                          {values.presentOccupation === "other" ? (
+                          {values.presentOccupation === 'other' ? (
                             <div className="form-input-main-div">
                               <label
                                 className="form-label"
@@ -1085,7 +1098,7 @@ const StepThree = () => {
                               </div>
                             </div>
                           ) : (
-                            ""
+                            ''
                           )}
 
                           <div className="form-input-main-div">
@@ -1229,7 +1242,7 @@ const StepThree = () => {
                             </div>
                           </div>
 
-                          {values.militaryOrganization === "yes" && (
+                          {values.militaryOrganization === 'yes' && (
                             <>
                               <div className="form-input-main-div">
                                 <label
@@ -1368,7 +1381,7 @@ const StepThree = () => {
                     type="submit"
                     disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? "cursor-not-allowed opacity-50" : ""
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
                     }`}
                   >
                     {postMutation.isPending ? (
@@ -1376,12 +1389,27 @@ const StepThree = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      "Save and Continue"
+                      'Save and Continue'
                     )}
                   </button>
                   {/* save and temporary exit button  */}
-                  <button className="formbtnDark" type="button">
-                    Save and Temporarily Exit
+                  <button
+                    disabled={temporaryExitPostMutation.isPending}
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
+                      temporaryExitPostMutation.isPending
+                        ? 'cursor-not-allowed opacity-50'
+                        : ''
+                    }`}
+                    type="button"
+                    onClick={handleTemporaryExit}
+                  >
+                    {temporaryExitPostMutation.isPending ? (
+                      <>
+                        <ImSpinner2 className="animate-spin" /> Loading
+                      </>
+                    ) : (
+                      'Save and Temporarily Exit'
+                    )}
                   </button>
                 </div>
               </Form>

@@ -15,4 +15,8 @@ export default {
   VISA_ADD_STEP8: '/visa/add/step-eight',
   GET_VISA_STEP8_BY_FORM_ID: '/visa/viewVisaRequestForm8ByFormId/',
   GET_ALL_STEPS_DATA: '/visa/getAllStepData/',
+
+  // temporary exit
+  VISA_ADD_TEMPORARY_EXIT: '/visa/visaLastTemporaryExitUrl',
+  VISA_GET_TEMPORARY_EXIT_BY_FORM_ID: '/visa/visaLastTemporaryExitUrl/',
 };

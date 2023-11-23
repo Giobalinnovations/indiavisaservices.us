@@ -49,24 +49,6 @@ const StepSix = () => {
         onSubmit={(values, { setSubmitting, resetForm }) => {
           const formData = new FormData();
 
-          const businessCard = values?.eBusinessVisa?.map(
-            eBusi => eBusi.eBusinessVisaPhoto
-          );
-          const eMedicalCard = values?.eMedicalCard?.map(
-            eMedi => eMedi.eMedicalCardPhoto
-          );
-          const businessCardContent = values?.eBusinessVisa?.map(eBusi => ({
-            companyName: eBusi.companyName,
-            companyAddress: eBusi.companyAddress,
-            companyNumber: eBusi.companyNumber,
-          }));
-
-          const eMedicalCardContent = values?.eMedicalCard?.map(eMedi => ({
-            hospitalName: eMedi.hospitalName,
-            hospitalAddress: eMedi.hospitalAddress,
-            hospitalNumber: eMedi.hospitalNumber,
-          }));
-
           if (values.profilePicture instanceof File) {
             formData.append('profilePicture', values.profilePicture);
           }
@@ -75,23 +57,15 @@ const StepSix = () => {
             formData.append('passport', file);
           }
 
-          for (const file of businessCard) {
+          for (const file of values.businessCard) {
             formData.append('businessCard', file);
           }
 
-          for (const file of eMedicalCard) {
+          for (const file of values.eMedicalCard) {
             formData.append('eMedicalCard', file);
           }
 
           formData.append('formId', state.formId);
-          formData.append(
-            'businessCardContent',
-            JSON.stringify(businessCardContent)
-          );
-          formData.append(
-            'eMedicalCardContent',
-            JSON.stringify(eMedicalCardContent)
-          );
 
           postMutation.mutate(formData);
           setSubmitting(false);
@@ -210,296 +184,62 @@ const StepSix = () => {
                   </div>
                   {/* passport upload end  */}
 
-                  {/* e business visa */}
+                  {/* ebusiness visa code start */}
                   {getAllStepsDataIsSuccess &&
                   getAllStepsData?.data?.step1Data.visaService ===
                     'eBUSINESS VISA' ? (
-                    <FieldArray name="eBusinessVisa">
-                      {({ insert, remove, push }) => (
-                        <div>
-                          {values.eBusinessVisa.length > 0 &&
-                            values.eBusinessVisa.map((visited, index) => (
-                              <div className="py-8" key={index}>
-                                {/* business card upload start  */}
-                                <div className="grid grid-cols-3 py-8 text-sm">
-                                  <div>
-                                    <b>Document Description</b>
-                                    <h2 className="py-4 font-medium">
-                                      Copy of Business card
-                                    </h2>
-                                  </div>
-                                  <div>
-                                    <b>Upload File</b>
-                                    {/* <FileUploadMain
-                                    name="eMedicalCard"
-                                    setFieldValue={setFieldValue}
-                                    values={values}
-                                    errorMessage={
-                                      <ErrorMessage
-                                        name="eMedicalCard"
-                                        component="div"
-                                      />
-                                    }
-                                    accept="image/png, image/jpeg"
-                                    multiple="multiple"
-                                  /> */}
-                                    <SingleFileUpload
-                                      id={`eBusinessVisa.${index}.eBusinessVisaPhoto`}
-                                      name={`eBusinessVisa.${index}.eBusinessVisaPhoto`}
-                                      setFieldValue={setFieldValue}
-                                      // value={values.profilePicture}
-                                      value={`eBusinessVisa.${index}.eBusinessVisaPhoto`}
-                                      errorMessage={
-                                        <ErrorMessage
-                                          name={`eBusinessVisa.${index}.eBusinessVisaPhoto`}
-                                          component="div"
-                                        />
-                                      }
-                                      accept="image/png, image/jpeg"
-                                    />
-                                  </div>
-                                </div>
-                                {/* uploaded files in business  */}
-                                <div className="overflow-x-auto text-sm border-t border-x">
-                                  <table className="w-full table-auto">
-                                    <thead className="border-b">
-                                      <tr className="bg-gray-100">
-                                        <th className="p-4 font-medium text-left">
-                                          Name Of Company
-                                        </th>
-                                        <th className="p-4 font-medium text-left">
-                                          Company Address
-                                        </th>
-                                        <th className="p-4 font-medium text-left">
-                                          Company Phone Number
-                                        </th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr className="border-b hover:bg-gray-50">
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eBusinessVisa.${index}.companyName`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eBusinessVisa.${index}.companyName`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eBusinessVisa.${index}.companyAddress`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eBusinessVisa.${index}.companyAddress`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eBusinessVisa.${index}.companyNumber`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eBusinessVisa.${index}.companyNumber`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                                {values.eBusinessVisa.length > 1 ? (
-                                  <button
-                                    type="button"
-                                    className="formbtn"
-                                    onClick={() => remove(index)}
-                                  >
-                                    Remove
-                                  </button>
-                                ) : null}
-                              </div>
-                            ))}
-                          <button
-                            type="button"
-                            className="formbtn"
-                            onClick={() =>
-                              push({
-                                eBusinessVisaPhoto: '',
-                                companyName: '',
-                                companyAddress: '',
-                                companyNumber: '',
-                              })
-                            }
-                          >
-                            Add
-                          </button>
-                        </div>
-                      )}
-                    </FieldArray>
+                    <div className="grid grid-cols-3 py-8 text-sm">
+                      <div>
+                        <b>Business Description</b>
+                        <h2 className="py-4 font-medium">
+                          Copy of Business card
+                        </h2>
+                      </div>
+                      <div>
+                        <b>Upload File</b>
+                        <FileUploadMain
+                          name="businessCard"
+                          setFieldValue={setFieldValue}
+                          values={values}
+                          errorMessage={
+                            <ErrorMessage name="businessCard" component="div" />
+                          }
+                          accept="image/png, image/jpeg"
+                          multiple="multiple"
+                        />
+                      </div>
+                    </div>
                   ) : null}
-                  {/* e business visa code end here */}
 
-                  {/* business card upload end  */}
-                  {/* e-medical section  start */}
+                  {/* ebusiness visa code end here */}
+
+                  {/* emedical code start here */}
                   {getAllStepsDataIsSuccess &&
                   getAllStepsData?.data?.step1Data.visaService ===
                     'eMEDICAL VISA' ? (
-                    <FieldArray name="eMedicalCard">
-                      {({ insert, remove, push }) => (
-                        <div>
-                          {values.eMedicalCard.length > 0 &&
-                            values.eMedicalCard.map((visited, index) => (
-                              <div className="py-8" key={index}>
-                                {/* business card upload start  */}
-                                <div className="grid grid-cols-3 py-8 text-sm">
-                                  <div>
-                                    <b>Document Description</b>
-                                    <h2 className="py-4 font-medium">
-                                      Copy of E-medical card
-                                    </h2>
-                                  </div>
-                                  <div>
-                                    <b>Upload File</b>
-                                    {/* <FileUploadMain
-                                    name="eMedicalCard"
-                                    setFieldValue={setFieldValue}
-                                    values={values}
-                                    errorMessage={
-                                      <ErrorMessage
-                                        name="eMedicalCard"
-                                        component="div"
-                                      />
-                                    }
-                                    accept="image/png, image/jpeg"
-                                    multiple="multiple"
-                                  /> */}
-                                    <SingleFileUpload
-                                      id={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                      name={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                      setFieldValue={setFieldValue}
-                                      // value={values.profilePicture}
-                                      value={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                      errorMessage={
-                                        <ErrorMessage
-                                          name={`eMedicalCard.${index}.eMedicalCardPhoto`}
-                                          component="div"
-                                        />
-                                      }
-                                      accept="image/png, image/jpeg"
-                                    />
-                                  </div>
-                                </div>
-                                {/* uploaded files in business  */}
-                                <div className="overflow-x-auto text-sm border-t border-x">
-                                  <table className="w-full table-auto">
-                                    <thead className="border-b">
-                                      <tr className="bg-gray-100">
-                                        <th className="p-4 font-medium text-left">
-                                          Name Of Hospital
-                                        </th>
-                                        <th className="p-4 font-medium text-left">
-                                          Hospital Address
-                                        </th>
-                                        <th className="p-4 font-medium text-left">
-                                          Hospital Phone Number
-                                        </th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr className="border-b hover:bg-gray-50">
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eMedicalCard.${index}.hospitalName`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eMedicalCard.${index}.hospitalName`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eMedicalCard.${index}.hospitalAddress`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eMedicalCard.${index}.hospitalAddress`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                        <td className="p-4">
-                                          <div className="input-error-wrapper">
-                                            <Field
-                                              className="form-input"
-                                              name={`eMedicalCard.${index}.hospitalNumber`}
-                                              placeholder="visits"
-                                            />
-                                            <ErrorMessage
-                                              name={`eMedicalCard.${index}.hospitalNumber`}
-                                              component="div"
-                                              className="text-red-600"
-                                            />
-                                          </div>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                                {values.eMedicalCard.length > 1 ? (
-                                  <button
-                                    type="button"
-                                    className="formbtn"
-                                    onClick={() => remove(index)}
-                                  >
-                                    Remove
-                                  </button>
-                                ) : null}
-                              </div>
-                            ))}
-                          <button
-                            type="button"
-                            className="formbtn"
-                            onClick={() =>
-                              push({
-                                eMedicalCardPhoto: '',
-                                hospitalName: '',
-                                hospitalAddress: '',
-                                hospitalNumber: '',
-                              })
-                            }
-                          >
-                            Add
-                          </button>
-                        </div>
-                      )}
-                    </FieldArray>
+                    <div className="grid grid-cols-3 py-8 text-sm">
+                      <div>
+                        <b>Medical Description</b>
+                        <h2 className="py-4 font-medium">
+                          Copy of Medical card
+                        </h2>
+                      </div>
+                      <div>
+                        <b>Upload File</b>
+                        <FileUploadMain
+                          name="eMedicalCard"
+                          setFieldValue={setFieldValue}
+                          values={values}
+                          errorMessage={
+                            <ErrorMessage name="eMedicalCard" component="div" />
+                          }
+                          accept="image/png, image/jpeg"
+                          multiple="multiple"
+                        />
+                      </div>
+                    </div>
                   ) : null}
-
-                  {/* business card upload end  */}
-                  {/* e-medical section end  */}
+                  {/* emedical code end here */}
                 </div>
               </div>
               <div className="space-x-4 text-center">
