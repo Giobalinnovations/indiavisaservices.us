@@ -1121,26 +1121,10 @@ export const step6ValidationSchema = {
       .required('Please select a file'),
   }),
   initialValues: {
-    eMedicalCard: [
-      {
-        eMedicalCardPhoto: '',
-        hospitalName: '',
-        hospitalAddress: '',
-        hospitalNumber: '',
-      },
-    ],
-    eBusinessVisa: [
-      {
-        eBusinessVisaPhoto: '',
-        companyName: '',
-        companyAddress: '',
-        companyNumber: '',
-      },
-    ],
     profilePicture: '',
     passport: [],
-    // businessCard: [],
-    // eMedicalCard: [],
+    businessCard: [],
+    eMedicalCard: [],
   },
 };
 

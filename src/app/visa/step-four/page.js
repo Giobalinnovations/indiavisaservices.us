@@ -1265,7 +1265,7 @@ const StepFour = () => {
                                 </div>
                               </div>
                             </div>
-                            {values.eMEDICALATTENDANTAppOrVisa === 'visaNo' ? (
+                            {values.eMedicalAttendantAppOrVisa === 'visaNo' ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Visa number of principal e-Medical Visa holder
@@ -1286,7 +1286,7 @@ const StepFour = () => {
                               </div>
                             ) : null}
 
-                            {values.eMEDICALATTENDANTAppOrVisa ===
+                            {values.eMedicalAttendantAppOrVisa ===
                             'applicationId' ? (
                               <div className="form-input-main-div">
                                 <label
