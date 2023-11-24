@@ -250,14 +250,16 @@ const StepSeven = () => {
                   {step2Data?.changedName ? "YES" : "NO"}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Previous Name
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.previousName}
-                </p>
-              </div>
+              {step2Data?.changedName === "YES" ? (
+                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <h2 className="py-1 text-sm font-semibold text-secondary">
+                    Previous Name
+                  </h2>
+                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                    {step2Data?.previousName}
+                  </p>
+                </div>
+              ) : null}
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Gender
