@@ -79,7 +79,7 @@ const StepSeven = () => {
             /> */}
           </div>
 
-          <div className="px-4 pt-5">
+          {/* <div className="px-4 pt-5">
             <h2 className="text-3xl font-semibold">Detail</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
@@ -220,7 +220,7 @@ const StepSeven = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="px-4 pt-5">
             <h2 className="text-3xl font-semibold">Applicant Detail</h2>
