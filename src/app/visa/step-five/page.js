@@ -1,16 +1,16 @@
-"use client";
-import { useFormContext } from "@/app/context/formContext";
-import { step5ValidationSchema, step5data } from "@/app/lib/constants";
-import BannerPage from "@/components/common/BannerPage";
-import SavedFormId from "@/components/common/SavedFormId";
-import usePost from "@/hooks/usePost";
-import axiosInstance from "@/services/api";
-import apiEndpoint from "@/services/apiEndpoint";
-import { useQuery } from "@tanstack/react-query";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import Link from "next/link";
-import React from "react";
-import { ImSpinner2 } from "react-icons/im";
+'use client';
+import { useFormContext } from '@/app/context/formContext';
+import { step5ValidationSchema, step5data } from '@/app/lib/constants';
+import BannerPage from '@/components/common/BannerPage';
+import SavedFormId from '@/components/common/SavedFormId';
+import usePost from '@/hooks/usePost';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useQuery } from '@tanstack/react-query';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import Link from 'next/link';
+import React from 'react';
+import { ImSpinner2 } from 'react-icons/im';
 
 const StepFive = ({ step }) => {
   const { state } = useFormContext();
@@ -21,12 +21,12 @@ const StepFive = ({ step }) => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["getAllStepsData"],
+    queryKey: ['getAllStepsData'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
-  const postMutation = usePost(apiEndpoint.VISA_ADD_STEP5, 5, "/visa/step-six");
+  const postMutation = usePost(apiEndpoint.VISA_ADD_STEP5, 5, '/visa/step-six');
   if (getAllStepsDataIsSuccess) {
     return (
       <>
@@ -88,7 +88,7 @@ const StepFive = ({ step }) => {
                           </div>
                         </div>
                         <div>
-                          {values[e.name] === "yes" && (
+                          {values[e.name] === 'yes' && (
                             <>
                               <Field
                                 type="text"
@@ -137,7 +137,7 @@ const StepFive = ({ step }) => {
                     type="submit"
                     disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? "cursor-not-allowed opacity-50" : ""
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
                     }`}
                   >
                     {postMutation.isPending ? (
@@ -145,7 +145,7 @@ const StepFive = ({ step }) => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      "Continue"
+                      'Continue'
                     )}
                   </button>
                   {/* save and temporary exit button  */}

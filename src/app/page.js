@@ -9,6 +9,18 @@ import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from './context/formContext';
 import { useRouter } from 'next/navigation';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ImSpinner2 } from 'react-icons/im';
+import * as Yup from 'yup';
+
+const partiallyFormSchema = Yup.object().shape({
+  visaApplicationId: Yup.string()
+    .matches(
+      /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]*$/,
+      'Application id must but combination of number and string'
+    )
+    .required('Application id is required'),
+});
 
 const Home = () => {
   const { dispatch } = useFormContext();
@@ -16,35 +28,31 @@ const Home = () => {
   let [isOpen, setIsOpen] = useState(false);
   let [isOpenStatus, setIsOpenStatus] = useState(false);
   let [isOpenStatusMakePayment, setIsOpenMakePayment] = useState(false);
-  const [visaApplicationId, setVisaApplicationId] = useState('');
-
+  const [visaApplicationId, setVisaApplicationId] = useState(null);
   const { isPending, error, data, isSuccess, refetch } = useQuery({
-    queryKey: ['getTemporaryExit'],
+    queryKey: ['get Step 1 Data new '],
     queryFn: () =>
       axiosInstance.get(
-        `${apiEndpoint.VISA_GET_TEMPORARY_EXIT_BY_FORM_ID}${visaApplicationId}`
+        `${apiEndpoint.GET_VISA_STEP1_BY_ID}${visaApplicationId}`
       ),
+
     enabled: !!visaApplicationId,
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!visaApplicationId) {
-      return false;
-    }
-    console.log(visaApplicationId);
-    if (isSuccess) {
-      dispatch({
-        type: 'SET_FORM_ID',
-        payload: data?.data?.formId,
-      });
-      router.push(data?.data?.visaLastTemporaryUrl);
-    }
-  };
-
   if (isSuccess) {
-    console.log(data?.data?.visaLastTemporaryUrl);
+    dispatch({
+      type: 'SET_FORM_ID',
+      payload: data?.data?.data?._id,
+    });
+    // localStorage.setItem('formId', data?.data)
+    console.log(data?.data?.data?._id);
+    // console.log(data?.data.data.applicationType);
+    console.log(data?.data?.data);
+    if (data?.data?.data?.lastExitStepUrl) {
+      router.push(data?.data?.data?.lastExitStepUrl);
+    }
   }
+
   return (
     <>
       <div>
@@ -60,7 +68,7 @@ const Home = () => {
             onClick={() => setIsOpen(true)}
             className="w-full py-3 text-white duration-150 ease-in-out bg-pink-800 rounded hover:scale-105"
           >
-            Amend or Complete Partialy
+            Amend or Complete Partially
             <br />
             Filled Form
           </button>
@@ -119,30 +127,69 @@ const Home = () => {
                       <p className="pl-px text-xs text-gray-700">
                         Enter Temporary Application ID
                       </p>
-                      <form onSubmit={handleSubmit} className="mt-2">
-                        <div className="formMain">
-                          <input
-                            type="text"
-                            placeholder="Enter Temporary Application ID"
-                            className="form-input"
-                            required
-                            name="visaApplicationId"
-                            onChange={e => setVisaApplicationId(e.target.value)}
-                          />
-                          <div className="space-x-4">
-                            <button className="formbtn" type="submit">
-                              Submit
-                            </button>
-                            <button
-                              type="button"
-                              className="formbtnBorder"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+                      <Formik
+                        initialValues={{ visaApplicationId: '' }}
+                        validationSchema={partiallyFormSchema}
+                        validateOnChange={true}
+                        validateOnMount={true}
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
+                          // console.log(values.visaApplicationId);
+                          setVisaApplicationId(values.visaApplicationId);
+
+                          setSubmitting(false);
+                          resetForm();
+                        }}
+                      >
+                        {({ values, isValid, handleSubmit }) => (
+                          <>
+                            <Form onSubmit={handleSubmit} className="mt-2">
+                              <div className="formMain">
+                                <Field
+                                  type="text"
+                                  placeholder="Enter Temporary Application ID"
+                                  className="form-input"
+                                  name="visaApplicationId"
+                                />
+                                <ErrorMessage
+                                  name="visaApplicationId"
+                                  component="div"
+                                  className="text-red-600"
+                                />
+
+                                <div className="space-x-4">
+                                  <button
+                                    type="submit"
+                                    disabled={!isValid}
+                                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                                      !isValid
+                                        ? 'cursor-not-allowed opacity-50'
+                                        : ''
+                                    }`}
+                                  >
+                                    {/* {isPending ? (
+                                      <>
+                                        <ImSpinner2 className="animate-spin" />{' '}
+                                        Loading
+                                      </>
+                                    ) : (
+                                      'Submit'
+                                    )} */}
+                                    Submit
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    className="formbtnBorder"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            </Form>
+                          </>
+                        )}
+                      </Formik>
                     </div>
                   </div>
                 </Dialog.Panel>

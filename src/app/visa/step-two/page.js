@@ -39,7 +39,7 @@ const StepTwo = () => {
     '/visa/step-three'
   );
   const temporaryExitPostMutation = usePost(
-    apiEndpoint.VISA_ADD_TEMPORARY_EXIT,
+    apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     'temporary exit url saved successfully',
     '/'
   );
