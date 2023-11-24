@@ -15,8 +15,11 @@ import FileUploadMain from '@/components/FileUploadMain';
 import SingleFileUpload from '@/components/SingleFileUpload';
 import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
+import useUpdate from '@/hooks/useUpdate';
+import { usePathname } from 'next/navigation';
 
 const StepSix = () => {
+  const pathName = usePathname();
   const { state } = useFormContext();
   const {
     isPending,
@@ -35,6 +38,20 @@ const StepSix = () => {
     6,
     '/visa/step-seven'
   );
+
+  const temporaryExitUpdateMutation = useUpdate(
+    apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
+    state.formId,
+    'temporary step 6 saved successfully',
+    '/',
+    refetch
+  );
+
+  const handleTemporaryExit = () => {
+    temporaryExitUpdateMutation.mutate({
+      lastExitStepUrl: pathName,
+    });
+  };
 
   return (
     <>
@@ -262,8 +279,23 @@ const StepSix = () => {
                   )}
                 </button>
                 {/* save and temporary exit button  */}
-                <button className="formbtnDark" type="button">
-                  Save and Temporarily Exit
+                <button
+                  disabled={temporaryExitUpdateMutation.isPending}
+                  className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
+                    temporaryExitUpdateMutation.isPending
+                      ? 'cursor-not-allowed opacity-50'
+                      : ''
+                  }`}
+                  type="button"
+                  onClick={handleTemporaryExit}
+                >
+                  {temporaryExitUpdateMutation.isPending ? (
+                    <>
+                      <ImSpinner2 className="animate-spin" /> Loading
+                    </>
+                  ) : (
+                    'Save and Temporarily Exit'
+                  )}
                 </button>
               </div>
             </Form>

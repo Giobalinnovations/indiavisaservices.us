@@ -16,11 +16,12 @@ import { Country } from 'country-state-city';
 import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
 import { usePathname } from 'next/navigation';
+import useUpdate from '@/hooks/useUpdate';
 
 const StepTwo = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
-  console.log(pathName);
+
   const {
     isPending,
     error,
@@ -38,16 +39,17 @@ const StepTwo = () => {
     2,
     '/visa/step-three'
   );
-  const temporaryExitPostMutation = usePost(
+  const temporaryExitUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
-    'temporary exit url saved successfully',
-    '/'
+    state.formId,
+    'temporary step 2 saved successfully',
+    '/',
+    refetch
   );
 
   const handleTemporaryExit = () => {
-    temporaryExitPostMutation.mutate({
-      visaLastTemporaryUrl: pathName,
-      formId: state.formId,
+    temporaryExitUpdateMutation.mutate({
+      lastExitStepUrl: pathName,
     });
   };
 
@@ -836,16 +838,16 @@ const StepTwo = () => {
                   </button>
                   {/* save and temporary exit button  */}
                   <button
-                    disabled={temporaryExitPostMutation.isPending}
+                    disabled={temporaryExitUpdateMutation.isPending}
                     className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                      temporaryExitPostMutation.isPending
+                      temporaryExitUpdateMutation.isPending
                         ? 'cursor-not-allowed opacity-50'
                         : ''
                     }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >
-                    {temporaryExitPostMutation.isPending ? (
+                    {temporaryExitUpdateMutation.isPending ? (
                       <>
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>

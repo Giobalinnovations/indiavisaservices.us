@@ -42,14 +42,11 @@ const Home = () => {
   if (isSuccess) {
     dispatch({
       type: 'SET_FORM_ID',
-      payload: data?.data?.data?._id,
+      payload: data?.data?._id,
     });
-    // localStorage.setItem('formId', data?.data)
-    console.log(data?.data?.data?._id);
-    // console.log(data?.data.data.applicationType);
-    console.log(data?.data?.data);
-    if (data?.data?.data?.lastExitStepUrl) {
-      router.push(data?.data?.data?.lastExitStepUrl);
+
+    if (data?.data?.lastExitStepUrl) {
+      router.push(data?.data?.lastExitStepUrl);
     }
   }
 

@@ -4,15 +4,18 @@ import { step5ValidationSchema, step5data } from '@/app/lib/constants';
 import BannerPage from '@/components/common/BannerPage';
 import SavedFormId from '@/components/common/SavedFormId';
 import usePost from '@/hooks/usePost';
+import useUpdate from '@/hooks/useUpdate';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
 const StepFive = ({ step }) => {
+  const pathName = usePathname();
   const { state } = useFormContext();
   const {
     isPending,
@@ -27,6 +30,20 @@ const StepFive = ({ step }) => {
     enabled: !!state.formId,
   });
   const postMutation = usePost(apiEndpoint.VISA_ADD_STEP5, 5, '/visa/step-six');
+
+  const temporaryExitUpdateMutation = useUpdate(
+    apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
+    state.formId,
+    'temporary step 5 saved successfully',
+    '/',
+    refetch
+  );
+
+  const handleTemporaryExit = () => {
+    temporaryExitUpdateMutation.mutate({
+      lastExitStepUrl: pathName,
+    });
+  };
   if (getAllStepsDataIsSuccess) {
     return (
       <>
@@ -149,8 +166,23 @@ const StepFive = ({ step }) => {
                     )}
                   </button>
                   {/* save and temporary exit button  */}
-                  <button className="formbtnDark" type="button">
-                    Save and Temporarily Exit
+                  <button
+                    disabled={temporaryExitUpdateMutation.isPending}
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
+                      temporaryExitUpdateMutation.isPending
+                        ? 'cursor-not-allowed opacity-50'
+                        : ''
+                    }`}
+                    type="button"
+                    onClick={handleTemporaryExit}
+                  >
+                    {temporaryExitUpdateMutation.isPending ? (
+                      <>
+                        <ImSpinner2 className="animate-spin" /> Loading
+                      </>
+                    ) : (
+                      'Save and Temporarily Exit'
+                    )}
                   </button>
                 </div>
               </Form>
