@@ -9,6 +9,7 @@ import { ImSpinner2 } from "react-icons/im";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import PhoneInput from "react-phone-number-input";
 import { Country } from "country-state-city";
+import { indiaAirportsList } from "@/app/lib/indiaAirports";
 
 const StepOne = () => {
   const postMutation = usePost(
@@ -125,6 +126,23 @@ const StepOne = () => {
                     component="select"
                     id="portOfArrival"
                     name="portOfArrival"
+                    className="p-2 border rounded select-input space-y-2"
+                  >
+                    <option defaultChecked selected>
+                      Select
+                    </option>
+                    {indiaAirportsList.map((ele, ind) => (
+                      <option key={ind} value={ele.airport_name}>
+                        {ele.airport_name}
+                      </option>
+                    ))}
+                  </Field>
+
+                  {/* <Field
+                    required
+                    component="select"
+                    id="portOfArrival"
+                    name="portOfArrival"
                     className="p-2 border rounded select-input"
                   >
                     <option disabled selected value="">
@@ -208,7 +226,7 @@ const StepOne = () => {
                     <option value="Birsa Munda Airport">
                       Birsa Munda Airport
                     </option>
-                  </Field>
+                  </Field> */}
                   <ErrorMessage name="portOfArrival">
                     {(errorMsg) => (
                       <div style={{ color: "red" }}>{errorMsg}</div>
