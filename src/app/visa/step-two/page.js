@@ -173,7 +173,7 @@ const StepTwo = () => {
                               type="date"
                               name="dateOfBirth"
                               id="dateOfBirth"
-                              className="opacity-50 form-input"
+                              className="form-input"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
@@ -364,7 +364,7 @@ const StepTwo = () => {
                               component="select"
                               id="nationalityRegion"
                               name="nationalityRegion"
-                              className="p-2 border rounded opacity-50 select-input"
+                              className="p-2 border rounded select-input"
                               disabled={true}
                             >
                               <option value="" disabled selected>

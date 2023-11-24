@@ -248,7 +248,7 @@ const StepThree = () => {
                                 type="text"
                                 id="emailAddress"
                                 name="emailAddress"
-                                className="opacity-50 form-input"
+                                className="form-input"
                                 disabled={true}
                               />
                               <ErrorMessage
