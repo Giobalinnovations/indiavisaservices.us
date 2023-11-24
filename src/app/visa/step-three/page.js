@@ -14,6 +14,7 @@ import MyDependentField from '@/components/MyFields';
 import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
 import { usePathname } from 'next/navigation';
+import useUpdate from '@/hooks/useUpdate';
 
 const StepThree = () => {
   const pathName = usePathname();
@@ -37,16 +38,17 @@ const StepThree = () => {
     3,
     '/visa/step-four'
   );
-  const temporaryExitPostMutation = usePost(
-    apiEndpoint.VISA_ADD_TEMPORARY_EXIT,
-    'temporary exit url saved successfully',
-    '/'
+  const temporaryExitUpdateMutation = useUpdate(
+    apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
+    state.formId,
+    'temporary step 3 saved successfully',
+    '/',
+    refetch
   );
 
   const handleTemporaryExit = () => {
-    temporaryExitPostMutation.mutate({
-      visaLastTemporaryUrl: pathName,
-      formId: state.formId,
+    temporaryExitUpdateMutation.mutate({
+      lastExitStepUrl: pathName,
     });
   };
   if (getStep1DataIsSuccess) {
@@ -1394,16 +1396,16 @@ const StepThree = () => {
                   </button>
                   {/* save and temporary exit button  */}
                   <button
-                    disabled={temporaryExitPostMutation.isPending}
+                    disabled={temporaryExitUpdateMutation.isPending}
                     className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                      temporaryExitPostMutation.isPending
+                      temporaryExitUpdateMutation.isPending
                         ? 'cursor-not-allowed opacity-50'
                         : ''
                     }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >
-                    {temporaryExitPostMutation.isPending ? (
+                    {temporaryExitUpdateMutation.isPending ? (
                       <>
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>

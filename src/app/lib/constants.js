@@ -924,6 +924,7 @@ export const step4ValidationSchema = {
       .required('Phone is required'),
   }),
   initialValues: {
+    lastExitStepUrl: '',
     visaType: 'evisa',
     visaService: '',
     contactNo: '',
