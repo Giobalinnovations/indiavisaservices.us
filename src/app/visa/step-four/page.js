@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BannerPage from "@/components/common/BannerPage";
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
@@ -8,13 +8,13 @@ import axiosInstance from "@/services/api";
 import { useFormContext } from "@/app/context/formContext";
 import apiEndpoint from "@/services/apiEndpoint";
 import { ImSpinner2 } from "react-icons/im";
-import { Country } from "country-state-city";
 import MultiReactSelectFormik from "@/components/MultiReactSelectFormik";
 import usePost from "@/hooks/usePost";
 import { useQuery } from "@tanstack/react-query";
 import SavedFormId from "@/components/common/SavedFormId";
 import lodash from "lodash";
 import { indiaAirportsList } from "@/app/lib/indiaAirports";
+import { Country, State, City } from "country-state-city";
 
 const StepFour = () => {
   const { state } = useFormContext();
@@ -1477,6 +1477,26 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
+                              <label className="form-label">Country</label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  component="select"
+                                  className="p-2 border rounded select-input"
+                                >
+                                  <option disabled selected value="">
+                                    Country
+                                  </option>
+                                  {Country?.getAllCountries()?.map(
+                                    (ele, index) => (
+                                      <option key={index} value={ele?.name}>
+                                        {ele?.name}
+                                      </option>
+                                    )
+                                  )}
+                                </Field>
+                              </div>
+                            </div>
+                            <div className="form-input-main-div">
                               <label className="form-label">State</label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -1484,8 +1504,16 @@ const StepFour = () => {
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
-                                  <option value="">Select </option>
-                                  <option value="option1">Option1</option>
+                                  <option disabled selected value="">
+                                    Select
+                                  </option>
+                                  {State?.getStatesOfCountry("IN")?.map(
+                                    (ele, index) => (
+                                      <option key={index} value={ele?.name}>
+                                        {ele?.name}
+                                      </option>
+                                    )
+                                  )}
                                 </Field>
                                 <ErrorMessage
                                   name="eConferenceState"
@@ -1504,7 +1532,16 @@ const StepFour = () => {
                                 >
                                   <option value="">Select </option>
 
-                                  <option value="option1">Option1 </option>
+                                  {City?.getCitiesOfState("IN", "AN")?.map(
+                                    (elecity, indexcity) => (
+                                      <option
+                                        key={indexcity}
+                                        value={elecity?.name}
+                                      >
+                                        {elecity?.name}
+                                      </option>
+                                    )
+                                  )}
                                 </Field>
                                 <ErrorMessage
                                   name="eConferenceDistrict"
