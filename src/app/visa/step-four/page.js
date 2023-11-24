@@ -1,22 +1,22 @@
-'use client';
-import React from 'react';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { step4ValidationSchema } from '@/app/lib/constants';
-import axiosInstance from '@/services/api';
-import { useFormContext } from '@/app/context/formContext';
-import apiEndpoint from '@/services/apiEndpoint';
-import { ImSpinner2 } from 'react-icons/im';
-import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
-import usePost from '@/hooks/usePost';
-import { useQuery } from '@tanstack/react-query';
-import SavedFormId from '@/components/common/SavedFormId';
-import lodash from 'lodash';
-import { indiaAirportsList } from '@/app/lib/indiaAirports';
-import useUpdate from '@/hooks/useUpdate';
-import { usePathname } from 'next/navigation';
-import { Country, State, City } from 'country-state-city';
+"use client";
+import React from "react";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { step4ValidationSchema } from "@/app/lib/constants";
+import axiosInstance from "@/services/api";
+import { useFormContext } from "@/app/context/formContext";
+import apiEndpoint from "@/services/apiEndpoint";
+import { ImSpinner2 } from "react-icons/im";
+import MultiReactSelectFormik from "@/components/MultiReactSelectFormik";
+import usePost from "@/hooks/usePost";
+import { useQuery } from "@tanstack/react-query";
+import SavedFormId from "@/components/common/SavedFormId";
+import lodash from "lodash";
+import { indiaAirportsList } from "@/app/lib/indiaAirports";
+import useUpdate from "@/hooks/useUpdate";
+import { usePathname } from "next/navigation";
+import { Country, State, City } from "country-state-city";
 
 const StepFour = () => {
   const pathname = usePathname();
@@ -28,7 +28,7 @@ const StepFour = () => {
     isSuccess: getStep1DataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getStep1Data'],
+    queryKey: ["getStep1Data"],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
     enabled: !!state.formId,
@@ -37,14 +37,14 @@ const StepFour = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
     4,
-    '/visa/step-five'
+    "/visa/step-five"
   );
 
   const temporaryExitUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
-    'temporary step 4 saved successfully',
-    '/',
+    "temporary step 4 saved successfully",
+    "/",
     refetch
   );
 
@@ -63,7 +63,7 @@ const StepFour = () => {
   if (getStep1DataIsSuccess) {
     const visaServiceSelected = step1Data?.data?.visaService
       ? lodash.camelCase(step1Data?.data?.visaService)
-      : '';
+      : "";
     const visaServiceSelectedValue = step1Data?.data?.[visaServiceSelected];
 
     const getDurationOfVisa = (
@@ -71,25 +71,25 @@ const StepFour = () => {
       visaServiceSelectedValue
     ) => {
       const value =
-        visaServiceSelected === 'eTouristVisa'
+        visaServiceSelected === "eTouristVisa"
           ? visaServiceSelectedValue
           : visaServiceSelected;
 
       switch (value) {
-        case 'visa1Year':
-        case 'eBusinessVisa':
-          return '1 Year';
-        case 'visa5Years':
-          return '5 Years';
-        case 'visa30days':
-        case 'eConferenceVisa':
-          return '30 Days';
-        case 'eMedicalVisa':
-        case 'eMedicalAttendantVisa':
-          return '60 Days';
+        case "visa1Year":
+        case "eBusinessVisa":
+          return "1 Year";
+        case "visa5Years":
+          return "5 Years";
+        case "visa30days":
+        case "eConferenceVisa":
+          return "30 Days";
+        case "eMedicalVisa":
+        case "eMedicalAttendantVisa":
+          return "60 Days";
 
         default:
-          return '';
+          return "";
       }
     };
     const getNumberOfEntries = (
@@ -97,27 +97,29 @@ const StepFour = () => {
       visaServiceSelectedValue
     ) => {
       const value =
-        visaServiceSelected === 'eTouristVisa'
+        visaServiceSelected === "eTouristVisa"
           ? visaServiceSelectedValue
           : visaServiceSelected;
 
       switch (value) {
-        case 'visa30days':
-          return 'Double';
-        case 'visa1Year':
-        case 'visa5Years':
-        case 'eBusinessVisa':
-          return 'Multiple';
-        case 'eConferenceVisa':
-          return 'Single';
-        case 'eMedicalVisa':
-        case 'eMedicalAttendantVisa':
-          return 'Triple';
+        case "visa30days":
+          return "Double";
+        case "visa1Year":
+        case "visa5Years":
+        case "eBusinessVisa":
+          return "Multiple";
+        case "eConferenceVisa":
+          return "Single";
+        case "eMedicalVisa":
+        case "eMedicalAttendantVisa":
+          return "Triple";
 
         default:
-          return '';
+          return "";
       }
     };
+
+    // console.log("getStatesOfCountry:", getStatesOfCountry());
 
     return (
       <>
@@ -126,8 +128,8 @@ const StepFour = () => {
         <Formik
           initialValues={{
             ...step4ValidationSchema.initialValues,
-            visaService: step1Data.data ? step1Data.data.visaService : '',
-            portOfArrival: step1Data.data ? step1Data.data.portOfArrival : '',
+            visaService: step1Data.data ? step1Data.data.visaService : "",
+            portOfArrival: step1Data.data ? step1Data.data.portOfArrival : "",
             durationOfVisa: getDurationOfVisa(
               visaServiceSelected,
               visaServiceSelectedValue
@@ -137,7 +139,7 @@ const StepFour = () => {
               visaServiceSelectedValue
             ),
             visaServiceSelectedValueValidation:
-              visaServiceSelected !== 'eBusinessVisa'
+              visaServiceSelected !== "eBusinessVisa"
                 ? visaServiceSelected
                 : visaServiceSelectedValue,
           }}
@@ -150,7 +152,9 @@ const StepFour = () => {
               ...values,
               formId: state.formId,
               countryVisitedInLast10Years:
-                values.countryVisitedInLast10Years.map(option => option.value),
+                values.countryVisitedInLast10Years.map(
+                  (option) => option.value
+                ),
             });
             setSubmitting(false);
             resetForm();
@@ -397,7 +401,7 @@ const StepFour = () => {
                                   id="yes"
                                   name="visitedIndiaBefore"
                                   value="yes"
-                                  checked={values.visitedIndiaBefore === 'yes'}
+                                  checked={values.visitedIndiaBefore === "yes"}
                                 />
                                 <label htmlFor="yes" className="font-semibold">
                                   Yes
@@ -409,7 +413,7 @@ const StepFour = () => {
                                   id="no"
                                   name="visitedIndiaBefore"
                                   value="no"
-                                  checked={values.visitedIndiaBefore === 'no'}
+                                  checked={values.visitedIndiaBefore === "no"}
                                 />
                                 <label htmlFor="no" className="font-semibold">
                                   No
@@ -422,7 +426,7 @@ const StepFour = () => {
                               />
                             </div>
                           </div>
-                          {values.visitedIndiaBefore === 'yes' && (
+                          {values.visitedIndiaBefore === "yes" && (
                             <div className="space-y-4">
                               <div className="form-input-main-div">
                                 <label className="form-label">Address*</label>
@@ -494,30 +498,30 @@ const StepFour = () => {
                                       Business Visa
                                     </option>
                                     <option value="Medical">
-                                      Medical Visa{' '}
+                                      Medical Visa{" "}
                                     </option>
                                     <option value="Student">
-                                      Student Visa{' '}
+                                      Student Visa{" "}
                                     </option>
                                     <option value="Tourist">
-                                      Tourist Visa{' '}
+                                      Tourist Visa{" "}
                                     </option>
                                     <option value="Tourist">
-                                      Tansit Visa{' '}
+                                      Tansit Visa{" "}
                                     </option>
                                     <option value="Conference">
-                                      Conference Visa{' '}
+                                      Conference Visa{" "}
                                     </option>
                                     <option value="Journalist">
-                                      Journalist Visa{' '}
+                                      Journalist Visa{" "}
                                     </option>
                                     <option value="Employment">
-                                      Employment Visa{' '}
+                                      Employment Visa{" "}
                                     </option>
                                   </Field>
                                   <ErrorMessage name="visitedIndiaBeforeTypeOfVisa">
-                                    {errorMsg => (
-                                      <div style={{ color: 'red' }}>
+                                    {(errorMsg) => (
+                                      <div style={{ color: "red" }}>
                                         {errorMsg}
                                       </div>
                                     )}
@@ -592,7 +596,7 @@ const StepFour = () => {
                             </div>
                           </div>
 
-                          {values.permissionRefused === 'yes' && (
+                          {values.permissionRefused === "yes" && (
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 If so, when and by whom (Mention Control No. and
@@ -615,7 +619,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    {values.visitedIndiaBefore === 'yes' && (
+                    {values.visitedIndiaBefore === "yes" && (
                       <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <div>
                           <h2 className="py-5 sidetext ">
@@ -658,13 +662,13 @@ const StepFour = () => {
                 </div>
 
                 {/* feilds for visa type--- e-medical start */}
-                {visaServiceSelected === 'eMedicalVisa' &&
+                {visaServiceSelected === "eMedicalVisa" &&
                 visaServiceSelectedValue ===
-                  'SHORT TERM MEDICAL TREATMENT OF SELF' ? (
+                  "SHORT TERM MEDICAL TREATMENT OF SELF" ? (
                   <div>
                     <div>
                       <h2 className="text-3xl font-semibold">
-                        Details of Purpose{' '}
+                        Details of Purpose{" "}
                         <span className="text-lg">
                           ({visaServiceSelectedValue})
                         </span>
@@ -807,14 +811,14 @@ const StepFour = () => {
                 {/* feilds for visa type--- e-medical end  */}
 
                 {/* feilds for visa type--- e-bussiness start */}
-                {visaServiceSelected === 'eBusinessVisa' &&
-                visaServiceSelectedValue !== 'CONDUCTING TOURS' &&
+                {visaServiceSelected === "eBusinessVisa" &&
+                visaServiceSelectedValue !== "CONDUCTING TOURS" &&
                 visaServiceSelectedValue !==
-                  'TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)' ? (
+                  "TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)" ? (
                   <div>
                     <div>
                       <h2 className="text-3xl font-semibold">
-                        Details of Purpose{' '}
+                        Details of Purpose{" "}
                         <span className="text-lg">
                           ({visaServiceSelectedValue} )
                         </span>
@@ -902,9 +906,9 @@ const StepFour = () => {
                             </div>
 
                             {visaServiceSelectedValue ===
-                              'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+                              "TO SET UP INDUSTRIAL/BUSINESS VENTURE" ||
                             visaServiceSelectedValue ===
-                              'SALE/PURCHASE/TRADE' ? (
+                              "SALE/PURCHASE/TRADE" ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Natures of Business/ Product
@@ -925,11 +929,11 @@ const StepFour = () => {
                               </div>
                             ) : null}
                             {visaServiceSelectedValue ===
-                              'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
+                              "ATTEND TECHNICAL/BUSINESS MEETINGS" ||
                             visaServiceSelectedValue ===
-                              'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT' ? (
+                              "EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT" ? (
                               <>
-                                {' '}
+                                {" "}
                                 <b>Details of Indian Firm</b>
                                 <div className="form-input-main-div">
                                   <label className="form-label">Name</label>
@@ -983,7 +987,7 @@ const StepFour = () => {
                             ) : null}
 
                             {visaServiceSelectedValue ===
-                            'TO RECRUIT MANPOWER' ? (
+                            "TO RECRUIT MANPOWER" ? (
                               <>
                                 <div className="form-input-main-div">
                                   <label className="form-label">
@@ -1044,7 +1048,7 @@ const StepFour = () => {
                             ) : null}
 
                             {visaServiceSelectedValue ===
-                            'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ? (
+                            "PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS" ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Name and address of the exhibition/trade fair
@@ -1081,8 +1085,8 @@ const StepFour = () => {
                 ) : null}
 
                 {/* feild for  */}
-                {visaServiceSelected === 'eBusinessVisa' &&
-                visaServiceSelectedValue === 'CONDUCTING TOURS' ? (
+                {visaServiceSelected === "eBusinessVisa" &&
+                visaServiceSelectedValue === "CONDUCTING TOURS" ? (
                   <div>
                     <div className="">
                       <h2 className="text-3xl font-semibold">
@@ -1215,11 +1219,11 @@ const StepFour = () => {
                 {/* feilds for visa type--- e-bussiness end  */}
 
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA start */}
-                {visaServiceSelected === 'eMedicalAttendantVisa' ? (
+                {visaServiceSelected === "eMedicalAttendantVisa" ? (
                   <div>
                     <div>
                       <h2 className="text-3xl font-semibold">
-                        Details of Purpose{' '}
+                        Details of Purpose{" "}
                         <span className="text-lg">
                           ({visaServiceSelectedValue})
                         </span>
@@ -1279,7 +1283,7 @@ const StepFour = () => {
                                 </div>
                               </div>
                             </div>
-                            {values.eMedicalAttendantAppOrVisa === 'visaNo' ? (
+                            {values.eMedicalAttendantAppOrVisa === "visaNo" ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Visa number of principal e-Medical Visa holder
@@ -1301,7 +1305,7 @@ const StepFour = () => {
                             ) : null}
 
                             {values.eMedicalAttendantAppOrVisa ===
-                            'applicationId' ? (
+                            "applicationId" ? (
                               <div className="form-input-main-div">
                                 <label
                                   className="form-label"
@@ -1404,7 +1408,7 @@ const StepFour = () => {
 
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA end  */}
                 {/* feilds for visa type ---confrence visa start  */}
-                {visaServiceSelected === 'eConferenceVisa' ? (
+                {visaServiceSelected === "eConferenceVisa" ? (
                   <div>
                     <div className="">
                       <h2 className="text-3xl font-semibold">
@@ -1521,10 +1525,15 @@ const StepFour = () => {
                                   <option disabled selected value="">
                                     Select
                                   </option>
-                                  {State?.getStatesOfCountry('IN')?.map(
+                                 
+                                  {State?.getStatesOfCountry("IN")?.map(
                                     (ele, index) => (
                                       <option key={index} value={ele?.name}>
                                         {ele?.name}
+                                        {console.log(
+                                          "ele isocode:",
+                                          ele.isoCode
+                                        )}
                                       </option>
                                     )
                                   )}
@@ -1546,7 +1555,7 @@ const StepFour = () => {
                                 >
                                   <option value="">Select </option>
 
-                                  {City?.getCitiesOfState('IN', 'AN')?.map(
+                                  {City?.getCitiesOfState("IN", "RJ")?.map(
                                     (elecity, indexcity) => (
                                       <option
                                         key={indexcity}
@@ -1684,7 +1693,7 @@ const StepFour = () => {
                             <div className="input-error-wrapper">
                               <MultiReactSelectFormik
                                 options={Country?.getAllCountries()?.map(
-                                  country => ({
+                                  (country) => ({
                                     value: country?.name,
                                     label: country?.name,
                                   })
@@ -1713,7 +1722,7 @@ const StepFour = () => {
                 <div>
                   <div className="">
                     <h2 className="text-3xl font-semibold">
-                      SAARC Country Visit Details{' '}
+                      SAARC Country Visit Details{" "}
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
@@ -1751,7 +1760,7 @@ const StepFour = () => {
                               </div>
                             </div>
                           </div>
-                          {values.visitedSAARCCountries === 'yes' && (
+                          {values.visitedSAARCCountries === "yes" && (
                             <div>
                               <FieldArray name="visitedSAARCCountriesLists">
                                 {({ insert, remove, push }) => (
@@ -1825,7 +1834,7 @@ const StepFour = () => {
                                                   >
                                                     Select Year*
                                                   </option>
-                                                  {years.map(year => (
+                                                  {years.map((year) => (
                                                     <option
                                                       key={year}
                                                       value={year}
@@ -1880,9 +1889,9 @@ const StepFour = () => {
                                       className="formbtn"
                                       onClick={() =>
                                         push({
-                                          saarcCountryName: '',
-                                          selectYear: '',
-                                          numberOfVisits: '',
+                                          saarcCountryName: "",
+                                          selectYear: "",
+                                          numberOfVisits: "",
                                         })
                                       }
                                     >
@@ -2059,7 +2068,7 @@ const StepFour = () => {
                     type="submit"
                     disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? 'cursor-not-allowed opacity-50' : ''
+                      !isValid ? "cursor-not-allowed opacity-50" : ""
                     }`}
                   >
                     {postMutation.isPending ? (
@@ -2067,7 +2076,7 @@ const StepFour = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      'Continue'
+                      "Continue"
                     )}
                   </button>
                   {/* save and temporary exit button  */}
@@ -2075,8 +2084,8 @@ const StepFour = () => {
                     disabled={temporaryExitUpdateMutation.isPending}
                     className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
                       temporaryExitUpdateMutation.isPending
-                        ? 'cursor-not-allowed opacity-50'
-                        : ''
+                        ? "cursor-not-allowed opacity-50"
+                        : ""
                     }`}
                     type="button"
                     onClick={handleTemporaryExit}
@@ -2086,7 +2095,7 @@ const StepFour = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      'Save and Temporarily Exit'
+                      "Save and Temporarily Exit"
                     )}
                   </button>
                 </div>
