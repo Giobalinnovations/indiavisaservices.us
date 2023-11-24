@@ -341,14 +341,16 @@ const StepSeven = () => {
                   {step2Data?.acquireNationality}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Previous Nationality
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.previousNationality}
-                </p>
-              </div>
+              {step2Data?.acquireNationality === "naturalization" && (
+                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <h2 className="py-1 text-sm font-semibold text-secondary">
+                    Previous Nationality
+                  </h2>
+                  <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                    {step2Data?.previousNationality}
+                  </p>
+                </div>
+              )}
               <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you lived for at least two years in the country where you
@@ -405,46 +407,50 @@ const StepSeven = () => {
                   {step2Data?.anyOtherPassport}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Country of Issue
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.countryOfIssue}
-                </p>
-              </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Passport/IC No.
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.passportICNumber}
-                </p>
-              </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Date of Issue*
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.dateOfIssuePassportIC}
-                </p>
-              </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Place of Issue
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.placeOfIssuePassportIC}
-                </p>
-              </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
-                <h2 className="py-1 text-sm font-semibold text-secondary">
-                  Nationality mentioned therein
-                </h2>
-                <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.passportNationalityMentionedTherein}
-                </p>
-              </div>
+              {step2Data?.anyOtherPassport === "yes" && (
+                <>
+                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <h2 className="py-1 text-sm font-semibold text-secondary">
+                      Country of Issue
+                    </h2>
+                    <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                      {step2Data?.countryOfIssue}
+                    </p>
+                  </div>
+                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <h2 className="py-1 text-sm font-semibold text-secondary">
+                      Passport/IC No.
+                    </h2>
+                    <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                      {step2Data?.passportICNumber}
+                    </p>
+                  </div>
+                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <h2 className="py-1 text-sm font-semibold text-secondary">
+                      Date of Issue*
+                    </h2>
+                    <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                      {step2Data?.dateOfIssuePassportIC}
+                    </p>
+                  </div>
+                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <h2 className="py-1 text-sm font-semibold text-secondary">
+                      Place of Issue
+                    </h2>
+                    <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                      {step2Data?.placeOfIssuePassportIC}
+                    </p>
+                  </div>
+                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <h2 className="py-1 text-sm font-semibold text-secondary">
+                      Nationality mentioned therein
+                    </h2>
+                    <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
+                      {step2Data?.passportNationalityMentionedTherein}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
