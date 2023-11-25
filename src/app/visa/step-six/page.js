@@ -259,7 +259,7 @@ const StepSix = () => {
                   {/* emedical code end here */}
                 </div>
               </div>
-              <div className="space-x-4 text-center">
+              <div className="space-x-4 text-center md:space-y-0 space-y-4">
                 <Link href="/visa/step-five/update">
                   <button className="formbtnBorder">Back</button>
                 </Link>
