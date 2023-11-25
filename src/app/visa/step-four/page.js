@@ -179,7 +179,7 @@ const StepFour = () => {
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -369,7 +369,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-center col-span-4 px-4 pt-10 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex hidden flex-col justify-center col-span-4 px-4 pt-10 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <h2 className="py-5 sidetext ">
                         If you intend to visit Protected/Restricted/ Cantonment
                         areas, you would require prior permission from the Civil
@@ -386,7 +386,7 @@ const StepFour = () => {
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -663,7 +663,7 @@ const StepFour = () => {
 
                 {/* feilds for visa type--- e-medical start */}
                 {visaServiceSelected === "eMedicalVisa" &&
-                visaServiceSelectedValue ===
+                  visaServiceSelectedValue ===
                   "SHORT TERM MEDICAL TREATMENT OF SELF" ? (
                   <div>
                     <div>
@@ -676,7 +676,7 @@ const StepFour = () => {
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
-                    <div className="grid grid-cols-12 gap-8 ">
+                    <div className="grid md:grid-cols-12 gap-8 ">
                       <div className="col-span-8">
                         <div className="">
                           <div className="formMain">
@@ -795,7 +795,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="md:flex hidden flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <h2 className="py-6 sidetext ">No. of entries</h2>
                         <h2 className="py-4 sidetext ">
                           Port of arrival in India
@@ -812,8 +812,8 @@ const StepFour = () => {
 
                 {/* feilds for visa type--- e-bussiness start */}
                 {visaServiceSelected === "eBusinessVisa" &&
-                visaServiceSelectedValue !== "CONDUCTING TOURS" &&
-                visaServiceSelectedValue !==
+                  visaServiceSelectedValue !== "CONDUCTING TOURS" &&
+                  visaServiceSelectedValue !==
                   "TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)" ? (
                   <div>
                     <div>
@@ -826,7 +826,7 @@ const StepFour = () => {
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
-                    <div className="grid grid-cols-12 gap-8 ">
+                    <div className="grid md:grid-cols-12 gap-8 ">
                       <div className="col-span-8">
                         <div className="">
                           <div className="formMain">
@@ -907,7 +907,7 @@ const StepFour = () => {
 
                             {visaServiceSelectedValue ===
                               "TO SET UP INDUSTRIAL/BUSINESS VENTURE" ||
-                            visaServiceSelectedValue ===
+                              visaServiceSelectedValue ===
                               "SALE/PURCHASE/TRADE" ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
@@ -930,7 +930,7 @@ const StepFour = () => {
                             ) : null}
                             {visaServiceSelectedValue ===
                               "ATTEND TECHNICAL/BUSINESS MEETINGS" ||
-                            visaServiceSelectedValue ===
+                              visaServiceSelectedValue ===
                               "EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT" ? (
                               <>
                                 {" "}
@@ -987,7 +987,7 @@ const StepFour = () => {
                             ) : null}
 
                             {visaServiceSelectedValue ===
-                            "TO RECRUIT MANPOWER" ? (
+                              "TO RECRUIT MANPOWER" ? (
                               <>
                                 <div className="form-input-main-div">
                                   <label className="form-label">
@@ -1048,7 +1048,7 @@ const StepFour = () => {
                             ) : null}
 
                             {visaServiceSelectedValue ===
-                            "PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS" ? (
+                              "PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS" ? (
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Name and address of the exhibition/trade fair
@@ -1071,7 +1071,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="md:flex hidden flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <h2 className="py-6 sidetext ">No. of entries</h2>
                         <h2 className="py-4 sidetext ">
                           Port of arrival in India
@@ -1086,7 +1086,7 @@ const StepFour = () => {
 
                 {/* feild for  */}
                 {visaServiceSelected === "eBusinessVisa" &&
-                visaServiceSelectedValue === "CONDUCTING TOURS" ? (
+                  visaServiceSelectedValue === "CONDUCTING TOURS" ? (
                   <div>
                     <div className="">
                       <h2 className="text-3xl font-semibold">
@@ -1095,7 +1095,7 @@ const StepFour = () => {
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
-                    <div className="grid grid-cols-12 gap-8 ">
+                    <div className="grid md:grid-cols-12 gap-8 ">
                       <div className="col-span-8">
                         <div className="">
                           <div className="formMain">
@@ -1203,7 +1203,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="md:flex hidden flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <h2 className="py-6 sidetext ">No. of entries</h2>
                         <h2 className="py-4 sidetext ">
                           Port of arrival in India
@@ -1231,7 +1231,7 @@ const StepFour = () => {
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
-                    <div className="grid grid-cols-12 gap-8 ">
+                    <div className="grid md:grid-cols-12 gap-8 ">
                       <div className="col-span-8">
                         <div className="">
                           <div className="formMain">
@@ -1305,7 +1305,7 @@ const StepFour = () => {
                             ) : null}
 
                             {values.eMedicalAttendantAppOrVisa ===
-                            "applicationId" ? (
+                              "applicationId" ? (
                               <div className="form-input-main-div">
                                 <label
                                   className="form-label"
@@ -1393,7 +1393,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="md:flex hidden flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <h2 className="py-6 sidetext ">No. of entries</h2>
                         <h2 className="py-4 sidetext ">
                           Port of arrival in India
@@ -1420,7 +1420,7 @@ const StepFour = () => {
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
-                    <div className="grid grid-cols-12 gap-8 ">
+                    <div className="grid md:grid-cols-12 gap-8 ">
                       <div className="col-span-8">
                         <div className="">
                           <div className="formMain">
@@ -1525,7 +1525,7 @@ const StepFour = () => {
                                   <option disabled selected value="">
                                     Select
                                   </option>
-                                 
+
                                   {State?.getStatesOfCountry("IN")?.map(
                                     (ele, index) => (
                                       <option key={index} value={ele?.name}>
@@ -1659,7 +1659,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="md:flex hidden flex-col justify-end col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                         <h2 className="py-6 sidetext ">No. of entries</h2>
                         <h2 className="py-4 sidetext ">
                           Port of arrival in India
@@ -1681,7 +1681,7 @@ const StepFour = () => {
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -1709,7 +1709,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex hidden flex-col justify-center col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <h2 className="sidetext">
                         If information furnished is found to be incorrect at the
                         time of entry or anything during stay in India, you will
@@ -1726,7 +1726,7 @@ const StepFour = () => {
                     </h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -1905,7 +1905,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-span-4 px-4 py-3 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="col-span-4 px-4 py-3 border-2 bg-primary/10 border-primary/60 rounded-xl md:block hidden">
                       <h2 className="sidetext py- ">
                         Have you visited “South Asian Association for Regional
                         Cooperation” (SAARC) countries (expect your own country)
@@ -1923,7 +1923,7 @@ const StepFour = () => {
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
 
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -2025,7 +2025,7 @@ const StepFour = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext">
                           Reference Name and Address in India
@@ -2055,7 +2055,7 @@ const StepFour = () => {
 
                 <p className="font-semibold">Mandatory Fields*</p>
 
-                <div className="space-x-4 text-center">
+                <div className="space-x-4 text-center md:space-y-0 space-y-4">
                   {postMutation.isError ? (
                     <div className="text-red-500">
                       An error occurred: {postMutation.error.message}
@@ -2067,9 +2067,8 @@ const StepFour = () => {
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? "cursor-not-allowed opacity-50" : ""
-                    }`}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${!isValid ? "cursor-not-allowed opacity-50" : ""
+                      }`}
                   >
                     {postMutation.isPending ? (
                       <>
@@ -2082,11 +2081,10 @@ const StepFour = () => {
                   {/* save and temporary exit button  */}
                   <button
                     disabled={temporaryExitUpdateMutation.isPending}
-                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                      temporaryExitUpdateMutation.isPending
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${temporaryExitUpdateMutation.isPending
                         ? "cursor-not-allowed opacity-50"
                         : ""
-                    }`}
+                      }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >

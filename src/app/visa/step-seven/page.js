@@ -83,7 +83,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Detail</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Application Type
                 </h2>
@@ -91,7 +91,7 @@ const StepSeven = () => {
                   {step1Data?.applicationType}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Nationality Region
                 </h2>
@@ -99,7 +99,7 @@ const StepSeven = () => {
                   {step1Data?.nationalityRegion}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Passport Type
                 </h2>
@@ -107,7 +107,7 @@ const StepSeven = () => {
                   {step1Data?.passportType}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Port Of Arrival
                 </h2>
@@ -115,7 +115,7 @@ const StepSeven = () => {
                   {step1Data?.portOfArrival}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Date Of Birth
                 </h2>
@@ -123,7 +123,7 @@ const StepSeven = () => {
                   {step1Data?.dateOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Email Id
                 </h2>
@@ -131,7 +131,7 @@ const StepSeven = () => {
                   {step1Data?.emailId}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Contact No
                 </h2>
@@ -139,7 +139,7 @@ const StepSeven = () => {
                   {step1Data?.contactNo}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Visa Service
                 </h2>
@@ -147,7 +147,7 @@ const StepSeven = () => {
                   {step1Data?.visaService}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eTouristVisa
                 </h2>
@@ -155,7 +155,7 @@ const StepSeven = () => {
                   {step1Data?.eTouristVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eTouristVisa30Days
                 </h2>
@@ -163,7 +163,7 @@ const StepSeven = () => {
                   {step1Data?.eTouristVisa30Days}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eTouristVisa1Year
                 </h2>
@@ -171,7 +171,7 @@ const StepSeven = () => {
                   {step1Data?.eTouristVisa1Year}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eTouristVisa5Years
                 </h2>
@@ -179,7 +179,7 @@ const StepSeven = () => {
                   {step1Data?.eTouristVisa5Years}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eMedicalVisa
                 </h2>
@@ -187,7 +187,7 @@ const StepSeven = () => {
                   {step1Data?.eMedicalVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eBusinessVisa
                 </h2>
@@ -195,7 +195,7 @@ const StepSeven = () => {
                   {step1Data?.eBusinessVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eConference Visa
                 </h2>
@@ -203,7 +203,7 @@ const StepSeven = () => {
                   {step1Data?.eConferenceVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   eMedicalAttendantVisa
                 </h2>
@@ -211,7 +211,7 @@ const StepSeven = () => {
                   {step1Data?.eMedicalAttendantVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   expectedDateOfArrival
                 </h2>
@@ -226,23 +226,23 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Applicant Detail</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                  firstName
+                  FirstName
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   {step2Data?.firstName}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
-                  lastName
+                  LastName
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
                   {step2Data?.lastName}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever changed your name? *
                 </h2>
@@ -251,7 +251,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step2Data?.changedName === "YES" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Previous Name
                   </h2>
@@ -260,7 +260,7 @@ const StepSeven = () => {
                   </p>
                 </div>
               ) : null}
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Gender
                 </h2>
@@ -268,7 +268,7 @@ const StepSeven = () => {
                   gender
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Date of Birth*
                 </h2>
@@ -276,7 +276,7 @@ const StepSeven = () => {
                   {step1Data?.dateOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Town/City of birth*
                 </h2>
@@ -284,7 +284,7 @@ const StepSeven = () => {
                   {step2Data?.townCityOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Country of birth*
                 </h2>
@@ -292,7 +292,7 @@ const StepSeven = () => {
                   {step2Data?.countryRegionOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Citizenship/National Id No.*
                 </h2>
@@ -300,7 +300,7 @@ const StepSeven = () => {
                   {step2Data?.citizenshipNationalID}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Religion
                 </h2>
@@ -308,7 +308,7 @@ const StepSeven = () => {
                   {step2Data?.religion}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Visible identification marks*
                 </h2>
@@ -316,7 +316,7 @@ const StepSeven = () => {
                   {step2Data?.visibleIdentificationMarks}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Educational Qualification *
                 </h2>
@@ -324,7 +324,7 @@ const StepSeven = () => {
                   {step2Data?.educationalQualification}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Nationality*
                 </h2>
@@ -332,7 +332,7 @@ const StepSeven = () => {
                   {step2Data?.nationalityRegion}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Did you acquire Nationality by birth or by By Birth
                   naturalization? *
@@ -342,7 +342,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step2Data?.acquireNationality === "naturalization" && (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Previous Nationality
                   </h2>
@@ -351,7 +351,7 @@ const StepSeven = () => {
                   </p>
                 </div>
               )}
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you lived for at least two years in the country where you
                   are applying visa?
@@ -367,7 +367,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Passport Details</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Passport Number *
                 </h2>
@@ -375,7 +375,7 @@ const StepSeven = () => {
                   {step2Data?.passportNumber}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Place of Issue *
                 </h2>
@@ -383,7 +383,7 @@ const StepSeven = () => {
                   {step2Data?.placeOfIssue}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Date of Issue *
                 </h2>
@@ -391,7 +391,7 @@ const StepSeven = () => {
                   {step2Data?.dateOfIssue}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Date of Expiry *
                 </h2>
@@ -399,7 +399,7 @@ const StepSeven = () => {
                   {step2Data?.dateOfExpiry}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Any other valid Passport/Identity Certificate (IC) held,
                 </h2>
@@ -409,7 +409,7 @@ const StepSeven = () => {
               </div>
               {step2Data?.anyOtherPassport === "yes" && (
                 <>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Country of Issue
                     </h2>
@@ -417,7 +417,7 @@ const StepSeven = () => {
                       {step2Data?.countryOfIssue}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Passport/IC No.
                     </h2>
@@ -425,7 +425,7 @@ const StepSeven = () => {
                       {step2Data?.passportICNumber}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Date of Issue*
                     </h2>
@@ -433,7 +433,7 @@ const StepSeven = () => {
                       {step2Data?.dateOfIssuePassportIC}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Place of Issue
                     </h2>
@@ -441,7 +441,7 @@ const StepSeven = () => {
                       {step2Data?.placeOfIssuePassportIC}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Nationality mentioned therein
                     </h2>
@@ -460,7 +460,7 @@ const StepSeven = () => {
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   House No./Street*
                 </h2>
@@ -468,7 +468,7 @@ const StepSeven = () => {
                   {step3Data?.houseNoStreet}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Village/Town/City*
                 </h2>
@@ -476,7 +476,7 @@ const StepSeven = () => {
                   {step3Data?.villageTownCity}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   State/Province/District*
                 </h2>
@@ -484,7 +484,7 @@ const StepSeven = () => {
                   {step3Data?.stateProvinceDistrict}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Postal/Zip Code
                 </h2>
@@ -492,7 +492,7 @@ const StepSeven = () => {
                   {step3Data?.postalZipCode}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Country*
                 </h2>
@@ -500,7 +500,7 @@ const StepSeven = () => {
                   {step3Data?.country}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Phone No.
                 </h2>
@@ -508,7 +508,7 @@ const StepSeven = () => {
                   {step3Data?.phoneNo}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Mobile No.
                 </h2>
@@ -516,7 +516,7 @@ const StepSeven = () => {
                   {step3Data?.mobileNo}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Email Address
                 </h2>
@@ -528,7 +528,7 @@ const StepSeven = () => {
               <div className="pt-5 text-2xl font-semibold text-primary">
                 Permanent Address
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   House No./Street*
                 </h2>
@@ -536,7 +536,7 @@ const StepSeven = () => {
                   {step3Data?.permanentAddressHouseNoStreet}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Village/Town/City*
                 </h2>
@@ -544,7 +544,7 @@ const StepSeven = () => {
                   {step3Data?.permanentAddressVillageTownCity}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   State/Province/District*
                 </h2>
@@ -559,7 +559,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Father’s Details</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Name*
                 </h2>
@@ -567,7 +567,7 @@ const StepSeven = () => {
                   {step3Data?.fatherFullName}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Nationality*
                 </h2>
@@ -575,7 +575,7 @@ const StepSeven = () => {
                   {step3Data?.fatherNationality}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Previous Nationality
                 </h2>
@@ -583,7 +583,7 @@ const StepSeven = () => {
                   {step3Data?.fatherPreviousNationality}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Place of Birth
                 </h2>
@@ -591,7 +591,7 @@ const StepSeven = () => {
                   {step3Data?.fatherPlaceOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Country of birth*
                 </h2>
@@ -605,7 +605,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Mother’s Details</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Name*
                 </h2>
@@ -613,7 +613,7 @@ const StepSeven = () => {
                   {step3Data?.motherFullName}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Nationality*
                 </h2>
@@ -621,7 +621,7 @@ const StepSeven = () => {
                   {step3Data?.motherNationality}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Previous Nationality
                 </h2>
@@ -629,7 +629,7 @@ const StepSeven = () => {
                   {step3Data?.motherPreviousNationality}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Place of birth*
                 </h2>
@@ -637,7 +637,7 @@ const StepSeven = () => {
                   {step3Data?.motherPlaceOfBirth}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Country of birth*
                 </h2>
@@ -651,7 +651,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Spouse Details</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Applicant&apos;s Marital Status
                 </h2>
@@ -663,7 +663,7 @@ const StepSeven = () => {
               {step3Data?.applicantMaritalStatus === "married" ? (
                 <>
                   {" "}
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Name*
                     </h2>
@@ -671,7 +671,7 @@ const StepSeven = () => {
                       {step3Data?.spouseFullName}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Nationality*
                     </h2>
@@ -679,7 +679,7 @@ const StepSeven = () => {
                       {step3Data?.spouseNationality}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Previous Nationality
                     </h2>
@@ -687,7 +687,7 @@ const StepSeven = () => {
                       {step3Data?.spousePreviousNationality}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Place of birth*
                     </h2>
@@ -695,7 +695,7 @@ const StepSeven = () => {
                       {step3Data?.spousePlaceOfBirth}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Country of birth*
                     </h2>
@@ -706,7 +706,7 @@ const StepSeven = () => {
                 </>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Were your parents/Grandparents (paternal/maternal) Pakistan
                   Nationals or belong to Pakistan held area.
@@ -717,7 +717,7 @@ const StepSeven = () => {
               </div>
 
               {step3Data?.parentsPakistanNational === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     If Yes, give details*
                   </h2>
@@ -734,7 +734,7 @@ const StepSeven = () => {
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Present Occupation*
                 </h2>
@@ -745,7 +745,7 @@ const StepSeven = () => {
               {step3Data?.presentOtherOccupation === null ? (
                 ""
               ) : (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Present Occupation*
                   </h2>
@@ -754,7 +754,7 @@ const StepSeven = () => {
                   </p>
                 </div>
               )}
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Employer Name/business*
                 </h2>
@@ -762,7 +762,7 @@ const StepSeven = () => {
                   {step3Data?.employerName}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Designation
                 </h2>
@@ -770,7 +770,7 @@ const StepSeven = () => {
                   {step3Data?.designation}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Address
                 </h2>
@@ -778,7 +778,7 @@ const StepSeven = () => {
                   {step3Data?.address}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Phone
                 </h2>
@@ -786,7 +786,7 @@ const StepSeven = () => {
                   {step3Data?.applicantPhone}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Past Occupation, if any
                 </h2>
@@ -794,7 +794,7 @@ const StepSeven = () => {
                   {step3Data?.pastOccupationIfAny}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Are/were you in a Military?Semi-Military/Police /Security
                   Organization?
@@ -806,7 +806,7 @@ const StepSeven = () => {
               {step3Data?.militaryOrganization === "yes" ? (
                 <>
                   {" "}
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Organization*
                     </h2>
@@ -814,7 +814,7 @@ const StepSeven = () => {
                       {step3Data?.organization}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Designation
                     </h2>
@@ -822,7 +822,7 @@ const StepSeven = () => {
                       {step3Data?.militaryDesignation}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Rank
                     </h2>
@@ -830,7 +830,7 @@ const StepSeven = () => {
                       {step3Data?.militaryRank}
                     </p>
                   </div>
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Place of Posting
                     </h2>
@@ -846,7 +846,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Details of Visa Sought</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Type of Visa*
                 </h2>
@@ -854,7 +854,7 @@ const StepSeven = () => {
                   {step4Data?.visaType}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Visa Service*
                 </h2>
@@ -862,7 +862,7 @@ const StepSeven = () => {
                   {step4Data?.visaService}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Contact No.
                 </h2>
@@ -870,7 +870,7 @@ const StepSeven = () => {
                   {step4Data?.contactNo}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Places to be Visited 1*
                 </h2>
@@ -878,7 +878,7 @@ const StepSeven = () => {
                   {step4Data?.placesToVisit}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Places to be Visited 2*
                 </h2>
@@ -886,7 +886,7 @@ const StepSeven = () => {
                   {step4Data?.placesToVisit2}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Duration of Visa*
                 </h2>
@@ -894,7 +894,7 @@ const StepSeven = () => {
                   {step4Data?.durationOfVisa}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   No. of Entries*
                 </h2>
@@ -902,7 +902,7 @@ const StepSeven = () => {
                   {step4Data?.numberOfEntries}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   portOfArrival
                 </h2>
@@ -910,7 +910,7 @@ const StepSeven = () => {
                   {step4Data?.portOfArrival}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   expectedPortOfExit
                 </h2>
@@ -918,7 +918,7 @@ const StepSeven = () => {
                   {step4Data?.expectedPortOfExit}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Visa Service Selected
                 </h2>
@@ -939,7 +939,7 @@ const StepSeven = () => {
               </h2>
               <hr className="w-full h-1 text-primary bg-primary" />
               <div className="space-y-2 divide-y-[1px] pt-5">
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Name Of Hospital
                   </h2>
@@ -947,7 +947,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalNameOfHospital}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Address Of Hospital
                   </h2>
@@ -955,7 +955,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalAddressOfHospital}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Phone Of Hospital
                   </h2>
@@ -963,7 +963,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalPhoneOfHospital}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     State Of Hospital
                   </h2>
@@ -971,7 +971,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalStateOfHospital}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     District Of Hospital
                   </h2>
@@ -979,7 +979,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalDistrictOfHospital}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Type Of Medical Treatment
                   </h2>
@@ -1005,7 +1005,7 @@ const StepSeven = () => {
               </h2>
               <hr className="w-full h-1 text-primary bg-primary" />
               <div className="space-y-2 divide-y-[1px] pt-5">
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Name/subject of the conference
                   </h2>
@@ -1016,7 +1016,7 @@ const StepSeven = () => {
                 <div className="pt-5 text-2xl font-semibold text-primary">
                   Duration of conference
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Start date
                   </h2>
@@ -1024,7 +1024,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceStartDate}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     End date
                   </h2>
@@ -1035,7 +1035,7 @@ const StepSeven = () => {
                 <div className="pt-5 text-2xl font-semibold text-primary">
                   Venue of conference
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Address
                   </h2>
@@ -1043,7 +1043,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceAddress}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     State
                   </h2>
@@ -1051,7 +1051,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceState}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Ditrict
                   </h2>
@@ -1059,7 +1059,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceDistrict}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Pincode
                   </h2>
@@ -1071,7 +1071,7 @@ const StepSeven = () => {
                 <div className="pt-5 text-2xl font-semibold text-primary">
                   Details of organizer of conference
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Name of organizer
                   </h2>
@@ -1079,7 +1079,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceNameOfOrganizer}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Address
                   </h2>
@@ -1087,7 +1087,7 @@ const StepSeven = () => {
                     {step4Data?.eConferenceAddressOfOrganizer}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Phone no
                   </h2>
@@ -1095,7 +1095,7 @@ const StepSeven = () => {
                     {step4Data?.eConferencePhoneOfOrganizer}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Email id
                   </h2>
@@ -1118,7 +1118,7 @@ const StepSeven = () => {
               </h2>
               <hr className="w-full h-1 text-primary bg-primary" />
               <div className="space-y-2 divide-y-[1px] pt-5">
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Name of the principal e-Medical Visa holder (i.e. the
                     patient)
@@ -1128,7 +1128,7 @@ const StepSeven = () => {
                   </p>
                 </div>
 
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     App Or Visa
                   </h2>
@@ -1136,7 +1136,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalAttendantAppOrVisa}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Visa No. / Application id of principal e-Medical Visa holder
                   </h2>
@@ -1144,7 +1144,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalAttendantVisaNumberOfVisaHolder}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Application Id Of VisaHolder
                   </h2>
@@ -1152,7 +1152,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalAttendantApplicationIdOfVisaHolder}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Passport Number Of VisaHolder
                   </h2>
@@ -1160,7 +1160,7 @@ const StepSeven = () => {
                     {step4Data?.eMedicalAttendantPassportNumberOfVisaHolder}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Dob Of Visa Holder
                   </h2>
@@ -1169,7 +1169,7 @@ const StepSeven = () => {
                   </p>
                 </div>
 
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Nationality Of Visa Holder
                   </h2>
@@ -1193,7 +1193,7 @@ const StepSeven = () => {
               </h2>
               <hr className="w-full h-1 text-primary bg-primary" />
               <div className="space-y-2 divide-y-[1px] pt-5">
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Name And Address
                   </h2>
@@ -1202,7 +1202,7 @@ const StepSeven = () => {
                   </p>
                 </div>
 
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Cities
                   </h2>
@@ -1210,7 +1210,7 @@ const StepSeven = () => {
                     {step4Data?.eBusinessConductingToursCities}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Agency Name
                   </h2>
@@ -1218,7 +1218,7 @@ const StepSeven = () => {
                     {step4Data?.eBusinessConductingToursTravelAgencyName}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Agency Phone
                   </h2>
@@ -1226,7 +1226,7 @@ const StepSeven = () => {
                     {step4Data?.eBusinessConductingToursTravelAgencyPhone}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Agency Address
                   </h2>
@@ -1234,7 +1234,7 @@ const StepSeven = () => {
                     {step4Data?.eBusinessConductingToursTravelAgencyAddress}
                   </p>
                 </div>
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Dob Of Visa Holder
                   </h2>
@@ -1243,7 +1243,7 @@ const StepSeven = () => {
                   </p>
                 </div>
 
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Nationality Of Visa Holder
                   </h2>
@@ -1268,7 +1268,7 @@ const StepSeven = () => {
                     <div className="pt-5 text-2xl font-semibold text-primary">
                       Detials of the Applicants Company
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Name*
                       </h2>
@@ -1276,7 +1276,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessCompanyName}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Address*
                       </h2>
@@ -1284,7 +1284,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessCompanyAddress}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Phone No.*
                       </h2>
@@ -1292,7 +1292,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessCompanyPhone}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Website*
                       </h2>
@@ -1305,7 +1305,7 @@ const StepSeven = () => {
                 {step1Data?.eBusinessVisa ===
                   "TO SET UP INDUSTRIAL/BUSINESS VENTURE" ||
                 step1Data?.eBusinessVisa === "SALE/PURCHASE/TRADE" ? (
-                  <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                  <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Nature of Business/Product*
                     </h2>
@@ -1325,7 +1325,7 @@ const StepSeven = () => {
                     <div className="pt-5 text-2xl font-semibold text-primary">
                       Detials of Indian Firm
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         eBusinessAttendTechMeetingName
                       </h2>
@@ -1333,7 +1333,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessAttendTechMeetingName}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         eBusinessAttendTechMeetingAddress
                       </h2>
@@ -1341,7 +1341,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessAttendTechMeetingAddress}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         eBusinessAttendTechMeetingPhone
                       </h2>
@@ -1356,7 +1356,7 @@ const StepSeven = () => {
 
                 {step1Data?.eBusinessVisa === "TO RECRUIT MANPOWER" ? (
                   <>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Name and contact number of the company representative in
                         India
@@ -1367,7 +1367,7 @@ const StepSeven = () => {
                         }
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Nature of Job for which recruiting
                       </h2>
@@ -1375,7 +1375,7 @@ const StepSeven = () => {
                         {step4Data?.eBusinessRecruitManpowerNatureOfJob}
                       </p>
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Places where recruitment is to be conducted
                       </h2>
@@ -1397,7 +1397,7 @@ const StepSeven = () => {
                       for PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS
                       (text for your reference)
                     </div>
-                    <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                    <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
                         Name and address of the exhibition/trade fair
                       </h2>
@@ -1419,7 +1419,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Other Information</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Countries Visited in Last 10 Years
                 </h2>
@@ -1440,7 +1440,7 @@ const StepSeven = () => {
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you visited SAARC countries (except your country) during
                   last 3 years?
@@ -1488,7 +1488,7 @@ const StepSeven = () => {
             <h2 className="text-3xl font-semibold">Reference </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Reference Name in India*
                 </h2>
@@ -1496,7 +1496,7 @@ const StepSeven = () => {
                   {step4Data?.referenceNameInIndia}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Address*
                 </h2>
@@ -1504,7 +1504,7 @@ const StepSeven = () => {
                   {step4Data?.referenceAddress}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Phone*
                 </h2>
@@ -1512,7 +1512,7 @@ const StepSeven = () => {
                   {step4Data?.referencePhone}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Reference Name in FRANCE*
                 </h2>
@@ -1520,7 +1520,7 @@ const StepSeven = () => {
                   {step4Data?.referenceNameInHomeCountry}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Address*
                 </h2>
@@ -1528,7 +1528,7 @@ const StepSeven = () => {
                   {step4Data?.referenceAddressInHomeCountry}
                 </p>
               </div>
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Phone No.*
                 </h2>
@@ -1545,7 +1545,7 @@ const StepSeven = () => {
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever been arrested/ prosecuted/ convicted by Court of
                   Law of any country?*
@@ -1555,7 +1555,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step5Data?.haveYouBeenArrested === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1565,7 +1565,7 @@ const StepSeven = () => {
                 </div>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever been refused entry / deported by any country
                   including India?*
@@ -1576,7 +1576,7 @@ const StepSeven = () => {
               </div>
 
               {step5Data?.haveYouBeenRefusedEntry === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1586,7 +1586,7 @@ const StepSeven = () => {
                 </div>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever been engaged in Human trafficking/ Drug
                   trafficking/ Child abuse/ Crime against women/ Economic
@@ -1597,7 +1597,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step5Data?.haveYouBeenEngagedInTrafficking === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1607,7 +1607,7 @@ const StepSeven = () => {
                 </div>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever been engaged in Cyber crime/ Terrorist
                   activities / Sabotage/ Espionage/ Genocide/ Political Killing/
@@ -1618,7 +1618,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step5Data?.haveYouBeenEngagedInCrime === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1628,7 +1628,7 @@ const StepSeven = () => {
                 </div>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you ever by any means or medium, expressed views that
                   justify or glorify terrorist violence or that may encourage
@@ -1639,7 +1639,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step5Data?.haveYouExpressedViews === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1649,7 +1649,7 @@ const StepSeven = () => {
                 </div>
               ) : null}
 
-              <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+              <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                 <h2 className="py-1 text-sm font-semibold text-secondary">
                   Have you sought asylum (political or otherwise) in any
                   country?*
@@ -1659,7 +1659,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step5Data?.haveYouSoughtAsylum === "yes" ? (
-                <div className="grid items-center justify-between grid-cols-2 space-x-20 ">
+                <div className="grid md:items-center md:justify-between md:grid-cols-2 md:space-x-20  md:pt-0  pt-5 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
                   </h2>
@@ -1671,7 +1671,7 @@ const StepSeven = () => {
             </div>
           </div>
 
-          <div className="pt-5 mt-4 space-x-4 text-center">
+          <div className="pt-5 mt-4 space-x-4 text-center md:space-y-0 space-y-4">
             <Link href="/visa/step-one/update">
               <button className="formbtnBorder" type="button">
                 Modify
@@ -1680,7 +1680,7 @@ const StepSeven = () => {
             <Link href="/visa/step-eight">
               <button
                 type="submit"
-                className="inline-flex items-center gap-3 cursor-pointer formbtn "
+                className="inline-flex md:items-center gap-3 cursor-pointer formbtn "
               >
                 Continue
               </button>
@@ -1696,7 +1696,7 @@ const StepSeven = () => {
   }
   if (isPending) {
     return (
-      <div className="flex items-center justify-center flex-1 h-full pt-20">
+      <div className="flex md:items-center justify-center flex-1 h-full pt-20">
         <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
         loading
       </div>
