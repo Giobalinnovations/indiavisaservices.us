@@ -27,7 +27,7 @@ const StepOne = () => {
         Note: For e-visa services to Afghan Nationals, they must select
         <span className="pl-2 pr-1 text-primary">AFGHANISTAN</span> nationality
       </p>
-      <div className="max-w-4xl px-12 py-4 mx-auto">
+      <div className="max-w-4xl md:px-12 px-5 py-4 mx-auto">
         <Formik
           initialValues={step1ValidationSchema.initialValues}
           validationSchema={step1ValidationSchema.yupSchema}
