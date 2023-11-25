@@ -85,7 +85,7 @@ const StepThree = () => {
                   <div className="pt-5 text-2xl font-semibold text-primary">
                     Present Address
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -328,7 +328,7 @@ const StepThree = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl  hidden">
                       <div>
                         <h2 className="py-2 sidetext ">
                           Applicant’s permanent address (with postal/zip code)
@@ -368,7 +368,7 @@ const StepThree = () => {
                   <div className="pt-5 text-2xl font-semibold text-primary">
                     Father’s Details
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         {/* father mothers details */}
@@ -688,7 +688,7 @@ const StepThree = () => {
                         {/* father mothers details code end here */}
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl hidden">
                       <div>
                         <h2 className="py-4 sidetext ">
                           Applicant’s father name
@@ -727,7 +727,7 @@ const StepThree = () => {
                   <div className="pt-5 text-2xl font-semibold text-primary">
                     Marital Status
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         <div className="formMain">
@@ -994,7 +994,7 @@ const StepThree = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext ">
                           Applicant’s Marital Status
@@ -1032,7 +1032,7 @@ const StepThree = () => {
                   <div className="pt-5 text-2xl font-semibold text-primary">
                     Profession / Occupation Details of Applicant
                   </div>
-                  <div className="grid grid-cols-12 gap-8 ">
+                  <div className="grid md:grid-cols-12 gap-8 ">
                     <div className="col-span-8">
                       <div className="">
                         {/* profession occupation */}
@@ -1339,7 +1339,7 @@ const StepThree = () => {
                         {/* profession occupation code end here */}
                       </div>
                     </div>
-                    <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                    <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext ">
                           If others, please specify
@@ -1368,7 +1368,7 @@ const StepThree = () => {
 
                 <p className="font-semibold">Mandatory Fields*</p>
 
-                <div className="space-x-4 text-center">
+                <div className="space-x-4 text-center md:space-y-0 space-y-4">
                   {postMutation.isError ? (
                     <div className="text-red-500">
                       An error occurred: {postMutation.error.message}
