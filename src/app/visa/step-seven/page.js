@@ -363,7 +363,7 @@ const StepSeven = () => {
             </div>
           </div>
 
-          <div className="px-4 pt-10">
+          <div className="px-4 pt-10 ">
             <h2 className="text-3xl font-semibold">Passport Details</h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
