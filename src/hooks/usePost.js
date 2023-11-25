@@ -21,7 +21,7 @@ export default function usePost(
       if (isDispatch) {
         dispatch({
           type: 'SET_FORM_ID',
-          payload: data.data.data._id,
+          payload: data?.data?._id,
         });
       }
 
