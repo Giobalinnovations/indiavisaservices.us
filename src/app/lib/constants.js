@@ -22,6 +22,11 @@ export const step1ValidationSchema = {
       .required(),
 
     visaService: Yup.string().required('Visa Service is required'),
+    eEmergencyXMisc: Yup.string().when('visaService', {
+      is: 'eEmergencyXMisc',
+      then: schema => schema.required('required'),
+      otherwise: schema => schema.notRequired(),
+    }),
     eTouristVisa: Yup.string().when('visaService', {
       is: 'eTOURIST VISA',
       then: schema => schema.required('required'),
@@ -66,7 +71,7 @@ export const step1ValidationSchema = {
     expectedDateOfArrival: Yup.date()
       .required('Expected Date of Arrival is required')
       .min(today, 'Date cannot be in the past'),
-    captcha: Yup.string().required('Please enter the above text'),
+
     // instructionsAccepted: Yup.boolean().oneOf(
     //   [true],
     //   'You must agree to the instructions'
@@ -83,6 +88,7 @@ export const step1ValidationSchema = {
     contactNo: '',
 
     visaService: '',
+    eEmergencyXMisc: '',
     eTouristVisa: '',
     eTouristVisa30Days: '',
     eTouristVisa1Year: '',
@@ -93,7 +99,6 @@ export const step1ValidationSchema = {
     eMedicalAttendantVisa: '',
 
     expectedDateOfArrival: '',
-    captcha: '',
   },
 };
 

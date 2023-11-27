@@ -26,7 +26,9 @@ export default function useUpdate(
 
       router.push(`${routeUrl}`);
       router.refresh();
-      refetch();
+      if (refetch) {
+        refetch();
+      }
     },
     onError: error => {
       toast.error(
