@@ -1,17 +1,12 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
-import React, { useEffect } from 'react';
-
-import { toast } from 'react-toastify';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
-import { useRouter } from 'next/navigation';
 import { step1ValidationSchema } from '@/app/lib/constants';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
-import { useState } from 'react';
 import 'react-phone-number-input/style.css';
-import usePost from '@/hooks/usePost';
 import useUpdate from '@/hooks/useUpdate';
 import { ImSpinner2 } from 'react-icons/im';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
@@ -63,14 +58,12 @@ export default function StepOneUpdate() {
                 validationSchema={step1ValidationSchema.yupSchema}
                 validateOnChange={true}
                 validateOnMount={true}
-                onSubmit={(values, { setSubmitting, resetForm }) => {
+                onSubmit={(values, { setSubmitting }) => {
                   updateMutation.mutate(values);
                   setSubmitting(false);
-
-                  resetForm();
                 }}
               >
-                {({ values, isValid, handleSubmit, handleChange }) => (
+                {({ values, isValid, handleSubmit }) => (
                   <Form onSubmit={handleSubmit} className="formMain">
                     <div className="form-input-main-div">
                       <label className="form-label">Application Type*</label>
@@ -373,19 +366,60 @@ export default function StepOneUpdate() {
                 </div> */}
                       {/* multi step radio button start  */}
                       <div className="space-y-4 text-sm input-error-wrapper">
-                        <div className="">
-                          <div className="flex items-start space-x-2">
-                            <Field
-                              type="radio"
-                              id="visaServiceEtourist"
-                              name="visaService"
-                              className="mt-1"
-                              value="eTOURIST VISA"
-                            />
-                            <label htmlFor="visaServiceEtourist">
-                              eTOURIST VISA
-                            </label>
-                          </div>
+                        <div>
+                          {values?.nationalityRegion?.toLocaleLowerCase() ===
+                          'afghanistan' ? (
+                            <div>
+                              <div className="flex items-start space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="visaServiceEmergencyXMisc"
+                                  name="visaService"
+                                  className="mt-1"
+                                  value="eEmergencyXMisc"
+                                />
+                                <label htmlFor="visaServiceEmergencyXMisc">
+                                  E Emergency X Misc
+                                </label>
+                              </div>
+                              {values.visaService === 'eEmergencyXMisc' && (
+                                <div className="px-8">
+                                  <div>
+                                    {/* level1-inner1 start  */}
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="visaServiceEmergencyXMiscVisaValue"
+                                        name="eEmergencyXMisc"
+                                        className="mt-1"
+                                        value="EMERGENCY TRAVEL TO INDIA"
+                                      />
+                                      <label htmlFor="visaServiceEmergencyXMiscVisaValue">
+                                        EMERGENCY TRAVEL TO INDIA
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ) : null}
+
+                          {values?.nationalityRegion?.toLocaleLowerCase() !==
+                            'afghanistan' && (
+                            <div className="flex items-start space-x-2">
+                              <Field
+                                type="radio"
+                                id="visaServiceEtourist"
+                                name="visaService"
+                                className="mt-1"
+                                value="eTOURIST VISA"
+                              />
+                              <label htmlFor="visaServiceEtourist">
+                                eTOURIST VISA
+                              </label>
+                            </div>
+                          )}
+
                           {values.visaService === 'eTOURIST VISA' && (
                             <div className="px-8">
                               <div>
@@ -746,237 +780,245 @@ export default function StepOneUpdate() {
                         </div>
 
                         {/* eMEDICAL VISA  */}
-                        <div>
-                          <div className="flex items-start space-x-2">
-                            <Field
-                              type="radio"
-                              id="visaServiceEmedical"
-                              name="visaService"
-                              className="mt-1"
-                              value="eMEDICAL VISA"
-                            />
-                            <label htmlFor="visaServiceEmedical">
-                              eMEDICAL VISA
-                            </label>
-                          </div>
-                          {values.visaService === 'eMEDICAL VISA' && (
-                            <div className="px-8">
-                              <div>
-                                {/* level1-inner1 start  */}
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eMedicalVisaValue"
-                                    name="eMedicalVisa"
-                                    className="mt-1"
-                                    value={`SHORT TERM MEDICAL TREATMENT OF SELF`}
-                                  />
-                                  <label htmlFor="eMedicalVisaValue">
-                                    SHORT TERM MEDICAL TREATMENT OF SELF
-                                  </label>
-                                </div>
+                        {values?.nationalityRegion?.toLocaleLowerCase() !==
+                          'afghanistan' && (
+                          <>
+                            {' '}
+                            <div>
+                              <div className="flex items-start space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="visaServiceEmedical"
+                                  name="visaService"
+                                  className="mt-1"
+                                  value="eMEDICAL VISA"
+                                />
+                                <label htmlFor="visaServiceEmedical">
+                                  eMEDICAL VISA
+                                </label>
                               </div>
+                              {values.visaService === 'eMEDICAL VISA' && (
+                                <div className="px-8">
+                                  <div>
+                                    {/* level1-inner1 start  */}
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eMedicalVisaValue"
+                                        name="eMedicalVisa"
+                                        className="mt-1"
+                                        value={`SHORT TERM MEDICAL TREATMENT OF SELF`}
+                                      />
+                                      <label htmlFor="eMedicalVisaValue">
+                                        SHORT TERM MEDICAL TREATMENT OF SELF
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                        <div>
-                          {/* eBUSINESS VISA */}
-                          <div className="flex items-start space-x-2">
-                            <Field
-                              type="radio"
-                              id="visaServiceEbusiness"
-                              name="visaService"
-                              className="mt-1"
-                              value="eBUSINESS VISA"
-                            />
-                            <label htmlFor="visaServiceEbusiness">
-                              eBUSINESS VISA
-                            </label>
-                          </div>
-                          {values.visaService === 'eBUSINESS VISA' && (
-                            <div className="px-8 ">
-                              <div className="py-2 space-y-2">
-                                {/* level1-inner1 start  */}
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`TO SET UP INDUSTRIAL/BUSINESS VENTURE`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue">
-                                    TO SET UP INDUSTRIAL/BUSINESS VENTURE
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue2"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`SALE/PURCHASE/TRADE`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue2">
-                                    SALE/PURCHASE/TRADE
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue3"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`ATTEND TECHNICAL/BUSINESS MEETINGS`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue3">
-                                    ATTEND TECHNICAL/BUSINESS MEETINGS
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue4"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`TO RECRUIT MANPOWER`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue4">
-                                    TO RECRUIT MANPOWER
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue5"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue5">
-                                    PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE
-                                    FAIRS
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue6"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value="EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT"
-                                  />
-                                  <label htmlFor="eBusinessVisaValue6">
-                                    EXPERT/SPECIALIST IN CONNECTION WITH AN
-                                    ONGOING PROJECT
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue7"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value={`CONDUCTING TOURS`}
-                                  />
-                                  <label htmlFor="eBusinessVisaValue7">
-                                    CONDUCTING TOURS
-                                  </label>
-                                </div>
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eBusinessVisaValue8"
-                                    name="eBusinessVisa"
-                                    className="mt-1"
-                                    value="TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)"
-                                  />
-                                  <label htmlFor="eBusinessVisaValue8">
-                                    TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE
-                                    FOR ACADEMIC NETWORKS (GIAN)
-                                  </label>
-                                </div>
+                            <div>
+                              {/* eBUSINESS VISA */}
+                              <div className="flex items-start space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="visaServiceEbusiness"
+                                  name="visaService"
+                                  className="mt-1"
+                                  value="eBUSINESS VISA"
+                                />
+                                <label htmlFor="visaServiceEbusiness">
+                                  eBUSINESS VISA
+                                </label>
                               </div>
+                              {values.visaService === 'eBUSINESS VISA' && (
+                                <div className="px-8 ">
+                                  <div className="py-2 space-y-2">
+                                    {/* level1-inner1 start  */}
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`TO SET UP INDUSTRIAL/BUSINESS VENTURE`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue">
+                                        TO SET UP INDUSTRIAL/BUSINESS VENTURE
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue2"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`SALE/PURCHASE/TRADE`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue2">
+                                        SALE/PURCHASE/TRADE
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue3"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`ATTEND TECHNICAL/BUSINESS MEETINGS`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue3">
+                                        ATTEND TECHNICAL/BUSINESS MEETINGS
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue4"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`TO RECRUIT MANPOWER`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue4">
+                                        TO RECRUIT MANPOWER
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue5"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue5">
+                                        PARTICIPATION IN
+                                        EXHIBITIONS,BUSINESS/TRADE FAIRS
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue6"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value="EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT"
+                                      />
+                                      <label htmlFor="eBusinessVisaValue6">
+                                        EXPERT/SPECIALIST IN CONNECTION WITH AN
+                                        ONGOING PROJECT
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue7"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value={`CONDUCTING TOURS`}
+                                      />
+                                      <label htmlFor="eBusinessVisaValue7">
+                                        CONDUCTING TOURS
+                                      </label>
+                                    </div>
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eBusinessVisaValue8"
+                                        name="eBusinessVisa"
+                                        className="mt-1"
+                                        value="TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)"
+                                      />
+                                      <label htmlFor="eBusinessVisaValue8">
+                                        TO DELIVER LECTURE/S UNDER GLOBAL
+                                        INITIATIVE FOR ACADEMIC NETWORKS (GIAN)
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                        <div>
-                          {/* eCONFERENCE VISA */}
-                          <div className="flex items-start space-x-2">
-                            <Field
-                              type="radio"
-                              id="visaServiceEconference"
-                              name="visaService"
-                              className="mt-1"
-                              value="eCONFERENCE VISA"
-                            />
-                            <label htmlFor="visaServiceEconference">
-                              eCONFERENCE VISA
-                            </label>
-                          </div>
-                          {values.visaService === 'eCONFERENCE VISA' && (
-                            <div className="px-8">
-                              <div>
-                                {/* level1-inner1 start  */}
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eConferenceVisaValue"
-                                    name="eConferenceVisa"
-                                    className="mt-1"
-                                    value={`TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED
+                            <div>
+                              {/* eCONFERENCE VISA */}
+                              <div className="flex items-start space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="visaServiceEconference"
+                                  name="visaService"
+                                  className="mt-1"
+                                  value="eCONFERENCE VISA"
+                                />
+                                <label htmlFor="visaServiceEconference">
+                                  eCONFERENCE VISA
+                                </label>
+                              </div>
+                              {values.visaService === 'eCONFERENCE VISA' && (
+                                <div className="px-8">
+                                  <div>
+                                    {/* level1-inner1 start  */}
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eConferenceVisaValue"
+                                        name="eConferenceVisa"
+                                        className="mt-1"
+                                        value={`TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED
                               BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF
                               INDIA,STATE GOVERNMENTS OR UT ADMINISTRATIONS AND
                               THEIR SUBORDINATE/ ATTACHED ORGANIZATIONS AND PSUS`}
-                                  />
-                                  <label htmlFor="eConferenceVisaValue">
-                                    TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP
-                                    ORGANIZED BY A MINISTRY OR DEPARTMENT OF THE
-                                    GOVERNMENT OF INDIA,STATE GOVERNMENTS OR UT
-                                    ADMINISTRATIONS AND THEIR SUBORDINATE/
-                                    ATTACHED ORGANIZATIONS AND PSUS
-                                  </label>
+                                      />
+                                      <label htmlFor="eConferenceVisaValue">
+                                        TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP
+                                        ORGANIZED BY A MINISTRY OR DEPARTMENT OF
+                                        THE GOVERNMENT OF INDIA,STATE
+                                        GOVERNMENTS OR UT ADMINISTRATIONS AND
+                                        THEIR SUBORDINATE/ ATTACHED
+                                        ORGANIZATIONS AND PSUS
+                                      </label>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                        <div>
-                          {/* eMEDICAL ATTENDANT VISA */}
-                          <div className="flex items-start space-x-2">
-                            <Field
-                              type="radio"
-                              id="visaServiceEmedicalAttendant"
-                              name="visaService"
-                              className="mt-1"
-                              value="eMEDICAL ATTENDANT VISA"
-                            />
-                            <label htmlFor="visaServiceEmedicalAttendant">
-                              eMEDICAL ATTENDANT VISA
-                            </label>
-                          </div>
-                          {values.visaService === 'eMEDICAL ATTENDANT VISA' && (
-                            <div className="px-8">
-                              <div>
-                                {/* level1-inner1 start  */}
-                                <div className="flex items-start space-x-2">
-                                  <Field
-                                    type="radio"
-                                    id="eMedicalAttendantVisaValue"
-                                    name="eMedicalAttendantVisa"
-                                    className="mt-1"
-                                    value={`TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON
+                            <div>
+                              {/* eMEDICAL ATTENDANT VISA */}
+                              <div className="flex items-start space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="visaServiceEmedicalAttendant"
+                                  name="visaService"
+                                  className="mt-1"
+                                  value="eMEDICAL ATTENDANT VISA"
+                                />
+                                <label htmlFor="visaServiceEmedicalAttendant">
+                                  eMEDICAL ATTENDANT VISA
+                                </label>
+                              </div>
+                              {values.visaService ===
+                                'eMEDICAL ATTENDANT VISA' && (
+                                <div className="px-8">
+                                  <div>
+                                    {/* level1-inner1 start  */}
+                                    <div className="flex items-start space-x-2">
+                                      <Field
+                                        type="radio"
+                                        id="eMedicalAttendantVisaValue"
+                                        name="eMedicalAttendantVisa"
+                                        className="mt-1"
+                                        value={`TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON
                               EMEDICAL VISA`}
-                                  />
-                                  <label htmlFor="eMedicalAttendantVisaValue">
-                                    TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON
-                                    EMEDICAL VISA
-                                  </label>
+                                      />
+                                      <label htmlFor="eMedicalAttendantVisaValue">
+                                        TO ACCOMPANY PATIENT TRAVELLING TO INDIA
+                                        ON EMEDICAL VISA
+                                      </label>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
+                              )}
                             </div>
-                          )}
-                        </div>
+                          </>
+                        )}
                       </div>
                       {/* multi step radio button end  */}
                     </div>
@@ -1001,49 +1043,6 @@ export default function StepOneUpdate() {
                       </div>
                     </div>
 
-                    <div className="form-input-main-div">
-                      <span className="form-label"></span>
-                      <p className="px-4 py-2 bg-[#FFE6D3] text-2xl text-center rounded-lg w-36">
-                        t8Q53A
-                      </p>
-                    </div>
-                    <div className="form-input-main-div">
-                      <label className="form-label">
-                        Please enter above text*
-                      </label>
-                      <div className="input-error-wrapper">
-                        <Field
-                          required
-                          type="text"
-                          name="captcha"
-                          id="captcha"
-                          className="form-input"
-                        />
-                        <ErrorMessage name="captcha">
-                          {errorMsg => (
-                            <div style={{ color: 'red' }}>{errorMsg}</div>
-                          )}
-                        </ErrorMessage>
-                      </div>
-                    </div>
-
-                    {/* <div className="flex items-start space-x-2">
-                <Field required type="checkbox" name="instructionsAccepted" />
-                <label className="text-xs">
-                  I have read the instructions ,I have all the required
-                  documents in scanned pdf format and photograph in jpg/jpeg
-                  format.
-                </label>
-              </div>
-
-              <ErrorMessage name="instructionsAccepted">
-                {(errorMsg) => <div style={{ color: "red" }}>{errorMsg}</div>}
-              </ErrorMessage> */}
-
-                    {/* <p className="text-sm font-medium whitespace-pre">
-                While entering India, Covid related measures shall be applicable
-                as per guidelines issued by Govt of India from time to time.
-              </p> */}
                     <div className="text-center">
                       {updateMutation.isError ? (
                         <div className="text-red-500">
