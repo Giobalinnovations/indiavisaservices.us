@@ -3,8 +3,7 @@ import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useRouter } from 'next/navigation';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import {
   nationalityRegionData,
@@ -12,7 +11,6 @@ import {
 } from '@/app/lib/constants';
 import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
-import { toast } from 'react-toastify';
 import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
 import useUpdate from '@/hooks/useUpdate';
@@ -55,10 +53,9 @@ export default function StepTwoUpdate() {
             validationSchema={step2ValidationSchema.yupSchema}
             validateOnChange={true}
             validateOnMount={true}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               updateMutation.mutate({ ...values, formId: state.formId });
               setSubmitting(false);
-              resetForm();
             }}
           >
             {({ values, isValid, handleSubmit }) => (
