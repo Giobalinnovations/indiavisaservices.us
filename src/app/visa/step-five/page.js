@@ -74,7 +74,7 @@ const StepFive = ({ step }) => {
                   <div>
                     {step5data.map((e, i) => (
                       <div key={i}>
-                        <div className="grid grid-cols-12 gap-8 py-8">
+                        <div className="grid md:grid-cols-12 gap-8 py-8">
                           <div className="col-span-8">
                             <label>
                               <span className="pr-2">{e.id}.</span>
@@ -144,7 +144,7 @@ const StepFive = ({ step }) => {
                   />
                 </div>
 
-                <div className="space-x-4 text-center">
+                <div className="space-x-4 text-center md:space-y-0 space-y-4">
                   <Link href="/visa/step-four/update">
                     <button className="formbtnBorder" type="button">
                       Back

@@ -83,7 +83,7 @@ const StepTwo = () => {
                   <h2 className="text-3xl font-semibold">Applicant Details</h2>
                   <hr className="h-1 text-primary bg-primary w-36" />
                 </div>
-                <div className="grid grid-cols-12 gap-8 ">
+                <div className="grid-cols-12 gap-8 md:grid ">
                   <div className="col-span-8">
                     <div>
                       <div className="formMain">
@@ -456,7 +456,7 @@ const StepTwo = () => {
                   </div>
 
                   {/* col span code end here */}
-                  <div className="col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                  <div className="hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
                     <h2 className="py-5 sidetext ">
                       First name (Exactly as in passport)
                     </h2>
@@ -544,7 +544,7 @@ const StepTwo = () => {
                 <div className="text-2xl font-semibold text-primary md:pt-6">
                   Passport Details
                 </div>
-                <div className="grid grid-cols-12 gap-8 ">
+                <div className="grid-cols-12 gap-8 md:grid ">
                   <div className="col-span-8">
                     <div>
                       <div className="formMain">
@@ -778,7 +778,7 @@ const StepTwo = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                  <div className="hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
                     <h2 className="py-5 sidetext ">
                       Applicant’s Passport Number
                     </h2>
@@ -809,7 +809,7 @@ const StepTwo = () => {
                 </div>
                 <p className="font-semibold">Mandatory Fields*</p>
 
-                <div className="space-x-4 text-center">
+                <div className="space-x-4 space-y-4 text-center md:space-y-0">
                   {postMutation.isError ? (
                     <div className="text-red-500">
                       An error occurred: {postMutation.error.message}

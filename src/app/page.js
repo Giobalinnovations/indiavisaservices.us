@@ -54,12 +54,14 @@ const Home = () => {
     <>
       <div>
         <Banner />
-        <div className="container w-full grid-cols-4 gap-8 pt-6 font-medium text-center md:pt-12 md:grid">
-          <Link
-            href="/visa/step-one"
-            className="w-full py-3 text-white duration-150 ease-in-out rounded bg-primary hover:scale-105"
+        <div className="container w-full md:grid-cols-4 md:gap-8 gap-3 pt-6 font-medium text-center md:pt-12 grid">
+          <Link  href="/visa/step-one">
+          <button
+          
+            className="w-full md:py-6 py-3 text-white duration-150 ease-in-out rounded bg-primary hover:scale-105"
           >
             Apply For INDIA
+          </button>
           </Link>
           <button
             onClick={() => setIsOpen(true)}
