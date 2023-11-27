@@ -457,17 +457,17 @@ const StepTwo = () => {
 
                   {/* col span code end here */}
                   <div className="hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
-                    <h2 className="py-5 sidetext ">
+                    <h2 className="py-4 sidetext ">
                       First name (Exactly as in passport)
                     </h2>
                     <h2 className="py-4 sidetext ">
                       Last name (Exactly as in passport)
                     </h2>
-                    <h2 className="py-3 sidetext ">
+                    <h2 className="py-2 sidetext ">
                       If you have ever changes your name <br /> please tell us.
                     </h2>
 
-                    <h2 className="py-3 sidetext ">Fill your gender</h2>
+                    <h2 className="py-2 sidetext ">Gender</h2>
 
                     <h2 className="py-3 sidetext ">
                       Date of birth as in passport in dd/mm/yyyy format
@@ -483,7 +483,7 @@ const StepTwo = () => {
                       If not applicable please type NA
                     </h2>
                     <h2 className="py-6 sidetext ">
-                      If Others. Please specify
+                      If Others .Please specify
                     </h2>
 
                     <h2 className="py-3 sidetext ">
@@ -495,8 +495,16 @@ const StepTwo = () => {
                     </h2>
 
                     <h2 className="py-4 sidetext ">Nationality/Region</h2>
-                    <h2 className="sidetext py-7 ">Nationality/Region</h2>
+                    <h2 className="sidetext py-7 ">
+                      Did you acquire Nationality by birth or by naturalization?
+                    </h2>
                   </div>
+
+
+
+
+
+
                 </div>
 
                 {/* check box  */}
@@ -778,6 +786,7 @@ const StepTwo = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
                     <h2 className="py-5 sidetext ">
                       Applicant’s Passport Number
@@ -789,23 +798,12 @@ const StepTwo = () => {
                       In dd/mm/yyyy format. minimum six months validity is from
                       journey date.
                     </h2>
-
-                    <h2 className="py-4 sidetext ">
-                      If yes please give details
-                    </h2>
-
-                    <h2 className="py-5 sidetext ">Country/Region of Issue</h2>
-
-                    <h2 className="py-4 sidetext ">Passport No.</h2>
-                    <h2 className="py-5 sidetext ">
-                      Date of Issue (In dd/mm/yyyy format)
-                    </h2>
-
-                    <h2 className="py-5 sidetext ">Place of Issue</h2>
-                    <h2 className="py-3 sidetext ">
-                      Nationality described therein.
-                    </h2>
                   </div>
+
+
+
+
+
                 </div>
                 <p className="font-semibold">Mandatory Fields*</p>
 
@@ -824,9 +822,8 @@ const StepTwo = () => {
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? 'cursor-not-allowed opacity-50' : ''
-                    }`}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${!isValid ? 'cursor-not-allowed opacity-50' : ''
+                      }`}
                   >
                     {postMutation.isPending ? (
                       <>
@@ -839,11 +836,10 @@ const StepTwo = () => {
                   {/* save and temporary exit button  */}
                   <button
                     disabled={temporaryExitUpdateMutation.isPending}
-                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                      temporaryExitUpdateMutation.isPending
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${temporaryExitUpdateMutation.isPending
                         ? 'cursor-not-allowed opacity-50'
                         : ''
-                    }`}
+                      }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >
