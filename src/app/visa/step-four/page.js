@@ -1525,7 +1525,7 @@ const StepFour = () => {
                                   <option disabled selected value="">
                                     Select
                                   </option>
-                                 
+
                                   {State?.getStatesOfCountry("IN")?.map(
                                     (ele, index) => (
                                       <option key={index} value={ele?.name}>
