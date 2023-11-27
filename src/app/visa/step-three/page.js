@@ -328,24 +328,27 @@ const StepThree = () => {
                         </div>
                       </div>
                     </div>
+
                     <div className="md:flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl  hidden">
                       <div>
                         <h2 className="py-2 sidetext ">
                           Applicant’s permanent address (with postal/zip code)
                         </h2>
                         <h2 className="py-5 sidetext ">Village/Town/City</h2>
+                        <h2 className="py-5 sidetext ">Country</h2>
 
-                        <h2 className="sidetext pt-[70px] pb-6 ">
+                        <h2 className="sidetext py-3 ">
                           State/Province/City
                         </h2>
 
                         <h2 className="py-4 sidetext ">Postal Zip Code</h2>
 
                         <h2 className="py-5 sidetext ">
-                          One contact no. is mandatory
+                          Phone Number
                         </h2>
 
-                        <h2 className="py-4 sidetext ">Mobile No.</h2>
+                        <h2 className="py-4 sidetext ">Mobile Number</h2>
+                        <h2 className="py-4 sidetext pt-24">Click here for same address</h2>
                       </div>
 
                       <div className="">
@@ -354,7 +357,7 @@ const StepThree = () => {
                           (each line)
                         </h2>
                         <h2 className="py-5 sidetext ">Village/Town/City</h2>
-                        <h2 className="py-4 sidetext ">Village/Town/City</h2>
+                        <h2 className="py-4 sidetext ">State/Province/District</h2>
                       </div>
                     </div>
                   </div>
@@ -688,6 +691,8 @@ const StepThree = () => {
                         {/* father mothers details code end here */}
                       </div>
                     </div>
+
+
                     <div className="md:flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl hidden">
                       <div>
                         <h2 className="py-4 sidetext ">
@@ -994,37 +999,25 @@ const StepThree = () => {
                         </div>
                       </div>
                     </div>
+
+
                     <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext ">
                           Applicant’s Marital Status
                         </h2>
+                        <h2 className="py-4 sidetext ">
+                          Were your Parents/Grandparents (paternal/maternal) Pakistan Nationals or belong to Pakistan held area? Yes / No
+                        </h2>
+                        <h2 className="py-2 sidetext ">
+                          If Yes, give details
+                        </h2>
                       </div>
 
-                      <div>
-                        <h2 className="py-4 sidetext ">
-                          Applicant’s spouse name
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Nationality / region of spouse
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Previous nationality / Region of spouse
-                        </h2>
-                        <h2 className="py-4 sidetext ">Place of birth</h2>
-                        <h2 className="py-4 sidetext ">
-                          Country / region of birth
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Were your parents/grandparents (paternal/maternal)
-                          Pakistan nationals or belong to Pakistan held area?
-                          Yes/No
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Country / region of birth
-                        </h2>
-                      </div>
+
                     </div>
+
+
                   </div>
                 </div>
 
@@ -1339,6 +1332,9 @@ const StepThree = () => {
                         {/* profession occupation code end here */}
                       </div>
                     </div>
+
+
+
                     <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext ">
@@ -1349,7 +1345,7 @@ const StepThree = () => {
                         </h2>
                         <h2 className="py-4 sidetext ">Designation</h2>
                         <h2 className="py-5 sidetext ">Address</h2>
-                        <h2 className="py-5 sidetext ">Phone No.</h2>
+                        <h2 className="py-5 sidetext ">Phone Number</h2>
                         <h2 className="py-3 sidetext ">
                           Past Occupation, if any
                         </h2>
@@ -1382,9 +1378,8 @@ const StepThree = () => {
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? 'cursor-not-allowed opacity-50' : ''
-                    }`}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${!isValid ? 'cursor-not-allowed opacity-50' : ''
+                      }`}
                   >
                     {postMutation.isPending ? (
                       <>
@@ -1397,11 +1392,10 @@ const StepThree = () => {
                   {/* save and temporary exit button  */}
                   <button
                     disabled={temporaryExitUpdateMutation.isPending}
-                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                      temporaryExitUpdateMutation.isPending
-                        ? 'cursor-not-allowed opacity-50'
-                        : ''
-                    }`}
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${temporaryExitUpdateMutation.isPending
+                      ? 'cursor-not-allowed opacity-50'
+                      : ''
+                      }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >
