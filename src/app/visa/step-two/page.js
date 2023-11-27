@@ -499,12 +499,6 @@ const StepTwo = () => {
                       Did you acquire Nationality by birth or by naturalization?
                     </h2>
                   </div>
-
-
-
-
-
-
                 </div>
 
                 {/* check box  */}
@@ -799,11 +793,6 @@ const StepTwo = () => {
                       journey date.
                     </h2>
                   </div>
-
-
-
-
-
                 </div>
                 <p className="font-semibold">Mandatory Fields*</p>
 
@@ -822,8 +811,9 @@ const StepTwo = () => {
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${!isValid ? 'cursor-not-allowed opacity-50' : ''
-                      }`}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
+                    }`}
                   >
                     {postMutation.isPending ? (
                       <>
@@ -836,10 +826,11 @@ const StepTwo = () => {
                   {/* save and temporary exit button  */}
                   <button
                     disabled={temporaryExitUpdateMutation.isPending}
-                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${temporaryExitUpdateMutation.isPending
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
+                      temporaryExitUpdateMutation.isPending
                         ? 'cursor-not-allowed opacity-50'
                         : ''
-                      }`}
+                    }`}
                     type="button"
                     onClick={handleTemporaryExit}
                   >

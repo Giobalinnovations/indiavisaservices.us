@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-const MakePaymentComponent = () => {
+const MakePaymentComponent = ({ isValid }) => {
   const makePayment = async () => {
     const res = await initializeRazorpay();
     if (!res) {
@@ -61,21 +61,16 @@ const MakePaymentComponent = () => {
     });
   };
   return (
-    <div className="space-x-4 text-center">
-      <button
-        className="formbtnBorder"
-        type="button"
-        onClick={() => makePayment()}
-      >
-        Pay Now
-      </button>
-      <button
-        type="submit"
-        className="inline-flex items-center gap-3 cursor-pointer formbtn "
-      >
-        Pay Later
-      </button>
-    </div>
+    <button
+      disabled={!isValid}
+      className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+        !isValid ? 'cursor-not-allowed opacity-50' : ''
+      }`}
+      type="submit"
+      onClick={() => makePayment()}
+    >
+      Pay Now
+    </button>
   );
 };
 

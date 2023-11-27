@@ -3,7 +3,7 @@ import ApplySection from '@/components/homepage/ApplySection';
 import Banner from '@/components/homepage/Banner';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -29,6 +29,7 @@ const Home = () => {
   let [isOpenStatus, setIsOpenStatus] = useState(false);
   let [isOpenStatusMakePayment, setIsOpenMakePayment] = useState(false);
   const [visaApplicationId, setVisaApplicationId] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState('pending');
   const { isPending, error, data, isSuccess, refetch } = useQuery({
     queryKey: ['get Step 1 Data new '],
     queryFn: () =>
@@ -39,29 +40,32 @@ const Home = () => {
     enabled: !!visaApplicationId,
   });
 
-  if (isSuccess) {
-    dispatch({
-      type: 'SET_FORM_ID',
-      payload: data?.data?._id,
-    });
-
+  if (isSuccess && data?.data?.paymentStatus === 'pending') {
     if (data?.data?.lastExitStepUrl) {
       router.push(data?.data?.lastExitStepUrl);
     }
   }
+  // if (isSuccess && data?.data?.paymentStatus === 'completed') {
+
+  // }
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_FORM_ID',
+      payload: data?.data?._id,
+    });
+    setPaymentStatus(data?.data?.paymentStatus);
+  }, [paymentStatus, dispatch, data]);
 
   return (
     <>
       <div>
         <Banner />
-        <div className="container w-full md:grid-cols-4 md:gap-8 gap-3 pt-6 font-medium text-center md:pt-12 grid">
-          <Link  href="/visa/step-one">
-          <button
-          
-            className="w-full md:py-6 py-3 text-white duration-150 ease-in-out rounded bg-primary hover:scale-105"
-          >
-            Apply For INDIA
-          </button>
+        <div className="container grid w-full gap-3 pt-6 font-medium text-center md:grid-cols-4 md:gap-8 md:pt-12">
+          <Link href="/visa/step-one">
+            <button className="w-full py-3 text-white duration-150 ease-in-out rounded md:py-6 bg-primary hover:scale-105">
+              Apply For INDIA
+            </button>
           </Link>
           <button
             onClick={() => setIsOpen(true)}
@@ -134,7 +138,10 @@ const Home = () => {
                         onSubmit={(values, { setSubmitting, resetForm }) => {
                           // console.log(values.visaApplicationId);
                           setVisaApplicationId(values.visaApplicationId);
-
+                          dispatch({
+                            type: 'SET_FORM_ID',
+                            payload: data?.data?._id,
+                          });
                           setSubmitting(false);
                           resetForm();
                         }}
@@ -289,31 +296,81 @@ const Home = () => {
                   <div className="px-4 pt-3 pb-4 -mx-4 border-b border-gray-400">
                     <div className="max-w-xl mx-auto">
                       <h2 className="inline-block text-xl font-semibold text-left text-gray-800">
-                        Pay Visa Processing Fee
+                        Pay Visa Processing Fee{' '}
+                        {isSuccess ? paymentStatus : null}
                       </h2>
-                      <p className="pl-px text-xs text-gray-700">
-                        Enter Application ID
-                      </p>
-                      <form action="#" className="mt-2">
-                        <div className=" formMain">
-                          <input
-                            type="text"
-                            placeholder="Enter Application ID"
-                            className="form-input"
-                            required
-                          />
-                          <div className="space-x-4">
-                            <button className="formbtn">Submit</button>
-                            <button
-                              type="button"
-                              className="formbtnBorder"
-                              onClick={() => setIsOpenMakePayment(false)}
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+
+                      {paymentStatus !== 'completed' && (
+                        <>
+                          <p className="pl-px text-xs text-gray-700">
+                            Enter Application ID
+                          </p>
+                          <Formik
+                            initialValues={{ visaApplicationId: '' }}
+                            validationSchema={partiallyFormSchema}
+                            validateOnChange={true}
+                            validateOnMount={true}
+                            onSubmit={(
+                              values,
+                              { setSubmitting, resetForm }
+                            ) => {
+                              // console.log(values.visaApplicationId);
+                              setVisaApplicationId(values.visaApplicationId);
+
+                              setSubmitting(false);
+                              resetForm();
+                            }}
+                          >
+                            {({ values, isValid, handleSubmit }) => (
+                              <Form onSubmit={handleSubmit} className="mt-2">
+                                <div className=" formMain">
+                                  <Field
+                                    type="text"
+                                    placeholder="Enter Temporary Application ID"
+                                    className="form-input"
+                                    name="visaApplicationId"
+                                  />
+                                  <ErrorMessage
+                                    name="visaApplicationId"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                  <div className="space-x-4">
+                                    <button
+                                      type="submit"
+                                      disabled={!isValid}
+                                      className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                                        !isValid
+                                          ? 'cursor-not-allowed opacity-50'
+                                          : ''
+                                      }`}
+                                    >
+                                      {/* {isPending ? (
+                                      <>
+                                        <ImSpinner2 className="animate-spin" />{' '}
+                                        Loading
+                                      </>
+                                    ) : (
+                                      'Submit'
+                                    )} */}
+                                      Submit
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="formbtnBorder"
+                                      onClick={() =>
+                                        setIsOpenMakePayment(false)
+                                      }
+                                    >
+                                      Close
+                                    </button>
+                                  </div>
+                                </div>
+                              </Form>
+                            )}
+                          </Formik>
+                        </>
+                      )}
                     </div>
                   </div>
                 </Dialog.Panel>
