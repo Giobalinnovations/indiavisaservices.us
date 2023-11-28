@@ -152,13 +152,12 @@ const StepFour = () => {
             validationSchema={step4ValidationSchema.yupSchema}
             validateOnChange={true}
             validateOnMount={true}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               updateMutation.mutate({
                 ...values,
                 formId: state.formId,
               });
               setSubmitting(false);
-              resetForm();
             }}
           >
             {({

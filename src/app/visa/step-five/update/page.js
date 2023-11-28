@@ -2,17 +2,14 @@
 import { useFormContext } from '@/app/context/formContext';
 import { step5ValidationSchema, step5data } from '@/app/lib/constants';
 import BannerPage from '@/components/common/BannerPage';
-import usePost from '@/hooks/usePost';
 import useUpdate from '@/hooks/useUpdate';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
-import { toast } from 'react-toastify';
 
 export default function Step5Update() {
   const { state } = useFormContext();
@@ -53,10 +50,9 @@ export default function Step5Update() {
             validationSchema={step5ValidationSchema.yupSchema}
             validateOnChange={true}
             validateOnMount={true}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               updateMutation.mutate({ ...values, formId: state.formId });
               setSubmitting(false);
-              resetForm();
             }}
           >
             {({ values, isValid, handleSubmit }) => (
