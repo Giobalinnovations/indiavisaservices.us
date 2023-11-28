@@ -38,6 +38,7 @@ const StepEight = () => {
   const handlePayLater = () => {
     paymentUpdateMutation.mutate({
       lastExitStepUrl: pathName,
+      paymentStatus: 'payLater',
     });
   };
 

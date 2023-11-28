@@ -1,7 +1,7 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step3ValidationSchema } from '@/app/lib/constants';
 import { useQuery } from '@tanstack/react-query';
@@ -50,10 +50,9 @@ export default function Step3Update() {
             validationSchema={step3ValidationSchema.yupSchema}
             validateOnChange={true}
             validateOnMount={true}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               updateMutation.mutate({ ...values, formId: state.formId });
               setSubmitting(false);
-              resetForm();
             }}
           >
             {({ values, isValid, handleSubmit }) => (
