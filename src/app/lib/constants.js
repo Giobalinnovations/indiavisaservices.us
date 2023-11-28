@@ -147,8 +147,33 @@ export const step2ValidationSchema = {
 
     passportNumber: Yup.string().required('Passport Number is required'),
     placeOfIssue: Yup.string().required('Place of Issue is required'),
+    // dateOfIssue: Yup.date().required('Date Of issue is required'),
+    // dateOfExpiry: Yup.date().required('Date Of expiry is required'),
     dateOfIssue: Yup.date().required('Date Of issue is required'),
-    dateOfExpiry: Yup.date().required('Date Of expiry is required'),
+    dateOfExpiry: Yup.date()
+      .required('Date Of expiry is required')
+      .min(
+        Yup.ref('dateOfIssue'),
+        'Passport must be valid for at least 6 months from the date of issue'
+      )
+      .test(
+        'validityCheck',
+        'Your passport validity is less than 6 months from the date of proposed journey',
+        function (value) {
+          const { dateOfIssue } = this.parent;
+
+          if (!(dateOfIssue instanceof Date && value instanceof Date)) {
+            return false;
+          }
+
+          // Calculate 6 months from the date of issue
+          const sixMonthsFromIssue = new Date(dateOfIssue);
+          sixMonthsFromIssue.setMonth(sixMonthsFromIssue.getMonth() + 6);
+
+          // Ensure the date of expiry is after 6 months from the date of issue
+          return value > sixMonthsFromIssue;
+        }
+      ),
 
     anyOtherPassport: Yup.string(),
     countryOfIssue: Yup.string().when('anyOtherPassport', {
