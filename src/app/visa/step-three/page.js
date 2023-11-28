@@ -1,6 +1,7 @@
 'use client';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
+import {BsQuestionCircleFill} from 'react-icons/bs'
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { step3ValidationSchema } from '@/app/lib/constants';
@@ -94,7 +95,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="houseNoStreet"
                             >
-                              House No. Street*
+                              House No. Street*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Applicant’s permanent address (with postal/zip code)</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -115,7 +119,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="villageTownCity"
                             >
-                              Village/Town?City*
+                              Village/Town?City*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your Village/Town/City</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -133,7 +140,10 @@ const StepThree = () => {
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="country">
-                              Country
+                              Country<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select your country </div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -165,7 +175,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="stateProvinceDistrict"
                             >
-                              State/Province/District*
+                              State/Province/District*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your State/Province/City</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -186,7 +199,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="postalZipCode"
                             >
-                              Postal/Zip Code*
+                              Postal/Zip Code*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your Postal Zip Code</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -204,7 +220,10 @@ const StepThree = () => {
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="phoneNo">
-                              Phone No.
+                              Phone No.<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide your phone number</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -222,7 +241,10 @@ const StepThree = () => {
                           </div>
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="mobileNo">
-                              Mobile No.
+                              Mobile No.<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide your mobile number</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -284,7 +306,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="permanentAddressHouseNoStreet"
                             >
-                              House No. Street*
+                              House No. Street*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Applicant’s present address, maximum 35 characters (each line)</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <MyDependentField
@@ -299,7 +324,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="villageTownCity"
                             >
-                              Village/Town?City*
+                              Village/Town?City*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your Village/Town/City</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <MyDependentField
@@ -314,7 +342,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="permanentAddressStateProvinceDistrict"
                             >
-                              State/Province/District*
+                              State/Province/District*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your State/Province/District </div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <MyDependentField
@@ -381,7 +412,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="fatherFullName"
                             >
-                              Full Name
+                              Full Name<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Applicant’s father name</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -402,7 +436,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="fatherNationality"
                             >
-                              Nationality/Region*
+                              Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Nationality / region of father</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               {/* <Field
@@ -444,7 +481,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="fatherPreviousNationality"
                             >
-                              Previous Nationality/Region*
+                              Previous Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Previous nationality / Region of Father</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               {/* <Field
@@ -486,7 +526,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="fatherPlaceOfBirth"
                             >
-                              Place of birth
+                              Place of birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter your place of birth</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -502,7 +545,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="fatherCountry"
                             >
-                              Country of Birth
+                              Country of Birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select country / region of birth</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               {/* <Field
@@ -547,7 +593,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="motherFullName"
                             >
-                              Full Name*
+                              Full Name*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Applicant’s mother name</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -568,7 +617,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="motherNationality"
                             >
-                              Nationality/Region*
+                              Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select nationality / region of mother</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               {/* <Field
@@ -610,7 +662,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="motherPreviousNationality"
                             >
-                              Previous Nationality/Region*
+                              Previous Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select previous nationality / region of mother</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -643,7 +698,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="motherPlaceOfBirth"
                             >
-                              Place of birth
+                              Place of birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter place of birth</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -659,7 +717,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="motherCountryOfBirth"
                             >
-                              Country of Birth
+                              Country of Birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select Country / region of birth</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -741,7 +802,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="applicantMaritalStatus"
                             >
-                              Applicant’s Marital Status
+                              Applicant’s Marital Status<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Applicant’s Marital Status</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -777,7 +841,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="spouseFullName"
                                 >
-                                  Full Name
+                                  Full Name<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse&apos;s full name</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -799,7 +866,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="spouseNationality"
                                 >
-                                  Nationality/Region*
+                                  Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s nationality</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -836,7 +906,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="spousePreviousNationality"
                                 >
-                                  Previous Nationality/Region*
+                                  Previous Nationality/Region*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s previous nationality</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -873,7 +946,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="spousePlaceOfBirth"
                                 >
-                                  Place of Birth
+                                  Place of Birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse&apos;s place of birth</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -895,7 +971,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="spouseCountryOfBirth"
                                 >
-                                  Country/Region of birth
+                                  Country/Region of birth<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s country/region of birth</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1035,7 +1114,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="presentOccupation"
                             >
-                              Present Occupation*
+                              Present Occupation*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select your present occupation</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1101,7 +1183,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="employerName"
                             >
-                              Employer Name/Business*
+                              Employer Name/Business*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Enter your employer name / business</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1120,7 +1205,10 @@ const StepThree = () => {
 
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="designation">
-                              Designation
+                              Designation<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide your designation</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1139,7 +1227,10 @@ const StepThree = () => {
 
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="address">
-                              Address*
+                              Address*<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter your address</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1158,7 +1249,10 @@ const StepThree = () => {
 
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="phone">
-                              Phone
+                              Phone<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide your phone number</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1180,7 +1274,10 @@ const StepThree = () => {
                               className="form-label"
                               htmlFor="pastOccupationIfAny"
                             >
-                              Past Occupation, if any
+                              Past Occupation, if any<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter your past occupation if any</div>
+        </div>
                             </label>
                             <div className="input-error-wrapper">
                               {/* presentOccupationIfAny replace with pastOccupationIfAny */}
@@ -1244,7 +1341,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="organization"
                                 >
-                                  Organization
+                                  Organization<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter name of the organisation</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1266,7 +1366,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="militaryDesignation"
                                 >
-                                  Designation
+                                  Designation<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter your designation</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1288,7 +1391,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="militaryRank"
                                 >
-                                  Rank
+                                  Rank<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide the rank you were on</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1310,7 +1416,10 @@ const StepThree = () => {
                                   className="form-label"
                                   htmlFor="placeOfPosting"
                                 >
-                                  Place of Posting
+                                  Place of Posting<div class="group relative">
+          <BsQuestionCircleFill className="text-primary info-icon" size={20} />
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide place of posting</div>
+        </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1338,7 +1447,7 @@ const StepThree = () => {
                     <div className="md:flex hidden flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext ">
-                          If others, please specify
+                          Please select your present occupation
                         </h2>
                         <h2 className="py-5 sidetext ">
                           Employer Name / Business
