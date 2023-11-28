@@ -843,7 +843,7 @@ const StepThree = () => {
                                 >
                                   Full Name<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse's full name</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse&apos;s full name</div>
         </div>
                                 </label>
                                 <div className="input-error-wrapper">
@@ -868,7 +868,7 @@ const StepThree = () => {
                                 >
                                   Nationality/Region*<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse's nationality</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s nationality</div>
         </div>
                                 </label>
                                 <div className="input-error-wrapper">
@@ -908,7 +908,7 @@ const StepThree = () => {
                                 >
                                   Previous Nationality/Region*<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse's previous nationality</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s previous nationality</div>
         </div>
                                 </label>
                                 <div className="input-error-wrapper">
@@ -948,7 +948,7 @@ const StepThree = () => {
                                 >
                                   Place of Birth<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse's place of birth</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter spouse&apos;s place of birth</div>
         </div>
                                 </label>
                                 <div className="input-error-wrapper">
@@ -973,7 +973,7 @@ const StepThree = () => {
                                 >
                                   Country/Region of birth<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse's country/region of birth</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please select spouse&apos;s country/region of birth</div>
         </div>
                                 </label>
                                 <div className="input-error-wrapper">

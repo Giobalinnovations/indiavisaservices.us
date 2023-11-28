@@ -860,7 +860,7 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">Name<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter the name of applicant's company</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please enter the name of applicant&apos;s company</div>
         </div></label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -878,7 +878,7 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">Address<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide of applicant's company</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide of applicant&apos;s company</div>
         </div></label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -901,7 +901,7 @@ const StepFour = () => {
                               >
                                 Phone No.<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide phone number of applicant's company</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide phone number of applicant&apos;s company</div>
         </div>
                               </label>
                               <div className="input-error-wrapper">
@@ -925,7 +925,7 @@ const StepFour = () => {
                               >
                                 Website<div class="group relative">
           <BsQuestionCircleFill className="text-primary info-icon" size={20} />
-          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide website url of applicant's company</div>
+          <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">Please provide website url of applicant&apos;s company</div>
         </div>
                               </label>
                               <div className="input-error-wrapper">
