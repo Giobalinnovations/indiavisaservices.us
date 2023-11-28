@@ -1687,7 +1687,7 @@ const StepFour = () => {
                                   type="text"
                                   id="eCONFERENCEPhoneOfOrganizer"
                                   name="eConferencePhoneOfOrganizer"
-                                  className="form-input"
+                                  className="form-input" 
                                 />
                                 <ErrorMessage
                                   name="eConferencePhoneOfOrganizer"
