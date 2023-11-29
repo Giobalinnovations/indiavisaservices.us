@@ -2240,6 +2240,89 @@ const StepFour = () => {
                             </div>
                           </div>
 
+                          {/* state and district */}
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              State
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please provide reference state
+                                </div>
+                              </div>
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                name="referenceState"
+                                component="select"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option disabled selected value="">
+                                  Select
+                                </option>
+
+                                {State?.getStatesOfCountry('IN')?.map(
+                                  (ele, index) => (
+                                    <option key={index} value={ele?.name}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
+                              </Field>
+                              <ErrorMessage
+                                name="referenceState"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              District
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please provide reference district
+                                </div>
+                              </div>
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                name="referenceDistrict"
+                                component="select"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option value="">Select </option>
+
+                                {City?.getCitiesOfState(
+                                  'IN',
+                                  State?.getStatesOfCountry('IN')
+                                    .filter(
+                                      state =>
+                                        state?.name === values?.referenceState
+                                    )
+                                    .map(state => state.isoCode)[0] ?? ''
+                                )?.map((elecity, indexcity) => (
+                                  <option key={indexcity} value={elecity?.name}>
+                                    {elecity?.name}
+                                  </option>
+                                ))}
+                              </Field>
+                              <ErrorMessage
+                                name="referenceDistrict"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          {/* state and district code end here */}
+
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Phone*
