@@ -1,22 +1,22 @@
-'use client';
-import BannerPage from '@/components/common/BannerPage';
-import Link from 'next/link';
+"use client";
+import BannerPage from "@/components/common/BannerPage";
+import Link from "next/link";
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '@/services/api';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "@/services/api";
 import {
   nationalityRegionData,
   step2ValidationSchema,
-} from '@/app/lib/constants';
-import { useFormContext } from '@/app/context/formContext';
-import apiEndpoint from '@/services/apiEndpoint';
-import { ImSpinner2 } from 'react-icons/im';
-import { Country } from 'country-state-city';
-import usePost from '@/hooks/usePost';
-import SavedFormId from '@/components/common/SavedFormId';
-import { usePathname } from 'next/navigation';
-import useUpdate from '@/hooks/useUpdate';
+} from "@/app/lib/constants";
+import { useFormContext } from "@/app/context/formContext";
+import apiEndpoint from "@/services/apiEndpoint";
+import { ImSpinner2 } from "react-icons/im";
+import { Country } from "country-state-city";
+import usePost from "@/hooks/usePost";
+import SavedFormId from "@/components/common/SavedFormId";
+import { usePathname } from "next/navigation";
+import useUpdate from "@/hooks/useUpdate";
 
 const StepTwo = () => {
   const pathName = usePathname();
@@ -29,7 +29,7 @@ const StepTwo = () => {
     isSuccess: getStep1DataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getStep1Data'],
+    queryKey: ["getStep1Data"],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
     enabled: !!state.formId,
@@ -37,13 +37,13 @@ const StepTwo = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP2,
     2,
-    '/visa/step-three'
+    "/visa/step-three"
   );
   const temporaryExitUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
-    'temporary step 2 saved successfully',
-    '/',
+    "temporary step 2 saved successfully",
+    "/",
     refetch
   );
 
@@ -61,10 +61,10 @@ const StepTwo = () => {
         <Formik
           initialValues={{
             ...step2ValidationSchema.initialValues,
-            dateOfBirth: step1Data.data ? step1Data.data.dateOfBirth : '',
+            dateOfBirth: step1Data.data ? step1Data.data.dateOfBirth : "",
             nationalityRegion: step1Data.data
               ? step1Data.data.nationalityRegion
-              : '',
+              : "",
           }}
           validationSchema={step2ValidationSchema.yupSchema}
           validateOnChange={true}
@@ -97,8 +97,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="firstName">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -113,8 +113,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="lastName">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -137,8 +137,8 @@ const StepTwo = () => {
                                 className="p-2 border rounded select-input"
                               />
                               <ErrorMessage name="previousName">
-                                {errorMsg => (
-                                  <div style={{ color: 'red' }}>{errorMsg}</div>
+                                {(errorMsg) => (
+                                  <div style={{ color: "red" }}>{errorMsg}</div>
                                 )}
                               </ErrorMessage>
                             </div>
@@ -162,8 +162,8 @@ const StepTwo = () => {
                               <option value="other">Other</option>
                             </Field>
                             <ErrorMessage name="gender">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -179,8 +179,8 @@ const StepTwo = () => {
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -197,8 +197,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="townCityOfBirth">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -226,8 +226,8 @@ const StepTwo = () => {
                               )}
                             </Field>
                             <ErrorMessage name="countryRegionOfBirth">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -244,8 +244,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="citizenshipNationalID">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -274,13 +274,13 @@ const StepTwo = () => {
                               <option value="other">Other</option>
                             </Field>
                             <ErrorMessage name="religion">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
                         </div>
-                        {values.religion === 'other' && (
+                        {values.religion === "other" && (
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Religion (Other)
@@ -307,8 +307,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="visibleIdentificationMarks">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -352,8 +352,8 @@ const StepTwo = () => {
                               </option>
                             </Field>
                             <ErrorMessage name="educationalQualification">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -383,8 +383,8 @@ const StepTwo = () => {
                             </Field>
 
                             <ErrorMessage name="nationalityRegion">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -410,14 +410,14 @@ const StepTwo = () => {
                               </option>
                             </Field>
                             <ErrorMessage name="acquireNationality">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
                         </div>
 
-                        {values.acquireNationality === 'naturalization' ? (
+                        {values.acquireNationality === "naturalization" ? (
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Previous Nationality*
@@ -442,14 +442,14 @@ const StepTwo = () => {
                               </Field>
 
                               <ErrorMessage name="previousNationality">
-                                {errorMsg => (
-                                  <div style={{ color: 'red' }}>{errorMsg}</div>
+                                {(errorMsg) => (
+                                  <div style={{ color: "red" }}>{errorMsg}</div>
                                 )}
                               </ErrorMessage>
                             </div>
                           </div>
                         ) : (
-                          ''
+                          ""
                         )}
                       </div>
                     </div>
@@ -560,8 +560,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="passportNumber">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -576,8 +576,8 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                             />
                             <ErrorMessage name="placeOfIssue">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -592,8 +592,8 @@ const StepTwo = () => {
                               className="form-input"
                             />
                             <ErrorMessage name="dateOfIssue">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -608,8 +608,8 @@ const StepTwo = () => {
                               className="form-input"
                             />
                             <ErrorMessage name="dateOfExpiry">
-                              {errorMsg => (
-                                <div style={{ color: 'red' }}>{errorMsg}</div>
+                              {(errorMsg) => (
+                                <div style={{ color: "red" }}>{errorMsg}</div>
                               )}
                             </ErrorMessage>
                           </div>
@@ -656,7 +656,7 @@ const StepTwo = () => {
                           </div>
                         </div>
 
-                        {values.anyOtherPassport === 'yes' && (
+                        {values.anyOtherPassport === "yes" && (
                           <>
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -682,8 +682,8 @@ const StepTwo = () => {
                                 </Field>
 
                                 <ErrorMessage name="countryOfIssue">
-                                  {errorMsg => (
-                                    <div style={{ color: 'red' }}>
+                                  {(errorMsg) => (
+                                    <div style={{ color: "red" }}>
                                       {errorMsg}
                                     </div>
                                   )}
@@ -715,8 +715,8 @@ const StepTwo = () => {
                                   className="form-input"
                                 />
                                 <ErrorMessage name="dateOfIssuePassportIC">
-                                  {errorMsg => (
-                                    <div style={{ color: 'red' }}>
+                                  {(errorMsg) => (
+                                    <div style={{ color: "red" }}>
                                       {errorMsg}
                                     </div>
                                   )}
@@ -735,8 +735,8 @@ const StepTwo = () => {
                                   className="p-2 border rounded select-input"
                                 />
                                 <ErrorMessage name="placeOfIssuePassportIC">
-                                  {errorMsg => (
-                                    <div style={{ color: 'red' }}>
+                                  {(errorMsg) => (
+                                    <div style={{ color: "red" }}>
                                       {errorMsg}
                                     </div>
                                   )}
@@ -767,8 +767,8 @@ const StepTwo = () => {
                                 </Field>
 
                                 <ErrorMessage name="passportNationalityMentionedTherein">
-                                  {errorMsg => (
-                                    <div style={{ color: 'red' }}>
+                                  {(errorMsg) => (
+                                    <div style={{ color: "red" }}>
                                       {errorMsg}
                                     </div>
                                   )}
@@ -812,7 +812,7 @@ const StepTwo = () => {
                     type="submit"
                     disabled={!isValid}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? 'cursor-not-allowed opacity-50' : ''
+                      !isValid ? "cursor-not-allowed opacity-50" : ""
                     }`}
                   >
                     {postMutation.isPending ? (
@@ -820,7 +820,7 @@ const StepTwo = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      'Save and Continue'
+                      "Save and Continue"
                     )}
                   </button>
                   {/* save and temporary exit button  */}
@@ -828,8 +828,8 @@ const StepTwo = () => {
                     disabled={temporaryExitUpdateMutation.isPending}
                     className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
                       temporaryExitUpdateMutation.isPending
-                        ? 'cursor-not-allowed opacity-50'
-                        : ''
+                        ? "cursor-not-allowed opacity-50"
+                        : ""
                     }`}
                     type="button"
                     onClick={handleTemporaryExit}
@@ -839,7 +839,7 @@ const StepTwo = () => {
                         <ImSpinner2 className="animate-spin" /> Loading
                       </>
                     ) : (
-                      'Save and Temporarily Exit'
+                      "Save and Temporarily Exit"
                     )}
                   </button>
                 </div>
