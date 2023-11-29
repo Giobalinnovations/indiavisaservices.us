@@ -1,10 +1,10 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import Link from "next/link";
-
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "@/services/api";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import Link from 'next/link';
+import { BsQuestionCircleFill } from 'react-icons/bs';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useQuery } from '@tanstack/react-query';
+import axiosInstance from '@/services/api';
 import {
   nationalityRegionData,
   step2ValidationSchema,
@@ -88,7 +88,19 @@ const StepTwo = () => {
                     <div>
                       <div className="formMain">
                         <div className="form-input-main-div">
-                          <label className="form-label">First Name*</label>
+                          <label className="form-label">
+                            First Name*{' '}
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                First name (Exactly as in passport)
+                              </div>
+                            </div>
+                          </label>
+
                           <div className="input-error-wrapper">
                             <Field
                               type="text"
@@ -103,8 +115,20 @@ const StepTwo = () => {
                             </ErrorMessage>
                           </div>
                         </div>
+
                         <div className="form-input-main-div">
-                          <label className="form-label">Last Name*</label>
+                          <label className="form-label">
+                            Last Name*{' '}
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Last name (Exactly as in passport)
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="text"
@@ -128,7 +152,18 @@ const StepTwo = () => {
                         </div>
                         {values.changedName && (
                           <div className="form-input-main-div">
-                            <label className="form-label">Previous Name*</label>
+                            <label className="form-label">
+                              Previous Name*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Enter your previous name
+                                </div>
+                              </div>
+                            </label>
                             <div className="input-error-wrapper">
                               <Field
                                 type="text"
@@ -146,7 +181,18 @@ const StepTwo = () => {
                         )}
 
                         <div className="form-input-main-div">
-                          <label className="form-label">Gender*</label>
+                          <label className="form-label">
+                            Gender*
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Select your gender
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               component="select"
@@ -169,7 +215,19 @@ const StepTwo = () => {
                           </div>
                         </div>
                         <div className="form-input-main-div">
-                          <label className="form-label">Date Of Birth</label>
+                          <label className="form-label">
+                            Date Of Birth
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Date of birth as in passport in dd/mm/yyyy
+                                format
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="date"
@@ -188,6 +246,15 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Town/City of birth
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Province/town/city of birth
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -206,6 +273,15 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Country/Region of birth
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Country/Region of birth
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -235,6 +311,15 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Citizenship/National ID no.
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Citizenship/National ID no.
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -251,7 +336,18 @@ const StepTwo = () => {
                           </div>
                         </div>
                         <div className="form-input-main-div">
-                          <label className="form-label">Religion</label>
+                          <label className="form-label">
+                            Religion
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Please select your religion
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               component="select"
@@ -298,6 +394,15 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Visible identification marks
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Visible identification marks
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -317,6 +422,15 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Educational Qualification
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Educational Qualification
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -360,7 +474,18 @@ const StepTwo = () => {
                         </div>
 
                         <div className="form-input-main-div">
-                          <label className="form-label">Nationality</label>
+                          <label className="form-label">
+                            Nationality
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Nationality/Region
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               component="select"
@@ -393,6 +518,16 @@ const StepTwo = () => {
                           <label className="form-label">
                             Did you acquire nationality by birth or by
                             naturalization?
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -left-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Did you acquire Nationality by birth or by
+                                naturalization?
+                              </div>
+                            </div>
                           </label>
                           <div className="input-error-wrapper">
                             <Field
@@ -421,6 +556,15 @@ const StepTwo = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Previous Nationality*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please select previous nationality
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -480,10 +624,10 @@ const StepTwo = () => {
                     <h2 className="py-5 sidetext ">Country/Region of birth</h2>
 
                     <h2 className="py-3 sidetext ">
-                      If not applicable please type NA
+                      Citizenship/National ID no.
                     </h2>
                     <h2 className="py-6 sidetext ">
-                      If Others .Please specify
+                      Please select your religion
                     </h2>
 
                     <h2 className="py-3 sidetext ">
@@ -551,7 +695,18 @@ const StepTwo = () => {
                     <div>
                       <div className="formMain">
                         <div className="form-input-main-div">
-                          <label className="form-label">Passport Number*</label>
+                          <label className="form-label">
+                            Passport Number*
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Applicant’s Passport Number
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="text"
@@ -567,7 +722,18 @@ const StepTwo = () => {
                           </div>
                         </div>
                         <div className="form-input-main-div">
-                          <label className="form-label">Place of Issue*</label>
+                          <label className="form-label">
+                            Place of Issue*
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                Please enter the place of Issue
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="text"
@@ -583,7 +749,18 @@ const StepTwo = () => {
                           </div>
                         </div>
                         <div className="form-input-main-div">
-                          <label className="form-label">Date of Issue*</label>
+                          <label className="form-label">
+                            Date of Issue*
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                In dd/mm/yyyy format
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="date"
@@ -599,7 +776,19 @@ const StepTwo = () => {
                           </div>
                         </div>
                         <div className="form-input-main-div">
-                          <label className="form-label">Date of Expiry*</label>
+                          <label className="form-label">
+                            Date of Expiry*
+                            <div class="group relative">
+                              <BsQuestionCircleFill
+                                className="text-primary info-icon"
+                                size={20}
+                              />
+                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                In dd/mm/yyyy format. minimum six months
+                                validity is from journey date.
+                              </div>
+                            </div>
+                          </label>
                           <div className="input-error-wrapper">
                             <Field
                               type="date"
@@ -661,6 +850,15 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Country of Issue*
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please select country of issue
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -693,6 +891,15 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Passport/IC No.
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Enter your passport IC number
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -706,6 +913,15 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Date of Issue*
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please select Date of issue
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -726,6 +942,15 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Place of Issue*
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please select place of issue
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -746,6 +971,15 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Nationality mentioned therein*
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please select your nationality
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -792,6 +1026,17 @@ const StepTwo = () => {
                       In dd/mm/yyyy format. minimum six months validity is from
                       journey date.
                     </h2>
+
+                    <div className="pt-16">
+                      <h2 className="py-5 sidetext ">Country of Issue</h2>
+                      <h2 className="py-4 sidetext ">Passport IC Number</h2>
+                      <h2 className="py-5 sidetext ">Date of issue</h2>
+                      <h2 className="py-4 sidetext ">Place of issue</h2>
+
+                      <h2 className="py-4 sidetext ">
+                        Please Enter your nationality
+                      </h2>
+                    </div>
                   </div>
                 </div>
                 <p className="font-semibold">Mandatory Fields*</p>

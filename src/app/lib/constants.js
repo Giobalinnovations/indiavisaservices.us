@@ -147,8 +147,33 @@ export const step2ValidationSchema = {
 
     passportNumber: Yup.string().required('Passport Number is required'),
     placeOfIssue: Yup.string().required('Place of Issue is required'),
+    // dateOfIssue: Yup.date().required('Date Of issue is required'),
+    // dateOfExpiry: Yup.date().required('Date Of expiry is required'),
     dateOfIssue: Yup.date().required('Date Of issue is required'),
-    dateOfExpiry: Yup.date().required('Date Of expiry is required'),
+    dateOfExpiry: Yup.date()
+      .required('Date Of expiry is required')
+      .min(
+        Yup.ref('dateOfIssue'),
+        'Passport must be valid for at least 6 months from the date of issue'
+      )
+      .test(
+        'validityCheck',
+        'Your passport validity is less than 6 months from the date of proposed journey',
+        function (value) {
+          const { dateOfIssue } = this.parent;
+
+          if (!(dateOfIssue instanceof Date && value instanceof Date)) {
+            return false;
+          }
+
+          // Calculate 6 months from the date of issue
+          const sixMonthsFromIssue = new Date(dateOfIssue);
+          sixMonthsFromIssue.setMonth(sixMonthsFromIssue.getMonth() + 6);
+
+          // Ensure the date of expiry is after 6 months from the date of issue
+          return value > sixMonthsFromIssue;
+        }
+      ),
 
     anyOtherPassport: Yup.string(),
     countryOfIssue: Yup.string().when('anyOtherPassport', {
@@ -914,6 +939,8 @@ export const step4ValidationSchema = {
       'Details of the Friend/Relative is required'
     ),
     referenceAddress: Yup.string().required('Address is required'),
+    referenceState: Yup.string().required('State is required'),
+    referenceDistrict: Yup.string().required('District is required'),
 
     referencePhone: Yup.string()
       .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
@@ -1014,6 +1041,8 @@ export const step4ValidationSchema = {
 
     referenceNameInIndia: '',
     referenceAddress: '',
+    referenceState: '',
+    referenceDistrict: '',
     referencePhone: '',
     referenceNameInHomeCountry: '',
     referenceAddressInHomeCountry: '',
@@ -2925,4 +2954,110 @@ export const nationalityRegionData = [
     en_short_name: 'Zimbabwe',
     nationality: 'Zimbabwean',
   },
+];
+
+// airports and seaports
+export const airportsSeaports = [
+  'Portblair Airport',
+  'Ahmedabad Airport',
+  'Amritsar Airport',
+  'Bagdogra Airport',
+  'Bengaluru Airport',
+  'Bhubaneshwar Airport',
+  'Calicut Airport',
+  'Chennai Airport',
+  'Chandigarh Airport',
+  'Cochin Airport',
+  'Coimbatore Airport',
+  'Delhi Airport',
+  'Gaya Airport',
+  'Goa Airport (Dabolim)',
+  'Goa Airport (Mopa)',
+  'Guwahati Airport',
+  'Hyderabad Airport',
+  'Jaipur Airport',
+  'Kannur Airport',
+  'Kolkata Airport',
+  'Lucknow Airport',
+  'Madurai Airport',
+  'Mangalore Airport',
+  'Mumbai Airport',
+  'Nagpur Airport',
+  'Port Blair Airport',
+  'Pune Airport',
+  'Srinagar Airport',
+  'Surat Airport',
+  'Tiruchirapalli Airport',
+  'Tirupati Airport',
+  'Trivandrum Airport',
+  'Varanasi Airport',
+  'Vijayawada Airport',
+  'Vishakhapatnam Airport',
+  'Alang Seaport',
+  'Bedi Bunder Seaport',
+  'Bhavnagar Seaport',
+  'Calicut Seaport',
+  'Chennai Seaport',
+  'Cochin Seaport',
+  'Cuddalore Seaport',
+  'Kakinada Seaport',
+  'Kandla Seaport',
+  'Kolkata Seaport',
+  'Mandvi Seaport',
+  'Mormagoa Harbour Seaport',
+  'Mumbai Seaport',
+  'Nagapattinum Seaport',
+  'Nhava Sheva Seaport',
+  'Paradeep Seaport',
+  'Porbandar Seaport',
+  'Port Blair Seaport',
+  'Tuticorin Seaport',
+  'Vishakapatnam Seaport',
+  'Mangalore Seaport',
+  'Vizhinjam Seaport',
+  'Agati and Minicoy Island Lakshdwip UT Seaport',
+  'Vallarpadam Seaport',
+  'Mundra Seaport',
+  'Krishnapatnam Seaport',
+  'Dhubri Seaport',
+  'Pandu Seaport',
+  'Nagaon Seaport',
+  'Karimganj Seaport',
+  'Kattupalli Seaport',
+  'Goa Seaport',
+];
+
+// visa type
+
+export const visaTypesList = [
+  'Business Visa',
+  'Conference Visa',
+  'Diplomatic Visa',
+  'Double Entry',
+  'Employment Visa',
+  'Entry Visa',
+  'e-visa',
+  'Film Visa',
+  'Journalist Visa',
+  'Medical Visa',
+  'Missionary Visa',
+  'Mountaineering Visa',
+  'Official Visa',
+  'Pilgrimes Visa',
+  'Student Visa',
+  'Tourist Visa',
+  'Transit Visa',
+  'UN Diplomat',
+  'UN Offical',
+  'Visit Visa',
+];
+
+export const saarcCountries = [
+  'Afghanistan',
+  'Bangladesh',
+  'Bhutan',
+  'Maldives',
+  'Nepal',
+  'Pakistan',
+  'Sri Lanka',
 ];

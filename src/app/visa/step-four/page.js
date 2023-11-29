@@ -2,8 +2,14 @@
 import React from 'react';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
+import { BsQuestionCircleFill } from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { step4ValidationSchema } from '@/app/lib/constants';
+import {
+  airportsSeaports,
+  saarcCountries,
+  step4ValidationSchema,
+  visaTypesList,
+} from '@/app/lib/constants';
 import axiosInstance from '@/services/api';
 import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -13,7 +19,6 @@ import usePost from '@/hooks/usePost';
 import { useQuery } from '@tanstack/react-query';
 import SavedFormId from '@/components/common/SavedFormId';
 import lodash from 'lodash';
-import { indiaAirportsList } from '@/app/lib/indiaAirports';
 import useUpdate from '@/hooks/useUpdate';
 import { usePathname } from 'next/navigation';
 import { Country, State, City } from 'country-state-city';
@@ -145,7 +150,6 @@ const StepFour = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            console.log(values);
             postMutation.mutate({
               ...values,
               formId: state.formId,
@@ -214,6 +218,15 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="mobileNo">
                               Contact No.
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please provide your contact number
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -232,6 +245,15 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Places to be visited*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter place to be visited
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -304,21 +326,34 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Expected Port of Exit from India
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please select expected port of exit from
+                                  india.
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
+                                value={values.expectedPortOfExit}
                                 name="expectedPortOfExit"
                                 component="select"
                                 className="p-2 border rounded select-input"
                               >
-                                <option defaultChecked selected>
+                                <option selected value="">
                                   Select
                                 </option>
-                                {indiaAirportsList.map((ele, ind) => (
-                                  <option key={ind} value={ele.airport_name}>
-                                    {ele.airport_name}
-                                  </option>
-                                ))}
+                                {airportsSeaports.map(
+                                  (airportSeaport, index) => (
+                                    <option key={index} value={airportSeaport}>
+                                      {airportSeaport}
+                                    </option>
+                                  )
+                                )}
                               </Field>
                               <ErrorMessage
                                 name="expectedPortOfExit"
@@ -425,7 +460,18 @@ const StepFour = () => {
                           {values.visitedIndiaBefore === 'yes' && (
                             <div className="space-y-4">
                               <div className="form-input-main-div">
-                                <label className="form-label">Address*</label>
+                                <label className="form-label">
+                                  Address*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please enter previous visa address
+                                    </div>
+                                  </div>
+                                </label>
                                 <div className="input-error-wrapper">
                                   <Field
                                     type="text"
@@ -442,6 +488,16 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Cities previously visited in India*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please provide cities previously visited
+                                      in india.
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -461,6 +517,15 @@ const StepFour = () => {
                                 <label className="form-label">
                                   Last Indian Visa no./Currently valid Indian
                                   Visa no.*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -left-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please enter last indian visa number
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -479,6 +544,15 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Type of Visa*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please select type of visa
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -486,34 +560,17 @@ const StepFour = () => {
                                     id="visitedIndiaBeforeTypeOfVisa"
                                     name="visitedIndiaBeforeTypeOfVisa"
                                     className="p-2 border rounded select-input"
+                                    value={values.visitedIndiaBeforeTypeOfVisa}
                                   >
-                                    <option disabled selected value="">
+                                    <option selected value="">
                                       Select*
                                     </option>
-                                    <option value="Bussiness">
-                                      Business Visa
-                                    </option>
-                                    <option value="Medical">
-                                      Medical Visa{' '}
-                                    </option>
-                                    <option value="Student">
-                                      Student Visa{' '}
-                                    </option>
-                                    <option value="Tourist">
-                                      Tourist Visa{' '}
-                                    </option>
-                                    <option value="Tourist">
-                                      Tansit Visa{' '}
-                                    </option>
-                                    <option value="Conference">
-                                      Conference Visa{' '}
-                                    </option>
-                                    <option value="Journalist">
-                                      Journalist Visa{' '}
-                                    </option>
-                                    <option value="Employment">
-                                      Employment Visa{' '}
-                                    </option>
+
+                                    {visaTypesList?.map(visaTypeL => (
+                                      <option key={visaTypeL} value={visaTypeL}>
+                                        {visaTypeL}
+                                      </option>
+                                    ))}
                                   </Field>
                                   <ErrorMessage name="visitedIndiaBeforeTypeOfVisa">
                                     {errorMsg => (
@@ -527,6 +584,15 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Place of Issue*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please enter place of issue
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -544,6 +610,15 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Date of Issue*
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please provide date of issue
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -616,7 +691,7 @@ const StepFour = () => {
                       </div>
                     </div>
                     {values.visitedIndiaBefore === 'yes' && (
-                      <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl">
+                      <div className="flex flex-col justify-between hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
                         <div>
                           <h2 className="py-5 sidetext ">
                             If yes please give details
@@ -627,12 +702,12 @@ const StepFour = () => {
                         </div>
 
                         <div>
-                          <h2 className="pt-20 sidetext ">
+                          <h2 className="pt-8 sidetext ">
                             Cities in India visited (comma seperated)
                           </h2>
                         </div>
 
-                        <div className="pt-36">
+                        <div className="pt-32">
                           <h2 className="py-5 sidetext">
                             Last Indian visa no. / Currently valid Visa no.
                           </h2>
@@ -830,7 +905,19 @@ const StepFour = () => {
                           <div className="formMain">
                             <b>Details of the Applicants Company</b>
                             <div className="form-input-main-div">
-                              <label className="form-label">Name</label>
+                              <label className="form-label">
+                                Name
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please enter the name of applicant&apos;s
+                                    company
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -845,7 +932,18 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">Address</label>
+                              <label className="form-label">
+                                Address
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide of applicant&apos;s company
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -866,6 +964,16 @@ const StepFour = () => {
                                 htmlFor="eBUSINESSCompanyPhone"
                               >
                                 Phone No.
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide phone number of
+                                    applicant&apos;s company
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -887,6 +995,16 @@ const StepFour = () => {
                                 htmlFor="eBUSINESSCompanyWebsite"
                               >
                                 Website
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide website url of
+                                    applicant&apos;s company
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -910,6 +1028,15 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Natures of Business/ Product
+                                  <div class="group relative">
+                                    <BsQuestionCircleFill
+                                      className="text-primary info-icon"
+                                      size={20}
+                                    />
+                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                      Please enter nature of business/Product
+                                    </div>
+                                  </div>
                                 </label>
                                 <div className="input-error-wrapper">
                                   <Field
@@ -1069,15 +1196,7 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex-col justify-end hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl">
-                        <h2 className="py-6 sidetext ">No. of entries</h2>
-                        <h2 className="py-4 sidetext ">
-                          Port of arrival in India
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Expected port of exit from India
-                        </h2>
-                      </div>
+                      <div className="flex-col justify-end hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl"></div>
                     </div>
                   </div>
                 ) : null}
@@ -1391,21 +1510,32 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex-col justify-end hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl">
-                        <h2 className="py-6 sidetext ">No. of entries</h2>
-                        <h2 className="py-4 sidetext ">
-                          Port of arrival in India
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Expected port of exit from India
-                        </h2>
+                      <div className="flex-col justify-between hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl">
+                        <div>
+                          <h2 className="py-2 sidetext ">
+                            Name of the principal e-Medical Visa holder (i.e.
+                            the patient)
+                          </h2>
+                        </div>
+                        <div>
+                          <h2 className="py-4 sidetext ">
+                            Passport number of principal e-Medical Visa holder
+                          </h2>
+                          <h2 className="py-6 sidetext ">
+                            Date of birth of principal e-Medical Visa holder
+                          </h2>
+                          <h2 className="py-4 sidetext ">
+                            Nationality of principal e-Medical Visa Select
+                            nationality v holder
+                          </h2>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ) : null}
 
                 {/* feilds for visa type--- eMEDICAL ATTENDANT VISA end  */}
-                {/* feilds for visa type ---confrence visa start  */}
+                {/* feilds for visa type ---conference visa start  */}
                 {visaServiceSelected === 'eConferenceVisa' ? (
                   <div>
                     <div className="">
@@ -1425,6 +1555,15 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Name/subject of the conference
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Enter name/subject of the conference
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -1441,7 +1580,18 @@ const StepFour = () => {
                             </div>
                             <b>Duration of conference</b>
                             <div className="form-input-main-div">
-                              <label className="form-label">Start date</label>
+                              <label className="form-label">
+                                Start date
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Duration of conferences starts from
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="date"
@@ -1456,7 +1606,18 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">End date</label>
+                              <label className="form-label">
+                                End date
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Duration of conferences ends{' '}
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="date"
@@ -1477,6 +1638,15 @@ const StepFour = () => {
                                 htmlFor="eCONFERENCEAddress"
                               >
                                 Address
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide conference address
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -1494,7 +1664,18 @@ const StepFour = () => {
                             </div>
 
                             <div className="form-input-main-div">
-                              <label className="form-label">State</label>
+                              <label className="form-label">
+                                State
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide conference state
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   name="eConferenceState"
@@ -1521,7 +1702,18 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">District</label>
+                              <label className="form-label">
+                                District
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide conference district
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   name="eConferenceDistrict"
@@ -1556,7 +1748,18 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">Pincode</label>
+                              <label className="form-label">
+                                Pincode
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please enter the pin code{' '}
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -1575,6 +1778,15 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Name of organizer
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please enter the name of the organization
+                                  </div>
+                                </div>
                               </label>
                               <div className="input-error-wrapper">
                                 <Field
@@ -1591,7 +1803,19 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">Address</label>
+                              <label className="form-label">
+                                Address
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide the address of the
+                                    organization
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -1607,7 +1831,19 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">Phone no</label>
+                              <label className="form-label">
+                                Phone no
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide phone number of the
+                                    organization
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -1623,7 +1859,19 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="form-input-main-div">
-                              <label className="form-label">Email id</label>
+                              <label className="form-label">
+                                Email id
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Please provide email address of the
+                                    organization
+                                  </div>
+                                </div>
+                              </label>
                               <div className="input-error-wrapper">
                                 <Field
                                   type="text"
@@ -1641,20 +1889,12 @@ const StepFour = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex-col justify-end hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl">
-                        <h2 className="py-6 sidetext ">No. of entries</h2>
-                        <h2 className="py-4 sidetext ">
-                          Port of arrival in India
-                        </h2>
-                        <h2 className="py-4 sidetext ">
-                          Expected port of exit from India
-                        </h2>
-                      </div>
+                      <div className="flex-col justify-end hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl"></div>
                     </div>
                   </div>
                 ) : null}
 
-                {/* feilds for visa type ---confrence visa end  */}
+                {/* feilds for visa type ---conference visa end  */}
 
                 <div>
                   <div className="">
@@ -1670,6 +1910,16 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Countries Visited in last 10 years
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please select countries visited in last 10
+                                  years
+                                </div>
+                              </div>
                             </label>
 
                             <div className="input-error-wrapper">
@@ -1761,6 +2011,16 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.saarcCountryName`}
                                               >
                                                 Name of SAARC Country*
+                                                <div class="group relative">
+                                                  <BsQuestionCircleFill
+                                                    className="text-primary info-icon"
+                                                    size={20}
+                                                  />
+                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                    Select the name of SAARC
+                                                    country{' '}
+                                                  </div>
+                                                </div>
                                               </label>
                                               <div className="input-error-wrapper">
                                                 <Field
@@ -1777,13 +2037,13 @@ const StepFour = () => {
                                                   >
                                                     Select Country*
                                                   </option>
-                                                  {Country?.getAllCountries()?.map(
+                                                  {saarcCountries?.map(
                                                     (country, index) => (
                                                       <option
                                                         key={index}
-                                                        value={country?.name}
+                                                        value={country}
                                                       >
-                                                        {country?.name}
+                                                        {country}
                                                       </option>
                                                     )
                                                   )}
@@ -1801,6 +2061,15 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.selectYear`}
                                               >
                                                 Select Year*
+                                                <div class="group relative">
+                                                  <BsQuestionCircleFill
+                                                    className="text-primary info-icon"
+                                                    size={20}
+                                                  />
+                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                    Select the year of SAARC
+                                                  </div>
+                                                </div>
                                               </label>
                                               <div className="input-error-wrapper">
                                                 <Field
@@ -1838,6 +2107,15 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.numberOfVisits`}
                                               >
                                                 No. of Visits
+                                                <div class="group relative">
+                                                  <BsQuestionCircleFill
+                                                    className="text-primary info-icon"
+                                                    size={20}
+                                                  />
+                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                    Please number of visites{' '}
+                                                  </div>
+                                                </div>
                                               </label>
                                               <div className="input-error-wrapper">
                                                 <Field
@@ -1912,6 +2190,15 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Reference Name in India
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter name of reference from india{' '}
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1927,7 +2214,18 @@ const StepFour = () => {
                             </div>
                           </div>
                           <div className="form-input-main-div">
-                            <label className="form-label">Address</label>
+                            <label className="form-label">
+                              Address
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter address of reference from india{' '}
+                                </div>
+                              </div>
+                            </label>
                             <div className="input-error-wrapper">
                               <Field
                                 type="text"
@@ -1942,8 +2240,103 @@ const StepFour = () => {
                             </div>
                           </div>
 
+                          {/* state and district */}
                           <div className="form-input-main-div">
-                            <label className="form-label">Phone*</label>
+                            <label className="form-label">
+                              State
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please provide reference state
+                                </div>
+                              </div>
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                name="referenceState"
+                                component="select"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option disabled selected value="">
+                                  Select
+                                </option>
+
+                                {State?.getStatesOfCountry('IN')?.map(
+                                  (ele, index) => (
+                                    <option key={index} value={ele?.name}>
+                                      {ele?.name}
+                                    </option>
+                                  )
+                                )}
+                              </Field>
+                              <ErrorMessage
+                                name="referenceState"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              District
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please provide reference district
+                                </div>
+                              </div>
+                            </label>
+                            <div className="input-error-wrapper">
+                              <Field
+                                name="referenceDistrict"
+                                component="select"
+                                className="p-2 border rounded select-input"
+                              >
+                                <option value="">Select </option>
+
+                                {City?.getCitiesOfState(
+                                  'IN',
+                                  State?.getStatesOfCountry('IN')
+                                    .filter(
+                                      state =>
+                                        state?.name === values?.referenceState
+                                    )
+                                    .map(state => state.isoCode)[0] ?? ''
+                                )?.map((elecity, indexcity) => (
+                                  <option key={indexcity} value={elecity?.name}>
+                                    {elecity?.name}
+                                  </option>
+                                ))}
+                              </Field>
+                              <ErrorMessage
+                                name="referenceDistrict"
+                                component="div"
+                                className="text-red-500"
+                              />
+                            </div>
+                          </div>
+                          {/* state and district code end here */}
+
+                          <div className="form-input-main-div">
+                            <label className="form-label">
+                              Phone*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter phone number of reference from
+                                  india{' '}
+                                </div>
+                              </div>
+                            </label>
                             <div className="input-error-wrapper">
                               <Field
                                 type="text"
@@ -1960,6 +2353,15 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Reference Name in Home Country*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter name of reference home
+                                </div>
+                              </div>
                             </label>
                             <div className="input-error-wrapper">
                               <Field
@@ -1975,7 +2377,18 @@ const StepFour = () => {
                             </div>
                           </div>
                           <div className="form-input-main-div">
-                            <label className="form-label">Address*</label>
+                            <label className="form-label">
+                              Address*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter address of reference home
+                                </div>
+                              </div>
+                            </label>
                             <div className="input-error-wrapper">
                               <Field
                                 type="text"
@@ -1990,7 +2403,18 @@ const StepFour = () => {
                             </div>
                           </div>
                           <div className="form-input-main-div">
-                            <label className="form-label">Phone*</label>
+                            <label className="form-label">
+                              Phone*
+                              <div class="group relative">
+                                <BsQuestionCircleFill
+                                  className="text-primary info-icon"
+                                  size={20}
+                                />
+                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  Please enter phone number of reference home
+                                </div>
+                              </div>
+                            </label>
                             <div className="input-error-wrapper">
                               <Field
                                 type="text"
@@ -2010,11 +2434,26 @@ const StepFour = () => {
                     <div className="flex-col justify-between hidden col-span-4 px-4 py-6 border-2 md:flex bg-primary/10 border-primary/60 rounded-xl">
                       <div>
                         <h2 className="py-4 sidetext">
-                          Reference Name and Address in India
+                          Reference Name in India
+                        </h2>
+                        <h2 className="py-6 sidetext">
+                          Reference Address in India
+                        </h2>
+                        <h2 className="py-4 sidetext">
+                          Reference number of contact purpose
+                        </h2>
+                        <h2 className="py-6 sidetext">
+                          Reference home country name
+                        </h2>
+                        <h2 className="py-4 sidetext">
+                          Reference home country adress
+                        </h2>
+                        <h2 className="py-6 sidetext">
+                          Reference home country contact number
                         </h2>
                       </div>
 
-                      <div className="pt-48">
+                      {/* <div className="">
                         <h2 className="py-4 sidetext">Phone no.</h2>
                         <h2 className="py-4 sidetext">
                           Please mention one contact details in Home Country to
@@ -2024,13 +2463,7 @@ const StepFour = () => {
                         <h2 className="py-6 sidetext">
                           Address of the Referred person
                         </h2>
-                      </div>
-
-                      <div>
-                        <h2 className="py-4 sidetext">
-                          Phone no. of the Referred Person
-                        </h2>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

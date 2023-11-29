@@ -24,7 +24,13 @@ body {
   @apply grid md:grid-cols-12 items-center md:pt-0 pt-3;
 }
 .form-label {
-  @apply col-span-4 mb-3 block text-base text-[#07074D];
+  @apply col-span-4 mb-3 text-base text-[#07074D] md:block flex gap-4 items-center;
+}
+
+
+.info-icon
+{
+  @apply md:hidden w-4 h-4;
 }
 .form-input {
   @apply col-span-8 w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md;
