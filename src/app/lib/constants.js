@@ -3047,3 +3047,13 @@ export const visaTypesList = [
   'UN Offical',
   'Visit Visa',
 ];
+
+export const saarcCountries = [
+  'Afghanistan',
+  'Bangladesh',
+  'Bhutan',
+  'Maldives',
+  'Nepal',
+  'Pakistan',
+  'Sri Lanka',
+];
