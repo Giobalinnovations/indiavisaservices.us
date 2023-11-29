@@ -20,24 +20,28 @@ import { useQuery } from '@tanstack/react-query';
 import SavedFormId from '@/components/common/SavedFormId';
 import lodash from 'lodash';
 import useUpdate from '@/hooks/useUpdate';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Country, State, City } from 'country-state-city';
 
 const StepFour = () => {
   const pathname = usePathname();
   const { state } = useFormContext();
+  const router = useRouter();
+
+  // get all steps data
   const {
-    isPending,
-    error,
-    data: step1Data,
-    isSuccess: getStep1DataIsSuccess,
+    isPending: getAllStepsDataIsPending,
+    error: getAllStepsDataError,
+    data: getAllStepsData,
+    isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getStep1Data'],
+    queryKey: ['getAllStepsData'],
     queryFn: () =>
-      axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
+      axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
+  // get all steps data code end here
 
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
@@ -65,11 +69,30 @@ const StepFour = () => {
     { length: currentYear - startYear + 1 },
     (_, index) => startYear + index
   );
-  if (getStep1DataIsSuccess) {
-    const visaServiceSelected = step1Data?.data?.visaService
-      ? lodash.camelCase(step1Data?.data?.visaService)
+
+  if (getAllStepsDataIsPending) {
+    return (
+      <div className="flex items-center justify-center flex-1 h-full pt-20">
+        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
+        loading
+      </div>
+    );
+  }
+
+  if (getAllStepsDataError) {
+    return router.push('/visa/step-one');
+  }
+
+  if (getAllStepsDataIsSuccess) {
+    if (!getAllStepsData?.data?.step3Data) {
+      return router.push('/visa/step-three');
+    }
+
+    const visaServiceSelected = getAllStepsData?.data?.step1Data?.visaService
+      ? lodash.camelCase(getAllStepsData?.data?.step1Data?.visaService)
       : '';
-    const visaServiceSelectedValue = step1Data?.data?.[visaServiceSelected];
+    const visaServiceSelectedValue =
+      getAllStepsData?.data?.step1Data?.[visaServiceSelected];
 
     const getDurationOfVisa = (
       visaServiceSelected,
@@ -94,7 +117,7 @@ const StepFour = () => {
           return '60 Days';
 
         default:
-          return '';
+          return '6 Months';
       }
     };
     const getNumberOfEntries = (
@@ -120,7 +143,7 @@ const StepFour = () => {
           return 'Triple';
 
         default:
-          return '';
+          return 'Double';
       }
     };
 
@@ -131,8 +154,12 @@ const StepFour = () => {
         <Formik
           initialValues={{
             ...step4ValidationSchema.initialValues,
-            visaService: step1Data.data ? step1Data.data.visaService : '',
-            portOfArrival: step1Data.data ? step1Data.data.portOfArrival : '',
+            visaService: getAllStepsData?.data
+              ? getAllStepsData?.data?.step1Data?.visaService
+              : '',
+            portOfArrival: getAllStepsData?.data
+              ? getAllStepsData?.data?.step1Data?.portOfArrival
+              : '',
             durationOfVisa: getDurationOfVisa(
               visaServiceSelected,
               visaServiceSelectedValue
@@ -691,7 +718,7 @@ const StepFour = () => {
                       </div>
                     </div>
                     {values.visitedIndiaBefore === 'yes' && (
-                      <div className="flex flex-col justify-between hidden col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
+                      <div className="flex flex-col justify-between col-span-4 px-4 py-6 border-2 bg-primary/10 border-primary/60 rounded-xl md:block">
                         <div>
                           <h2 className="py-5 sidetext ">
                             If yes please give details
@@ -2519,14 +2546,6 @@ const StepFour = () => {
           )}
         </Formik>
       </>
-    );
-  }
-  if (isPending) {
-    return (
-      <div className="flex items-center justify-center flex-1 h-full pt-20">
-        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
-        loading
-      </div>
     );
   }
 };

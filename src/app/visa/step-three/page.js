@@ -14,25 +14,28 @@ import { Country } from 'country-state-city';
 import MyDependentField from '@/components/MyFields';
 import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import useUpdate from '@/hooks/useUpdate';
 
 const StepThree = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
+  const router = useRouter();
 
+  // get all steps data
   const {
-    isPending,
-    error,
-    data: step1Data,
-    isSuccess: getStep1DataIsSuccess,
+    isPending: getAllStepsDataIsPending,
+    error: getAllStepsDataError,
+    data: getAllStepsData,
+    isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getStep1Data'],
+    queryKey: ['getAllStepsData'],
     queryFn: () =>
-      axiosInstance.get(`${apiEndpoint.GET_VISA_STEP1_BY_ID}${state.formId}`),
+      axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
+  // get all steps data code end here
 
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP3,
@@ -52,14 +55,34 @@ const StepThree = () => {
       lastExitStepUrl: pathName,
     });
   };
-  if (getStep1DataIsSuccess) {
+
+  if (getAllStepsDataIsPending) {
+    return (
+      <div className="flex items-center justify-center flex-1 h-full pt-20">
+        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
+        loading
+      </div>
+    );
+  }
+
+  if (getAllStepsDataError) {
+    return router.push('/visa/step-one');
+  }
+
+  if (getAllStepsDataIsSuccess) {
+    if (!getAllStepsData?.data?.step2Data) {
+      return router.push('/visa/step-two');
+    }
+
     return (
       <>
         <BannerPage heading="Applicant Detail Form" />
         <Formik
           initialValues={{
             ...step3ValidationSchema.initialValues,
-            emailAddress: step1Data.data ? step1Data.data.emailId : '',
+            emailAddress: getAllStepsData?.data
+              ? getAllStepsData?.data.step1Data.emailId
+              : '',
           }}
           validationSchema={step3ValidationSchema.yupSchema}
           validateOnChange={true}
@@ -1736,14 +1759,6 @@ const StepThree = () => {
           )}
         </Formik>
       </>
-    );
-  }
-  if (isPending) {
-    return (
-      <div className="flex items-center justify-center flex-1 h-full pt-20">
-        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
-        loading
-      </div>
     );
   }
 };

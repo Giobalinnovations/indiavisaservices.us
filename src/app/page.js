@@ -395,7 +395,7 @@ const Home = () => {
                               <button
                                 type="button"
                                 className="formbtnBorder"
-                                onClick={() => setIsOpenMakePayment(false)}
+                                onClick={() => setIsOpenStatus(false)}
                               >
                                 Close
                               </button>

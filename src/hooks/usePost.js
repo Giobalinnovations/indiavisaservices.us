@@ -1,6 +1,6 @@
 import { useFormContext } from '@/app/context/formContext';
 import axiosInstance from '@/services/api';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
@@ -10,6 +10,7 @@ export default function usePost(
   routeUrl,
   isDispatch = false
 ) {
+  const queryClient = useQueryClient();
   const { dispatch } = useFormContext();
   const router = useRouter();
   const mutation = useMutation({
@@ -31,7 +32,8 @@ export default function usePost(
       });
 
       router.push(`${routeUrl}`);
-      router.refresh();
+      // router.refresh();
+      queryClient.invalidateQueries({ queryKey: ['getAllStepsData'] });
     },
     onError: error => {
       toast.error(
