@@ -6,6 +6,7 @@ import { BsQuestionCircleFill } from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import {
   airportsSeaports,
+  saarcCountries,
   step4ValidationSchema,
   visaTypesList,
 } from '@/app/lib/constants';
@@ -2036,13 +2037,13 @@ const StepFour = () => {
                                                   >
                                                     Select Country*
                                                   </option>
-                                                  {Country?.getAllCountries()?.map(
+                                                  {saarcCountries?.map(
                                                     (country, index) => (
                                                       <option
                                                         key={index}
-                                                        value={country?.name}
+                                                        value={country}
                                                       >
-                                                        {country?.name}
+                                                        {country}
                                                       </option>
                                                     )
                                                   )}
