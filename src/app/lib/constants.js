@@ -939,6 +939,8 @@ export const step4ValidationSchema = {
       'Details of the Friend/Relative is required'
     ),
     referenceAddress: Yup.string().required('Address is required'),
+    referenceState: Yup.string().required('State is required'),
+    referenceDistrict: Yup.string().required('District is required'),
 
     referencePhone: Yup.string()
       .matches(/^[0-9]{10}$/, 'Phone number must be a valid 10-digit number')
@@ -1039,6 +1041,8 @@ export const step4ValidationSchema = {
 
     referenceNameInIndia: '',
     referenceAddress: '',
+    referenceState: '',
+    referenceDistrict: '',
     referencePhone: '',
     referenceNameInHomeCountry: '',
     referenceAddressInHomeCountry: '',
