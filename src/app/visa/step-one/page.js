@@ -1,21 +1,25 @@
-"use client";
-import BannerPage from "@/components/common/BannerPage";
-import React from "react";
-import { step1ValidationSchema } from "@/app/lib/constants";
-import apiEndpoint from "@/services/apiEndpoint";
-import usePost from "@/hooks/usePost";
-import { ImSpinner2 } from "react-icons/im";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import PhoneInput from "react-phone-number-input";
-import { Country } from "country-state-city";
-import { indiaAirportsList } from "@/app/lib/indiaAirports";
-import "react-phone-number-input/style.css";
+'use client';
+import BannerPage from '@/components/common/BannerPage';
+import React from 'react';
+import {
+  airportsSeaports,
+  eligibleCountriesEvisaIndia,
+  step1ValidationSchema,
+} from '@/app/lib/constants';
+import apiEndpoint from '@/services/apiEndpoint';
+import usePost from '@/hooks/usePost';
+import { ImSpinner2 } from 'react-icons/im';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import PhoneInput from 'react-phone-number-input';
+import { Country } from 'country-state-city';
+import { indiaAirportsList } from '@/app/lib/indiaAirports';
+import 'react-phone-number-input/style.css';
 
 const StepOne = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP1,
     1,
-    "/visa/step-two",
+    '/visa/step-two',
     true
   );
 
@@ -63,9 +67,7 @@ const StepOne = () => {
                     <option value="Rush">Rush</option>
                   </Field>
                   <ErrorMessage name="applicationType">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -82,17 +84,15 @@ const StepOne = () => {
                     <option disabled selected value="">
                       Country
                     </option>
-                    {Country?.getAllCountries()?.map((country, index) => (
-                      <option key={index} value={country?.name}>
-                        {country?.name}
+                    {eligibleCountriesEvisaIndia?.map((country, index) => (
+                      <option key={index} value={country}>
+                        {country}
                       </option>
                     ))}
                   </Field>
 
                   <ErrorMessage name="nationalityRegion">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -112,9 +112,7 @@ const StepOne = () => {
                     <option value="ordinary passport">ORDINARY PASSPORT</option>
                   </Field>
                   <ErrorMessage name="passportType">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -131,16 +129,14 @@ const StepOne = () => {
                     <option defaultChecked selected>
                       Select
                     </option>
-                    {indiaAirportsList.map((ele, ind) => (
-                      <option key={ind} value={ele.airport_name}>
-                        {ele.airport_name}
+                    {airportsSeaports.map((airportSeaport, index) => (
+                      <option key={index} value={airportSeaport}>
+                        {airportSeaport}
                       </option>
                     ))}
                   </Field>
                   <ErrorMessage name="portOfArrival">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -156,9 +152,7 @@ const StepOne = () => {
                     className="form-input"
                   />
                   <ErrorMessage name="dateOfBirth">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -175,9 +169,7 @@ const StepOne = () => {
                     placeholder="Enter Email Id"
                   />
                   <ErrorMessage name="emailId">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -194,9 +186,7 @@ const StepOne = () => {
                     placeholder="Re-Enter Email Id"
                   />
                   <ErrorMessage name="reEmailId">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -217,7 +207,7 @@ const StepOne = () => {
                         placeholder="Enter phone number"
                         value={field.value}
                         inputClass="phone-input-class"
-                        onChange={(value) => {
+                        onChange={value => {
                           form.setFieldValue(field.name, value);
 
                           if (field.value) {
@@ -247,7 +237,7 @@ const StepOne = () => {
                   <div>
                     {/* eEmergency x misc */}
                     {values?.nationalityRegion?.toLocaleLowerCase() ===
-                    "afghanistan" ? (
+                    'afghanistan' ? (
                       <div>
                         <div className="flex items-start space-x-2">
                           <Field
@@ -261,7 +251,7 @@ const StepOne = () => {
                             E Emergency X Misc
                           </label>
                         </div>
-                        {values.visaService === "eEmergencyXMisc" && (
+                        {values.visaService === 'eEmergencyXMisc' && (
                           <div className="px-8">
                             <div>
                               {/* level1-inner1 start  */}
@@ -284,7 +274,7 @@ const StepOne = () => {
                     ) : null}
 
                     {values?.nationalityRegion?.toLocaleLowerCase() !==
-                      "afghanistan" && (
+                      'afghanistan' && (
                       <div className="flex items-start space-x-2">
                         <Field
                           type="radio"
@@ -299,7 +289,7 @@ const StepOne = () => {
                       </div>
                     )}
 
-                    {values.visaService === "eTOURIST VISA" && (
+                    {values.visaService === 'eTOURIST VISA' && (
                       <div className="px-8">
                         <div>
                           {/* level1-inner1 start  */}
@@ -310,16 +300,16 @@ const StepOne = () => {
                               name="eTouristVisa"
                               className="mt-1"
                               value={`${
-                                values.visaService === "eTOURIST VISA"
-                                  ? "visa30days"
-                                  : ""
+                                values.visaService === 'eTOURIST VISA'
+                                  ? 'visa30days'
+                                  : ''
                               }`}
                             />
                             <label htmlFor="eTouristVisa30Days">
                               eTourist Visa(for 30 Days)
                             </label>
                           </div>
-                          {values.eTouristVisa === "visa30days" && (
+                          {values.eTouristVisa === 'visa30days' && (
                             <div className="px-4 py-2 space-y-2">
                               <div className="flex items-start space-x-2">
                                 <Field
@@ -328,9 +318,9 @@ const StepOne = () => {
                                   name="eTouristVisa30Days"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa30days"
-                                      ? "RECREATION/SIGHT-SEEING"
-                                      : ""
+                                    values.eTouristVisa === 'visa30days'
+                                      ? 'RECREATION/SIGHT-SEEING'
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa30DaysValue1">
@@ -344,9 +334,9 @@ const StepOne = () => {
                                   name="eTouristVisa30Days"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa30days"
-                                      ? "MEETING FRIENDS/RELATIVES"
-                                      : ""
+                                    values.eTouristVisa === 'visa30days'
+                                      ? 'MEETING FRIENDS/RELATIVES'
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa30DaysValue2">
@@ -360,9 +350,9 @@ const StepOne = () => {
                                   name="eTouristVisa30Days"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa30days"
-                                      ? "SHORT TERM YOGA PROGRAMME"
-                                      : ""
+                                    values.eTouristVisa === 'visa30days'
+                                      ? 'SHORT TERM YOGA PROGRAMME'
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa30DaysValue3">
@@ -376,14 +366,14 @@ const StepOne = () => {
                                   name="eTouristVisa30Days"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa30days"
+                                    values.eTouristVisa === 'visa30days'
                                       ? `SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC,
                                   DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.
                                   WHICH SHOULD NOT BE A FORMAL OR STRUCTURED
                                   COURSE/PROGRAMME (COURSES NOT EXCEEDING 6
                                   MONTHS DURATION AND NOT ISSUED WITH A
                                   QUALIFYING CERTIFICATE/ DIPLOMA ETC)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa30DaysValue4">
@@ -402,12 +392,12 @@ const StepOne = () => {
                                   name="eTouristVisa30Days"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa30days"
+                                    values.eTouristVisa === 'visa30days'
                                       ? `VOLUNTARY WORK OF SHORT DURATION (FOR A
                                   MAXIMUM PERIOD OF ONE MONTH, WHICH DO NOT
                                   INVOLVE ANY MONETARY PAYMENT OR CONSIDERATION
                                   OF ANY KIND IN RETURN)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa30DaysValue5">
@@ -435,7 +425,7 @@ const StepOne = () => {
                               eTourist Visa(for 1 Year)
                             </label>
                           </div>
-                          {values.eTouristVisa === "visa1Year" && (
+                          {values.eTouristVisa === 'visa1Year' && (
                             <div className="px-4 py-2 space-y-2">
                               <div className="flex items-start space-x-2">
                                 <Field
@@ -444,9 +434,9 @@ const StepOne = () => {
                                   name="eTouristVisa1Year"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa1Year"
+                                    values.eTouristVisa === 'visa1Year'
                                       ? `RECREATION/SIGHT-SEEING`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa1YearValue1">
@@ -460,9 +450,9 @@ const StepOne = () => {
                                   name="eTouristVisa1Year"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa1Year"
+                                    values.eTouristVisa === 'visa1Year'
                                       ? `MEETING FRIENDS/RELATIVES`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa1YearValue2">
@@ -476,9 +466,9 @@ const StepOne = () => {
                                   name="eTouristVisa1Year"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa1Year"
+                                    values.eTouristVisa === 'visa1Year'
                                       ? `SHORT TERM YOGA PROGRAMME`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa1YearValue3">
@@ -492,14 +482,14 @@ const StepOne = () => {
                                   name="eTouristVisa1Year"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa1Year"
+                                    values.eTouristVisa === 'visa1Year'
                                       ? `SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC,
                                   DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.
                                   WHICH SHOULD NOT BE A FORMAL OR STRUCTURED
                                   COURSE/PROGRAMME (COURSES NOT EXCEEDING 6
                                   MONTHS DURATION AND NOT ISSUED WITH A
                                   QUALIFYING CERTIFICATE/ DIPLOMA ETC)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa1YearValue4">
@@ -518,12 +508,12 @@ const StepOne = () => {
                                   name="eTouristVisa1Year"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa1Year"
+                                    values.eTouristVisa === 'visa1Year'
                                       ? `VOLUNTARY WORK OF SHORT DURATION (FOR A
                                   MAXIMUM PERIOD OF ONE MONTH, WHICH DO NOT
                                   INVOLVE ANY MONETARY PAYMENT OR CONSIDERATION
                                   OF ANY KIND IN RETURN)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa1YearValue5">
@@ -550,7 +540,7 @@ const StepOne = () => {
                               eTourist Visa(for 5 Years)
                             </label>
                           </div>
-                          {values.eTouristVisa === "visa5Years" && (
+                          {values.eTouristVisa === 'visa5Years' && (
                             <div className="px-4 py-2 space-y-2">
                               <div className="flex items-start space-x-2">
                                 <Field
@@ -559,9 +549,9 @@ const StepOne = () => {
                                   name="eTouristVisa5Years"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa5Years"
+                                    values.eTouristVisa === 'visa5Years'
                                       ? `RECREATION/SIGHT-SEEING`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa5YearsValue1">
@@ -575,9 +565,9 @@ const StepOne = () => {
                                   name="eTouristVisa5Years"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa5Years"
+                                    values.eTouristVisa === 'visa5Years'
                                       ? `MEETING FRIENDS/RELATIVES`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa5YearsValue2">
@@ -591,9 +581,9 @@ const StepOne = () => {
                                   name="eTouristVisa5Years"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa5Years"
+                                    values.eTouristVisa === 'visa5Years'
                                       ? `SHORT TERM YOGA PROGRAMME`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa5YearsValue3">
@@ -607,14 +597,14 @@ const StepOne = () => {
                                   name="eTouristVisa5Years"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa5Years"
+                                    values.eTouristVisa === 'visa5Years'
                                       ? `SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC,
                                   DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.
                                   WHICH SHOULD NOT BE A FORMAL OR STRUCTURED
                                   COURSE/PROGRAMME (COURSES NOT EXCEEDING 6
                                   MONTHS DURATION AND NOT ISSUED WITH A
                                   QUALIFYING CERTIFICATE/ DIPLOMA ETC)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa5YearsValue4">
@@ -633,12 +623,12 @@ const StepOne = () => {
                                   name="eTouristVisa5Years"
                                   className="mt-1"
                                   value={`${
-                                    values.eTouristVisa === "visa5Years"
+                                    values.eTouristVisa === 'visa5Years'
                                       ? `VOLUNTARY WORK OF SHORT DURATION (FOR A
                                   MAXIMUM PERIOD OF ONE MONTH, WHICH DO NOT
                                   INVOLVE ANY MONETARY PAYMENT OR CONSIDERATION
                                   OF ANY KIND IN RETURN)`
-                                      : ""
+                                      : ''
                                   }`}
                                 />
                                 <label htmlFor="eTouristVisa5YearsValue5">
@@ -657,9 +647,9 @@ const StepOne = () => {
 
                   {/* eMEDICAL VISA  */}
                   {values?.nationalityRegion?.toLocaleLowerCase() !==
-                    "afghanistan" && (
+                    'afghanistan' && (
                     <>
-                      {" "}
+                      {' '}
                       <div>
                         <div className="flex items-start space-x-2">
                           <Field
@@ -673,7 +663,7 @@ const StepOne = () => {
                             eMEDICAL VISA
                           </label>
                         </div>
-                        {values.visaService === "eMEDICAL VISA" && (
+                        {values.visaService === 'eMEDICAL VISA' && (
                           <div className="px-8">
                             <div>
                               {/* level1-inner1 start  */}
@@ -707,7 +697,7 @@ const StepOne = () => {
                             eBUSINESS VISA
                           </label>
                         </div>
-                        {values.visaService === "eBUSINESS VISA" && (
+                        {values.visaService === 'eBUSINESS VISA' && (
                           <div className="px-8 ">
                             <div className="py-2 space-y-2">
                               {/* level1-inner1 start  */}
@@ -828,7 +818,7 @@ const StepOne = () => {
                             eCONFERENCE VISA
                           </label>
                         </div>
-                        {values.visaService === "eCONFERENCE VISA" && (
+                        {values.visaService === 'eCONFERENCE VISA' && (
                           <div className="px-8">
                             <div>
                               {/* level1-inner1 start  */}
@@ -866,7 +856,7 @@ const StepOne = () => {
                             eMEDICAL ATTENDANT VISA
                           </label>
                         </div>
-                        {values.visaService === "eMEDICAL ATTENDANT VISA" && (
+                        {values.visaService === 'eMEDICAL ATTENDANT VISA' && (
                           <div className="px-8">
                             <div>
                               {/* level1-inner1 start  */}
@@ -904,9 +894,7 @@ const StepOne = () => {
                     className="form-input"
                   />
                   <ErrorMessage name="expectedDateOfArrival">
-                    {(errorMsg) => (
-                      <div style={{ color: "red" }}>{errorMsg}</div>
-                    )}
+                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
               </div>
@@ -922,7 +910,7 @@ const StepOne = () => {
                   type="submit"
                   disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                    !isValid ? "cursor-not-allowed opacity-50" : ""
+                    !isValid ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                 >
                   {postMutation.isPending ? (
@@ -930,7 +918,7 @@ const StepOne = () => {
                       <ImSpinner2 className="animate-spin" /> Loading
                     </>
                   ) : (
-                    "Continue"
+                    'Continue'
                   )}
                 </button>
               </div>
