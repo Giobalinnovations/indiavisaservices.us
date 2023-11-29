@@ -16,11 +16,12 @@ import SingleFileUpload from '@/components/SingleFileUpload';
 import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
 import useUpdate from '@/hooks/useUpdate';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const StepSix = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
+  const router = useRouter();
   const {
     isPending,
     error,
@@ -53,257 +54,287 @@ const StepSix = () => {
     });
   };
 
-  return (
-    <>
-      <BannerPage heading="Upload Your Picture" />
-      <SavedFormId />
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center flex-1 h-full pt-20">
+        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
+        loading
+      </div>
+    );
+  }
 
-      <Formik
-        initialValues={step6ValidationSchema.initialValues}
-        validationSchema={step6ValidationSchema.yupSchema}
-        validateOnChange={true}
-        validateOnMount={true}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          const formData = new FormData();
+  if (error) {
+    return router.push('/visa/step-one');
+  }
 
-          if (values.profilePicture instanceof File) {
-            formData.append('profilePicture', values.profilePicture);
-          }
+  if (getAllStepsDataIsSuccess) {
+    if (!getAllStepsData?.data?.step5Data) {
+      return router.push('/visa/step-five');
+    }
 
-          for (const file of values.passport) {
-            formData.append('passport', file);
-          }
+    return (
+      <>
+        <BannerPage heading="Upload Your Picture" />
+        <SavedFormId />
 
-          for (const file of values.businessCard) {
-            formData.append('businessCard', file);
-          }
+        <Formik
+          initialValues={step6ValidationSchema.initialValues}
+          validationSchema={step6ValidationSchema.yupSchema}
+          validateOnChange={true}
+          validateOnMount={true}
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            const formData = new FormData();
 
-          for (const file of values.eMedicalCard) {
-            formData.append('eMedicalCard', file);
-          }
+            if (values.profilePicture instanceof File) {
+              formData.append('profilePicture', values.profilePicture);
+            }
 
-          formData.append('formId', state.formId);
+            for (const file of values.passport) {
+              formData.append('passport', file);
+            }
 
-          postMutation.mutate(formData);
-          setSubmitting(false);
-          resetForm();
-        }}
-      >
-        {({ values, isValid, handleSubmit, setFieldValue }) => (
-          <>
-            <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
-              {/* upload file start  */}
-              <div className="mb-6 space-y-8">
-                <div className="">
-                  <label className="mb-3 block font-semibold text-[#07074D]">
-                    Upload Your Image
-                  </label>
-                  {/* <FileUpload /> */}
-                  <div className="flex items-center w-full max-w-lg gap-8 p-2 mb-5 overflow-hidden border rounded-md h-36">
-                    <div className="bg-gray-200 rounded-lg">
-                      <SingleFileUpload
-                        id="uploadPicture"
-                        name="profilePicture"
-                        setFieldValue={setFieldValue}
-                        value={values.profilePicture}
-                        errorMessage={
-                          <ErrorMessage name="profilePicture" component="div" />
-                        }
-                        accept="image/png, image/jpeg"
-                      />
+            for (const file of values.businessCard) {
+              formData.append('businessCard', file);
+            }
 
-                      <label
-                        htmlFor="uploadPicture"
-                        className="relative flex items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-                      >
-                        <LuImagePlus size={40} className="text-gray-500" />
-                      </label>
-                    </div>
-                    {values.profilePicture ? (
-                      <div className="flex items-center w-full">
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          <div>
-                            <div className="relative overflow-hidden">
-                              <Image
-                                src={URL.createObjectURL(values.profilePicture)}
-                                alt={`Uploaded Image`}
-                                width={100}
-                                height={100}
-                              />
+            for (const file of values.eMedicalCard) {
+              formData.append('eMedicalCard', file);
+            }
+
+            formData.append('formId', state.formId);
+
+            postMutation.mutate(formData);
+            setSubmitting(false);
+            resetForm();
+          }}
+        >
+          {({ values, isValid, handleSubmit, setFieldValue }) => (
+            <>
+              <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
+                {/* upload file start  */}
+                <div className="mb-6 space-y-8">
+                  <div className="">
+                    <label className="mb-3 block font-semibold text-[#07074D]">
+                      Upload Your Image
+                    </label>
+                    {/* <FileUpload /> */}
+                    <div className="flex items-center w-full max-w-lg gap-8 p-2 mb-5 overflow-hidden border rounded-md h-36">
+                      <div className="bg-gray-200 rounded-lg">
+                        <SingleFileUpload
+                          id="uploadPicture"
+                          name="profilePicture"
+                          setFieldValue={setFieldValue}
+                          value={values.profilePicture}
+                          errorMessage={
+                            <ErrorMessage
+                              name="profilePicture"
+                              component="div"
+                            />
+                          }
+                          accept="image/png, image/jpeg"
+                        />
+
+                        <label
+                          htmlFor="uploadPicture"
+                          className="relative flex items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+                        >
+                          <LuImagePlus size={40} className="text-gray-500" />
+                        </label>
+                      </div>
+                      {values.profilePicture ? (
+                        <div className="flex items-center w-full">
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            <div>
+                              <div className="relative overflow-hidden">
+                                <Image
+                                  src={URL.createObjectURL(
+                                    values.profilePicture
+                                  )}
+                                  alt={`Uploaded Image`}
+                                  width={100}
+                                  height={100}
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
+                      ) : (
+                        <div className="text-sm">
+                          <p>Choose the Photo To Upload</p>
+                          <p>No file chosen yet</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {/* upload file end  */}
+                <div className="py-4 space-y-2 font-medium">
+                  <p>
+                    Temporary Application ID:{' '}
+                    <span className="text-primary">{state?.formId}</span>
+                  </p>
+                  <p>
+                    Kindly ensure that the photo is as per specifications
+                    mentioned below.
+                  </p>
+                  <p>
+                    In case you are{' '}
+                    <span className="font-bold">
+                      not ready for photo upload you can do it later,
+                    </span>
+                    Please note down the
+                  </p>
+                  <p>
+                    Temporary Application ID, close the window and{' '}
+                    <span className="font-bold">Press Save and Exit</span>.
+                  </p>
+                  <p>
+                    You can complete your application later using{' '}
+                    <span className="font-bold">
+                      Complete Partially Filled Dorm
+                    </span>{' '}
+                    option on home page.
+                  </p>
+                </div>
+                <div className="py-8">
+                  <div className="">
+                    <h2 className="text-3xl font-semibold">Upload Documents</h2>
+                    <hr className="h-1 text-primary bg-primary w-36" />
+                  </div>
+
+                  <div className="space-y-2 divide-y-2 divide-primary">
+                    {/* passport upload start  */}
+                    <div className="grid grid-cols-3 py-8 text-sm">
+                      <div>
+                        <b>Document Description</b>
+                        <h2 className="py-4 font-medium">Copy of Passport</h2>
                       </div>
+                      <div>
+                        <b>Upload File</b>
+                        <FileUploadMain
+                          name="passport"
+                          setFieldValue={setFieldValue}
+                          values={values}
+                          errorMessage={
+                            <ErrorMessage name="passport" component="div" />
+                          }
+                          accept="image/png, image/jpeg"
+                          multiple="multiple"
+                        />
+                      </div>
+                    </div>
+                    {/* passport upload end  */}
+
+                    {/* ebusiness visa code start */}
+                    {getAllStepsDataIsSuccess &&
+                    getAllStepsData?.data?.step1Data.visaService ===
+                      'eBUSINESS VISA' ? (
+                      <div className="grid grid-cols-3 py-8 text-sm">
+                        <div>
+                          <b>Business Description</b>
+                          <h2 className="py-4 font-medium">
+                            Copy of Business card
+                          </h2>
+                        </div>
+                        <div>
+                          <b>Upload File</b>
+                          <FileUploadMain
+                            name="businessCard"
+                            setFieldValue={setFieldValue}
+                            values={values}
+                            errorMessage={
+                              <ErrorMessage
+                                name="businessCard"
+                                component="div"
+                              />
+                            }
+                            accept="image/png, image/jpeg"
+                            multiple="multiple"
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {/* ebusiness visa code end here */}
+
+                    {/* emedical code start here */}
+                    {getAllStepsDataIsSuccess &&
+                    getAllStepsData?.data?.step1Data.visaService ===
+                      'eMEDICAL VISA' ? (
+                      <div className="grid grid-cols-3 py-8 text-sm">
+                        <div>
+                          <b>Medical Description</b>
+                          <h2 className="py-4 font-medium">
+                            Copy of Medical card
+                          </h2>
+                        </div>
+                        <div>
+                          <b>Upload File</b>
+                          <FileUploadMain
+                            name="eMedicalCard"
+                            setFieldValue={setFieldValue}
+                            values={values}
+                            errorMessage={
+                              <ErrorMessage
+                                name="eMedicalCard"
+                                component="div"
+                              />
+                            }
+                            accept="image/png, image/jpeg"
+                            multiple="multiple"
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+                    {/* emedical code end here */}
+                  </div>
+                </div>
+                <div className="space-x-4 space-y-4 text-center md:space-y-0">
+                  <Link href="/visa/step-five/update">
+                    <button className="formbtnBorder">Back</button>
+                  </Link>
+                  <button
+                    type="submit"
+                    disabled={!isValid}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
+                    }`}
+                  >
+                    {postMutation.isPending ? (
+                      <>
+                        <ImSpinner2 className="animate-spin" /> Loading
+                      </>
                     ) : (
-                      <div className="text-sm">
-                        <p>Choose the Photo To Upload</p>
-                        <p>No file chosen yet</p>
-                      </div>
+                      'Next'
                     )}
-                  </div>
+                  </button>
+                  {/* save and temporary exit button  */}
+                  <button
+                    disabled={temporaryExitUpdateMutation.isPending}
+                    className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
+                      temporaryExitUpdateMutation.isPending
+                        ? 'cursor-not-allowed opacity-50'
+                        : ''
+                    }`}
+                    type="button"
+                    onClick={handleTemporaryExit}
+                  >
+                    {temporaryExitUpdateMutation.isPending ? (
+                      <>
+                        <ImSpinner2 className="animate-spin" /> Loading
+                      </>
+                    ) : (
+                      'Save and Temporarily Exit'
+                    )}
+                  </button>
                 </div>
-              </div>
-              {/* upload file end  */}
-              <div className="py-4 space-y-2 font-medium">
-                <p>
-                  Temporary Application ID:{' '}
-                  <span className="text-primary">{state?.formId}</span>
-                </p>
-                <p>
-                  Kindly ensure that the photo is as per specifications
-                  mentioned below.
-                </p>
-                <p>
-                  In case you are{' '}
-                  <span className="font-bold">
-                    not ready for photo upload you can do it later,
-                  </span>
-                  Please note down the
-                </p>
-                <p>
-                  Temporary Application ID, close the window and{' '}
-                  <span className="font-bold">Press Save and Exit</span>.
-                </p>
-                <p>
-                  You can complete your application later using{' '}
-                  <span className="font-bold">
-                    Complete Partially Filled Dorm
-                  </span>{' '}
-                  option on home page.
-                </p>
-              </div>
-              <div className="py-8">
-                <div className="">
-                  <h2 className="text-3xl font-semibold">Upload Documents</h2>
-                  <hr className="h-1 text-primary bg-primary w-36" />
-                </div>
-
-                <div className="space-y-2 divide-y-2 divide-primary">
-                  {/* passport upload start  */}
-                  <div className="grid grid-cols-3 py-8 text-sm">
-                    <div>
-                      <b>Document Description</b>
-                      <h2 className="py-4 font-medium">Copy of Passport</h2>
-                    </div>
-                    <div>
-                      <b>Upload File</b>
-                      <FileUploadMain
-                        name="passport"
-                        setFieldValue={setFieldValue}
-                        values={values}
-                        errorMessage={
-                          <ErrorMessage name="passport" component="div" />
-                        }
-                        accept="image/png, image/jpeg"
-                        multiple="multiple"
-                      />
-                    </div>
-                  </div>
-                  {/* passport upload end  */}
-
-                  {/* ebusiness visa code start */}
-                  {getAllStepsDataIsSuccess &&
-                  getAllStepsData?.data?.step1Data.visaService ===
-                    'eBUSINESS VISA' ? (
-                    <div className="grid grid-cols-3 py-8 text-sm">
-                      <div>
-                        <b>Business Description</b>
-                        <h2 className="py-4 font-medium">
-                          Copy of Business card
-                        </h2>
-                      </div>
-                      <div>
-                        <b>Upload File</b>
-                        <FileUploadMain
-                          name="businessCard"
-                          setFieldValue={setFieldValue}
-                          values={values}
-                          errorMessage={
-                            <ErrorMessage name="businessCard" component="div" />
-                          }
-                          accept="image/png, image/jpeg"
-                          multiple="multiple"
-                        />
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {/* ebusiness visa code end here */}
-
-                  {/* emedical code start here */}
-                  {getAllStepsDataIsSuccess &&
-                  getAllStepsData?.data?.step1Data.visaService ===
-                    'eMEDICAL VISA' ? (
-                    <div className="grid grid-cols-3 py-8 text-sm">
-                      <div>
-                        <b>Medical Description</b>
-                        <h2 className="py-4 font-medium">
-                          Copy of Medical card
-                        </h2>
-                      </div>
-                      <div>
-                        <b>Upload File</b>
-                        <FileUploadMain
-                          name="eMedicalCard"
-                          setFieldValue={setFieldValue}
-                          values={values}
-                          errorMessage={
-                            <ErrorMessage name="eMedicalCard" component="div" />
-                          }
-                          accept="image/png, image/jpeg"
-                          multiple="multiple"
-                        />
-                      </div>
-                    </div>
-                  ) : null}
-                  {/* emedical code end here */}
-                </div>
-              </div>
-              <div className="space-x-4 text-center md:space-y-0 space-y-4">
-                <Link href="/visa/step-five/update">
-                  <button className="formbtnBorder">Back</button>
-                </Link>
-                <button
-                  type="submit"
-                  disabled={!isValid}
-                  className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                    !isValid ? 'cursor-not-allowed opacity-50' : ''
-                  }`}
-                >
-                  {postMutation.isPending ? (
-                    <>
-                      <ImSpinner2 className="animate-spin" /> Loading
-                    </>
-                  ) : (
-                    'Next'
-                  )}
-                </button>
-                {/* save and temporary exit button  */}
-                <button
-                  disabled={temporaryExitUpdateMutation.isPending}
-                  className={`formbtnDark cursor-pointer inline-flex items-center gap-3 ${
-                    temporaryExitUpdateMutation.isPending
-                      ? 'cursor-not-allowed opacity-50'
-                      : ''
-                  }`}
-                  type="button"
-                  onClick={handleTemporaryExit}
-                >
-                  {temporaryExitUpdateMutation.isPending ? (
-                    <>
-                      <ImSpinner2 className="animate-spin" /> Loading
-                    </>
-                  ) : (
-                    'Save and Temporarily Exit'
-                  )}
-                </button>
-              </div>
-            </Form>
-          </>
-        )}
-      </Formik>
-    </>
-  );
+              </Form>
+            </>
+          )}
+        </Formik>
+      </>
+    );
+  }
 };
 
 export default StepSix;

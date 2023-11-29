@@ -10,13 +10,14 @@ import apiEndpoint from '@/services/apiEndpoint';
 import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-const StepFive = ({ step }) => {
+const StepFive = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
+  const router = useRouter();
   const {
     isPending,
     error,
@@ -44,7 +45,25 @@ const StepFive = ({ step }) => {
       lastExitStepUrl: pathName,
     });
   };
+
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center flex-1 h-full pt-20">
+        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
+        loading
+      </div>
+    );
+  }
+
+  if (error) {
+    return router.push('/visa/step-one');
+  }
+
   if (getAllStepsDataIsSuccess) {
+    if (!getAllStepsData?.data?.step4Data) {
+      return router.push('/visa/step-four');
+    }
+
     return (
       <>
         <BannerPage heading="Applicant Detail Form" />
@@ -74,7 +93,7 @@ const StepFive = ({ step }) => {
                   <div>
                     {step5data.map((e, i) => (
                       <div key={i}>
-                        <div className="grid md:grid-cols-12 gap-8 py-8">
+                        <div className="grid gap-8 py-8 md:grid-cols-12">
                           <div className="col-span-8">
                             <label>
                               <span className="pr-2">{e.id}.</span>
@@ -144,7 +163,7 @@ const StepFive = ({ step }) => {
                   />
                 </div>
 
-                <div className="space-x-4 text-center md:space-y-0 space-y-4">
+                <div className="space-x-4 space-y-4 text-center md:space-y-0">
                   <Link href="/visa/step-four/update">
                     <button className="formbtnBorder" type="button">
                       Back
@@ -190,14 +209,6 @@ const StepFive = ({ step }) => {
           )}
         </Formik>
       </>
-    );
-  }
-  if (isPending) {
-    return (
-      <div className="flex items-center justify-center flex-1 h-full pt-20">
-        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
-        loading
-      </div>
     );
   }
 };
