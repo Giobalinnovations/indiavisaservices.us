@@ -1,31 +1,31 @@
-import React from 'react';
-import { IoIosMail } from 'react-icons/io';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import { IoIosMail } from "react-icons/io";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
+import Image from "next/image";
 const Footer = () => {
   const data = [
     {
       id: 1,
       icon: <FaFacebookF />,
-      href: '#',
+      href: "#",
     },
     {
       id: 2,
       icon: <FaInstagram />,
-      href: '#',
+      href: "#",
     },
     {
       id: 3,
       icon: <FaLinkedin />,
-      href: '#',
+      href: "#",
     },
     {
       id: 4,
       icon: <FaXTwitter />,
-      href: '#',
+      href: "#",
     },
   ];
   return (
@@ -73,7 +73,7 @@ const Footer = () => {
                   <ul className="">
                     <Link href="#">
                       <li className="flex items-center mt-2 space-x-2 text-base hover:text-primary">
-                        <IoIosMail className="w-6 h-6 p-1 text-black bg-white rounded-full" />{' '}
+                        <IoIosMail className="w-6 h-6 p-1 text-black bg-white rounded-full" />{" "}
                         <span className="text-white">
                           india-travelservices.com
                         </span>
@@ -177,6 +177,11 @@ const Footer = () => {
                         <span className="">Cookies Policy</span>
                       </li>
                     </Link>
+                    <Link href="/cancellation-and-refund-policy">
+                      <li className="mt-2 text-base text-white hover:text-primary">
+                        <span className="">Cancellation and Refund Policy</span>
+                      </li>
+                    </Link>
                   </ul>
                 </div>
               </div>
@@ -184,7 +189,7 @@ const Footer = () => {
             <hr className="h-[1px] bg-primary border-primary" />
             <div className="px-5 py-5 text-base text-center text-white md:px-0">
               <p>
-                {' '}
+                {" "}
                 Copyright © 2023 |
                 <span className="px-2 font-semibold">E-Visa</span>| All Rights
                 Reserved

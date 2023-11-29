@@ -1,19 +1,19 @@
-'use client';
-import { useFormContext } from '@/app/context/formContext';
-import MakePaymentComponent from '@/components/MakePaymentComponent';
-import BannerPage from '@/components/common/BannerPage';
-import useUpdate from '@/hooks/useUpdate';
-import apiEndpoint from '@/services/apiEndpoint';
-import { useQuery } from '@tanstack/react-query';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { usePathname } from 'next/navigation';
-import { ImSpinner2 } from 'react-icons/im';
-import * as Yup from 'yup';
+"use client";
+import { useFormContext } from "@/app/context/formContext";
+import MakePaymentComponent from "@/components/MakePaymentComponent";
+import BannerPage from "@/components/common/BannerPage";
+import useUpdate from "@/hooks/useUpdate";
+import apiEndpoint from "@/services/apiEndpoint";
+import { useQuery } from "@tanstack/react-query";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { usePathname } from "next/navigation";
+import { ImSpinner2 } from "react-icons/im";
+import * as Yup from "yup";
 
 const paymentFormSchema = Yup.object().shape({
   termsAndConditions: Yup.boolean()
-    .required('Required')
-    .oneOf([true], 'You must accept the terms and conditions.'),
+    .required("Required")
+    .oneOf([true], "You must accept the terms and conditions."),
 });
 
 const StepEight = () => {
@@ -23,22 +23,22 @@ const StepEight = () => {
   const paymentUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
-    'successful',
-    '/',
+    "successful",
+    "/",
     false
   );
   const paymentNowUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_FORM_PAYMENT,
     state.formId,
-    'Payment Complete successfully',
-    '/',
+    "Payment Complete successfully",
+    "/",
     false
   );
 
   const handlePayLater = () => {
     paymentUpdateMutation.mutate({
       lastExitStepUrl: pathName,
-      paymentStatus: 'payLater',
+      paymentStatus: "payLater",
     });
   };
 
@@ -135,9 +135,9 @@ const StepEight = () => {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             // console.log(values);
             paymentNowUpdateMutation.mutate({
-              lastExitStepUrl: '/',
+              lastExitStepUrl: "/",
               termsAndConditions: values.termsAndConditions,
-              paymentStatus: 'completed',
+              paymentStatus: "completed",
               termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
                   and conditions given on the website indiavisasonline.org.in
                   and understand all the questions and statements of this
@@ -176,7 +176,7 @@ const StepEight = () => {
                   application. The answers and information furnished in this
                   application are true and correct to the best of my knowledge
                   and belief. I understand and agree that once the fee is paid
-                  towards the Temporary application ID{' '}
+                  towards the Temporary application ID{" "}
                   <span className="font-bold">{state?.formId}</span> is 100%
                   non-refundable and I will not claim a refund or dispute the
                   transaction incase of cancellation request raised at my end. I
@@ -187,7 +187,7 @@ const StepEight = () => {
                 </label>
               </p>
               <ErrorMessage name="termsAndConditions">
-                {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
+                {(errorMsg) => <div style={{ color: "red" }}>{errorMsg}</div>}
               </ErrorMessage>
 
               <div className="p-4">
@@ -195,18 +195,18 @@ const StepEight = () => {
                   Please note down the Application ID :
                   <span className="font-bold text-primary">
                     {state?.formId}
-                  </span>{' '}
+                  </span>{" "}
                   which will be required for Status Enquiry, e-Visa Printing and
-                  Payment of visa processing fee.{' '}
+                  Payment of visa processing fee.{" "}
                 </p>
               </div>
               <div className="space-x-4 text-center">
-                {/* <MakePaymentComponent isValid={isValid} /> */}
+                <MakePaymentComponent isValid={isValid} />
 
                 <button
                   disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                    !isValid ? 'cursor-not-allowed opacity-50' : ''
+                    !isValid ? "cursor-not-allowed opacity-50" : ""
                   }`}
                   type="submit"
                 >
@@ -217,8 +217,8 @@ const StepEight = () => {
                   disabled={paymentUpdateMutation.isPending}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                     paymentUpdateMutation.isPending
-                      ? 'cursor-not-allowed opacity-50'
-                      : ''
+                      ? "cursor-not-allowed opacity-50"
+                      : ""
                   }`}
                   type="button"
                   onClick={handlePayLater}
@@ -228,7 +228,7 @@ const StepEight = () => {
                       <ImSpinner2 className="animate-spin" /> Loading
                     </>
                   ) : (
-                    'Pay Later'
+                    "Pay Later"
                   )}
                 </button>
               </div>
