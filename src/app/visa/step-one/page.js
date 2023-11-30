@@ -11,8 +11,6 @@ import usePost from '@/hooks/usePost';
 import { ImSpinner2 } from 'react-icons/im';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import PhoneInput from 'react-phone-number-input';
-import { Country } from 'country-state-city';
-import { indiaAirportsList } from '@/app/lib/indiaAirports';
 import 'react-phone-number-input/style.css';
 
 const StepOne = () => {

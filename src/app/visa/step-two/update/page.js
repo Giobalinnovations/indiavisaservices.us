@@ -6,7 +6,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import {
+  educationalQualificationList,
   nationalityRegionData,
+  religionNames,
   step2ValidationSchema,
 } from '@/app/lib/constants';
 import { useFormContext } from '@/app/context/formContext';
@@ -14,6 +16,7 @@ import apiEndpoint from '@/services/apiEndpoint';
 import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
 import useUpdate from '@/hooks/useUpdate';
+import { BsQuestionCircleFill } from 'react-icons/bs';
 
 export default function StepTwoUpdate() {
   const { state } = useFormContext();
@@ -108,22 +111,57 @@ export default function StepTwoUpdate() {
                           </label>
                         </div>
                         {values.changedName && (
-                          <div className="form-input-main-div">
-                            <label className="form-label">Previous Name*</label>
-                            <div className="input-error-wrapper">
-                              <Field
-                                type="text"
-                                id="previousName"
-                                name="previousName"
-                                className="p-2 border rounded select-input"
-                              />
-                              <ErrorMessage name="previousName">
-                                {errorMsg => (
-                                  <div style={{ color: 'red' }}>{errorMsg}</div>
-                                )}
-                              </ErrorMessage>
+                          <>
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Previous Name*
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="previousName"
+                                  name="previousName"
+                                  className="p-2 border rounded select-input"
+                                />
+                                <ErrorMessage name="previousName">
+                                  {errorMsg => (
+                                    <div style={{ color: 'red' }}>
+                                      {errorMsg}
+                                    </div>
+                                  )}
+                                </ErrorMessage>
+                              </div>
                             </div>
-                          </div>
+                            <div className="form-input-main-div">
+                              <label className="form-label">
+                                Previous Last Name*
+                                <div class="group relative">
+                                  <BsQuestionCircleFill
+                                    className="text-primary info-icon"
+                                    size={20}
+                                  />
+                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    Enter your previous last name
+                                  </div>
+                                </div>
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  type="text"
+                                  id="previousLastName"
+                                  name="previousLastName"
+                                  className="p-2 border rounded select-input"
+                                />
+                                <ErrorMessage name="previousLastName">
+                                  {errorMsg => (
+                                    <div style={{ color: 'red' }}>
+                                      {errorMsg}
+                                    </div>
+                                  )}
+                                </ErrorMessage>
+                              </div>
+                            </div>
+                          </>
                         )}
 
                         <div className="form-input-main-div">
@@ -243,16 +281,11 @@ export default function StepTwoUpdate() {
                               <option value="" disabled selected>
                                 Select Religion*
                               </option>
-                              <option value="hinduism">Hinduism</option>
-                              <option value="islam">Islam</option>
-                              <option value="buddhism">Buddhism</option>
-                              <option value="taoism">Taoism</option>
-                              <option value="judaism">Judaism</option>
-                              <option value="catholicism">Catholicism</option>
-                              <option value="christianity">Christianity</option>
-                              <option value="jainism">Jainism</option>
-                              <option value="Sikhism">Sikhism</option>
-                              <option value="other">Other</option>
+                              {religionNames?.map(religion => (
+                                <option key={religion} value={religion}>
+                                  {religion}
+                                </option>
+                              ))}
                             </Field>
                             <ErrorMessage name="religion">
                               {errorMsg => (
@@ -309,28 +342,11 @@ export default function StepTwoUpdate() {
                               <option value="" disabled selected>
                                 Select Educational Qualification*
                               </option>
-                              <option value="Doctoral degree">
-                                Doctoral degree
-                              </option>
-                              <option value="Masters degree">
-                                Masters degree
-                              </option>
-                              <option value="Graduate diploma">
-                                Graduate diploma
-                              </option>
-                              <option value="Graduate certificate">
-                                Graduate certificate
-                              </option>
-                              <option value="Bachelor degree">
-                                Bachelor degree
-                              </option>
-                              <option value="Advanced diploma/Associates degree">
-                                Advanced diploma/Associates degree
-                              </option>
-                              <option value="Diploma">Diploma</option>
-                              <option value="Senior school certificate">
-                                Senior school certificate
-                              </option>
+                              {educationalQualificationList?.map(education => (
+                                <option key={education} value={education}>
+                                  {education}
+                                </option>
+                              ))}
                             </Field>
                             <ErrorMessage name="educationalQualification">
                               {errorMsg => (
