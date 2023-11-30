@@ -3,18 +3,22 @@ import React from 'react';
 import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
-import { step4ValidationSchema } from '@/app/lib/constants';
+import {
+  airportsSeaports,
+  step4ValidationSchema,
+  visaTypesList,
+} from '@/app/lib/constants';
 import axiosInstance from '@/services/api';
 import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
 import { ImSpinner2 } from 'react-icons/im';
-import { Country } from 'country-state-city';
 import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
 import usePost from '@/hooks/usePost';
 import { useQuery } from '@tanstack/react-query';
 import SavedFormId from '@/components/common/SavedFormId';
 import lodash from 'lodash';
 import useUpdate from '@/hooks/useUpdate';
+import { Country, State, City } from 'country-state-city';
 
 const StepFour = () => {
   const { state } = useFormContext();
@@ -271,6 +275,119 @@ const StepFour = () => {
                                 />
                               </div>
                             </div>
+
+                            {/* hotel resorts */}
+                            <div className="flex items-start py-2 space-x-2">
+                              <label className="font-semibold">
+                                Have you booked any Room in Hotel/Resorts Etc.
+                                Through any Tour Operator?
+                              </label>
+                              <div className="flex space-x-4">
+                                <div className="px-2 space-x-2">
+                                  <Field
+                                    type="radio"
+                                    id="bookedHotelYes"
+                                    name="bookedHotel"
+                                    value="yes"
+                                  />
+                                  <label
+                                    htmlFor="bookedHotelYes"
+                                    className="font-semibold"
+                                  >
+                                    Yes
+                                  </label>
+                                </div>
+                                <div className="px-2 space-x-2">
+                                  <Field
+                                    type="radio"
+                                    id="bookedHotelNo"
+                                    name="bookedHotel"
+                                    value="no"
+                                  />
+                                  <label
+                                    htmlFor="bookedHotelNo"
+                                    className="font-semibold"
+                                  >
+                                    No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            {values.bookedHotel === 'yes' && (
+                              <>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Name of the tour operator
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      name="bookedHotelTourOperatorName"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="bookedHotelTourOperatorName"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Address of the tour operator
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      name="bookedHotelTourOperatorAddress"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="bookedHotelTourOperatorAddress"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Name of Hotel/Resort etc.
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      name="bookedHotelName"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="bookedHotelName"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="form-input-main-div">
+                                  <label className="form-label">
+                                    Place/City of Hotel/Resort etc.
+                                  </label>
+                                  <div className="input-error-wrapper">
+                                    <Field
+                                      type="text"
+                                      name="bookedHotelPlace"
+                                      className="form-input"
+                                    />
+                                    <ErrorMessage
+                                      name="bookedHotelPlace"
+                                      component="div"
+                                      className="text-red-600"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            )}
+                            {/* hotel resorts code end here */}
+
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Duration of Visa
@@ -323,15 +440,16 @@ const StepFour = () => {
                                 >
                                   <option value="">Select </option>
 
-                                  <option value="Jaipur Airport">
-                                    Jaipur Airport{' '}
-                                  </option>
-                                  <option value="Udaipur Airport">
-                                    Udaipur Airport{' '}
-                                  </option>
-                                  <option value="Delhi Airport ">
-                                    Delhi Airport{' '}
-                                  </option>
+                                  {airportsSeaports.map(
+                                    (airportSeaport, index) => (
+                                      <option
+                                        key={index}
+                                        value={airportSeaport}
+                                      >
+                                        {airportSeaport}
+                                      </option>
+                                    )
+                                  )}
                                 </Field>
                                 <ErrorMessage
                                   name="expectedPortOfExit"
@@ -508,30 +626,14 @@ const StepFour = () => {
                                       <option disabled selected value="">
                                         Select*
                                       </option>
-                                      <option value="Bussiness">
-                                        Business Visa
-                                      </option>
-                                      <option value="Medical">
-                                        Medical Visa{' '}
-                                      </option>
-                                      <option value="Student">
-                                        Student Visa{' '}
-                                      </option>
-                                      <option value="Tourist">
-                                        Tourist Visa{' '}
-                                      </option>
-                                      <option value="Tourist">
-                                        Tansit Visa{' '}
-                                      </option>
-                                      <option value="Conference">
-                                        Conference Visa{' '}
-                                      </option>
-                                      <option value="Journalist">
-                                        Journalist Visa{' '}
-                                      </option>
-                                      <option value="Employment">
-                                        Employment Visa{' '}
-                                      </option>
+                                      {visaTypesList?.map(visaTypeL => (
+                                        <option
+                                          key={visaTypeL}
+                                          value={visaTypeL}
+                                        >
+                                          {visaTypeL}
+                                        </option>
+                                      ))}
                                     </Field>
                                     <ErrorMessage name="visitedIndiaBeforeTypeOfVisa">
                                       {errorMsg => (
@@ -763,7 +865,13 @@ const StepFour = () => {
                                     className="p-2 border rounded select-input"
                                   >
                                     <option value="">Select </option>
-                                    <option value="option1">Option1</option>
+                                    {State?.getStatesOfCountry('IN')?.map(
+                                      (ele, index) => (
+                                        <option key={index} value={ele?.name}>
+                                          {ele?.name}
+                                        </option>
+                                      )
+                                    )}
                                   </Field>
                                   <ErrorMessage
                                     name="eMedicalStateOfHospital"
@@ -782,7 +890,23 @@ const StepFour = () => {
                                   >
                                     <option value="">Select </option>
 
-                                    <option value="option1">Option1 </option>
+                                    {City?.getCitiesOfState(
+                                      'IN',
+                                      State?.getStatesOfCountry('IN')
+                                        .filter(
+                                          state =>
+                                            state?.name ===
+                                            values?.eMedicalStateOfHospital
+                                        )
+                                        .map(state => state.isoCode)[0] ?? ''
+                                    )?.map((elecity, indexcity) => (
+                                      <option
+                                        key={indexcity}
+                                        value={elecity?.name}
+                                      >
+                                        {elecity?.name}
+                                      </option>
+                                    ))}
                                   </Field>
                                   <ErrorMessage
                                     name="eMedicalDistrictOfHospital"

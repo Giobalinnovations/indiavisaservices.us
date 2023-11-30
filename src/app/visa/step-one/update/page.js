@@ -3,7 +3,11 @@ import BannerPage from '@/components/common/BannerPage';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
-import { step1ValidationSchema } from '@/app/lib/constants';
+import {
+  airportsSeaports,
+  eligibleCountriesEvisaIndia,
+  step1ValidationSchema,
+} from '@/app/lib/constants';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useFormContext } from '@/app/context/formContext';
 import 'react-phone-number-input/style.css';
@@ -105,11 +109,13 @@ export default function StepOneUpdate() {
                           <option disabled selected value="">
                             Country
                           </option>
-                          {Country?.getAllCountries()?.map((country, index) => (
-                            <option key={index} value={country?.name}>
-                              {country?.name}
-                            </option>
-                          ))}
+                          {eligibleCountriesEvisaIndia?.map(
+                            (country, index) => (
+                              <option key={index} value={country}>
+                                {country}
+                              </option>
+                            )
+                          )}
                         </Field>
 
                         <ErrorMessage name="nationalityRegion">
@@ -153,95 +159,14 @@ export default function StepOneUpdate() {
                           name="portOfArrival"
                           className="p-2 border rounded select-input"
                         >
-                          <option disabled selected value="">
+                          <option defaultChecked selected>
                             Select
                           </option>
-                          <option value="Indira Gandhi International Airport">
-                            Indira Gandhi International Airport
-                          </option>
-                          <option value="Chhatrapati Shivaji International Airport">
-                            Chhatrapati Shivaji International Airport
-                          </option>
-                          <option value="Chennai International Airport">
-                            Chennai International Airport
-                          </option>
-                          <option value="Kempegowda International Airport">
-                            Kempegowda International Airport
-                          </option>
-                          <option value="Cochin International Airport">
-                            Cochin International Airport
-                          </option>
-                          <option value="Rajiv Gandhi International Airport">
-                            Rajiv Gandhi International Airport
-                          </option>
-                          <option value="Netaji Subhash Chandra Bose International Airport">
-                            Netaji Subhash Chandra Bose International Airport
-                          </option>
-                          <option value="Trivandrum International Airport">
-                            Trivandrum International Airport
-                          </option>
-                          <option value="Calicut International Airport">
-                            Calicut International Airport
-                          </option>
-                          <option value="Dabolim Airport">
-                            Dabolim Airport
-                          </option>
-                          <option value="Sri Guru Ram Dass Jee International Airport">
-                            Sri Guru Ram Dass Jee International Airport
-                          </option>
-                          <option value="Sardar Vallabhbhai Patel International Airport">
-                            Sardar Vallabhbhai Patel International Airport
-                          </option>
-                          <option value="Jaipur International Airport">
-                            Jaipur International Airport
-                          </option>
-                          <option value="Chaudhary Charan Singh International Airport">
-                            Chaudhary Charan Singh International Airport
-                          </option>
-                          <option value="Tiruchirapally Civil Airport Airport">
-                            Tiruchirapally Civil Airport Airport
-                          </option>
-                          <option value="Coimbatore International Airport">
-                            Coimbatore International Airport
-                          </option>
-                          <option value="Lokpriya Gopinath Bordoloi International Airport">
-                            Lokpriya Gopinath Bordoloi International Airport
-                          </option>
-                          <option value="Bagdogra Airport">
-                            Bagdogra Airport
-                          </option>
-                          <option value="Pune Airport">Pune Airport</option>
-                          <option value="Dr. Babasaheb Ambedkar International Airport">
-                            Dr. Babasaheb Ambedkar International Airport
-                          </option>
-                          <option value="Madurai Airport">
-                            Madurai Airport
-                          </option>
-                          <option value="Sheikh ul Alam Airport">
-                            Sheikh ul Alam Airport
-                          </option>
-                          <option value="Jammu Airport">Jammu Airport</option>
-                          <option value="Chandigarh Airport">
-                            Chandigarh Airport
-                          </option>
-                          <option value="Mangalore International Airport">
-                            Mangalore International Airport
-                          </option>
-                          <option value="Agartala Airport">
-                            Agartala Airport
-                          </option>
-                          <option value="Lal Bahadur Shastri Airport">
-                            Lal Bahadur Shastri Airport
-                          </option>
-                          <option value="Devi Ahilyabai Holkar Airport">
-                            Devi Ahilyabai Holkar Airport
-                          </option>
-                          <option value="Vir Savarkar International Airport">
-                            Vir Savarkar International Airport
-                          </option>
-                          <option value="Birsa Munda Airport">
-                            Birsa Munda Airport
-                          </option>
+                          {airportsSeaports.map((airportSeaport, index) => (
+                            <option key={index} value={airportSeaport}>
+                              {airportSeaport}
+                            </option>
+                          ))}
                         </Field>
                         <ErrorMessage name="portOfArrival">
                           {errorMsg => (
