@@ -312,6 +312,119 @@ const StepFour = () => {
                               />
                             </div>
                           </div>
+
+                          {/* hotel resorts */}
+                          <div className="flex items-start py-2 space-x-2">
+                            <label className="font-semibold">
+                              Have you booked any Room in Hotel/Resorts Etc.
+                              Through any Tour Operator?
+                            </label>
+                            <div className="flex space-x-4">
+                              <div className="px-2 space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="bookedHotelYes"
+                                  name="bookedHotel"
+                                  value="yes"
+                                />
+                                <label
+                                  htmlFor="bookedHotelYes"
+                                  className="font-semibold"
+                                >
+                                  Yes
+                                </label>
+                              </div>
+                              <div className="px-2 space-x-2">
+                                <Field
+                                  type="radio"
+                                  id="bookedHotelNo"
+                                  name="bookedHotel"
+                                  value="no"
+                                />
+                                <label
+                                  htmlFor="bookedHotelNo"
+                                  className="font-semibold"
+                                >
+                                  No
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+
+                          {values.bookedHotel === 'yes' && (
+                            <>
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Name of the tour operator
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    name="bookedHotelTourOperatorName"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="bookedHotelTourOperatorName"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Address of the tour operator
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    name="bookedHotelTourOperatorAddress"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="bookedHotelTourOperatorAddress"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Name of Hotel/Resort etc.
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    name="bookedHotelName"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="bookedHotelName"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                              <div className="form-input-main-div">
+                                <label className="form-label">
+                                  Place/City of Hotel/Resort etc.
+                                </label>
+                                <div className="input-error-wrapper">
+                                  <Field
+                                    type="text"
+                                    name="bookedHotelPlace"
+                                    className="form-input"
+                                  />
+                                  <ErrorMessage
+                                    name="bookedHotelPlace"
+                                    component="div"
+                                    className="text-red-600"
+                                  />
+                                </div>
+                              </div>
+                            </>
+                          )}
+                          {/* hotel resorts code end here */}
+
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Duration of Visa
@@ -845,7 +958,13 @@ const StepFour = () => {
                                   className="p-2 border rounded select-input"
                                 >
                                   <option value="">Select </option>
-                                  <option value="option1">Option1</option>
+                                  {State?.getStatesOfCountry('IN')?.map(
+                                    (ele, index) => (
+                                      <option key={index} value={ele?.name}>
+                                        {ele?.name}
+                                      </option>
+                                    )
+                                  )}
                                 </Field>
                                 <ErrorMessage
                                   name="eMedicalStateOfHospital"
@@ -865,7 +984,23 @@ const StepFour = () => {
                                 >
                                   <option value="">Select </option>
 
-                                  <option value="option1">Option1 </option>
+                                  {City?.getCitiesOfState(
+                                    'IN',
+                                    State?.getStatesOfCountry('IN')
+                                      .filter(
+                                        state =>
+                                          state?.name ===
+                                          values?.eMedicalStateOfHospital
+                                      )
+                                      .map(state => state.isoCode)[0] ?? ''
+                                  )?.map((elecity, indexcity) => (
+                                    <option
+                                      key={indexcity}
+                                      value={elecity?.name}
+                                    >
+                                      {elecity?.name}
+                                    </option>
+                                  ))}
                                 </Field>
                                 <ErrorMessage
                                   name="eMedicalDistrictOfHospital"

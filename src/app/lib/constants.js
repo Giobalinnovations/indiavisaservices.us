@@ -79,11 +79,6 @@ export const step1ValidationSchema = {
       .required('Expected Date of Arrival is required')
       .test('is-not-past', 'Date cannot be in the past', isNotPast)
       .min(minDate, 'Date must be at least 5 days from today'),
-
-    // instructionsAccepted: Yup.boolean().oneOf(
-    //   [true],
-    //   'You must agree to the instructions'
-    // ),
   }),
   initialValues: {
     applicationType: '',
@@ -118,6 +113,11 @@ export const step2ValidationSchema = {
     previousName: Yup.string().when('changedName', {
       is: true,
       then: schema => schema.required('previous Name is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    previousLastName: Yup.string().when('changedName', {
+      is: true,
+      then: schema => schema.required('previous last Name is required'),
       otherwise: schema => schema.notRequired(),
     }),
     gender: Yup.string().required('Gender is required'),
@@ -218,6 +218,7 @@ export const step2ValidationSchema = {
     lastName: '',
     changedName: false,
     previousName: '',
+    previousLastName: '',
     gender: '',
     dateOfBirth: '',
     townCityOfBirth: '',
@@ -339,8 +340,13 @@ export const step3ValidationSchema = {
 
     presentOccupation: Yup.string().required('Present Occupation is required'),
     presentOtherOccupation: Yup.string().when('presentOccupation', {
-      is: 'other',
+      is: 'Others',
       then: schema => schema.required('Present other Occupation is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    houseWifeOccupationDetails: Yup.string().when('presentOccupation', {
+      is: 'House Wife',
+      then: schema => schema.required('Occupation details is required'),
       otherwise: schema => schema.notRequired(),
     }),
 
@@ -410,6 +416,7 @@ export const step3ValidationSchema = {
 
     presentOccupation: '',
     presentOtherOccupation: '',
+    houseWifeOccupationDetails: '',
     employerName: '',
     designation: '',
     address: '',
@@ -433,6 +440,29 @@ export const step4ValidationSchema = {
       .required('Phone number is required'),
     placesToVisit: Yup.string().required('Places to be visited is required'),
     placesToVisit2: Yup.string().required('Places to be visited is required'),
+
+    bookedHotel: Yup.string(),
+    bookedHotelTourOperatorName: Yup.string().when('bookedHotel', {
+      is: 'yes',
+      then: schema => schema.required('Tour operator name is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    bookedHotelTourOperatorAddress: Yup.string().when('bookedHotel', {
+      is: 'yes',
+      then: schema => schema.required('Tour operator address is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    bookedHotelName: Yup.string().when('bookedHotel', {
+      is: 'yes',
+      then: schema => schema.required('Hotel name is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+    bookedHotelPlace: Yup.string().when('bookedHotel', {
+      is: 'yes',
+      then: schema => schema.required('Hotel name is required'),
+      otherwise: schema => schema.notRequired(),
+    }),
+
     durationOfVisa: Yup.string().required('Duration of visa is required'),
     numberOfEntries: Yup.string().required('Number of entries is required'),
     portOfArrival: Yup.string().required(
@@ -970,6 +1000,11 @@ export const step4ValidationSchema = {
     contactNo: '',
     placesToVisit: '',
     placesToVisit2: '',
+    bookedHotel: 'no',
+    bookedHotelTourOperatorName: '',
+    bookedHotelTourOperatorAddress: '',
+    bookedHotelName: '',
+    bookedHotelPlace: '',
     durationOfVisa: '',
     numberOfEntries: '',
     portOfArrival: '',
@@ -3239,4 +3274,75 @@ export const eligibleCountriesEvisaIndia = [
   'Venezuela',
   'Vietnam',
   'Zambia and Zimbabwe',
+];
+
+// religion names
+
+export const religionNames = [
+  'Christian',
+  'Islam',
+  'Hindu',
+  'Buddhism',
+  'Judaism',
+  'Janism',
+  'Sikh',
+  'Parsi',
+  'Others',
+  'Bahai',
+  'Zoroastrian',
+];
+
+// education qualificatons list
+export const educationalQualificationList = [
+  'Below Matriculation',
+  'Graduate',
+  'Higher Secondary',
+  'Illiterate',
+  'Matriculation',
+  'Na Being Minnor',
+  'Others',
+  'Post Graduate',
+  'Professional',
+];
+
+// Occupation list
+export const occupationList = [
+  'Air Force',
+  'Business Person',
+  'Cameraman',
+  'Charity/Social Worker',
+  'Charted Accountant',
+  'College/University Teacher',
+  'Diplomat',
+  'Doctor',
+  'Engineer',
+  'Film Producer',
+  'Government Service',
+  'House Wife',
+  'Journalist',
+  'Labour',
+  'Lawyer',
+  'Media',
+  'Military',
+  'Missionary',
+  'Navy',
+  'News Broadcaster',
+  'Official',
+  'Others',
+  'Police',
+  'Press',
+  'Private Service',
+  'Publisher',
+  'Reporter',
+  'Researcher',
+  'Retired',
+  'Sea Man',
+  'Self Employed Freelancer',
+  'Student',
+  'Trader',
+  'Tv Producer',
+  'UN Employed',
+  'UN Official',
+  'Worker',
+  'Writer',
 ];

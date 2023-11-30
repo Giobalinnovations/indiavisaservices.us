@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BsQuestionCircleFill } from 'react-icons/bs';
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { step3ValidationSchema } from '@/app/lib/constants';
+import { occupationList, step3ValidationSchema } from '@/app/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -1313,20 +1313,11 @@ const StepThree = () => {
                                 <option value="" disabled>
                                   Select Occupation*
                                 </option>
-                                <option value="Engineer">Engineer</option>
-                                <option value="Architect">Architect</option>
-                                <option value="Scientist">Scientist</option>
-                                <option value="Technician">Technician</option>
-                                <option value="Consultant">Consultant</option>
-                                <option value="Civil engineer">
-                                  Civil engineer
-                                </option>
-                                <option value="Veterinarian">
-                                  Veterinarian
-                                </option>
-                                <option value="Teacher">Teacher</option>
-                                <option value="Musician">Musician</option>
-                                <option value="other">Other</option>
+                                {occupationList?.map(occupation => (
+                                  <option key={occupation} value={occupation}>
+                                    {occupation}
+                                  </option>
+                                ))}
                               </Field>
                               <ErrorMessage
                                 name="presentOccupation"
@@ -1336,7 +1327,7 @@ const StepThree = () => {
                             </div>
                           </div>
 
-                          {values.presentOccupation === 'other' ? (
+                          {values.presentOccupation === 'Others' ? (
                             <div className="form-input-main-div">
                               <label
                                 className="form-label"
@@ -1352,6 +1343,37 @@ const StepThree = () => {
                                 />
                                 <ErrorMessage
                                   name="presentOtherOccupation"
+                                  component="div"
+                                  className="text-red-500"
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            ''
+                          )}
+                          {values.presentOccupation === 'House Wife' ? (
+                            <div className="form-input-main-div">
+                              <label
+                                className="form-label"
+                                htmlFor="employerName"
+                              >
+                                Specify below occupation detail of*
+                              </label>
+                              <div className="input-error-wrapper">
+                                <Field
+                                  className="p-2 border rounded select-input"
+                                  component="select"
+                                  id="houseWifeOccupationDetails"
+                                  name="houseWifeOccupationDetails"
+                                >
+                                  <option value="" disabled>
+                                    Select
+                                  </option>
+                                  <option value="father">Father</option>
+                                  <option value="spouse">Spouse</option>
+                                </Field>
+                                <ErrorMessage
+                                  name="houseWifeOccupationDetails"
                                   component="div"
                                   className="text-red-500"
                                 />
