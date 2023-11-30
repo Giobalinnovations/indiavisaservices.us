@@ -101,7 +101,7 @@ const StepFour = () => {
             return '60 Days';
 
           default:
-            return '';
+            return '6 Months';
         }
       };
       const getNumberOfEntries = (
@@ -127,7 +127,7 @@ const StepFour = () => {
             return 'Triple';
 
           default:
-            return '';
+            return 'Double';
         }
       };
 
