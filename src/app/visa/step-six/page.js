@@ -29,7 +29,7 @@ const StepSix = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getAllStepsData'],
+    queryKey: ['getAllStepsData6'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
@@ -37,7 +37,9 @@ const StepSix = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP6,
     6,
-    '/visa/step-seven'
+    '/visa/step-seven',
+    false,
+    'getAllStepsDataStep7'
   );
 
   const temporaryExitUpdateMutation = useUpdate(

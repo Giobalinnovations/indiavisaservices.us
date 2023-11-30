@@ -40,7 +40,9 @@ const StepTwo = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP2,
     2,
-    '/visa/step-three'
+    '/visa/step-three',
+    false,
+    'getAllStepsDataStep3'
   );
   const temporaryExitUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,

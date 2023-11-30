@@ -8,7 +8,8 @@ export default function usePost(
   apiEndpointUrl,
   step,
   routeUrl,
-  isDispatch = false
+  isDispatch = false,
+  queryKey = 'getAllStepsData'
 ) {
   const queryClient = useQueryClient();
   const { dispatch } = useFormContext();
@@ -31,9 +32,9 @@ export default function usePost(
         autoClose: 500,
       });
 
-      router.push(`${routeUrl}`);
       // router.refresh();
-      queryClient.invalidateQueries({ queryKey: ['getAllStepsData'] });
+      queryClient.invalidateQueries({ queryKey: [queryKey] });
+      router.push(`${routeUrl}`);
     },
     onError: error => {
       toast.error(
