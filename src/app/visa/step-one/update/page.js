@@ -887,10 +887,7 @@ export default function StepOneUpdate() {
                                         id="eConferenceVisaValue"
                                         name="eConferenceVisa"
                                         className="mt-1"
-                                        value={`TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED
-                              BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF
-                              INDIA,STATE GOVERNMENTS OR UT ADMINISTRATIONS AND
-                              THEIR SUBORDINATE/ ATTACHED ORGANIZATIONS AND PSUS`}
+                                        value="TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF INDIA,STATE GOVERNMENTS OR UT ADMINISTRATIONS AND THEIR SUBORDINATE/ ATTACHED ORGANIZATIONS AND PSUS"
                                       />
                                       <label htmlFor="eConferenceVisaValue">
                                         TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP
