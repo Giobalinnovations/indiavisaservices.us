@@ -20,7 +20,7 @@ const StepSeven = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getAllStepsData'],
+    queryKey: ['getAllStepsData7'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,

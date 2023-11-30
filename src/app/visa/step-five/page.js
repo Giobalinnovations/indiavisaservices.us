@@ -25,12 +25,18 @@ const StepFive = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ['getAllStepsData'],
+    queryKey: ['getAllStepsData5'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
   });
-  const postMutation = usePost(apiEndpoint.VISA_ADD_STEP5, 5, '/visa/step-six');
+  const postMutation = usePost(
+    apiEndpoint.VISA_ADD_STEP5,
+    5,
+    '/visa/step-six',
+    false,
+    'getAllStepsDataStep6'
+  );
 
   const temporaryExitUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
@@ -62,6 +68,10 @@ const StepFive = () => {
   if (getAllStepsDataIsSuccess) {
     if (!getAllStepsData?.data?.step4Data) {
       return router.push('/visa/step-four');
+    }
+
+    if (getAllStepsData?.data?.step5Data) {
+      return router.push('/visa/step-five/update');
     }
 
     return (
