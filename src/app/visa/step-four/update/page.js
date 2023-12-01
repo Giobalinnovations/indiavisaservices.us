@@ -71,7 +71,7 @@ const StepFour = () => {
   );
   if (getStep1DataIsSuccess && getAllStepsDataIsSuccess) {
     if (getAllStepsData.data.step4Data) {
-      const { __v, _id, ...cleanedStep4Data } =
+      const { __v, _id, createdAt, updatedAt, ...cleanedStep4Data } =
         getAllStepsData?.data?.step4Data;
       const visaServiceSelected = step1Data?.data?.visaService
         ? lodash.camelCase(step1Data?.data?.visaService)
