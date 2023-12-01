@@ -43,7 +43,7 @@ export default function StepOneUpdate() {
 
   if (getAllStepsDataIsSuccess) {
     if (getAllStepsData.data.step1Data) {
-      const { __v, _id, ...cleanedStep1Data } =
+      const { __v, _id, createdAt, updatedAt, ...cleanedStep1Data } =
         getAllStepsData?.data?.step1Data;
 
       return (
