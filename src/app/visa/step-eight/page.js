@@ -170,7 +170,7 @@ const StepEight = () => {
               paymentNowUpdateMutation.mutate({
                 lastExitStepUrl: '/',
                 termsAndConditions: values.termsAndConditions,
-                paymentStatus: 'completed',
+                paymentStatus: 'pending',
                 termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
                   and conditions given on the website indiavisasonline.org.in
                   and understand all the questions and statements of this

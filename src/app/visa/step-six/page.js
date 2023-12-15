@@ -50,6 +50,15 @@ const StepSix = () => {
     refetch
   );
 
+  const updatePaymentStatusMutation = useUpdate(
+    apiEndpoint.UPDATE_VISA_ADD_STEP1,
+    state.formId,
+    'Payment status updated successfully',
+    // '/',
+    '/visa/step-seven',
+    false
+  );
+
   const handleTemporaryExit = () => {
     temporaryExitUpdateMutation.mutate({
       lastExitStepUrl: pathName,
@@ -105,7 +114,16 @@ const StepSix = () => {
 
             formData.append('formId', state.formId);
 
-            postMutation.mutate(formData);
+            // postMutation.mutate(formData);
+
+            postMutation.mutate(formData, {
+              onSuccess: () => {
+                updatePaymentStatusMutation.mutate({
+                  paymentStatus: 'pendingPayment',
+                });
+              },
+            });
+
             setSubmitting(false);
             resetForm();
           }}
