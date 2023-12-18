@@ -126,7 +126,7 @@ export default function Step3Update() {
                                 name="country"
                                 className="p-2 border rounded select-input"
                               >
-                                <option disabled selected value="">
+                                <option disabled value="">
                                   Country
                                 </option>
                                 {Country?.getAllCountries()?.map(

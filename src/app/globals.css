@@ -21,25 +21,23 @@ body {
   @apply py-8 space-y-4;
 }
 .form-input-main-div {
-  @apply grid md:grid-cols-12 items-center md:pt-0 pt-3;
+  @apply grid items-center pt-3 md:grid-cols-12 md:pt-0;
 }
 .form-label {
   @apply col-span-4 mb-3 text-base text-[#07074D] md:block flex gap-4 items-center;
 }
 
-
-.info-icon
-{
-  @apply md:hidden w-4 h-4;
+.info-icon {
+  @apply w-4 h-4 md:hidden;
 }
 .form-input {
   @apply col-span-8 w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md;
 }
 .select-input {
-  @apply col-span-8 w-full;
+  @apply w-full col-span-8;
 }
 .input-error-wrapper {
-  @apply col-span-8 w-full;
+  @apply w-full col-span-8;
 }
 .formbtnBorder {
   @apply px-8 py-2 font-semibold bg-transparent border-2 rounded-full shadow-md hover:bg-primary text-primary hover:text-black border-primary focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
@@ -52,9 +50,9 @@ body {
 }
 
 .sidetext {
-  @apply text-primary font-semibold text-sm;
+  @apply text-sm font-semibold text-primary;
 }
-.PhoneInputInput{
+.PhoneInputInput {
   outline: none;
 }
 /* form css end  */
@@ -232,3 +230,19 @@ body {
   }
 }
 /* Navbar--close */
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::after {
+  left: -20px !important;
+  top: 0;
+}
+
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::before {
+  top: -1px;
+  left: -20px !important;
+  border-bottom-color: #aeaeae;
+}

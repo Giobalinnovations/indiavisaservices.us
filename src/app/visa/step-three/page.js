@@ -124,12 +124,12 @@ const StepThree = () => {
                               htmlFor="houseNoStreet"
                             >
                               House No. Street*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Applicant’s permanent address (with postal/zip
                                   code)
                                 </div>
@@ -155,12 +155,12 @@ const StepThree = () => {
                               htmlFor="villageTownCity"
                             >
                               Village/Town?City*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your Village/Town/City
                                 </div>
                               </div>
@@ -182,12 +182,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="country">
                               Country
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select your country{' '}
                                 </div>
                               </div>
@@ -199,7 +199,7 @@ const StepThree = () => {
                                 name="country"
                                 className="p-2 border rounded select-input"
                               >
-                                <option disabled selected value="">
+                                <option disabled value="">
                                   Country
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -223,12 +223,12 @@ const StepThree = () => {
                               htmlFor="stateProvinceDistrict"
                             >
                               State/Province/District*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your State/Province/City
                                 </div>
                               </div>
@@ -253,12 +253,12 @@ const StepThree = () => {
                               htmlFor="postalZipCode"
                             >
                               Postal/Zip Code*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your Postal Zip Code
                                 </div>
                               </div>
@@ -280,12 +280,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="phoneNo">
                               Phone No.
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please provide your phone number
                                 </div>
                               </div>
@@ -307,12 +307,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="mobileNo">
                               Mobile No.
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please provide your mobile number
                                 </div>
                               </div>
@@ -378,12 +378,12 @@ const StepThree = () => {
                               htmlFor="permanentAddressHouseNoStreet"
                             >
                               House No. Street*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Applicant’s present address, maximum 35
                                   characters (each line)
                                 </div>
@@ -403,12 +403,12 @@ const StepThree = () => {
                               htmlFor="villageTownCity"
                             >
                               Village/Town?City*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your Village/Town/City
                                 </div>
                               </div>
@@ -427,12 +427,12 @@ const StepThree = () => {
                               htmlFor="permanentAddressStateProvinceDistrict"
                             >
                               State/Province/District*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your State/Province/District{' '}
                                 </div>
                               </div>
@@ -503,12 +503,12 @@ const StepThree = () => {
                               htmlFor="fatherFullName"
                             >
                               Full Name
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Applicant’s father name
                                 </div>
                               </div>
@@ -533,12 +533,12 @@ const StepThree = () => {
                               htmlFor="fatherNationality"
                             >
                               Nationality/Region*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Nationality / region of father
                                 </div>
                               </div>
@@ -584,12 +584,12 @@ const StepThree = () => {
                               htmlFor="fatherPreviousNationality"
                             >
                               Previous Nationality/Region*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Previous nationality / Region of Father
                                 </div>
                               </div>
@@ -635,12 +635,12 @@ const StepThree = () => {
                               htmlFor="fatherPlaceOfBirth"
                             >
                               Place of birth
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please enter your place of birth
                                 </div>
                               </div>
@@ -660,12 +660,12 @@ const StepThree = () => {
                               htmlFor="fatherCountry"
                             >
                               Country of Birth
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select country / region of birth
                                 </div>
                               </div>
@@ -714,12 +714,12 @@ const StepThree = () => {
                               htmlFor="motherFullName"
                             >
                               Full Name*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Applicant’s mother name
                                 </div>
                               </div>
@@ -744,12 +744,12 @@ const StepThree = () => {
                               htmlFor="motherNationality"
                             >
                               Nationality/Region*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select nationality / region of mother
                                 </div>
                               </div>
@@ -795,12 +795,12 @@ const StepThree = () => {
                               htmlFor="motherPreviousNationality"
                             >
                               Previous Nationality/Region*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select previous nationality / region of
                                   mother
                                 </div>
@@ -838,12 +838,12 @@ const StepThree = () => {
                               htmlFor="motherPlaceOfBirth"
                             >
                               Place of birth
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please enter place of birth
                                 </div>
                               </div>
@@ -863,12 +863,12 @@ const StepThree = () => {
                               htmlFor="motherCountryOfBirth"
                             >
                               Country of Birth
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select Country / region of birth
                                 </div>
                               </div>
@@ -953,12 +953,12 @@ const StepThree = () => {
                               htmlFor="applicantMaritalStatus"
                             >
                               Applicant’s Marital Status
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Applicant’s Marital Status
                                 </div>
                               </div>
@@ -997,12 +997,12 @@ const StepThree = () => {
                                   htmlFor="spouseFullName"
                                 >
                                   Full Name
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please enter spouse&apos;s full name
                                     </div>
                                   </div>
@@ -1028,12 +1028,12 @@ const StepThree = () => {
                                   htmlFor="spouseNationality"
                                 >
                                   Nationality/Region*
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please select spouse&apos;s nationality
                                     </div>
                                   </div>
@@ -1074,12 +1074,12 @@ const StepThree = () => {
                                   htmlFor="spousePreviousNationality"
                                 >
                                   Previous Nationality/Region*
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please select spouse&apos;s previous
                                       nationality
                                     </div>
@@ -1121,12 +1121,12 @@ const StepThree = () => {
                                   htmlFor="spousePlaceOfBirth"
                                 >
                                   Place of Birth
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please enter spouse&apos;s place of birth
                                     </div>
                                   </div>
@@ -1152,12 +1152,12 @@ const StepThree = () => {
                                   htmlFor="spouseCountryOfBirth"
                                 >
                                   Country/Region of birth
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please select spouse&apos;s country/region
                                       of birth
                                     </div>
@@ -1297,12 +1297,12 @@ const StepThree = () => {
                               htmlFor="presentOccupation"
                             >
                               Present Occupation*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please select your present occupation
                                 </div>
                               </div>
@@ -1394,12 +1394,12 @@ const StepThree = () => {
                               htmlFor="employerName"
                             >
                               Employer Name/Business*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Enter your employer name / business
                                 </div>
                               </div>
@@ -1422,12 +1422,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="designation">
                               Designation
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please provide your designation
                                 </div>
                               </div>
@@ -1450,12 +1450,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="address">
                               Address*
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please enter your address
                                 </div>
                               </div>
@@ -1478,12 +1478,12 @@ const StepThree = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="phone">
                               Phone
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please provide your phone number
                                 </div>
                               </div>
@@ -1509,12 +1509,12 @@ const StepThree = () => {
                               htmlFor="pastOccupationIfAny"
                             >
                               Past Occupation, if any
-                              <div class="group relative">
+                              <div className="group relative">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                   Please enter your past occupation if any
                                 </div>
                               </div>
@@ -1582,12 +1582,12 @@ const StepThree = () => {
                                   htmlFor="organization"
                                 >
                                   Organization
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please enter name of the organisation
                                     </div>
                                   </div>
@@ -1613,12 +1613,12 @@ const StepThree = () => {
                                   htmlFor="militaryDesignation"
                                 >
                                   Designation
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please enter your designation
                                     </div>
                                   </div>
@@ -1644,12 +1644,12 @@ const StepThree = () => {
                                   htmlFor="militaryRank"
                                 >
                                   Rank
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please provide the rank you were on
                                     </div>
                                   </div>
@@ -1675,12 +1675,12 @@ const StepThree = () => {
                                   htmlFor="placeOfPosting"
                                 >
                                   Place of Posting
-                                  <div class="group relative">
+                                  <div className="group relative">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
                                       Please provide place of posting
                                     </div>
                                   </div>

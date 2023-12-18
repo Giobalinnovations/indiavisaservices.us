@@ -250,12 +250,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label" htmlFor="mobileNo">
                               Contact No.
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please provide your contact number
                                 </div>
                               </div>
@@ -277,12 +277,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Places to be visited*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter place to be visited
                                 </div>
                               </div>
@@ -471,12 +471,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Expected Port of Exit from India
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please select expected port of exit from
                                   india.
                                 </div>
@@ -489,9 +489,7 @@ const StepFour = () => {
                                 component="select"
                                 className="p-2 border rounded select-input"
                               >
-                                <option selected value="">
-                                  Select
-                                </option>
+                                <option value="">Select</option>
                                 {airportsSeaports.map(
                                   (airportSeaport, index) => (
                                     <option key={index} value={airportSeaport}>
@@ -607,12 +605,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Address*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please enter previous visa address
                                     </div>
                                   </div>
@@ -633,12 +631,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Cities previously visited in India*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please provide cities previously visited
                                       in india.
                                     </div>
@@ -662,12 +660,12 @@ const StepFour = () => {
                                 <label className="form-label">
                                   Last Indian Visa no./Currently valid Indian
                                   Visa no.*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -left-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -left-32 group-hover:scale-100 ">
                                       Please enter last indian visa number
                                     </div>
                                   </div>
@@ -689,12 +687,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Type of Visa*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please select type of visa
                                     </div>
                                   </div>
@@ -707,9 +705,7 @@ const StepFour = () => {
                                     className="p-2 border rounded select-input"
                                     value={values.visitedIndiaBeforeTypeOfVisa}
                                   >
-                                    <option selected value="">
-                                      Select*
-                                    </option>
+                                    <option value="">Select*</option>
 
                                     {visaTypesList?.map(visaTypeL => (
                                       <option key={visaTypeL} value={visaTypeL}>
@@ -729,12 +725,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Place of Issue*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please enter place of issue
                                     </div>
                                   </div>
@@ -755,12 +751,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Date of Issue*
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please provide date of issue
                                     </div>
                                   </div>
@@ -1074,12 +1070,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Name
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please enter the name of applicant&apos;s
                                     company
                                   </div>
@@ -1101,12 +1097,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Address
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide of applicant&apos;s company
                                   </div>
                                 </div>
@@ -1131,12 +1127,12 @@ const StepFour = () => {
                                 htmlFor="eBUSINESSCompanyPhone"
                               >
                                 Phone No.
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide phone number of
                                     applicant&apos;s company
                                   </div>
@@ -1162,12 +1158,12 @@ const StepFour = () => {
                                 htmlFor="eBUSINESSCompanyWebsite"
                               >
                                 Website
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide website url of
                                     applicant&apos;s company
                                   </div>
@@ -1195,12 +1191,12 @@ const StepFour = () => {
                               <div className="form-input-main-div">
                                 <label className="form-label">
                                   Natures of Business/ Product
-                                  <div class="group relative">
+                                  <div className="relative group">
                                     <BsQuestionCircleFill
                                       className="text-primary info-icon"
                                       size={20}
                                     />
-                                    <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                    <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                       Please enter nature of business/Product
                                     </div>
                                   </div>
@@ -1722,12 +1718,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Name/subject of the conference
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Enter name/subject of the conference
                                   </div>
                                 </div>
@@ -1749,12 +1745,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Start date
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Duration of conferences starts from
                                   </div>
                                 </div>
@@ -1775,12 +1771,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 End date
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Duration of conferences ends{' '}
                                   </div>
                                 </div>
@@ -1805,12 +1801,12 @@ const StepFour = () => {
                                 htmlFor="eCONFERENCEAddress"
                               >
                                 Address
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide conference address
                                   </div>
                                 </div>
@@ -1833,12 +1829,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 State
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide conference state
                                   </div>
                                 </div>
@@ -1849,7 +1845,7 @@ const StepFour = () => {
                                   component="select"
                                   className="p-2 border rounded select-input"
                                 >
-                                  <option disabled selected value="">
+                                  <option disabled value="">
                                     Select
                                   </option>
 
@@ -1871,12 +1867,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 District
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide conference district
                                   </div>
                                 </div>
@@ -1917,12 +1913,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Pincode
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please enter the pin code{' '}
                                   </div>
                                 </div>
@@ -1945,12 +1941,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Name of organizer
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please enter the name of the organization
                                   </div>
                                 </div>
@@ -1972,12 +1968,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Address
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide the address of the
                                     organization
                                   </div>
@@ -2000,12 +1996,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Phone no
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide phone number of the
                                     organization
                                   </div>
@@ -2028,12 +2024,12 @@ const StepFour = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Email id
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please provide email address of the
                                     organization
                                   </div>
@@ -2077,12 +2073,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Countries Visited in last 10 years
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please select countries visited in last 10
                                   years
                                 </div>
@@ -2178,12 +2174,12 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.saarcCountryName`}
                                               >
                                                 Name of SAARC Country*
-                                                <div class="group relative">
+                                                <div className="relative group">
                                                   <BsQuestionCircleFill
                                                     className="text-primary info-icon"
                                                     size={20}
                                                   />
-                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                                     Select the name of SAARC
                                                     country{' '}
                                                   </div>
@@ -2228,12 +2224,12 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.selectYear`}
                                               >
                                                 Select Year*
-                                                <div class="group relative">
+                                                <div className="relative group">
                                                   <BsQuestionCircleFill
                                                     className="text-primary info-icon"
                                                     size={20}
                                                   />
-                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                                     Select the year of SAARC
                                                   </div>
                                                 </div>
@@ -2274,12 +2270,12 @@ const StepFour = () => {
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.numberOfVisits`}
                                               >
                                                 No. of Visits
-                                                <div class="group relative">
+                                                <div className="relative group">
                                                   <BsQuestionCircleFill
                                                     className="text-primary info-icon"
                                                     size={20}
                                                   />
-                                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                                     Please number of visites{' '}
                                                   </div>
                                                 </div>
@@ -2357,12 +2353,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Reference Name in India
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter name of reference from india{' '}
                                 </div>
                               </div>
@@ -2383,12 +2379,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Address
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter address of reference from india{' '}
                                 </div>
                               </div>
@@ -2411,12 +2407,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               State
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please provide reference state
                                 </div>
                               </div>
@@ -2427,7 +2423,7 @@ const StepFour = () => {
                                 component="select"
                                 className="p-2 border rounded select-input"
                               >
-                                <option disabled selected value="">
+                                <option disabled value="">
                                   Select
                                 </option>
 
@@ -2449,12 +2445,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               District
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please provide reference district
                                 </div>
                               </div>
@@ -2493,12 +2489,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Phone*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter phone number of reference from
                                   india{' '}
                                 </div>
@@ -2520,12 +2516,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Reference Name in Home Country*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter name of reference home
                                 </div>
                               </div>
@@ -2546,12 +2542,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Address*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter address of reference home
                                 </div>
                               </div>
@@ -2572,12 +2568,12 @@ const StepFour = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Phone*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please enter phone number of reference home
                                 </div>
                               </div>

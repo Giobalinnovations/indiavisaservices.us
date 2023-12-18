@@ -38,7 +38,7 @@ export default function FormikForm({
                 name="applicationType"
                 className="p-2 border rounded select-input"
               >
-                <option disabled selected value="">
+                <option disabled value="">
                   Select*
                 </option>
                 <option value="Bussiness">
@@ -63,7 +63,7 @@ export default function FormikForm({
                 name="nationalityRegion"
                 className="p-2 border rounded select-input"
               >
-                <option disabled selected value="">
+                <option disabled value="">
                   Country
                 </option>
                 {Country?.getAllCountries()?.map((country, index) => (
@@ -88,7 +88,7 @@ export default function FormikForm({
                 name="passportType"
                 className="p-2 border rounded select-input"
               >
-                <option disabled selected value="">
+                <option disabled value="">
                   Select*
                 </option>
                 <option value="ordinary passport">ORDINARY PASSPORT</option>
@@ -108,7 +108,7 @@ export default function FormikForm({
                 name="portOfArrival"
                 className="p-2 border rounded select-input"
               >
-                <option disabled selected value="">
+                <option disabled value="">
                   Select
                 </option>
                 <option value="arrone">arrone</option>
@@ -177,7 +177,7 @@ export default function FormikForm({
               {/* <PhoneInput
                     placeholder="Enter phone number"
                     value={contactValue}
-                    inputClass="phone-input-class"
+                    inputclassName="phone-input-class"
                     className="form-input"
                     onChange={setContactValue}
                   /> */}
@@ -187,7 +187,7 @@ export default function FormikForm({
                   <PhoneInput
                     placeholder="Enter phone number"
                     value={field.value}
-                    inputClass="phone-input-class"
+                    inputclassName="phone-input-class"
                     onChange={value => {
                       form.setFieldValue(field.name, value);
 

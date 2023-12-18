@@ -19,6 +19,9 @@ import usePost from '@/hooks/usePost';
 import SavedFormId from '@/components/common/SavedFormId';
 import { usePathname, useRouter } from 'next/navigation';
 import useUpdate from '@/hooks/useUpdate';
+import { CiCalendarDate } from 'react-icons/ci';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const StepTwo = () => {
   const pathName = usePathname();
@@ -93,7 +96,7 @@ const StepTwo = () => {
             resetForm();
           }}
         >
-          {({ values, isValid, handleSubmit }) => (
+          {({ values, isValid, handleSubmit, setFieldValue }) => (
             <>
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
@@ -108,12 +111,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             First Name*{' '}
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 First name (Exactly as in passport)
                               </div>
                             </div>
@@ -137,12 +140,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Last Name*{' '}
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Last name (Exactly as in passport)
                               </div>
                             </div>
@@ -173,12 +176,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Previous Name*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Enter your previous name
                                   </div>
                                 </div>
@@ -202,12 +205,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Previous Last Name*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Enter your previous last name
                                   </div>
                                 </div>
@@ -234,12 +237,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Gender*
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Select your gender
                               </div>
                             </div>
@@ -268,25 +271,35 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Date Of Birth
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Date of birth as in passport in dd/mm/yyyy
                                 format
                               </div>
                             </div>
                           </label>
                           <div className="input-error-wrapper">
-                            <Field
-                              type="date"
+                            <ReactDatePicker
+                              showIcon
+                              value={new Date(
+                                values.dateOfBirth
+                              ).toLocaleDateString()}
+                              onChange={date =>
+                                setFieldValue('dateOfBirth', date)
+                              }
+                              dateFormat="dd-MM-yyyy"
+                              icon={<CiCalendarDate />}
+                              className="w-full new-form-input"
                               name="dateOfBirth"
-                              id="dateOfBirth"
-                              className="form-input"
+                              placeholderText="Date of birth as in passport"
+                              // wrapperClassName="date-picker"
                               disabled={true}
                             />
+
                             <ErrorMessage name="dateOfBirth">
                               {errorMsg => (
                                 <div style={{ color: 'red' }}>{errorMsg}</div>
@@ -297,12 +310,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Town/City of birth
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Province/town/city of birth
                               </div>
                             </div>
@@ -324,12 +337,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Country/Region of birth
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Country/Region of birth
                               </div>
                             </div>
@@ -362,12 +375,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Citizenship/National ID no.
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Citizenship/National ID no.
                               </div>
                             </div>
@@ -389,12 +402,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Religion
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Please select your religion
                               </div>
                             </div>
@@ -440,12 +453,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Visible identification marks
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Visible identification marks
                               </div>
                             </div>
@@ -468,12 +481,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Educational Qualification
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Educational Qualification
                               </div>
                             </div>
@@ -506,12 +519,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Nationality
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Nationality/Region
                               </div>
                             </div>
@@ -548,12 +561,12 @@ const StepTwo = () => {
                           <label className="form-label">
                             Did you acquire nationality by birth or by
                             naturalization?
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -left-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -left-32 group-hover:scale-100 ">
                                 Did you acquire Nationality by birth or by
                                 naturalization?
                               </div>
@@ -586,12 +599,12 @@ const StepTwo = () => {
                           <div className="form-input-main-div">
                             <label className="form-label">
                               Previous Nationality*
-                              <div class="group relative">
+                              <div className="relative group">
                                 <BsQuestionCircleFill
                                   className="text-primary info-icon"
                                   size={20}
                                 />
-                                <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                   Please select previous nationality
                                 </div>
                               </div>
@@ -727,12 +740,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Passport Number*
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Applicant’s Passport Number
                               </div>
                             </div>
@@ -754,12 +767,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Place of Issue*
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 Please enter the place of Issue
                               </div>
                             </div>
@@ -781,12 +794,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Date of Issue*
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 In dd/mm/yyyy format
                               </div>
                             </div>
@@ -808,12 +821,12 @@ const StepTwo = () => {
                         <div className="form-input-main-div">
                           <label className="form-label">
                             Date of Expiry*
-                            <div class="group relative">
+                            <div className="relative group">
                               <BsQuestionCircleFill
                                 className="text-primary info-icon"
                                 size={20}
                               />
-                              <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                              <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                 In dd/mm/yyyy format. minimum six months
                                 validity is from journey date.
                               </div>
@@ -880,12 +893,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Country of Issue*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please select country of issue
                                   </div>
                                 </div>
@@ -921,12 +934,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Passport/IC No.
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Enter your passport IC number
                                   </div>
                                 </div>
@@ -943,12 +956,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Date of Issue*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please select Date of issue
                                   </div>
                                 </div>
@@ -972,12 +985,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Place of Issue*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please select place of issue
                                   </div>
                                 </div>
@@ -1001,12 +1014,12 @@ const StepTwo = () => {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Nationality mentioned therein*
-                                <div class="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div class="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Please select your nationality
                                   </div>
                                 </div>
