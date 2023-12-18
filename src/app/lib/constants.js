@@ -75,10 +75,9 @@ export const step1ValidationSchema = {
       otherwise: schema => schema.notRequired(),
     }),
 
-    expectedDateOfArrival: Yup.date()
-      .required('Expected Date of Arrival is required')
-      .test('is-not-past', 'Date cannot be in the past', isNotPast)
-      .min(minDate, 'Date must be at least 5 days from today'),
+    expectedDateOfArrival: Yup.date().required(
+      'Expected Date of Arrival is required'
+    ),
   }),
   initialValues: {
     applicationType: '',

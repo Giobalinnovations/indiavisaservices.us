@@ -19,6 +19,7 @@ import SavedFormId from '@/components/common/SavedFormId';
 import lodash from 'lodash';
 import useUpdate from '@/hooks/useUpdate';
 import { Country, State, City } from 'country-state-city';
+import Select from 'react-select';
 
 const StepFour = () => {
   const { state } = useFormContext();
@@ -160,6 +161,10 @@ const StepFour = () => {
               updateMutation.mutate({
                 ...values,
                 formId: state.formId,
+                countryVisitedInLast10Years:
+                  values.countryVisitedInLast10Years.map(
+                    option => option.value
+                  ),
               });
               setSubmitting(false);
             }}
@@ -623,7 +628,7 @@ const StepFour = () => {
                                       name="visitedIndiaBeforeTypeOfVisa"
                                       className="p-2 border rounded select-input"
                                     >
-                                      <option disabled selected value="">
+                                      <option disabled value="">
                                         Select*
                                       </option>
                                       {visaTypesList?.map(visaTypeL => (
@@ -1796,18 +1801,49 @@ const StepFour = () => {
                               </label>
 
                               <div className="input-error-wrapper">
-                                <MultiReactSelectFormik
+                                {/* <MultiReactSelectFormik
                                   options={Country?.getAllCountries()?.map(
                                     country => ({
                                       value: country?.name,
                                       label: country?.name,
                                     })
                                   )}
-                                  value={values.countryVisitedInLast10Years}
+                                  // defa={values.countryVisitedInLast10Years?.map(value => ({label: '', value: ''})}
+                                  defaultValue={values.countryVisitedInLast10Years?.map(
+                                    value => ({
+                                      label: value,
+                                      value: value,
+                                    })
+                                  )}
                                   onChange={setFieldValue}
                                   onBlur={setFieldTouched}
                                   error={errors.countryVisitedInLast10Years}
                                   touched={touched.countryVisitedInLast10Years}
+                                /> */}
+
+                                <Select
+                                  defaultValue={values.countryVisitedInLast10Years?.map(
+                                    value => ({
+                                      label: value,
+                                      value: value,
+                                    })
+                                  )}
+                                  isMulti
+                                  name="countryVisitedInLast10Years"
+                                  options={Country?.getAllCountries()?.map(
+                                    country => ({
+                                      value: country?.name,
+                                      label: country?.name,
+                                    })
+                                  )}
+                                  className="basic-multi-select"
+                                  classNamePrefix="select"
+                                  onChange={value => {
+                                    setFieldValue(
+                                      'countryVisitedInLast10Years',
+                                      value
+                                    );
+                                  }}
                                 />
                               </div>
                             </div>

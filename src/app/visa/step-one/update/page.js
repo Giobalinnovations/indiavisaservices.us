@@ -79,7 +79,7 @@ export default function StepOneUpdate() {
                           name="applicationType"
                           className="p-2 border rounded select-input"
                         >
-                          <option disabled selected value="">
+                          <option disabled value="">
                             Select*
                           </option>
                           <option value="Bussiness">
@@ -106,7 +106,7 @@ export default function StepOneUpdate() {
                           name="nationalityRegion"
                           className="p-2 border rounded select-input"
                         >
-                          <option disabled selected value="">
+                          <option disabled value="">
                             Country
                           </option>
                           {eligibleCountriesEvisaIndia?.map(
@@ -135,7 +135,7 @@ export default function StepOneUpdate() {
                           name="passportType"
                           className="p-2 border rounded select-input"
                         >
-                          <option disabled selected value="">
+                          <option disabled value="">
                             Select*
                           </option>
                           <option value="ordinary passport">
@@ -237,7 +237,7 @@ export default function StepOneUpdate() {
                         {/* <PhoneInput
                     placeholder="Enter phone number"
                     value={contactValue}
-                    inputClass="phone-input-class"
+                    inputclassName="phone-input-class"
                     className="form-input"
                     onChange={setContactValue}
                   /> */}
@@ -247,7 +247,7 @@ export default function StepOneUpdate() {
                             <PhoneInput
                               placeholder="Enter phone number"
                               value={field.value}
-                              inputClass="phone-input-class"
+                              inputclassName="phone-input-class"
                               onChange={value => {
                                 form.setFieldValue(field.name, value);
 

@@ -23,6 +23,7 @@ const MultiReactSelectFormik = ({
 const MySelect = props => {
   const handleChange = value => {
     props.onChange('countryVisitedInLast10Years', value);
+    console.log(value);
   };
 
   const handleBlur = () => {

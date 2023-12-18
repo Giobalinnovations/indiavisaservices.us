@@ -12,7 +12,9 @@ import { ImSpinner2 } from 'react-icons/im';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-
+import ReactDatePicker from 'react-datepicker';
+import { CiCalendarDate } from 'react-icons/ci';
+import 'react-datepicker/dist/react-datepicker.css';
 const StepOne = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP1,
@@ -41,7 +43,7 @@ const StepOne = () => {
             resetForm();
           }}
         >
-          {({ values, isValid, handleSubmit, handleChange }) => (
+          {({ values, isValid, handleSubmit, setFieldValue }) => (
             <Form onSubmit={handleSubmit} className="formMain">
               <div className="form-input-main-div">
                 <label className="form-label">Application Type*</label>
@@ -53,7 +55,7 @@ const StepOne = () => {
                     name="applicationType"
                     className="p-2 border rounded select-input"
                   >
-                    <option disabled selected value="">
+                    <option disabled value="">
                       Select*
                     </option>
                     <option value="Normal">
@@ -79,7 +81,7 @@ const StepOne = () => {
                     name="nationalityRegion"
                     className="p-2 border rounded select-input"
                   >
-                    <option disabled selected value="">
+                    <option disabled value="">
                       Country
                     </option>
                     {eligibleCountriesEvisaIndia?.map((country, index) => (
@@ -104,7 +106,7 @@ const StepOne = () => {
                     name="passportType"
                     className="p-2 border rounded select-input"
                   >
-                    <option disabled selected value="">
+                    <option disabled value="">
                       Select*
                     </option>
                     <option value="ordinary passport">ORDINARY PASSPORT</option>
@@ -142,13 +144,19 @@ const StepOne = () => {
               <div className="form-input-main-div">
                 <label className="form-label">Date Of Birth</label>
                 <div className="input-error-wrapper">
-                  <Field
-                    required
-                    type="date"
+                  <ReactDatePicker
+                    showIcon
+                    selected={values.dateOfBirth}
+                    maxDate={new Date()}
+                    onChange={date => setFieldValue('dateOfBirth', date)}
+                    dateFormat="dd-MM-yyyy"
+                    icon={<CiCalendarDate />}
+                    className="w-full new-form-input"
                     name="dateOfBirth"
-                    id="dateOfBirth"
-                    className="form-input"
+                    placeholderText="Enter date of birth"
+                    // wrapperClassName="date-picker"
                   />
+
                   <ErrorMessage name="dateOfBirth">
                     {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
@@ -191,20 +199,12 @@ const StepOne = () => {
               <div className="form-input-main-div">
                 <label className="form-label">Contact no*</label>
                 <div className="input-error-wrapper form-input">
-                  {/* <PhoneInput
-                    placeholder="Enter phone number"
-                    value={contactValue}
-                    inputClass="phone-input-class"
-                    className="form-input"
-                    onChange={setContactValue}
-                  /> */}
-
                   <Field name="contactNo">
                     {({ field, form }) => (
                       <PhoneInput
                         placeholder="Enter phone number"
                         value={field.value}
-                        inputClass="phone-input-class"
+                        inputclassName="phone-input-class"
                         onChange={value => {
                           form.setFieldValue(field.name, value);
 
@@ -884,13 +884,24 @@ const StepOne = () => {
               <div className="form-input-main-div">
                 <label className="form-label">Expected Date of Arrival</label>
                 <div className="input-error-wrapper">
-                  <Field
-                    required
-                    type="date"
+                  <ReactDatePicker
+                    showIcon
+                    selected={values.expectedDateOfArrival}
+                    minDate={new Date()}
+                    maxDate={
+                      new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000)
+                    } // Set max date as 5 days from today
+                    onChange={date =>
+                      setFieldValue('expectedDateOfArrival', date)
+                    }
+                    dateFormat="dd-MM-yyyy"
+                    icon={<CiCalendarDate />}
+                    className="w-full new-form-input"
                     name="expectedDateOfArrival"
-                    id="expectedDateOfArrival"
-                    className="form-input"
+                    placeholderText="Enter expected of arrival date"
+                    // wrapperClassName="date-picker"
                   />
+
                   <ErrorMessage name="expectedDateOfArrival">
                     {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>

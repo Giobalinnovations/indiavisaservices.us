@@ -349,7 +349,7 @@ export default function StepFourUpdate() {
                                     name="visitedIndiaBeforeTypeOfVisa"
                                     className="p-2 border rounded select-input"
                                   >
-                                    <option disabled selected value="">
+                                    <option disabled value="">
                                       Select*
                                     </option>
                                     <option value="Bussiness">
