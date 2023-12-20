@@ -42,16 +42,16 @@ const Home = () => {
 
   if (
     isSuccess &&
-    data?.data?.paymentStatus !== 'completed' &&
-    data?.data?.paymentStatus !== 'payLater' &&
+    data?.data?.paymentStatus !== 'pending' &&
+    data?.data?.paymentStatus !== 'pendingPayment' &&
     data?.data?.lastExitStepUrl !== 'notFound'
   ) {
     router.push(data?.data?.lastExitStepUrl);
   }
   if (
     isSuccess &&
-    data?.data?.paymentStatus !== 'completed' &&
-    data?.data?.paymentStatus !== 'payLater' &&
+    data?.data?.paymentStatus !== 'pending' &&
+    data?.data?.paymentStatus !== 'pendingPayment' &&
     data?.data?.lastExitStepUrl === 'notFound'
   ) {
     router.push('/visa/step-two');
@@ -169,7 +169,8 @@ const Home = () => {
                                   className="text-red-600"
                                 />
                                 {isSuccess &&
-                                  data?.data?.paymentStatus === 'payLater' && (
+                                  data?.data?.paymentStatus ===
+                                    'pendingPayment' && (
                                     <div>
                                       Partially Filled Form Is Completed for
                                       this application Id : {data?.data?._id}{' '}
@@ -185,7 +186,7 @@ const Home = () => {
                                     </div>
                                   )}
                                 {isSuccess &&
-                                  data?.data?.paymentStatus === 'completed' && (
+                                  data?.data?.paymentStatus === 'pending' && (
                                     <div>
                                       Payment is completed for this application
                                       Id : {data?.data?._id}
@@ -274,8 +275,8 @@ const Home = () => {
                 <Dialog.Panel className="w-full max-w-md p-6 space-y-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                   <h2 className="inline-block text-xl font-semibold text-left text-gray-800">
                     Pay Visa Processing Fee{' '}
-                    {data?.data?.paymentStatus !== 'completed' &&
-                      data?.data?.paymentStatus !== 'payLater' &&
+                    {data?.data?.paymentStatus !== 'pending' &&
+                      data?.data?.paymentStatus !== 'pendingPayment' &&
                       data?.data?.lastExitStepUrl === 'notFound' && (
                         <>
                           {' '}
@@ -292,26 +293,27 @@ const Home = () => {
                           </div>
                         </>
                       )}
-                    {isSuccess && data?.data?.paymentStatus === 'payLater' && (
-                      <>
-                        {' '}
-                        <Dialog.Title
-                          as="h3"
-                          className="text-lg font-medium leading-6 text-gray-900"
-                        >
-                          Payment is Pending
-                        </Dialog.Title>
-                        <div className="">
-                          <p className="text-sm text-gray-500">
-                            Your Payment is not completed.
-                          </p>
-                          <p className="text-sm text-gray-500">
-                            Your payment has been not completed.
-                          </p>
-                        </div>
-                      </>
-                    )}
-                    {isSuccess && data?.data?.paymentStatus === 'completed' && (
+                    {isSuccess &&
+                      data?.data?.paymentStatus === 'pendingPayment' && (
+                        <>
+                          {' '}
+                          <Dialog.Title
+                            as="h3"
+                            className="text-lg font-medium leading-6 text-gray-900"
+                          >
+                            Payment is Pending
+                          </Dialog.Title>
+                          <div className="">
+                            <p className="text-sm text-gray-500">
+                              Your Payment is not completed.
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              Your payment has been not completed.
+                            </p>
+                          </div>
+                        </>
+                      )}
+                    {isSuccess && data?.data?.paymentStatus === 'pending' && (
                       <>
                         {' '}
                         <Dialog.Title
@@ -446,8 +448,8 @@ const Home = () => {
                     <div className="max-w-xl mx-auto">
                       <h2 className="inline-block text-xl font-semibold text-left text-gray-800">
                         Pay Visa Processing Fee{' '}
-                        {data?.data?.paymentStatus !== 'completed' &&
-                          data?.data?.paymentStatus !== 'payLater' &&
+                        {data?.data?.paymentStatus !== 'pending' &&
+                          data?.data?.paymentStatus !== 'pendingPayment' &&
                           data?.data?.lastExitStepUrl === 'notFound' && (
                             <Link
                               href="/visa/step-two"
@@ -459,7 +461,7 @@ const Home = () => {
                             </Link>
                           )}
                         {isSuccess &&
-                          data?.data?.paymentStatus === 'payLater' && (
+                          data?.data?.paymentStatus === 'pendingPayment' && (
                             <div>
                               Partially Filled Form Is Completed for this
                               application Id : {data?.data?._id} and Please Pay
@@ -474,7 +476,7 @@ const Home = () => {
                             </div>
                           )}
                         {isSuccess &&
-                          data?.data?.paymentStatus === 'completed' && (
+                          data?.data?.paymentStatus === 'pending' && (
                             <div>
                               Payment is completed for this application Id :{' '}
                               {data?.data?._id}
@@ -483,7 +485,7 @@ const Home = () => {
                       </h2>
 
                       {isSuccess &&
-                      data?.data?.paymentStatus === 'completed' ? null : (
+                      data?.data?.paymentStatus === 'pending' ? null : (
                         <>
                           <p className="pl-px text-xs text-gray-700">
                             Enter Application ID
