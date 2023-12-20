@@ -887,10 +887,10 @@ const StepOne = () => {
                   <ReactDatePicker
                     showIcon
                     selected={values.expectedDateOfArrival}
-                    minDate={new Date()}
-                    maxDate={
-                      new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000)
-                    } // Set max date as 5 days from today
+                    // minDate={new Date()}
+                    minDate={
+                      new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
+                    }
                     onChange={date =>
                       setFieldValue('expectedDateOfArrival', date)
                     }
