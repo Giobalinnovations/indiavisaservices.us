@@ -9,23 +9,30 @@ export default function useUpdate(
   updateId,
   step,
   routeUrl,
-  refetch
+  refetch,
+  queryKey
 ) {
   const [queryClient] = useState(() => new QueryClient());
   const router = useRouter();
   const updateMutation = useMutation({
     mutationFn: formData => {
-      return axiosInstance.put(`${apiEndpointUrl}${updateId}`, formData);
+      return axiosInstance.put(`${apiEndpointUrl}/${updateId}`, formData);
     },
     onSuccess: data => {
       toast.success(`step ${step} Updated successfully`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,
       });
-      queryClient.invalidateQueries({ queryKey: ['getAllStepsData'] });
-
-      router.push(`${routeUrl}`);
+      if (queryKey) {
+        queryClient.invalidateQueries({ queryKey: [queryKey] });
+      } else {
+        queryClient.invalidateQueries({ queryKey: ['getAllStepsData'] });
+      }
+      // queryClient.invalidateQueries({ queryKey: [queryKey] });
       router.refresh();
+      if (routeUrl) {
+        router.push(`${routeUrl}`);
+      }
       if (refetch) {
         refetch();
       }

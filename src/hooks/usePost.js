@@ -1,4 +1,4 @@
-import { useFormContext } from '@/app/context/formContext';
+import { useFormContext } from '@/context/formContext';
 import axiosInstance from '@/services/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,7 @@ export default function usePost(
   step,
   routeUrl,
   isDispatch = false,
-  queryKey = 'getAllStepsData'
+  queryKey
 ) {
   const queryClient = useQueryClient();
   const { dispatch } = useFormContext();
@@ -29,19 +29,20 @@ export default function usePost(
 
       toast.success(`step ${step} completed successfully`, {
         position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 500,
+        autoClose: 1000,
       });
 
-      // router.refresh();
       queryClient.invalidateQueries({ queryKey: [queryKey] });
-      router.push(`${routeUrl}`);
+      if (routeUrl) {
+        router.push(`${routeUrl}`);
+      }
     },
     onError: error => {
       toast.error(
         'An error occurred while processing your request. Please try again later.',
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-          autoClose: 500,
+          autoClose: 1000,
         }
       );
     },

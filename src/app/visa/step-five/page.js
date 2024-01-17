@@ -1,8 +1,8 @@
 'use client';
-import { useFormContext } from '@/app/context/formContext';
-import { step5ValidationSchema, step5data } from '@/app/lib/constants';
-import BannerPage from '@/components/common/BannerPage';
-import SavedFormId from '@/components/common/SavedFormId';
+import BannerPage from '@/components/india/common/BannerPage';
+import SavedFormId from '@/components/india/common/SavedFormId';
+import { step5ValidationSchema, step5data } from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
 import usePost from '@/hooks/usePost';
 import useUpdate from '@/hooks/useUpdate';
 import axiosInstance from '@/services/api';
@@ -33,7 +33,7 @@ const StepFive = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP5,
     5,
-    '/visa/step-six',
+    '/india/visa/step-six',
     false,
     'getAllStepsDataStep6'
   );
@@ -42,7 +42,7 @@ const StepFive = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
     'temporary step 5 saved successfully',
-    '/',
+    '/india',
     refetch
   );
 
@@ -50,6 +50,7 @@ const StepFive = () => {
     temporaryExitUpdateMutation.mutate({
       lastExitStepUrl: pathName,
     });
+    localStorage.clear();
   };
 
   if (isPending) {
@@ -62,16 +63,16 @@ const StepFive = () => {
   }
 
   if (error) {
-    return router.push('/visa/step-one');
+    return router.push('/india/visa/step-one');
   }
 
   if (getAllStepsDataIsSuccess) {
     if (!getAllStepsData?.data?.step4Data) {
-      return router.push('/visa/step-four');
+      return router.push('/india/visa/step-four');
     }
 
     if (getAllStepsData?.data?.step5Data) {
-      return router.push('/visa/step-five/update');
+      return router.push('/india/visa/step-five/update');
     }
 
     return (
@@ -94,7 +95,7 @@ const StepFive = () => {
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Details of Visa Sought
                     </h2>

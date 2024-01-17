@@ -1,5 +1,5 @@
-import BannerPage from "@/components/common/BannerPage";
-import StepOne from "@/components/forms/e-visa/StepOne";
+
+import BannerPage from "@/components/india/common/BannerPage";
 import React from "react";
 
 const page = () => {

@@ -1,11 +1,5 @@
 'use client';
-import BannerPage from '@/components/common/BannerPage';
 import React from 'react';
-import {
-  airportsSeaports,
-  eligibleCountriesEvisaIndia,
-  step1ValidationSchema,
-} from '@/app/lib/constants';
 import apiEndpoint from '@/services/apiEndpoint';
 import usePost from '@/hooks/usePost';
 import { ImSpinner2 } from 'react-icons/im';
@@ -15,11 +9,19 @@ import 'react-phone-number-input/style.css';
 import ReactDatePicker from 'react-datepicker';
 import { CiCalendarDate } from 'react-icons/ci';
 import 'react-datepicker/dist/react-datepicker.css';
+import BannerPage from '@/components/india/common/BannerPage';
+import {
+  airportsSeaports,
+  eligibleCountriesEvisaIndia,
+  step1ValidationSchema,
+} from '@/constant/indiaConstant';
+import ReactDatePickerInput from '@/components/common/ReactDatePickerInput';
+import { minDate } from '@/lib/minDate';
 const StepOne = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP1,
     1,
-    '/visa/step-two',
+    '/india/visa/step-two',
     true
   );
 
@@ -144,22 +146,13 @@ const StepOne = () => {
               <div className="form-input-main-div">
                 <label className="form-label">Date Of Birth</label>
                 <div className="input-error-wrapper">
-                  <ReactDatePicker
-                    showIcon
-                    selected={values.dateOfBirth}
-                    maxDate={new Date()}
-                    onChange={date => setFieldValue('dateOfBirth', date)}
-                    dateFormat="dd-MM-yyyy"
-                    icon={<CiCalendarDate />}
-                    className="w-full new-form-input"
+                  <ReactDatePickerInput
+                    className="new-form-input"
                     name="dateOfBirth"
-                    placeholderText="Enter date of birth"
-                    // wrapperClassName="date-picker"
+                    selected={values.dateOfBirth}
+                    setFieldValue={setFieldValue}
+                    maxDate={new Date()}
                   />
-
-                  <ErrorMessage name="dateOfBirth">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
                 </div>
               </div>
 
@@ -884,27 +877,13 @@ const StepOne = () => {
               <div className="form-input-main-div">
                 <label className="form-label">Expected Date of Arrival</label>
                 <div className="input-error-wrapper">
-                  <ReactDatePicker
-                    showIcon
-                    selected={values.expectedDateOfArrival}
-                    // minDate={new Date()}
-                    minDate={
-                      new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
-                    }
-                    onChange={date =>
-                      setFieldValue('expectedDateOfArrival', date)
-                    }
-                    dateFormat="dd-MM-yyyy"
-                    icon={<CiCalendarDate />}
-                    className="w-full new-form-input"
+                  <ReactDatePickerInput
+                    className="new-form-input"
                     name="expectedDateOfArrival"
-                    placeholderText="Enter expected of arrival date"
-                    // wrapperClassName="date-picker"
+                    selected={values.expectedDateOfArrival}
+                    setFieldValue={setFieldValue}
+                    minDate={minDate(3)}
                   />
-
-                  <ErrorMessage name="expectedDateOfArrival">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
                 </div>
               </div>
 

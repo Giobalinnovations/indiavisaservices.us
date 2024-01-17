@@ -1,27 +1,27 @@
 'use client';
 import React from 'react';
-import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import { BsQuestionCircleFill } from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { ImSpinner2 } from 'react-icons/im';
+import usePost from '@/hooks/usePost';
+import { useQuery } from '@tanstack/react-query';
+import lodash from 'lodash';
+import useUpdate from '@/hooks/useUpdate';
+import { usePathname, useRouter } from 'next/navigation';
+import { Country, State, City } from 'country-state-city';
+import BannerPage from '@/components/india/common/BannerPage';
 import {
   airportsSeaports,
   saarcCountries,
   step4ValidationSchema,
   visaTypesList,
-} from '@/app/lib/constants';
-import axiosInstance from '@/services/api';
-import { useFormContext } from '@/app/context/formContext';
-import apiEndpoint from '@/services/apiEndpoint';
-import { ImSpinner2 } from 'react-icons/im';
-import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
-import usePost from '@/hooks/usePost';
-import { useQuery } from '@tanstack/react-query';
-import SavedFormId from '@/components/common/SavedFormId';
-import lodash from 'lodash';
-import useUpdate from '@/hooks/useUpdate';
-import { usePathname, useRouter } from 'next/navigation';
-import { Country, State, City } from 'country-state-city';
+} from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
+import MultiReactSelectFormik from '@/components/india/MultiReactSelectFormik';
+import SavedFormId from '@/components/india/common/SavedFormId';
 
 const StepFour = () => {
   const pathname = usePathname();
@@ -46,7 +46,7 @@ const StepFour = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
     4,
-    '/visa/step-five',
+    '/india/visa/step-five',
     false,
     'getAllStepsDataStep5'
   );
@@ -55,7 +55,7 @@ const StepFour = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
     'temporary step 4 saved successfully',
-    '/',
+    '/india',
     refetch
   );
 
@@ -63,6 +63,7 @@ const StepFour = () => {
     temporaryExitUpdateMutation.mutate({
       lastExitStepUrl: pathname,
     });
+    localStorage.clear();
   };
 
   const currentYear = new Date().getFullYear();
@@ -82,15 +83,15 @@ const StepFour = () => {
   }
 
   if (getAllStepsDataError) {
-    return router.push('/visa/step-one');
+    return router.push('/india/visa/step-one');
   }
 
   if (getAllStepsDataIsSuccess) {
     if (!getAllStepsData?.data?.step3Data) {
-      return router.push('/visa/step-three');
+      return router.push('/india/visa/step-three');
     }
     if (getAllStepsData?.data?.step4Data) {
-      return router.push('/visa/step-four/update');
+      return router.push('/india/visa/step-four/update');
     }
 
     const visaServiceSelected = getAllStepsData?.data?.step1Data?.visaService
@@ -205,7 +206,7 @@ const StepFour = () => {
               <SavedFormId />
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Details of Visa Sought
                     </h2>
@@ -213,7 +214,7 @@ const StepFour = () => {
                   </div>
                   <div className="grid gap-8 md:grid-cols-12 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="form-input-main-div">
                             <label className="form-label">Type of Visa*</label>
@@ -554,7 +555,7 @@ const StepFour = () => {
                 </div>
 
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Previous Visa/Currently valid Visa Details
                     </h2>
@@ -562,7 +563,7 @@ const StepFour = () => {
                   </div>
                   <div className="grid gap-8 md:grid-cols-12 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="flex items-start py-2 space-x-2">
                             <label className="font-semibold">
@@ -890,7 +891,7 @@ const StepFour = () => {
 
                     <div className="grid gap-8 md:grid-cols-12 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -1064,7 +1065,7 @@ const StepFour = () => {
 
                     <div className="grid gap-8 md:grid-cols-12 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <b>Details of the Applicants Company</b>
                             <div className="form-input-main-div">
@@ -1368,7 +1369,7 @@ const StepFour = () => {
                 {visaServiceSelected === 'eBusinessVisa' &&
                 visaServiceSelectedValue === 'CONDUCTING TOURS' ? (
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         Details of Purpose ({visaServiceSelectedValue})
                       </h2>
@@ -1377,7 +1378,7 @@ const StepFour = () => {
 
                     <div className="grid gap-8 md:grid-cols-12 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -1513,7 +1514,7 @@ const StepFour = () => {
 
                     <div className="grid gap-8 md:grid-cols-12 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -1534,7 +1535,7 @@ const StepFour = () => {
                               </div>
                             </div>
                             <div className="flex items-start py-2 space-x-2">
-                              <label className="">
+                              <label>
                                 Visa No. / Application id of principal e-Medical
                                 Visa holder
                               </label>
@@ -1701,7 +1702,7 @@ const StepFour = () => {
                 {/* feilds for visa type ---conference visa start  */}
                 {visaServiceSelected === 'eConferenceVisa' ? (
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         Details of Purpose
                         <span className="text-lg">
@@ -1713,7 +1714,7 @@ const StepFour = () => {
 
                     <div className="grid gap-8 md:grid-cols-12 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -2060,7 +2061,7 @@ const StepFour = () => {
                 {/* feilds for visa type ---conference visa end  */}
 
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Other Information
                     </h2>
@@ -2068,7 +2069,7 @@ const StepFour = () => {
                   </div>
                   <div className="grid gap-8 md:grid-cols-12 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="form-input-main-div">
                             <label className="form-label">
@@ -2115,7 +2116,7 @@ const StepFour = () => {
                 </div>
 
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       SAARC Country Visit Details{' '}
                     </h2>
@@ -2123,7 +2124,7 @@ const StepFour = () => {
                   </div>
                   <div className="grid gap-8 md:grid-cols-12 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="flex items-start py-2 space-x-2">
                             <label className="font-semibold">
@@ -2341,14 +2342,14 @@ const StepFour = () => {
                 </div>
 
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">Reference</h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
 
                   <div className="grid gap-8 md:grid-cols-12 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="form-input-main-div">
                             <label className="form-label">
@@ -2616,7 +2617,7 @@ const StepFour = () => {
                         </h2>
                       </div>
 
-                      {/* <div className="">
+                      {/* <div  >
                         <h2 className="py-4 sidetext">Phone no.</h2>
                         <h2 className="py-4 sidetext">
                           Please mention one contact details in Home Country to
