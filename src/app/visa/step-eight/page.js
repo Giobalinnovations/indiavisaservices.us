@@ -274,7 +274,7 @@ const StepEight = () => {
                   type="submit"
                   // onClick={makePayment}
                 >
-                  {makePaymentMutation.isPending ? <>Loading...</> : 'Buy'}
+                  {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
                 </button>
 
                 <button
