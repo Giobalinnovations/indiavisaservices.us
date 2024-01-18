@@ -19,6 +19,7 @@ export default function useUpdate(
       return axiosInstance.put(`${apiEndpointUrl}/${updateId}`, formData);
     },
     onSuccess: data => {
+      console.log(data);
       toast.success(`step ${step} Updated successfully`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 500,

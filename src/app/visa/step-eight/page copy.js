@@ -39,14 +39,14 @@ const StepEight = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
     'successful',
-    '/india',
+    '/',
     false
   );
   const paymentNowUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_FORM_PAYMENT,
     state.formId,
     'Payment Complete successfully',
-    '/india',
+    '/',
     false
   );
 
@@ -75,12 +75,12 @@ const StepEight = () => {
   }
 
   if (error) {
-    return router.push('/india/visa/step-one');
+    return router.push('/visa/step-one');
   }
 
   if (getAllStepsDataIsSuccess) {
     if (!getAllStepsData?.data?.step6Data) {
-      return router.push('/india/visa/step-six');
+      return router.push('/visa/step-six');
     }
 
     // const makePayment = async () => {

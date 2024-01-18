@@ -17,6 +17,8 @@ import {
 } from '@/constant/indiaConstant';
 import { useFormContext } from '@/context/formContext';
 import BannerPage from '@/components/india/common/BannerPage';
+import { CiCalendarDate } from 'react-icons/ci';
+import ReactDatePickerInput from '@/components/common/ReactDatePickerInput';
 
 export default function StepTwoUpdate() {
   const { state } = useFormContext();
@@ -38,7 +40,7 @@ export default function StepTwoUpdate() {
     apiEndpoint.UPDATE_VISA_ADD_STEP2,
     getAllStepsData?.data?.step2Data?._id,
     2,
-    '/india/visa/step-three',
+    '/visa/step-three',
     refetch
   );
 
@@ -190,11 +192,19 @@ export default function StepTwoUpdate() {
                         <div className="form-input-main-div">
                           <label className="form-label">Date Of Birth</label>
                           <div className="input-error-wrapper">
-                            <Field
-                              type="date"
+                            <ReactDatePickerInput
+                              showIcon
+                              selected={new Date(values.dateOfBirth)}
+                              value={new Date(values.dateOfBirth)}
+                              onChange={date =>
+                                setFieldValue('dateOfBirth', date)
+                              }
+                              dateFormat="dd-MM-yyyy"
+                              icon={<CiCalendarDate />}
+                              className="w-full new-form-input"
                               name="dateOfBirth"
-                              id="dateOfBirth"
-                              className="opacity-50 form-input"
+                              placeholderText="Date of birth as in passport"
+                              // wrapperClassName="date-picker"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">

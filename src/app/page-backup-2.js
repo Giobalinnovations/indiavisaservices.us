@@ -54,7 +54,7 @@ const Home = () => {
     data?.data?.paymentStatus !== 'pendingPayment' &&
     data?.data?.lastExitStepUrl === 'notFound'
   ) {
-    router.push('/india/visa/step-two');
+    router.push('/visa/step-two');
   }
 
   useEffect(() => {

@@ -46,7 +46,7 @@ const StepFour = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
     4,
-    '/india/visa/step-five',
+    '/visa/step-five',
     false,
     'getAllStepsDataStep5'
   );
@@ -55,7 +55,7 @@ const StepFour = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
     'temporary step 4 saved successfully',
-    '/india',
+    '/',
     refetch
   );
 
@@ -83,15 +83,15 @@ const StepFour = () => {
   }
 
   if (getAllStepsDataError) {
-    return router.push('/india/visa/step-one');
+    return router.push('/visa/step-one');
   }
 
   if (getAllStepsDataIsSuccess) {
     if (!getAllStepsData?.data?.step3Data) {
-      return router.push('/india/visa/step-three');
+      return router.push('/visa/step-three');
     }
     if (getAllStepsData?.data?.step4Data) {
-      return router.push('/india/visa/step-four/update');
+      return router.push('/visa/step-four/update');
     }
 
     const visaServiceSelected = getAllStepsData?.data?.step1Data?.visaService

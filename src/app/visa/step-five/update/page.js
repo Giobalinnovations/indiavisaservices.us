@@ -31,7 +31,7 @@ export default function Step5Update() {
     apiEndpoint.UPDATE_VISA_ADD_STEP5,
     getAllStepsData?.data?.step5Data?._id,
     5,
-    '/india/visa/step-six',
+    '/visa/step-six',
     refetch
   );
 

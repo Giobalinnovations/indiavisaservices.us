@@ -31,7 +31,7 @@ const StepSeven = () => {
       getAllStepsData.data;
 
     if (!step6Data) {
-      return router.push('/india/visa/step-six');
+      return router.push('/visa/step-six');
     }
 
     return (
@@ -1836,7 +1836,7 @@ const StepSeven = () => {
   }
 
   if (error) {
-    return router.push('/india/visa/step-one');
+    return router.push('/visa/step-one');
   }
 };
 

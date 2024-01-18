@@ -43,7 +43,7 @@ const StepTwo = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP2,
     2,
-    '/india/visa/step-three',
+    '/visa/step-three',
     false,
     'getAllStepsDataStep3'
   );
@@ -51,7 +51,7 @@ const StepTwo = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     state.formId,
     'temporary step 2 saved successfully',
-    '/india',
+    '/',
     refetch
   );
 
@@ -63,7 +63,7 @@ const StepTwo = () => {
   };
 
   if (error) {
-    return router.push('/india/visa/step-one');
+    return router.push('/visa/step-one');
   }
 
   if (isPending) {
@@ -300,7 +300,6 @@ const StepTwo = () => {
                               // wrapperClassName="date-picker"
                               disabled={true}
                             />
-
                             <ErrorMessage name="dateOfBirth">
                               {errorMsg => (
                                 <div style={{ color: 'red' }}>{errorMsg}</div>

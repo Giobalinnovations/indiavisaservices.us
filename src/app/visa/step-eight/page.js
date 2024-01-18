@@ -21,7 +21,7 @@ const StepEight = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
   const router = useRouter();
-  const formId = 'evisa6484454';
+  const formId = 'evisa0788937';
   const {
     isPending,
     error,
@@ -39,14 +39,14 @@ const StepEight = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
     formId,
     'successful',
-    '/india',
+    '/',
     false
   );
   const paymentNowUpdateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_FORM_PAYMENT,
     formId,
     'Payment Complete successfully',
-    '/india',
+    '/',
     false
   );
 
@@ -75,12 +75,12 @@ const StepEight = () => {
   // }
 
   // if (error) {
-  //   return router.push('/india/visa/step-one');
+  //   return router.push('/visa/step-one');
   // }
 
   // if (getAllStepsDataIsSuccess) {
   //   if (!getAllStepsData?.data?.step6Data) {
-  //     return router.push('/india/visa/step-six');
+  //     return router.push('/visa/step-six');
   //   }
 
   // const makePayment = async () => {

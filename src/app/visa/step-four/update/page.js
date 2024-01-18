@@ -52,14 +52,14 @@ const StepFour = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP4,
     4,
-    '/india/visa/step-five'
+    '/visa/step-five'
   );
 
   const updateMutation = useUpdate(
     apiEndpoint.UPDATE_VISA_ADD_STEP4,
     getAllStepsData?.data?.step4Data?._id,
     4,
-    '/india/visa/step-five',
+    '/visa/step-five',
     getAllStepsDataRefetch
   );
 
