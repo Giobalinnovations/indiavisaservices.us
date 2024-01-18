@@ -1,14 +1,14 @@
-"use client";
-import { useFormContext } from "@/app/context/formContext";
-import BannerPage from "@/components/common/BannerPage";
-import axiosInstance from "@/services/api";
-import apiEndpoint from "@/services/apiEndpoint";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { ImSpinner2 } from "react-icons/im";
+'use client';
+import BannerPage from '@/components/india/common/BannerPage';
+import { useFormContext } from '@/context/formContext';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useQuery } from '@tanstack/react-query';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { ImSpinner2 } from 'react-icons/im';
 
 const StepSeven = () => {
   const { state } = useFormContext();
@@ -20,7 +20,7 @@ const StepSeven = () => {
     isSuccess: getAllStepsDataIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["getAllStepsData7"],
+    queryKey: ['getAllStepsData7'],
     queryFn: () =>
       axiosInstance.get(`${apiEndpoint.GET_ALL_STEPS_DATA}${state.formId}`),
     enabled: !!state.formId,
@@ -31,7 +31,7 @@ const StepSeven = () => {
       getAllStepsData.data;
 
     if (!step6Data) {
-      return router.push("/visa/step-six");
+      return router.push('/visa/step-six');
     }
 
     return (
@@ -53,13 +53,13 @@ const StepSeven = () => {
               </p>
               <p className="text-center">
                 Please verify your Registration Details. If all details are
-                correct please Press{" "}
+                correct please Press{' '}
                 <span className="text-primary">
                   &quot;Verified and Continue&quot;.
                 </span>
               </p>
               <p className="text-center">
-                For any corrections press{" "}
+                For any corrections press{' '}
                 <span className="text-primary">&quot;Modify/Edit&quot;</span>
               </p>
               <p className="text-center">
@@ -253,7 +253,7 @@ const StepSeven = () => {
                   Have you ever changed your name? *
                 </h2>
                 <p className="font-bold leading-relaxed tracking-wide text-justify capitalize ">
-                  {step2Data?.changedName ? "YES" : "NO"}
+                  {step2Data?.changedName ? 'YES' : 'NO'}
                 </p>
               </div>
               {step2Data?.changedName ? (
@@ -348,7 +348,7 @@ const StepSeven = () => {
                   {step2Data?.acquireNationality}
                 </p>
               </div>
-              {step2Data?.acquireNationality === "naturalization" && (
+              {step2Data?.acquireNationality === 'naturalization' && (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Previous Nationality
@@ -414,7 +414,7 @@ const StepSeven = () => {
                   {step2Data?.anyOtherPassport}
                 </p>
               </div>
-              {step2Data?.anyOtherPassport === "yes" && (
+              {step2Data?.anyOtherPassport === 'yes' && (
                 <>
                   <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
@@ -667,9 +667,9 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step3Data?.applicantMaritalStatus === "married" ? (
+              {step3Data?.applicantMaritalStatus === 'married' ? (
                 <>
-                  {" "}
+                  {' '}
                   <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Name*
@@ -723,7 +723,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step3Data?.parentsPakistanNational === "yes" ? (
+              {step3Data?.parentsPakistanNational === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     If Yes, give details*
@@ -750,7 +750,7 @@ const StepSeven = () => {
                 </p>
               </div>
               {step3Data?.presentOtherOccupation === null ? (
-                ""
+                ''
               ) : (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
@@ -810,9 +810,9 @@ const StepSeven = () => {
                   {step3Data?.militaryOrganization}
                 </p>
               </div>
-              {step3Data?.militaryOrganization === "yes" ? (
+              {step3Data?.militaryOrganization === 'yes' ? (
                 <>
-                  {" "}
+                  {' '}
                   <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Organization*
@@ -893,7 +893,7 @@ const StepSeven = () => {
                   {step4Data?.placesToVisit2}
                 </p>
               </div>
-              {step4Data?.bookedHotel === "yes" ? (
+              {step4Data?.bookedHotel === 'yes' ? (
                 <>
                   <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
@@ -973,7 +973,7 @@ const StepSeven = () => {
             </div>
           </div>
 
-          {step4Data?.visitedIndiaBefore === "yes" ? (
+          {step4Data?.visitedIndiaBefore === 'yes' ? (
             <div className="px-4 pt-10">
               <h2 className="text-3xl font-semibold">
                 Previous Visa/Currently valid Visa Details
@@ -1050,7 +1050,7 @@ const StepSeven = () => {
             </p>
           </div>
 
-          {step4Data?.permissionRefused === "yes" ? (
+          {step4Data?.permissionRefused === 'yes' ? (
             <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 border-t mx-4">
               <h2 className="py-1 text-sm font-semibold text-secondary">
                 when and by whom (Mention Control No. and date also)
@@ -1061,10 +1061,10 @@ const StepSeven = () => {
             </div>
           ) : null}
 
-          {step1Data?.visaService === "eMEDICAL VISA" ? (
+          {step1Data?.visaService === 'eMEDICAL VISA' ? (
             <div className="px-4 pt-10">
               <h2 className="text-3xl font-semibold">
-                Details of Purpose{" "}
+                Details of Purpose{' '}
                 <span className="text-lg">
                   (SHORT TERM MEDICAL TREATMENT OF SELF)
                 </span>
@@ -1122,12 +1122,12 @@ const StepSeven = () => {
               </div>
             </div>
           ) : (
-            ""
+            ''
           )}
-          {step1Data?.visaService === "eCONFERENCE VISA" ? (
+          {step1Data?.visaService === 'eCONFERENCE VISA' ? (
             <div className="px-4 pt-10">
               <h2 className="text-3xl font-semibold">
-                Details of Purpose{" "}
+                Details of Purpose{' '}
                 <span className="text-lg">
                   (TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A
                   MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF INDIA,STATE
@@ -1238,9 +1238,9 @@ const StepSeven = () => {
               </div>
             </div>
           ) : (
-            ""
+            ''
           )}
-          {step1Data?.visaService === "eMEDICAL ATTENDANT VISA" ? (
+          {step1Data?.visaService === 'eMEDICAL ATTENDANT VISA' ? (
             <div className="px-4 pt-10">
               <h2 className="text-3xl font-semibold">
                 Details of Purpose
@@ -1312,12 +1312,12 @@ const StepSeven = () => {
               </div>
             </div>
           ) : (
-            ""
+            ''
           )}
 
           {step1Data?.eBusinessVisa ===
-          "TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)" ? null : step1Data?.eBusinessVisa ===
-            "CONDUCTING TOURS" ? (
+          'TO DELIVER LECTURE/S UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)' ? null : step1Data?.eBusinessVisa ===
+            'CONDUCTING TOURS' ? (
             <div className="px-4 pt-10">
               <h2 className="text-3xl font-semibold">
                 Details of Purpose
@@ -1388,7 +1388,7 @@ const StepSeven = () => {
           ) : (
             <div className="pt-10">
               <div className="space-y-2 divide-y-[1px] pt-5">
-                {step2Data?.visaService === "eBusinessVisa" ? (
+                {step2Data?.visaService === 'eBusinessVisa' ? (
                   <>
                     <h2 className="text-3xl font-semibold">
                       Details of Purpose
@@ -1435,8 +1435,8 @@ const StepSeven = () => {
                   </>
                 ) : null}
                 {step1Data?.eBusinessVisa ===
-                  "TO SET UP INDUSTRIAL/BUSINESS VENTURE" ||
-                step1Data?.eBusinessVisa === "SALE/PURCHASE/TRADE" ? (
+                  'TO SET UP INDUSTRIAL/BUSINESS VENTURE' ||
+                step1Data?.eBusinessVisa === 'SALE/PURCHASE/TRADE' ? (
                   <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                     <h2 className="py-1 text-sm font-semibold text-secondary">
                       Nature of Business/Product*
@@ -1446,13 +1446,13 @@ const StepSeven = () => {
                     </p>
                   </div>
                 ) : (
-                  ""
+                  ''
                 )}
 
                 {step1Data?.eBusinessVisa ===
-                  "ATTEND TECHNICAL/BUSINESS MEETINGS" ||
+                  'ATTEND TECHNICAL/BUSINESS MEETINGS' ||
                 step1Data?.eBusinessVisa ===
-                  "EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT" ? (
+                  'EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT' ? (
                   <>
                     <div className="pt-5 text-2xl font-semibold text-primary">
                       Detials of Indian Firm
@@ -1483,10 +1483,10 @@ const StepSeven = () => {
                     </div>
                   </>
                 ) : (
-                  ""
+                  ''
                 )}
 
-                {step1Data?.eBusinessVisa === "TO RECRUIT MANPOWER" ? (
+                {step1Data?.eBusinessVisa === 'TO RECRUIT MANPOWER' ? (
                   <>
                     <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                       <h2 className="py-1 text-sm font-semibold text-secondary">
@@ -1519,11 +1519,11 @@ const StepSeven = () => {
                     </div>
                   </>
                 ) : (
-                  ""
+                  ''
                 )}
 
                 {step1Data?.eBusinessVisa ===
-                "PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS" ? (
+                'PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS' ? (
                   <>
                     <div className="pt-5 text-sm text-black">
                       for PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS
@@ -1541,7 +1541,7 @@ const StepSeven = () => {
                     </div>
                   </>
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
             </div>
@@ -1568,7 +1568,7 @@ const StepSeven = () => {
 
           <div className="px-4 pt-10">
             <h2 className="text-3xl font-semibold">
-              SAARC Country Visit Details{" "}
+              SAARC Country Visit Details{' '}
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
@@ -1582,7 +1582,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step4Data?.visitedSAARCCountries === "yes" ? (
+              {step4Data?.visitedSAARCCountries === 'yes' ? (
                 <table className="w-full table-auto">
                   <thead className="border-b">
                     <tr className="bg-gray-100">
@@ -1599,7 +1599,7 @@ const StepSeven = () => {
                   </thead>
                   <tbody>
                     {step4Data?.visitedSAARCCountriesLists.length > 0
-                      ? step4Data?.visitedSAARCCountriesLists.map((country) => (
+                      ? step4Data?.visitedSAARCCountriesLists.map(country => (
                           <tr
                             className="border-b hover:bg-gray-50"
                             key={country._id}
@@ -1673,7 +1673,7 @@ const StepSeven = () => {
 
           <div className="px-4 pt-10">
             <h2 className="text-3xl font-semibold">
-              Additional Question Details{" "}
+              Additional Question Details{' '}
             </h2>
             <hr className="w-full h-1 text-primary bg-primary" />
             <div className="space-y-2 divide-y-[1px] pt-5">
@@ -1686,7 +1686,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenArrested}
                 </p>
               </div>
-              {step5Data?.haveYouBeenArrested === "yes" ? (
+              {step5Data?.haveYouBeenArrested === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1707,7 +1707,7 @@ const StepSeven = () => {
                 </p>
               </div>
 
-              {step5Data?.haveYouBeenRefusedEntry === "yes" ? (
+              {step5Data?.haveYouBeenRefusedEntry === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1728,7 +1728,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenEngagedInTrafficking}
                 </p>
               </div>
-              {step5Data?.haveYouBeenEngagedInTrafficking === "yes" ? (
+              {step5Data?.haveYouBeenEngagedInTrafficking === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1749,7 +1749,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouBeenEngagedInCrime}
                 </p>
               </div>
-              {step5Data?.haveYouBeenEngagedInCrime === "yes" ? (
+              {step5Data?.haveYouBeenEngagedInCrime === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1770,7 +1770,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouExpressedViews}
                 </p>
               </div>
-              {step5Data?.haveYouExpressedViews === "yes" ? (
+              {step5Data?.haveYouExpressedViews === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1790,7 +1790,7 @@ const StepSeven = () => {
                   {step5Data?.haveYouSoughtAsylum}
                 </p>
               </div>
-              {step5Data?.haveYouSoughtAsylum === "yes" ? (
+              {step5Data?.haveYouSoughtAsylum === 'yes' ? (
                 <div className="grid pt-5 md:items-center md:justify-between md:grid-cols-2 md:space-x-20 md:pt-0 ">
                   <h2 className="py-1 text-sm font-semibold text-secondary">
                     Detail*
@@ -1836,7 +1836,7 @@ const StepSeven = () => {
   }
 
   if (error) {
-    return router.push("/visa/step-one");
+    return router.push('/visa/step-one');
   }
 };
 

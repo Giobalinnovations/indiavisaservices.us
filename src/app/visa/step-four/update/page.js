@@ -1,25 +1,24 @@
 'use client';
 import React from 'react';
-import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { ImSpinner2 } from 'react-icons/im';
+import usePost from '@/hooks/usePost';
+import { useQuery } from '@tanstack/react-query';
+import lodash from 'lodash';
+import { Country, State, City } from 'country-state-city';
+import Select from 'react-select';
+import useUpdate from '@/hooks/useUpdate';
+import BannerPage from '@/components/india/common/BannerPage';
 import {
   airportsSeaports,
   step4ValidationSchema,
   visaTypesList,
-} from '@/app/lib/constants';
+} from '@/constant/indiaConstant';
 import axiosInstance from '@/services/api';
-import { useFormContext } from '@/app/context/formContext';
+import { useFormContext } from '@/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
-import { ImSpinner2 } from 'react-icons/im';
-import MultiReactSelectFormik from '@/components/MultiReactSelectFormik';
-import usePost from '@/hooks/usePost';
-import { useQuery } from '@tanstack/react-query';
-import SavedFormId from '@/components/common/SavedFormId';
-import lodash from 'lodash';
-import useUpdate from '@/hooks/useUpdate';
-import { Country, State, City } from 'country-state-city';
-import Select from 'react-select';
+import SavedFormId from '@/components/india/common/SavedFormId';
 
 const StepFour = () => {
   const { state } = useFormContext();
@@ -182,7 +181,7 @@ const StepFour = () => {
                 <SavedFormId />
                 <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         Details of Visa Sought
                       </h2>
@@ -190,7 +189,7 @@ const StepFour = () => {
                     </div>
                     <div className="grid grid-cols-12 gap-8 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -512,7 +511,7 @@ const StepFour = () => {
                   </div>
 
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         Previous Visa/Currently valid Visa Details
                       </h2>
@@ -520,7 +519,7 @@ const StepFour = () => {
                     </div>
                     <div className="grid grid-cols-12 gap-8 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="flex items-start py-2 space-x-2">
                               <label className="font-semibold">
@@ -802,7 +801,7 @@ const StepFour = () => {
 
                       <div className="grid grid-cols-12 gap-8 ">
                         <div className="col-span-8">
-                          <div className="">
+                          <div>
                             <div className="formMain">
                               <div className="form-input-main-div">
                                 <label className="form-label">
@@ -974,7 +973,7 @@ const StepFour = () => {
 
                       <div className="grid grid-cols-12 gap-8 ">
                         <div className="col-span-8">
-                          <div className="">
+                          <div>
                             <div className="formMain">
                               <b>Details of the Applicants Company</b>
                               <div className="form-input-main-div">
@@ -1238,7 +1237,7 @@ const StepFour = () => {
                   {visaServiceSelected === 'eBusinessVisa' &&
                   visaServiceSelectedValue === 'CONDUCTING TOURS' ? (
                     <div>
-                      <div className="">
+                      <div>
                         <h2 className="text-3xl font-semibold">
                           Details of Purpose ({visaServiceSelectedValue})
                         </h2>
@@ -1247,7 +1246,7 @@ const StepFour = () => {
 
                       <div className="grid grid-cols-12 gap-8 ">
                         <div className="col-span-8">
-                          <div className="">
+                          <div>
                             <div className="formMain">
                               <div className="form-input-main-div">
                                 <label className="form-label">
@@ -1383,7 +1382,7 @@ const StepFour = () => {
 
                       <div className="grid grid-cols-12 gap-8 ">
                         <div className="col-span-8">
-                          <div className="">
+                          <div>
                             <div className="formMain">
                               <div className="form-input-main-div">
                                 <label className="form-label">
@@ -1404,7 +1403,7 @@ const StepFour = () => {
                                 </div>
                               </div>
                               <div className="flex items-start py-2 space-x-2">
-                                <label className="">
+                                <label>
                                   Visa No. / Application id of principal
                                   e-Medical Visa holder
                                 </label>
@@ -1562,7 +1561,7 @@ const StepFour = () => {
                   {/* feilds for visa type ---confrence visa start  */}
                   {visaServiceSelected === 'eConferenceVisa' ? (
                     <div>
-                      <div className="">
+                      <div>
                         <h2 className="text-3xl font-semibold">
                           Details of Purpose
                           <span className="text-lg">
@@ -1574,7 +1573,7 @@ const StepFour = () => {
 
                       <div className="grid grid-cols-12 gap-8 ">
                         <div className="col-span-8">
-                          <div className="">
+                          <div>
                             <div className="formMain">
                               <div className="form-input-main-div">
                                 <label className="form-label">
@@ -1785,7 +1784,7 @@ const StepFour = () => {
                   {/* feilds for visa type ---confrence visa end  */}
 
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         Other Information
                       </h2>
@@ -1793,7 +1792,7 @@ const StepFour = () => {
                     </div>
                     <div className="grid grid-cols-12 gap-8 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">
@@ -1861,7 +1860,7 @@ const StepFour = () => {
                   </div>
 
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">
                         SAARC Country Visit Details{' '}
                       </h2>
@@ -1869,7 +1868,7 @@ const StepFour = () => {
                     </div>
                     <div className="grid grid-cols-12 gap-8 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="flex items-start py-2 space-x-2">
                               <label className="font-semibold">
@@ -2062,14 +2061,14 @@ const StepFour = () => {
                   </div>
 
                   <div>
-                    <div className="">
+                    <div>
                       <h2 className="text-3xl font-semibold">Reference</h2>
                       <hr className="h-1 text-primary bg-primary w-36" />
                     </div>
 
                     <div className="grid grid-cols-12 gap-8 ">
                       <div className="col-span-8">
-                        <div className="">
+                        <div>
                           <div className="formMain">
                             <div className="form-input-main-div">
                               <label className="form-label">

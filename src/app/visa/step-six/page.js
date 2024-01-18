@@ -1,22 +1,22 @@
 'use client';
-import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import React from 'react';
 import { LuImagePlus } from 'react-icons/lu';
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
-import { useFormContext } from '@/app/context/formContext';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
-import { step6ValidationSchema } from '@/app/lib/constants';
 import { ImSpinner2 } from 'react-icons/im';
 import Image from 'next/image';
-import FileUploadMain from '@/components/FileUploadMain';
-import SingleFileUpload from '@/components/SingleFileUpload';
 import usePost from '@/hooks/usePost';
-import SavedFormId from '@/components/common/SavedFormId';
 import useUpdate from '@/hooks/useUpdate';
 import { usePathname, useRouter } from 'next/navigation';
+import BannerPage from '@/components/india/common/BannerPage';
+import SavedFormId from '@/components/india/common/SavedFormId';
+import { useFormContext } from '@/context/formContext';
+import { step6ValidationSchema } from '@/constant/indiaConstant';
+import FileUploadMain from '@/components/india/FileUploadMain';
+import SingleFileUpload from '@/components/india/SingleFileUpload';
 
 const StepSix = () => {
   const pathName = usePathname();
@@ -63,6 +63,7 @@ const StepSix = () => {
     temporaryExitUpdateMutation.mutate({
       lastExitStepUrl: pathName,
     });
+    localStorage.clear();
   };
 
   if (isPending) {
@@ -133,7 +134,7 @@ const StepSix = () => {
               <Form onSubmit={handleSubmit} className="container pt-4 pb-16">
                 {/* upload file start  */}
                 <div className="mb-6 space-y-8">
-                  <div className="">
+                  <div>
                     <label className="mb-3 block font-semibold text-[#07074D]">
                       Upload Your Image
                     </label>
@@ -217,7 +218,7 @@ const StepSix = () => {
                   </p>
                 </div>
                 <div className="py-8">
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">Upload Documents</h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>

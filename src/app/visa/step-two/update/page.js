@@ -1,22 +1,24 @@
 'use client';
-import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
-import {
-  educationalQualificationList,
-  nationalityRegionData,
-  religionNames,
-  step2ValidationSchema,
-} from '@/app/lib/constants';
-import { useFormContext } from '@/app/context/formContext';
 import apiEndpoint from '@/services/apiEndpoint';
 import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
 import useUpdate from '@/hooks/useUpdate';
 import { BsQuestionCircleFill } from 'react-icons/bs';
+import {
+  educationalQualificationList,
+  nationalityRegionData,
+  religionNames,
+  step2ValidationSchema,
+} from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
+import BannerPage from '@/components/india/common/BannerPage';
+import { CiCalendarDate } from 'react-icons/ci';
+import ReactDatePickerInput from '@/components/common/ReactDatePickerInput';
 
 export default function StepTwoUpdate() {
   const { state } = useFormContext();
@@ -135,12 +137,12 @@ export default function StepTwoUpdate() {
                             <div className="form-input-main-div">
                               <label className="form-label">
                                 Previous Last Name*
-                                <div className="group relative">
+                                <div className="relative group">
                                   <BsQuestionCircleFill
                                     className="text-primary info-icon"
                                     size={20}
                                   />
-                                  <div className="absolute -top-12 -right-32 scale-0 transition-all rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 ">
+                                  <div className="absolute p-2 text-xs text-white transition-all scale-0 bg-gray-800 rounded -top-12 -right-32 group-hover:scale-100 ">
                                     Enter your previous last name
                                   </div>
                                 </div>
@@ -173,7 +175,7 @@ export default function StepTwoUpdate() {
                               name="gender"
                               className="p-2 border rounded select-input"
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 Select Gender*
                               </option>
                               <option value="male">Male</option>
@@ -190,11 +192,19 @@ export default function StepTwoUpdate() {
                         <div className="form-input-main-div">
                           <label className="form-label">Date Of Birth</label>
                           <div className="input-error-wrapper">
-                            <Field
-                              type="date"
+                            <ReactDatePickerInput
+                              showIcon
+                              selected={new Date(values.dateOfBirth)}
+                              value={new Date(values.dateOfBirth)}
+                              onChange={date =>
+                                setFieldValue('dateOfBirth', date)
+                              }
+                              dateFormat="dd-MM-yyyy"
+                              icon={<CiCalendarDate />}
+                              className="w-full new-form-input"
                               name="dateOfBirth"
-                              id="dateOfBirth"
-                              className="opacity-50 form-input"
+                              placeholderText="Date of birth as in passport"
+                              // wrapperClassName="date-picker"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
@@ -233,7 +243,7 @@ export default function StepTwoUpdate() {
                               name="countryRegionOfBirth"
                               className="p-2 border rounded select-input"
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 Select Country*
                               </option>
                               {Country?.getAllCountries()?.map(
@@ -278,7 +288,7 @@ export default function StepTwoUpdate() {
                               name="religion"
                               className="p-2 border rounded select-input"
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 Select Religion*
                               </option>
                               {religionNames?.map(religion => (
@@ -339,7 +349,7 @@ export default function StepTwoUpdate() {
                               name="educationalQualification"
                               className="p-2 border rounded select-input"
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 Select Educational Qualification*
                               </option>
                               {educationalQualificationList?.map(education => (
@@ -366,7 +376,7 @@ export default function StepTwoUpdate() {
                               className="p-2 border rounded opacity-50 select-input"
                               disabled={true}
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 choose*
                               </option>
                               {nationalityRegionData?.map((country, index) => (
@@ -398,7 +408,7 @@ export default function StepTwoUpdate() {
                               className="p-2 border rounded select-input"
                               component="select"
                             >
-                              <option value="" disabled selected>
+                              <option value="" disabled>
                                 Select*
                               </option>
                               <option value="birth">By Birth</option>
@@ -426,7 +436,7 @@ export default function StepTwoUpdate() {
                                 name="previousNationality"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -664,7 +674,7 @@ export default function StepTwoUpdate() {
                                   name="countryOfIssue"
                                   className="p-2 border rounded select-input"
                                 >
-                                  <option value="" disabled selected>
+                                  <option value="" disabled>
                                     Select*
                                   </option>
                                   {Country?.getAllCountries()?.map(
@@ -749,7 +759,7 @@ export default function StepTwoUpdate() {
                                   name="passportNationalityMentionedTherein"
                                   className="p-2 border rounded select-input"
                                 >
-                                  <option value="" disabled selected>
+                                  <option value="" disabled>
                                     Select*
                                   </option>
                                   {Country?.getAllCountries()?.map(

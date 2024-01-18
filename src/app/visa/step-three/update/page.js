@@ -1,17 +1,20 @@
 'use client';
-import BannerPage from '@/components/common/BannerPage';
 import Link from 'next/link';
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { occupationList, step3ValidationSchema } from '@/app/lib/constants';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
-import { useFormContext } from '@/app/context/formContext';
 import { ImSpinner2 } from 'react-icons/im';
 import { Country } from 'country-state-city';
-import MyDependentField from '@/components/MyFields';
 import useUpdate from '@/hooks/useUpdate';
+import {
+  occupationList,
+  step3ValidationSchema,
+} from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
+import MyDependentField from '@/components/india/MyFields';
+import BannerPage from '@/components/india/common/BannerPage';
 
 export default function Step3Update() {
   const { state } = useFormContext();
@@ -58,7 +61,7 @@ export default function Step3Update() {
             {({ values, isValid, handleSubmit }) => (
               <Form onSubmit={handleSubmit} className="container py-16">
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Applicant&apos;s Address Details
                     </h2>
@@ -71,7 +74,7 @@ export default function Step3Update() {
                   </div>
                   <div className="grid grid-cols-12 gap-8 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="form-input-main-div">
                             <label
@@ -332,7 +335,7 @@ export default function Step3Update() {
                         <h2 className="py-4 sidetext ">Mobile No.</h2>
                       </div>
 
-                      <div className="">
+                      <div>
                         <h2 className="py-2 sidetext">
                           Applicant’s present address, maximum 35 characters
                           (each line)
@@ -345,7 +348,7 @@ export default function Step3Update() {
                 </div>
 
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">Family Details</h2>
                     <hr className="h-1 text-primary bg-primary w-36" />
                   </div>
@@ -354,7 +357,7 @@ export default function Step3Update() {
                   </div>
                   <div className="grid grid-cols-12 gap-8 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         {/* father mothers details */}
                         <div className="formMain">
                           <div className="form-input-main-div">
@@ -402,7 +405,7 @@ export default function Step3Update() {
                                 name="fatherNationality"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -444,7 +447,7 @@ export default function Step3Update() {
                                 name="fatherPreviousNationality"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -502,7 +505,7 @@ export default function Step3Update() {
                                 name="fatherCountry"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -568,7 +571,7 @@ export default function Step3Update() {
                                 name="motherNationality"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -601,7 +604,7 @@ export default function Step3Update() {
                                 name="motherPreviousNationality"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -650,7 +653,7 @@ export default function Step3Update() {
                                 name="motherCountryOfBirth"
                                 className="p-2 border rounded select-input"
                               >
-                                <option value="" disabled selected>
+                                <option value="" disabled>
                                   Select Country*
                                 </option>
                                 {Country?.getAllCountries()?.map(
@@ -713,7 +716,7 @@ export default function Step3Update() {
                   </div>
                   <div className="grid grid-cols-12 gap-8 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         <div className="formMain">
                           <div className="form-input-main-div">
                             <label
@@ -788,7 +791,7 @@ export default function Step3Update() {
                                     name="spouseNationality"
                                     className="p-2 border rounded select-input"
                                   >
-                                    <option value="" disabled selected>
+                                    <option value="" disabled>
                                       Select Country*
                                     </option>
                                     {Country?.getAllCountries()?.map(
@@ -825,7 +828,7 @@ export default function Step3Update() {
                                     name="spousePreviousNationality"
                                     className="p-2 border rounded select-input"
                                   >
-                                    <option value="" disabled selected>
+                                    <option value="" disabled>
                                       Select Country*
                                     </option>
                                     {Country?.getAllCountries()?.map(
@@ -884,7 +887,7 @@ export default function Step3Update() {
                                     name="spouseCountryOfBirth"
                                     className="p-2 border rounded select-input"
                                   >
-                                    <option value="" disabled selected>
+                                    <option value="" disabled>
                                       Select Country*
                                     </option>
                                     {Country?.getAllCountries()?.map(
@@ -1018,7 +1021,7 @@ export default function Step3Update() {
                   </div>
                   <div className="grid grid-cols-12 gap-8 ">
                     <div className="col-span-8">
-                      <div className="">
+                      <div>
                         {/* profession occupation */}
                         <div className="formMain">
                           <div className="form-input-main-div">

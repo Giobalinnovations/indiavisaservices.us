@@ -229,7 +229,7 @@ export default function FormikForm({
                 </div> */}
             {/* multi step radio button start  */}
             <div className="space-y-4 text-sm input-error-wrapper">
-              <div className="">
+              <div>
                 <div className="flex items-start space-x-2">
                   <Field
                     type="radio"

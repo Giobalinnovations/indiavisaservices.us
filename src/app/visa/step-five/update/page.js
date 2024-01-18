@@ -1,7 +1,7 @@
 'use client';
-import { useFormContext } from '@/app/context/formContext';
-import { step5ValidationSchema, step5data } from '@/app/lib/constants';
-import BannerPage from '@/components/common/BannerPage';
+import BannerPage from '@/components/india/common/BannerPage';
+import { step5ValidationSchema, step5data } from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
 import useUpdate from '@/hooks/useUpdate';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -58,7 +58,7 @@ export default function Step5Update() {
             {({ values, isValid, handleSubmit }) => (
               <Form onSubmit={handleSubmit} className="container py-16">
                 <div>
-                  <div className="">
+                  <div>
                     <h2 className="text-3xl font-semibold">
                       Details of Visa Sought
                     </h2>
