@@ -25,15 +25,20 @@ body {
 }
 
 .form-grid-label {
-  @apply mb-1 text-sm text-[#07074D] flex gap-1 items-center;
+  /* @apply mb-1 text-sm text-[#07074D] flex gap-1 items-center; */
+  @apply mb-1 text-sm text-[##72729f] flex gap-1 items-center font-light;
 }
 
 .form-input-main-div {
-  @apply flex flex-col pt-3 mb-3.5 md:pt-0;
+  @apply flex flex-col mb-6 md:pt-0;
+}
+
+select {
+  @apply placeholder:text-gray-300;
 }
 
 .formMain {
-  @apply py-8 space-y-4;
+  @apply py-8;
 }
 
 .form-label {
