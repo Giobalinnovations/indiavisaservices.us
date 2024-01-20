@@ -6,8 +6,6 @@ import { ImSpinner2 } from 'react-icons/im';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import ReactDatePicker from 'react-datepicker';
-import { CiCalendarDate } from 'react-icons/ci';
 import 'react-datepicker/dist/react-datepicker.css';
 import BannerPage from '@/components/india/common/BannerPage';
 import {
@@ -17,6 +15,12 @@ import {
 } from '@/constant/indiaConstant';
 import ReactDatePickerInput from '@/components/common/ReactDatePickerInput';
 import { minDate } from '@/lib/minDate';
+import TopSpacer from '@/components/common/TopSpacer';
+import RequiredAsteriskSign from '@/components/common/RequiredAsteriskSign';
+import StepperFormSteps from '@/components/common/StepperFormSteps';
+import Stepper2 from '@/components/common/Stepper2';
+import Breadcrumb from '@/components/common/Breadcrumb';
+
 const StepOne = () => {
   const postMutation = usePost(
     apiEndpoint.VISA_ADD_STEP1,
@@ -27,13 +31,22 @@ const StepOne = () => {
 
   return (
     <>
-      <BannerPage heading="E-VISA APPLICATION FORM" />
-
-      <p className="pt-8 font-semibold text-center">
+      {/* <BannerPage heading="E-VISA APPLICATION FORM" /> */}
+      <TopSpacer />
+      {/* <div className="container ">
+        <Breadcrumb />
+      </div> */}
+      <div className="max-w-4xl px-5 py-4 mx-auto"></div>
+      <p className="pt-10 font-semibold text-center">
         Note: For e-visa services to Afghan Nationals, they must select
         <span className="pl-2 pr-1 text-primary">AFGHANISTAN</span> nationality
       </p>
-      <div className="max-w-4xl px-5 py-4 mx-auto md:px-12">
+
+      <div className="max-w-4xl px-5 py-4 mx-auto">
+        {/* <StepperFormSteps /> */}
+        <div className="my-5">
+          <Stepper2 />
+        </div>
         <Formik
           initialValues={step1ValidationSchema.initialValues}
           validationSchema={step1ValidationSchema.yupSchema}
@@ -48,34 +61,53 @@ const StepOne = () => {
           {({ values, isValid, handleSubmit, setFieldValue }) => (
             <Form onSubmit={handleSubmit} className="formMain">
               <div className="form-input-main-div">
-                <label className="form-label">Application Type*</label>
-                <div className="input-error-wrapper">
+                <label className="form-grid-label">
+                  Application Type
+                  <RequiredAsteriskSign />
+                </label>
+                <Field
+                  required
+                  component="select"
+                  id="applicationType"
+                  name="applicationType"
+                  className="p-2 border rounded select-input"
+                >
+                  <option disabled value="">
+                    Select*
+                  </option>
+                  <option value="Normal">
+                    Normal Processing(4 to 7 Business Days)
+                  </option>
+                  <option value="Urgent">
+                    Urgent Processing(24 to 72 Business Hours)
+                  </option>
+                  <option value="Rush">Rush</option>
+                </Field>
+                <ErrorMessage name="applicationType">
+                  {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
+                </ErrorMessage>
+              </div>
+              <div className="form-grid-2">
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">Passport Type*</label>
                   <Field
                     required
                     component="select"
-                    id="applicationType"
-                    name="applicationType"
+                    id="passportType"
+                    name="passportType"
                     className="p-2 border rounded select-input"
                   >
                     <option disabled value="">
                       Select*
                     </option>
-                    <option value="Normal">
-                      Normal Processing(4 to 7 Business Days)
-                    </option>
-                    <option value="Urgent">
-                      Urgent Processing(24 to 72 Business Hours)
-                    </option>
-                    <option value="Rush">Rush</option>
+                    <option value="ordinary passport">ORDINARY PASSPORT</option>
                   </Field>
-                  <ErrorMessage name="applicationType">
+                  <ErrorMessage name="passportType">
                     {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
                   </ErrorMessage>
                 </div>
-              </div>
-              <div className="form-input-main-div">
-                <label className="form-label">Select Country*</label>
-                <div className="select-input">
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">Select Country*</label>
                   <Field
                     required
                     component="select"
@@ -98,53 +130,53 @@ const StepOne = () => {
                   </ErrorMessage>
                 </div>
               </div>
-              <div className="form-input-main-div">
-                <label className="form-label">Passport Type*</label>
-                <div className="input-error-wrapper">
-                  <Field
-                    required
-                    component="select"
-                    id="passportType"
-                    name="passportType"
-                    className="p-2 border rounded select-input"
-                  >
-                    <option disabled value="">
-                      Select*
-                    </option>
-                    <option value="ordinary passport">ORDINARY PASSPORT</option>
-                  </Field>
-                  <ErrorMessage name="passportType">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
-                </div>
-              </div>
-              <div className="form-input-main-div">
-                <label className="form-label">Port Of Arrival</label>
-                <div className="input-error-wrapper">
-                  <Field
-                    required
-                    component="select"
-                    id="portOfArrival"
-                    name="portOfArrival"
-                    className="p-2 space-y-2 border rounded select-input"
-                  >
-                    <option defaultChecked selected>
-                      Select
-                    </option>
-                    {airportsSeaports.map((airportSeaport, index) => (
-                      <option key={index} value={airportSeaport}>
-                        {airportSeaport}
+
+              <div className="form-grid-2">
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">Port Of Arrival</label>
+                  <div className="input-error-wrapper">
+                    <Field
+                      required
+                      component="select"
+                      id="portOfArrival"
+                      name="portOfArrival"
+                      className="p-2 space-y-2 border rounded select-input"
+                    >
+                      <option defaultChecked selected>
+                        Select
                       </option>
-                    ))}
-                  </Field>
-                  <ErrorMessage name="portOfArrival">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
+                      {airportsSeaports.map((airportSeaport, index) => (
+                        <option key={index} value={airportSeaport}>
+                          {airportSeaport}
+                        </option>
+                      ))}
+                    </Field>
+                    <ErrorMessage name="portOfArrival">
+                      {errorMsg => (
+                        <div style={{ color: 'red' }}>{errorMsg}</div>
+                      )}
+                    </ErrorMessage>
+                  </div>
+                </div>
+
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">
+                    Expected Date of Arrival
+                  </label>
+                  <div className="input-error-wrapper">
+                    <ReactDatePickerInput
+                      className="new-form-input"
+                      name="expectedDateOfArrival"
+                      selected={values.expectedDateOfArrival}
+                      setFieldValue={setFieldValue}
+                      minDate={minDate(3)}
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="form-input-main-div">
-                <label className="form-label">Date Of Birth</label>
+                <label className="form-grid-label">Date Of Birth</label>
                 <div className="input-error-wrapper">
                   <ReactDatePickerInput
                     className="new-form-input"
@@ -156,41 +188,47 @@ const StepOne = () => {
                 </div>
               </div>
 
-              <div className="form-input-main-div">
-                <label className="form-label">Email ID*</label>
-                <div className="input-error-wrapper">
-                  <Field
-                    required
-                    type="email"
-                    name="emailId"
-                    id="emailId"
-                    className="form-input"
-                    placeholder="Enter Email Id"
-                  />
-                  <ErrorMessage name="emailId">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
+              <div className="form-grid-2">
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">Email ID*</label>
+                  <div className="input-error-wrapper">
+                    <Field
+                      required
+                      type="email"
+                      name="emailId"
+                      id="emailId"
+                      className="form-input"
+                      placeholder="Enter Email Id"
+                    />
+                    <ErrorMessage name="emailId">
+                      {errorMsg => (
+                        <div style={{ color: 'red' }}>{errorMsg}</div>
+                      )}
+                    </ErrorMessage>
+                  </div>
                 </div>
-              </div>
 
-              <div className="form-input-main-div">
-                <label className="form-label">Re-Enter Email ID*</label>
-                <div className="input-error-wrapper">
-                  <Field
-                    required
-                    type="email"
-                    name="reEmailId"
-                    id="reEmailId"
-                    className="form-input"
-                    placeholder="Re-Enter Email Id"
-                  />
-                  <ErrorMessage name="reEmailId">
-                    {errorMsg => <div style={{ color: 'red' }}>{errorMsg}</div>}
-                  </ErrorMessage>
+                <div className="form-input-main-div">
+                  <label className="form-grid-label">Re-Enter Email ID*</label>
+                  <div className="input-error-wrapper">
+                    <Field
+                      required
+                      type="email"
+                      name="reEmailId"
+                      id="reEmailId"
+                      className="form-input"
+                      placeholder="Re-Enter Email Id"
+                    />
+                    <ErrorMessage name="reEmailId">
+                      {errorMsg => (
+                        <div style={{ color: 'red' }}>{errorMsg}</div>
+                      )}
+                    </ErrorMessage>
+                  </div>
                 </div>
               </div>
               <div className="form-input-main-div">
-                <label className="form-label">Contact no*</label>
+                <label className="form-grid-label">Contact no*</label>
                 <div className="input-error-wrapper form-input">
                   <Field name="contactNo">
                     {({ field, form }) => (
@@ -221,7 +259,9 @@ const StepOne = () => {
               </div>
 
               <div className="form-input-main-div">
-                <label className="self-start form-label">Visa Service*</label>
+                <label className="self-start form-grid-label">
+                  Visa Service*
+                </label>
 
                 {/* multi step radio button start visa services code start here  */}
                 <div className="space-y-4 text-sm input-error-wrapper">
@@ -872,19 +912,6 @@ const StepOne = () => {
                   )}
                 </div>
                 {/* multi step radio button end visa services  */}
-              </div>
-
-              <div className="form-input-main-div">
-                <label className="form-label">Expected Date of Arrival</label>
-                <div className="input-error-wrapper">
-                  <ReactDatePickerInput
-                    className="new-form-input"
-                    name="expectedDateOfArrival"
-                    selected={values.expectedDateOfArrival}
-                    setFieldValue={setFieldValue}
-                    minDate={minDate(3)}
-                  />
-                </div>
               </div>
 
               <div className="text-center">
