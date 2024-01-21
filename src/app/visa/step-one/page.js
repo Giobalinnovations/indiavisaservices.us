@@ -960,8 +960,15 @@ const StepOne = () => {
               )}
             </Formik>
           </div>
-          <div className="basis-80 h-[calc(100vh-20rem)] relative flex border   w-full max-w-[20rem] flex-col rounded-xl bg-white mt-0 p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
-            sdf
+          <div className="basis-80 self-start  relative flex  w-full max-w-[20rem] flex-col rounded-xl gap-2 bg-white mt-0 p-4 text-gray-700 border font-medium">
+            <div className="flex items-center justify-between">
+              <span>Application Id</span>
+              <span>pending</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl">Total</h1>
+              <span>$59</span>
+            </div>
           </div>
         </div>
       </div>
