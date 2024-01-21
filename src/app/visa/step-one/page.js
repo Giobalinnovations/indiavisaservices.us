@@ -49,8 +49,8 @@ const StepOne = () => {
           <Stepper2 />
         </div>
 
-        <div className="flex gap-16 mt-10 formMain">
-          <div className="flex-1">
+        <div className="flex gap-10 mt-10 formMain">
+          <div className="flex-1 p-4 bg-white border rounded-xl">
             <Formik
               initialValues={step1ValidationSchema.initialValues}
               validationSchema={step1ValidationSchema.yupSchema}
