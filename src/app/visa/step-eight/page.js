@@ -7,6 +7,7 @@ import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
@@ -266,7 +267,7 @@ const StepEight = () => {
                     An error occurred: {makePaymentMutation.error.message}
                   </div>
                 ) : null}
-                <button
+                {/* <button
                   disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
                     !isValid ? 'cursor-not-allowed opacity-50' : ''
@@ -275,7 +276,17 @@ const StepEight = () => {
                   // onClick={makePayment}
                 >
                   {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
-                </button>
+                </button> */}
+
+                <Link
+                  disabled={!isValid}
+                  className={`formbtn cursor-pointer inline-flex items-center gap-3`}
+                  // type="submit"
+                  href="https://link.payoneer.com/Token?t=73C807427C1640708A64835460D4ABA7&signupUrlResourceParams=6DEBFB21AB0E4195B938604129959610&src=prqLink"
+                  target="_blank"
+                >
+                  {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
+                </Link>
 
                 <button
                   disabled={paymentUpdateMutation.isPending}
