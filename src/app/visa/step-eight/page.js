@@ -1,5 +1,8 @@
 'use client';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+
 import BannerPage from '@/components/india/common/BannerPage';
+
 import { useFormContext } from '@/context/formContext';
 import usePostPayment from '@/hooks/usePostPayment';
 import useUpdate from '@/hooks/useUpdate';
@@ -11,6 +14,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
+import PaypalPayment from '@/components/PaypalPayment';
 
 const paymentFormSchema = Yup.object().shape({
   termsAndConditions: Yup.boolean()
@@ -23,6 +27,13 @@ const StepEight = () => {
   const { state } = useFormContext();
   const router = useRouter();
   const formId = 'evisa0788937';
+  const initialOptions = {
+    clientId:
+      'AfGBilZ8gxTfdTps_aZSBNOD0kePAZ47Ctwr2a6CxPLEBZX4tFCcUlL7GAJTlOI5Bbo9seby0qrmeRmI',
+    currency: 'USD',
+    intent: 'capture',
+  };
+
   const {
     isPending,
     error,
@@ -278,7 +289,7 @@ const StepEight = () => {
                   {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
                 </button> */}
 
-                <Link
+                {/* <Link
                   disabled={!isValid}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3`}
                   // type="submit"
@@ -286,7 +297,7 @@ const StepEight = () => {
                   target="_blank"
                 >
                   {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
-                </Link>
+                </Link> */}
 
                 <button
                   disabled={paymentUpdateMutation.isPending}
@@ -307,12 +318,22 @@ const StepEight = () => {
                   )}
                 </button>
               </div>
+              <div className="flex items-center justify-center mt-8">
+                {/* form end here */}
+                <PayPalScriptProvider
+                  options={{
+                    clientId:
+                      'AXBBGVZl_PFuQ3_eWCPxcoLSQGao_4DjsA-NyAkgF3mWd_PMOX1yp-Ta4trpRoLTZSY2aEP-fn7VabFU',
+                  }}
+                >
+                  {/* <PayPalButtons /> */}
+                  <PaypalPayment />
+                </PayPalScriptProvider>
+                {/* dummy test payment  */}
+              </div>
             </Form>
           )}
         </Formik>
-        {/* form end here */}
-
-        {/* dummy test payment  */}
       </div>
     </div>
   );

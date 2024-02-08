@@ -5,7 +5,6 @@ import ReactQueryProvider from '@/components/ReactQueryProvider';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
-import Head from 'next/head';
 import Header from '@/components/india/common/Header';
 import Footer from '@/components/india/common/Footer';
 
