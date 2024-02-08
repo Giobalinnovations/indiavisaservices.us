@@ -13,7 +13,7 @@ const nextConfig = {
       },
     ],
   },
-  assetPrefix: 'https://e-visa-delta.vercel.app',
+  // assetPrefix: 'https://e-visa-delta.vercel.app',
 };
 
 module.exports = nextConfig;
