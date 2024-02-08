@@ -38,7 +38,7 @@ export default function PaypalPayment() {
     <PayPalButtons
       createOrder={async () => {
         const res = await fetch(
-          `http://localhost:8090${apiEndpoint.INDIA_VISA_PAYMENT}/13`,
+          `https://nqcfsdj9u6.us-east-1.awsapprunner.com${apiEndpoint.INDIA_VISA_PAYMENT}/13`,
           {
             method: 'PUT',
           }
