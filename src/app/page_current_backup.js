@@ -7,7 +7,6 @@ import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useRouter } from 'next/navigation';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
 import ApplySection from '@/components/india/homepage/ApplySection';
 import Banner from '@/components/india/homepage/Banner';

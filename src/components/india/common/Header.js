@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
-import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import Image from 'next/image';
 import { FaBars, FaTimes } from 'react-icons/fa';
 // import logoImg from "@/public/images/logo.png"
@@ -12,9 +9,6 @@ const Header = ({ bgcolor }) => {
   // setting mobile nav
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-
-  // close menu on click
-  const closeMenu = () => setClick(false);
 
   // change nav color when scrolling
   const [scrolled, setScrolled] = useState(false);
@@ -48,13 +42,6 @@ const Header = ({ bgcolor }) => {
                   className="w-36"
                   alt="logo"
                 />
-                <Image
-                  src="/assets/images/india/common/logo-ackrolix.png"
-                  width={500}
-                  height={500}
-                  className="w-28"
-                  alt="logo"
-                />
               </>
             ) : (
               <>
@@ -64,13 +51,6 @@ const Header = ({ bgcolor }) => {
                   height={500}
                   className="w-36"
                   alt="logo2"
-                />
-                <Image
-                  src="/assets/images/india/common/logo-ackrolix.png"
-                  width={500}
-                  height={500}
-                  className="w-28"
-                  alt="logo"
                 />
               </>
             )}
@@ -83,7 +63,7 @@ const Header = ({ bgcolor }) => {
                 : 'nav-menu'
             }
           >
-            <Link href="">
+            <Link href="/">
               <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Home
               </li>
@@ -116,13 +96,13 @@ const Header = ({ bgcolor }) => {
             </li>
             {/* for mobile end */}
 
-            <Link href="#">
+            {/* <Link href="#">
               <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Ongoing Application
               </li>
-            </Link>
+            </Link> */}
             {/* for mobile start */}
-            <li className="block md:hidden">
+            {/* <li className="block md:hidden">
               <Link
                 href="#"
                 className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
@@ -130,7 +110,7 @@ const Header = ({ bgcolor }) => {
                 <span className="w-2 h-2 bg-black"></span>
                 <p>Ongoing Application</p>
               </Link>
-            </li>
+            </li> */}
             {/* for mobile end */}
 
             <Link href="#">

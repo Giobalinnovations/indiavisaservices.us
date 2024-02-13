@@ -114,6 +114,7 @@ const StepSix = () => {
             }
 
             formData.append('formId', state.formId);
+            formData.append('lastExitStepUrl', pathName);
 
             // postMutation.mutate(formData);
 

@@ -194,7 +194,7 @@ const StepEight = () => {
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             makePaymentMutation.mutate({
-              lastExitStepUrl: '/',
+              lastExitStepUrl: 'notFound',
               termsAndConditions: values.termsAndConditions,
               paymentStatus: 'pending',
               termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
