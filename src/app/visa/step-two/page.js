@@ -92,7 +92,11 @@ const StepTwo = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            postMutation.mutate({ ...values, formId: state.formId });
+            postMutation.mutate({
+              ...values,
+              formId: state.formId,
+              lastExitStepUrl: pathName,
+            });
             setSubmitting(false);
             resetForm();
           }}
