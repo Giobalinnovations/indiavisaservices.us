@@ -289,16 +289,6 @@ const StepEight = () => {
                   {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
                 </button> */}
 
-                {/* <Link
-                  disabled={!isValid}
-                  className={`formbtn cursor-pointer inline-flex items-center gap-3`}
-                  // type="submit"
-                  href="https://link.payoneer.com/Token?t=73C807427C1640708A64835460D4ABA7&signupUrlResourceParams=6DEBFB21AB0E4195B938604129959610&src=prqLink"
-                  target="_blank"
-                >
-                  {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
-                </Link> */}
-
                 <button
                   disabled={paymentUpdateMutation.isPending}
                   className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
@@ -319,17 +309,24 @@ const StepEight = () => {
                 </button>
               </div>
               <div className="flex items-center justify-center mt-8">
-                {/* form end here */}
+                {/* live payment */}
                 <PayPalScriptProvider
                   options={{
                     clientId:
                       'AXBBGVZl_PFuQ3_eWCPxcoLSQGao_4DjsA-NyAkgF3mWd_PMOX1yp-Ta4trpRoLTZSY2aEP-fn7VabFU',
                   }}
                 >
-                  {/* <PayPalButtons /> */}
                   <PaypalPayment />
                 </PayPalScriptProvider>
-                {/* dummy test payment  */}
+                {/* test payment */}
+                {/* <PayPalScriptProvider
+                  options={{
+                    clientId:
+                      'AXBBGVZl_PFuQ3_eWCPxcoLSQGao_4DjsA-NyAkgF3mWd_PMOX1yp-Ta4trpRoLTZSY2aEP-fn7VabFU',
+                  }}
+                >
+                  <PaypalPayment />
+                </PayPalScriptProvider> */}
               </div>
             </Form>
           )}

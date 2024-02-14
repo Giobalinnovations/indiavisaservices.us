@@ -41,7 +41,10 @@ const StepOne = () => {
           validateOnChange={true}
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            postMutation.mutate({ ...values, lastExitStepUrl: pathName });
+            postMutation.mutate({
+              ...values,
+              lastExitStepUrl: '/visa/step-two',
+            });
             setSubmitting(false);
             resetForm();
           }}
