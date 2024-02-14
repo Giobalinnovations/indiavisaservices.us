@@ -100,7 +100,7 @@ const StepThree = () => {
             postMutation.mutate({
               ...values,
               formId: state.formId,
-              lastExitStepUrl: pathName,
+              lastExitStepUrl: '/visa/step-four',
             });
             setSubmitting(false);
             resetForm();

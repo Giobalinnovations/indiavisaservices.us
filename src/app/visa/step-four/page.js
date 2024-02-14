@@ -188,7 +188,7 @@ const StepFour = () => {
               formId: state.formId,
               countryVisitedInLast10Years:
                 values.countryVisitedInLast10Years.map(option => option.value),
-              lastExitStepUrl: pathName,
+              lastExitStepUrl: '/visa/step-five',
             });
             setSubmitting(false);
             resetForm();

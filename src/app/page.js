@@ -40,30 +40,35 @@ const Home = () => {
     enabled: !!visaApplicationId,
   });
 
-  if (
-    isSuccess &&
-    data?.data?.paymentStatus !== 'pending' &&
-    data?.data?.paymentStatus !== 'pendingPayment' &&
-    data?.data?.lastExitStepUrl !== 'notFound'
-  ) {
-    router.push(data?.data?.lastExitStepUrl);
-  }
-  if (
-    isSuccess &&
-    data?.data?.paymentStatus !== 'pending' &&
-    data?.data?.paymentStatus !== 'pendingPayment' &&
-    data?.data?.lastExitStepUrl === 'notFound'
-  ) {
-    router.push('/visa/step-two');
-  }
+  // if (
+  //   isSuccess &&
+  //   data?.data?.paymentStatus !== 'pending' &&
+  //   data?.data?.paymentStatus !== 'pendingPayment' &&
+  //   data?.data?.lastExitStepUrl !== 'notFound'
+  // ) {
+  //   router.push(data?.data?.lastExitStepUrl);
+  // }
+  // if (
+  //   isSuccess &&
+  //   data?.data?.paymentStatus !== 'pending' &&
+  //   data?.data?.paymentStatus !== 'pendingPayment' &&
+  //   data?.data?.lastExitStepUrl === 'notFound'
+  // ) {
+  //   router.push('/visa/step-two');
+  // }
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'SET_FORM_ID',
+  //     payload: data?.data?._id,
+  //   });
+  //   setPaymentStatus(data?.data?.paymentStatus);
+  // }, [paymentStatus, dispatch, data]);
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_FORM_ID',
-      payload: data?.data?._id,
-    });
-    setPaymentStatus(data?.data?.paymentStatus);
-  }, [paymentStatus, dispatch, data]);
+    localStorage.removeItem('formId');
+    setVisaApplicationId(null);
+  }, [dispatch]);
 
   return (
     <>
@@ -145,10 +150,10 @@ const Home = () => {
                         validateOnMount={true}
                         onSubmit={(values, { setSubmitting, resetForm }) => {
                           setVisaApplicationId(values.visaApplicationId);
-                          dispatch({
-                            type: 'SET_FORM_ID',
-                            payload: data?.data?._id,
-                          });
+                          // dispatch({
+                          //   type: 'SET_FORM_ID',
+                          //   payload: data?.data?._id,
+                          // });
                           setSubmitting(false);
                           resetForm();
                         }}
@@ -171,13 +176,13 @@ const Home = () => {
                                 {isSuccess &&
                                   data?.data?.paymentStatus ===
                                     'pendingPayment' && (
-                                    <div>
+                                    <div className="text-center text-yellow-600">
                                       Partially Filled Form Is Completed for
                                       this application Id : {data?.data?._id}{' '}
                                       and Please Pay Now.
                                       <Link
                                         href="/visa/step-eight"
-                                        className={`formbtn cursor-pointer inline-flex items-center gap-3
+                                        className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3
                                         `}
                                         type="button"
                                       >
@@ -187,9 +192,34 @@ const Home = () => {
                                   )}
                                 {isSuccess &&
                                   data?.data?.paymentStatus === 'pending' && (
-                                    <div>
+                                    <div className="mt-1 text-green-600">
                                       Payment is completed for this application
                                       Id : {data?.data?._id}
+                                    </div>
+                                  )}
+                                {isSuccess &&
+                                  data?.data?.paymentStatus ===
+                                    'incomplete' && (
+                                    <div className="mt-3 text-center text-red-600">
+                                      Partially Filled Form Is not Completed for
+                                      this application Id : {data?.data?._id}{' '}
+                                      <button
+                                        href={data?.data?.lastExitStepUrl}
+                                        className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3
+                                        `}
+                                        type="button"
+                                        onClick={() => {
+                                          dispatch({
+                                            type: 'SET_FORM_ID',
+                                            payload: data?.data?._id,
+                                          });
+                                          router.push(
+                                            data?.data?.lastExitStepUrl
+                                          );
+                                        }}
+                                      >
+                                        Click here to fill the form
+                                      </button>
                                     </div>
                                   )}
                                 {error ? (
@@ -199,12 +229,11 @@ const Home = () => {
                                     <Link href="/visa/step-one">Create</Link>
                                   </div>
                                 ) : null}
-
-                                <div className="space-x-4">
+                                <div className="flex flex-col gap-3 mt-3">
                                   <button
                                     type="submit"
                                     disabled={!isValid}
-                                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                                    className={`formbtn w-full justify-center cursor-pointer inline-flex items-center gap-3 ${
                                       !isValid
                                         ? 'cursor-not-allowed opacity-50'
                                         : ''
@@ -223,7 +252,7 @@ const Home = () => {
 
                                   <button
                                     type="button"
-                                    className="formbtnBorder"
+                                    className="flex items-center justify-center w-full formbtnBorder"
                                     onClick={() => setIsOpen(false)}
                                   >
                                     Close
@@ -273,73 +302,7 @@ const Home = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md p-6 space-y-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                  <h2 className="inline-block text-xl font-semibold text-left text-gray-800">
-                    Pay Visa Processing Fee{' '}
-                    {data?.data?.paymentStatus !== 'pending' &&
-                      data?.data?.paymentStatus !== 'pendingPayment' &&
-                      data?.data?.lastExitStepUrl === 'notFound' && (
-                        <>
-                          {' '}
-                          <Dialog.Title
-                            as="h3"
-                            className="text-lg font-medium leading-6 text-gray-900"
-                          >
-                            Partially Form Not Completed
-                          </Dialog.Title>
-                          <div>
-                            <p className="text-sm text-gray-500">
-                              Your Partially form is not completed.
-                            </p>
-                          </div>
-                        </>
-                      )}
-                    {isSuccess &&
-                      data?.data?.paymentStatus === 'pendingPayment' && (
-                        <>
-                          {' '}
-                          <Dialog.Title
-                            as="h3"
-                            className="text-lg font-medium leading-6 text-gray-900"
-                          >
-                            Payment is Pending
-                          </Dialog.Title>
-                          <div>
-                            <p className="text-sm text-gray-500">
-                              Your Payment is not completed.
-                            </p>
-                            <p className="text-sm text-gray-500">
-                              Your payment has been not completed.
-                            </p>
-                          </div>
-                        </>
-                      )}
-                    {isSuccess && data?.data?.paymentStatus === 'pending' && (
-                      <>
-                        {' '}
-                        <Dialog.Title
-                          as="h3"
-                          className="text-lg font-medium leading-6 text-gray-900"
-                        >
-                          Payment is Successful
-                        </Dialog.Title>
-                        <div>
-                          <p className="text-sm text-gray-500">
-                            Your Payment is completed.
-                          </p>
-                          <p className="text-sm text-gray-500">
-                            Your payment has been successfully submitted. We’ve
-                            sent you an email with all of the details of your
-                            order.
-                          </p>
-                        </div>
-                      </>
-                    )}
-                  </h2>
-
                   <>
-                    <p className="pl-px text-xs text-gray-700">
-                      Enter Application ID
-                    </p>
                     <Formik
                       initialValues={{ visaApplicationId: '' }}
                       validationSchema={partiallyFormSchema}
@@ -347,7 +310,6 @@ const Home = () => {
                       validateOnMount={true}
                       onSubmit={(values, { setSubmitting, resetForm }) => {
                         setVisaApplicationId(values.visaApplicationId);
-
                         setSubmitting(false);
                         resetForm();
                       }}
@@ -355,6 +317,9 @@ const Home = () => {
                       {({ values, isValid, handleSubmit }) => (
                         <Form onSubmit={handleSubmit} className="mt-2">
                           <div className=" formMain">
+                            <p className="pl-px text-xs text-gray-700">
+                              Enter Application ID
+                            </p>
                             <Field
                               type="text"
                               placeholder="Enter Temporary Application ID"
@@ -373,11 +338,19 @@ const Home = () => {
                                 <Link href="/visa/step-one">Create</Link>
                               </div>
                             ) : null}
-                            <div className="space-x-4">
+                            {isSuccess ? (
+                              <div className="mt-2 text-center">
+                                Visa Status :{' '}
+                                <span className="text-green-600">
+                                  {data?.data?.paymentStatus}
+                                </span>
+                              </div>
+                            ) : null}
+                            <div className="flex flex-col gap-3 mt-3">
                               <button
                                 type="submit"
                                 disabled={!isValid}
-                                className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                                className={`formbtn cursor-pointer w-full justify-center inline-flex items-center gap-3 ${
                                   !isValid
                                     ? 'cursor-not-allowed opacity-50'
                                     : ''
@@ -445,98 +418,102 @@ const Home = () => {
                 <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                   <div className="px-4 pt-3 pb-4 -mx-4 border-b border-gray-400">
                     <div className="max-w-xl mx-auto">
-                      <h2 className="inline-block text-xl font-semibold text-left text-gray-800">
-                        Pay Visa Processing Fee{' '}
-                        {data?.data?.paymentStatus !== 'pending' &&
-                          data?.data?.paymentStatus !== 'pendingPayment' &&
-                          data?.data?.lastExitStepUrl === 'notFound' && (
-                            <Link
-                              href="/visa/step-two"
-                              className={`formbtn cursor-pointer inline-flex items-center gap-3
+                      <Formik
+                        initialValues={{ visaApplicationId: '' }}
+                        validationSchema={partiallyFormSchema}
+                        validateOnChange={true}
+                        validateOnMount={true}
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
+                          setVisaApplicationId(values.visaApplicationId);
+
+                          setSubmitting(false);
+                          resetForm();
+                        }}
+                      >
+                        {({ values, isValid, handleSubmit }) => (
+                          <Form onSubmit={handleSubmit} className="mt-2">
+                            <div className=" formMain">
+                              <p className="pl-px text-xs text-gray-700">
+                                Enter Application ID
+                              </p>
+                              <Field
+                                type="text"
+                                placeholder="Enter Temporary Application ID"
+                                className="form-input"
+                                name="visaApplicationId"
+                              />
+                              <ErrorMessage
+                                name="visaApplicationId"
+                                component="div"
+                                className="text-red-600"
+                              />
+
+                              {isSuccess &&
+                                data?.data?.paymentStatus ===
+                                  'pendingPayment' && (
+                                  <div className="text-center text-yellow-600">
+                                    Partially Filled Form Is Completed for this
+                                    application Id : {data?.data?._id} and
+                                    Please Pay Now.
+                                    <Link
+                                      href="/visa/step-eight"
+                                      className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3
                                         `}
-                              type="button"
-                            >
-                              Complete Form
-                            </Link>
-                          )}
-                        {isSuccess &&
-                          data?.data?.paymentStatus === 'pendingPayment' && (
-                            <div>
-                              Partially Filled Form Is Completed for this
-                              application Id : {data?.data?._id} and Please Pay
-                              Now.
-                              <Link
-                                href="/visa/step-eight"
-                                className={`formbtn cursor-pointer inline-flex items-center gap-3`}
-                                type="button"
-                              >
-                                Pay Now
-                              </Link>
-                            </div>
-                          )}
-                        {isSuccess &&
-                          data?.data?.paymentStatus === 'pending' && (
-                            <div>
-                              Payment is completed for this application Id :{' '}
-                              {data?.data?._id}
-                            </div>
-                          )}
-                      </h2>
-
-                      {isSuccess &&
-                      data?.data?.paymentStatus === 'pending' ? null : (
-                        <>
-                          <p className="pl-px text-xs text-gray-700">
-                            Enter Application ID
-                          </p>
-                          <Formik
-                            initialValues={{ visaApplicationId: '' }}
-                            validationSchema={partiallyFormSchema}
-                            validateOnChange={true}
-                            validateOnMount={true}
-                            onSubmit={(
-                              values,
-                              { setSubmitting, resetForm }
-                            ) => {
-                              setVisaApplicationId(values.visaApplicationId);
-
-                              setSubmitting(false);
-                              resetForm();
-                            }}
-                          >
-                            {({ values, isValid, handleSubmit }) => (
-                              <Form onSubmit={handleSubmit} className="mt-2">
-                                <div className=" formMain">
-                                  <Field
-                                    type="text"
-                                    placeholder="Enter Temporary Application ID"
-                                    className="form-input"
-                                    name="visaApplicationId"
-                                  />
-                                  <ErrorMessage
-                                    name="visaApplicationId"
-                                    component="div"
-                                    className="text-red-600"
-                                  />
-
-                                  {error ? (
-                                    <div className="text-red-600">
-                                      Not Found Please try Again or Submit new
-                                      form{' '}
-                                      <Link href="/visa/step-one">Create</Link>
-                                    </div>
-                                  ) : null}
-                                  <div className="space-x-4">
-                                    <button
-                                      type="submit"
-                                      disabled={!isValid}
-                                      className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                                        !isValid
-                                          ? 'cursor-not-allowed opacity-50'
-                                          : ''
-                                      }`}
+                                      type="button"
                                     >
-                                      {/* {isPending ? (
+                                      Pay Now
+                                    </Link>
+                                  </div>
+                                )}
+                              {isSuccess &&
+                                data?.data?.paymentStatus === 'pending' && (
+                                  <div className="mt-1 text-green-600">
+                                    Payment is completed for this application Id
+                                    : {data?.data?._id}
+                                  </div>
+                                )}
+                              {isSuccess &&
+                                data?.data?.paymentStatus === 'incomplete' && (
+                                  <div className="mt-3 text-center text-red-600">
+                                    Partially Filled Form Is not Completed for
+                                    this application Id : {data?.data?._id}{' '}
+                                    <button
+                                      href={data?.data?.lastExitStepUrl}
+                                      className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3
+                                        `}
+                                      type="button"
+                                      onClick={() => {
+                                        dispatch({
+                                          type: 'SET_FORM_ID',
+                                          payload: data?.data?._id,
+                                        });
+                                        router.push(
+                                          data?.data?.lastExitStepUrl
+                                        );
+                                      }}
+                                    >
+                                      Click here to fill the form
+                                    </button>
+                                  </div>
+                                )}
+
+                              {error ? (
+                                <div className="text-red-600">
+                                  Not Found Please try Again{' '}
+                                  {/* <Link href="/visa/step-one">Create</Link> */}
+                                </div>
+                              ) : null}
+                              <div className="flex flex-col gap-3 mt-3">
+                                <button
+                                  type="submit"
+                                  disabled={!isValid}
+                                  className={`formbtn cursor-pointer justify-center w-full inline-flex items-center gap-3 ${
+                                    !isValid
+                                      ? 'cursor-not-allowed opacity-50'
+                                      : ''
+                                  }`}
+                                >
+                                  {/* {isPending ? (
                                       <>
                                         <ImSpinner2 className="animate-spin" />{' '}
                                         Loading
@@ -544,24 +521,20 @@ const Home = () => {
                                     ) : (
                                       'Submit'
                                     )} */}
-                                      Submit
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="formbtnBorder"
-                                      onClick={() =>
-                                        setIsOpenMakePayment(false)
-                                      }
-                                    >
-                                      Close
-                                    </button>
-                                  </div>
-                                </div>
-                              </Form>
-                            )}
-                          </Formik>
-                        </>
-                      )}
+                                  Submit
+                                </button>
+                                <button
+                                  type="button"
+                                  className="flex items-center justify-center w-full formbtnBorder"
+                                  onClick={() => setIsOpenMakePayment(false)}
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </Form>
+                        )}
+                      </Formik>
                     </div>
                   </div>
                 </Dialog.Panel>
