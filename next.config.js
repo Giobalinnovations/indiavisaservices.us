@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'evisastorage.s3.ap-south-1.amazonaws.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'storageevisa.s3.ap-south-1.amazonaws.com',
+      },
     ],
   },
   // assetPrefix: 'https://e-visa-delta.vercel.app',
