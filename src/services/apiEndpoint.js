@@ -1,6 +1,6 @@
 const apiEndpoint = {
   // India endpoint
-
+  EVISA_USER_LOGIN: '/visa/loginEvisaUser',
   VISA_ADD_STEP1: '/visa/add/step-one',
   UPDATE_VISA_ADD_STEP1: '/visa/viewVisaRequestForm',
   UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL:

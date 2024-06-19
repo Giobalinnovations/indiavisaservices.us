@@ -96,7 +96,7 @@ const StepSix = () => {
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             const formData = new FormData();
-
+            console.log(values);
             if (values.profilePicture instanceof File) {
               formData.append('profilePicture', values.profilePicture);
             }
@@ -118,13 +118,13 @@ const StepSix = () => {
 
             // postMutation.mutate(formData);
 
-            postMutation.mutate(formData, {
-              onSuccess: () => {
-                updatePaymentStatusMutation.mutate({
-                  paymentStatus: 'pendingPayment',
-                });
-              },
-            });
+            // postMutation.mutate(formData, {
+            //   onSuccess: () => {
+            //     updatePaymentStatusMutation.mutate({
+            //       paymentStatus: 'pendingPayment',
+            //     });
+            //   },
+            // });
 
             setSubmitting(false);
             resetForm();
