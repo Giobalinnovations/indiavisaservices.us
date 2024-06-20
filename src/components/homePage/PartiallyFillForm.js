@@ -3,12 +3,10 @@ import { useFormContext } from '@/context/formContext';
 import usePostUserLogin from '@/hooks/usePostUserLogin';
 import apiEndpoint from '@/services/apiEndpoint';
 import { Dialog, Transition } from '@headlessui/react';
-import { useQuery } from '@tanstack/react-query';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
-import { BiArrowBack, BiLoaderAlt } from 'react-icons/bi';
+import { BiLoaderAlt } from 'react-icons/bi';
 import * as Yup from 'yup';
 import Highlight from '../common/Highlight';
 
@@ -150,45 +148,48 @@ export default function PartiallyFillForm({
                         )}
                       </Formik>
                       {postUserLogin.isSuccess &&
-                      postUserLogin?.data?.data?.data?.paymentStatus ===
-                        'incomplete' ? (
-                        <div
-                          className={`
+                        postUserLogin?.data?.data?.data?.paymentStatus ===
+                          'incomplete' && (
+                          <div
+                            className={`
                             absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
-                        >
-                          {/* <button
+                          >
+                            {/* <button
                               type="button"
                               className="flex items-center gap-2 text-secondary"
                               onClick={handleBackToForm}
                             >
                               <BiArrowBack /> Go Back To Form
                             </button> */}
-                          <p>
-                            Partially Filled Form Is not Completed for this
-                            application Id : {''}
-                            <Highlight
-                              text={postUserLogin?.data?.data?.data?._id}
-                              className="font-semibold"
-                            />
-                          </p>
-                          <button
-                            className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3`}
-                            type="button"
-                            onClick={() => {
-                              dispatch({
-                                type: 'SET_FORM_ID',
-                                payload: postUserLogin?.data?.data?.data?._id,
-                              });
-                              router.push(
-                                postUserLogin?.data?.data?.data?.lastExitStepUrl
-                              );
-                            }}
-                          >
-                            Click here to fill the form
-                          </button>
-                        </div>
-                      ) : (
-                        postUserLogin.isSuccess && (
+                            <p>
+                              Partially Filled Form Is not Completed for this
+                              application Id : {''}
+                              <Highlight
+                                text={postUserLogin?.data?.data?.data?._id}
+                                className="font-semibold"
+                              />
+                            </p>
+                            <button
+                              className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3`}
+                              type="button"
+                              onClick={() => {
+                                dispatch({
+                                  type: 'SET_FORM_ID',
+                                  payload: postUserLogin?.data?.data?.data?._id,
+                                });
+                                router.push(
+                                  postUserLogin?.data?.data?.data
+                                    ?.lastExitStepUrl
+                                );
+                              }}
+                            >
+                              Click here to fill the form
+                            </button>
+                          </div>
+                        )}
+                      {postUserLogin.isSuccess &&
+                        postUserLogin?.data?.data?.data?.paymentStatus ===
+                          'pendingPayment' && (
                           <div
                             className={`
                             absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
@@ -213,25 +214,6 @@ export default function PartiallyFillForm({
                                 className="font-semibold"
                               />
                             </p>
-                          </div>
-                        )
-                      )}
-                      {/* {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus ===
-                          'pendingPayment' && (
-                          <div
-                            className={`
-                            absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
-                          >
-
-                            <p>
-                              Partially Filled Form Is Completed for this
-                              application Id : {''}
-                              <Highlight
-                                text={postUserLogin?.data?.data?.data?._id}
-                                className="font-semibold"
-                              />
-                            </p>
                             <button
                               className={`w-full mt-3 formbtn cursor-pointer justify-center inline-flex items-center gap-3`}
                               type="button"
@@ -246,7 +228,30 @@ export default function PartiallyFillForm({
                               Click here to Complete the Payment
                             </button>
                           </div>
-                        )} */}
+                        )}
+                      {postUserLogin.isSuccess &&
+                        postUserLogin?.data?.data?.data?.paymentStatus ===
+                          'pending' && (
+                          <div
+                            className={`
+                            absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
+                          >
+                            {/* <button
+                              type="button"
+                              className="flex items-center gap-2 text-secondary"
+                              onClick={handleBackToForm}
+                            >
+                              <BiArrowBack /> Go Back To Form
+                            </button> */}
+                            <p>
+                              Payment Completed for this application Id : {''}
+                              <Highlight
+                                text={postUserLogin?.data?.data?.data?._id}
+                                className="font-semibold"
+                              />
+                            </p>
+                          </div>
+                        )}
                     </div>
                   </div>
                 </Dialog.Panel>
