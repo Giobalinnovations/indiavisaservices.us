@@ -54,7 +54,6 @@ const StepSix = () => {
     apiEndpoint.UPDATE_VISA_ADD_STEP1,
     state.formId,
     'Payment status updated successfully',
-    // '/',
     '/visa/step-seven',
     false
   );
@@ -80,7 +79,11 @@ const StepSix = () => {
   }
 
   if (getAllStepsDataIsSuccess) {
-    if (!getAllStepsData?.data?.step5Data) {
+    console.log('getAllStepsData', getAllStepsData?.data?.step5Data);
+    if (getAllStepsData?.data?.step6Data) {
+      return router.push('/visa/step-eight');
+    }
+    if (!getAllStepsData?.data?.step6Data && getAllStepsData?.data?.step5Data) {
       return router.push('/visa/step-five');
     }
 
@@ -96,7 +99,7 @@ const StepSix = () => {
           validateOnMount={true}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             const formData = new FormData();
-            console.log(values);
+
             if (values.profilePicture instanceof File) {
               formData.append('profilePicture', values.profilePicture);
             }
@@ -118,13 +121,13 @@ const StepSix = () => {
 
             // postMutation.mutate(formData);
 
-            // postMutation.mutate(formData, {
-            //   onSuccess: () => {
-            //     updatePaymentStatusMutation.mutate({
-            //       paymentStatus: 'pendingPayment',
-            //     });
-            //   },
-            // });
+            postMutation.mutate(formData, {
+              onSuccess: () => {
+                updatePaymentStatusMutation.mutate({
+                  paymentStatus: 'pendingPayment',
+                });
+              },
+            });
 
             setSubmitting(false);
             resetForm();
