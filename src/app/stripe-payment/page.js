@@ -1,10 +1,10 @@
 'use client';
 import useVisaBookingPaymentPost from '@/hooks/useVisaBookingPaymentPost';
-import { loadStripe } from '@stripe/stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 import { useEffect } from 'react';
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST
-);
+// const stripePromise = loadStripe(
+//   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST
+// );
 export default function StripePaymentTesting() {
   const postPayment = useVisaBookingPaymentPost({
     apiEndpointUrl: 'api/checkout-session/evisa9503592',
@@ -34,7 +34,7 @@ export default function StripePaymentTesting() {
     <div className="px-10 py-40">
       <form onSubmit={handleSubmit}>
         <button className="text-white bg-primary">
-          {postPayment.isPending ? 'Loading...' : 'Make Payment'}
+          {postPayment.isPending ? 'Processing...' : 'Make Payment'}
         </button>
       </form>
     </div>
