@@ -1,49 +1,15 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
-import React, { Fragment, useEffect, useState, useTransition } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import axiosInstance from '@/services/api';
-import apiEndpoint from '@/services/apiEndpoint';
-import { useRouter } from 'next/navigation';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
+import React, { useEffect, useState, useTransition } from 'react';
 import ApplySection from '@/components/india/homepage/ApplySection';
 import Banner from '@/components/india/homepage/Banner';
 import { useFormContext } from '@/context/formContext';
-import { BiLoaderAlt } from 'react-icons/bi';
 import PartiallyFillForm from '@/components/homePage/PartiallyFillForm';
 import PaymentForCompletedForm from '@/components/homePage/PaymentForCompletedForm';
 import VisaStatusForm from '@/components/homePage/VisaStatusForm';
 
-const partiallyFormSchema = Yup.object().shape({
-  visaApplicationId: Yup.string()
-    .matches(
-      /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]*$/,
-      'Application id must but combination of number and string'
-    )
-    .required('Application id is required'),
-});
-
 const Home = () => {
   const { dispatch } = useFormContext();
-  const router = useRouter();
-  let [isOpen, setIsOpen] = useState(false);
-  let [isOpenStatus, setIsOpenStatus] = useState(false);
-  let [isOpenStatusMakePayment, setIsOpenMakePayment] = useState(false);
-  const [visaApplicationId, setVisaApplicationId] = useState(null);
-  const [paymentStatus, setPaymentStatus] = useState('pending');
-  const { isPending, error, data, isSuccess, status, refetch } = useQuery({
-    queryKey: ['get visa data'],
-    queryFn: () =>
-      axiosInstance.get(
-        `${apiEndpoint.GET_VISA_STEP1_BY_ID}${visaApplicationId}`
-      ),
-
-    enabled: !!visaApplicationId,
-  });
-  const [isPendingTransition, startTransition] = useTransition();
-
   const [isPaymentForCompletedFormOpen, setPaymentForCompletedFormOpen] =
     useState(false);
   const [isPartiallyFillFormOpen, setPartiallyFillFormOpen] = useState(false);
@@ -63,7 +29,6 @@ const Home = () => {
 
   useEffect(() => {
     localStorage.removeItem('formId');
-    setVisaApplicationId(null);
   }, [dispatch]);
 
   return (

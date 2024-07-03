@@ -148,7 +148,7 @@ export default function PartiallyFillForm({
                         )}
                       </Formik>
                       {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus ===
+                        postUserLogin?.data?.data?.data?.visaStatus ===
                           'incomplete' && (
                           <div
                             className={`
@@ -188,8 +188,8 @@ export default function PartiallyFillForm({
                           </div>
                         )}
                       {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus ===
-                          'pendingPayment' && (
+                        postUserLogin?.data?.data?.data?.visaStatus ===
+                          'pending payment' && (
                           <div
                             className={`
                             absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
@@ -230,7 +230,7 @@ export default function PartiallyFillForm({
                           </div>
                         )}
                       {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus ===
+                        postUserLogin?.data?.data?.data?.visaStatus ===
                           'pending' && (
                           <div
                             className={`

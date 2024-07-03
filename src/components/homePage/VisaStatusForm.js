@@ -148,8 +148,8 @@ export default function VisaStatusForm({ isFormModalOpen, handleFormModal }) {
                       </Formik>
 
                       {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus ===
-                          'visaSent' && (
+                        postUserLogin?.data?.data?.data?.visaStatus ===
+                          'visa sent' && (
                           <div
                             className={`
                             absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}
@@ -172,7 +172,7 @@ export default function VisaStatusForm({ isFormModalOpen, handleFormModal }) {
                               Visa Status:{' '}
                               <Highlight
                                 text={
-                                  postUserLogin?.data?.data?.data?.paymentStatus
+                                  postUserLogin?.data?.data?.data?.visaStatus
                                 }
                                 className="font-semibold"
                               />
@@ -180,8 +180,8 @@ export default function VisaStatusForm({ isFormModalOpen, handleFormModal }) {
                           </div>
                         )}
                       {postUserLogin.isSuccess &&
-                        postUserLogin?.data?.data?.data?.paymentStatus !==
-                          'visaSent' && (
+                        postUserLogin?.data?.data?.data?.visaStatus !==
+                          'visa sent' && (
                           <div
                             className={`
                             absolute top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-3 p-5 mt-3 text-center text-red-600 bg-white`}

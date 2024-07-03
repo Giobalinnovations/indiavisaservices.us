@@ -25,12 +25,6 @@ const StepEight = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
   const router = useRouter();
-  // const initialOptions = {
-  //   clientId:
-  //     'AfGBilZ8gxTfdTps_aZSBNOD0kePAZ47Ctwr2a6CxPLEBZX4tFCcUlL7GAJTlOI5Bbo9seby0qrmeRmI',
-  //   currency: 'USD',
-  //   intent: 'capture',
-  // };
 
   const {
     isPending,
@@ -52,18 +46,10 @@ const StepEight = () => {
     '/',
     false
   );
-  const paymentNowUpdateMutation = useUpdate(
-    apiEndpoint.UPDATE_VISA_FORM_PAYMENT,
-    'state.formId',
-    'Payment Complete successfully',
-    '/',
-    false
-  );
 
   const makePaymentMutation = usePostPayment(
     `${apiEndpoint.INDIA_VISA_PAYMENT}/${'state.formId'}`,
     'payment added successfully',
-    // '/australia/application/payment/success',
     false,
     'getAllStepsData'
   );
@@ -71,16 +57,9 @@ const StepEight = () => {
   const handlePayLater = () => {
     paymentUpdateMutation.mutate({
       lastExitStepUrl: pathName,
-      paymentStatus: 'pendingPayment',
+      visaStatus: 'pending payment',
     });
   };
-
-  // const makePayment = async () => {
-  //   makePaymentMutation.mutate({
-  //     totalPrice: 1,
-  //     state.formId: state?.formId,
-  //   });
-  // };
 
   if (isPending) {
     return (
@@ -97,14 +76,14 @@ const StepEight = () => {
 
   if (getAllStepsDataIsSuccess) {
     if (
-      getAllStepsData?.data?.paymentStatus === 'pending' ||
-      getAllStepsData?.data?.paymentStatus === 'underProcess' ||
-      getAllStepsData?.data?.paymentStatus === 'visaSent' ||
-      getAllStepsData?.data?.paymentStatus === 'verify'
+      getAllStepsData?.data?.visaStatus === 'pending' ||
+      getAllStepsData?.data?.visaStatus === 'under process' ||
+      getAllStepsData?.data?.visaStatus === 'visa sent' ||
+      getAllStepsData?.data?.visaStatus === 'verify'
     ) {
       return <div>Payment is completed</div>;
     }
-    if (getAllStepsData?.data?.paymentStatus === 'incomplete') {
+    if (getAllStepsData?.data?.visaStatus === 'incomplete') {
       return router.push('/visa/step-six');
     }
 
@@ -203,7 +182,7 @@ const StepEight = () => {
               makePaymentMutation.mutate({
                 lastExitStepUrl: 'notFound',
                 termsAndConditions: values.termsAndConditions,
-                paymentStatus: 'pending',
+                visaStatus: 'pending',
                 termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
                   and conditions given on the website indiavisasonline.org.in
                   and understand all the questions and statements of this
