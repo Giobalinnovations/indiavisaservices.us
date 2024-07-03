@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 // );
 export default function StripePaymentTesting() {
   const postPayment = useVisaBookingPaymentPost({
-    apiEndpointUrl: 'api/checkout-session/evisa9503592',
+    apiEndpointUrl: 'api/checkout-session/evisa1121922',
     successMessage: 'Successful',
   });
 
