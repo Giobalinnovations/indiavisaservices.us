@@ -1,11 +1,7 @@
 'use client';
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 import BannerPage from '@/components/india/common/BannerPage';
-
 import { useFormContext } from '@/context/formContext';
-import usePostPayment from '@/hooks/usePostPayment';
-import useUpdate from '@/hooks/useUpdate';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
 import { useQuery } from '@tanstack/react-query';
@@ -13,7 +9,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { usePathname, useRouter } from 'next/navigation';
 import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
-import PaypalPayment from '@/components/PaypalPayment';
 import useUpdatePatch from '@/hooks/useUpdatePatch';
 import useVisaBookingPaymentPost from '@/hooks/useVisaBookingPaymentPost';
 
@@ -27,7 +22,7 @@ const StepEight = () => {
   const pathName = usePathname();
   const { state } = useFormContext();
   const router = useRouter();
-
+  console.log(state);
   const {
     isPending,
     error,
