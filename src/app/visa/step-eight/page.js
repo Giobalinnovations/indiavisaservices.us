@@ -199,7 +199,7 @@ const StepEight = () => {
                   granted or rejected by the indian government. I authorized
                   them to take the payment from my card online.`,
               });
-
+              // console.log(values, state.formId);
               setSubmitting(false);
               resetForm();
             }}
