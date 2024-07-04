@@ -14,7 +14,7 @@ export default function StripePaymentTesting() {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    postPayment.mutate({});
+    postPayment.mutate({ domainUrl: 'https://www.servicesindia-travel.in' });
   };
 
   useEffect(() => {

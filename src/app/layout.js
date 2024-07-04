@@ -22,11 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body
+        className={`${poppins.className} flex flex-col min-h-screen antialiased`}
+      >
         <FormProvider>
           <ReactQueryProvider>
             <Header />
-            {children}
+            <div className="flex-1">{children}</div>
             <Footer />
             <ToastContainer />
           </ReactQueryProvider>

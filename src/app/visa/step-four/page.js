@@ -223,14 +223,14 @@ const StepFour = () => {
                               <Field
                                 type="text"
                                 name="visaType"
-                                className="form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
                               />
-                              {/* <ErrorMessage
-                            name="visaType"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                              <ErrorMessage
+                                name="visaType"
+                                component="div"
+                                className="text-red-600"
+                              />
                             </div>
                           </div>
                           <div className="form-input-main-div">
@@ -239,7 +239,7 @@ const StepFour = () => {
                               <Field
                                 type="text"
                                 name="visaService"
-                                className="form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
                               />
                               <ErrorMessage
@@ -439,8 +439,13 @@ const StepFour = () => {
                             <Field
                               type="text"
                               name="durationOfVisa"
-                              className="form-input"
+                              className="form-input input-disabled"
                               disabled={true}
+                            />
+                            <ErrorMessage
+                              name="durationOfVisa"
+                              component="div"
+                              className="text-red-600"
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -448,8 +453,13 @@ const StepFour = () => {
                             <Field
                               type="text"
                               name="numberOfEntries"
-                              className="form-input"
+                              className="form-input input-disabled"
                               disabled={true}
+                            />
+                            <ErrorMessage
+                              name="numberOfEntries"
+                              component="div"
+                              className="text-red-600"
                             />
                           </div>
                           <div className="form-input-main-div">
@@ -460,14 +470,14 @@ const StepFour = () => {
                               <Field
                                 type="text"
                                 name="portOfArrival"
-                                className="form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
                               />
-                              {/* <ErrorMessage
-                            name="portOfArrival"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                              <ErrorMessage
+                                name="portOfArrival"
+                                component="div"
+                                className="text-red-600"
+                              />
                             </div>
                           </div>
                           <div className="form-input-main-div">
@@ -2170,7 +2180,7 @@ const StepFour = () => {
                                             className="space-y-4"
                                             key={index}
                                           >
-                                            <div className="form-input-main-div">
+                                            <div className="c form-input-main-div">
                                               <label
                                                 className="form-label"
                                                 htmlFor={`visitedSAARCCountriesLists.${index}.saarcCountryName`}
@@ -2311,7 +2321,7 @@ const StepFour = () => {
                                       )}
                                     <button
                                       type="button"
-                                      className="formbtn"
+                                      className="mt-5 formbtn"
                                       onClick={() =>
                                         push({
                                           saarcCountryName: '',
@@ -2320,7 +2330,7 @@ const StepFour = () => {
                                         })
                                       }
                                     >
-                                      Add
+                                      Add More
                                     </button>
                                   </div>
                                 )}

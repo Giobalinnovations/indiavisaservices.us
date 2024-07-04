@@ -23,6 +23,9 @@ body {
 .form-grid-2 {
   @apply grid grid-cols-1 gap-4 md:grid-cols-2;
 }
+.input-disabled {
+  @apply disabled:bg-gray-100 disabled:text-gray-400;
+}
 
 .form-grid-label {
   /* @apply mb-1 text-sm text-[#07074D] flex gap-1 items-center; */

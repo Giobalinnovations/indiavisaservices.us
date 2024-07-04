@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { LuImagePlus } from 'react-icons/lu';
-import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/services/api';
 import apiEndpoint from '@/services/apiEndpoint';
@@ -75,16 +75,16 @@ const StepSix = () => {
   }
 
   if (error) {
-    return router.push('/visa/step-one');
+    return router.push('/visa/step-five');
   }
 
   if (getAllStepsDataIsSuccess) {
-    console.log('getAllStepsData', getAllStepsData?.data?.step5Data);
-    if (getAllStepsData?.data?.step6Data) {
-      return router.push('/visa/step-eight');
-    }
-    if (!getAllStepsData?.data?.step6Data && getAllStepsData?.data?.step5Data) {
+    if (!getAllStepsData?.data?.step5Data) {
       return router.push('/visa/step-five');
+    }
+
+    if (getAllStepsData?.data?.step6Data) {
+      return router.push('/visa/step-seven');
     }
 
     return (

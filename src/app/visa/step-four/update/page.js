@@ -199,14 +199,14 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   name="visaType"
-                                  className="opacity-50 form-input"
+                                  className="form-input input-disabled"
                                   disabled={true}
                                 />
-                                {/* <ErrorMessage
-                            name="visaType"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                                <ErrorMessage
+                                  name="visaType"
+                                  component="div"
+                                  className="text-red-600"
+                                />
                               </div>
                             </div>
                             <div className="form-input-main-div">
@@ -217,7 +217,7 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   name="visaService"
-                                  className="opacity-50 form-input"
+                                  className="form-input input-disabled"
                                   disabled={true}
                                 />
                                 <ErrorMessage
@@ -399,8 +399,13 @@ const StepFour = () => {
                               <Field
                                 type="text"
                                 name="durationOfVisa"
-                                className="opacity-50 form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
+                              />
+                              <ErrorMessage
+                                name="durationOfVisa"
+                                component="div"
+                                className="text-red-600"
                               />
                             </div>
                             <div className="form-input-main-div">
@@ -410,8 +415,13 @@ const StepFour = () => {
                               <Field
                                 type="text"
                                 name="numberOfEntries"
-                                className="opacity-50 form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
+                              />
+                              <ErrorMessage
+                                name="numberOfEntries"
+                                component="div"
+                                className="text-red-600"
                               />
                             </div>
                             <div className="form-input-main-div">
@@ -422,14 +432,14 @@ const StepFour = () => {
                                 <Field
                                   type="text"
                                   name="portOfArrival"
-                                  className="opacity-50 form-input"
+                                  className="form-input input-disabled"
                                   disabled={true}
                                 />
-                                {/* <ErrorMessage
-                            name="portOfArrival"
-                            component="div"
-                            className="text-red-600"
-                          /> */}
+                                <ErrorMessage
+                                  name="portOfArrival"
+                                  component="div"
+                                  className="text-red-600"
+                                />
                               </div>
                             </div>
                             <div className="form-input-main-div">
@@ -462,41 +472,6 @@ const StepFour = () => {
                                 />
                               </div>
                             </div>
-                            {/* <div className="flex items-start py-2 space-x-2">
-                        <label className="font-semibold">
-                          Have you booked any room in Hotel/Resort etc. through
-                          any Tour Operator?
-                        </label>
-                        <div className="flex space-x-4">
-                          <div className="px-2 space-x-2">
-                            <Field
-                              type="radio"
-                              id="yes"
-                              name="roomBooked"
-                              value="yes"
-                            />
-                            <label htmlFor="yes" className="font-semibold">
-                              Yes
-                            </label>
-                          </div>
-                          <div className="px-2 space-x-2">
-                            <Field
-                              type="radio"
-                              id="no"
-                              name="roomBooked"
-                              value="no"
-                            />
-                            <label htmlFor="no" className="font-semibold">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                        <ErrorMessage
-                          name="roomBooked"
-                          component="div"
-                          className="text-red-600"
-                        />
-                      </div> */}
                           </div>
                         </div>
                       </div>
@@ -1798,28 +1773,8 @@ const StepFour = () => {
                               <label className="form-label">
                                 Countries Visited in last 10 years
                               </label>
-
+                              {console.log(values.countryVisitedInLast10Years)}
                               <div className="input-error-wrapper">
-                                {/* <MultiReactSelectFormik
-                                  options={Country?.getAllCountries()?.map(
-                                    country => ({
-                                      value: country?.name,
-                                      label: country?.name,
-                                    })
-                                  )}
-                                  // defa={values.countryVisitedInLast10Years?.map(value => ({label: '', value: ''})}
-                                  defaultValue={values.countryVisitedInLast10Years?.map(
-                                    value => ({
-                                      label: value,
-                                      value: value,
-                                    })
-                                  )}
-                                  onChange={setFieldValue}
-                                  onBlur={setFieldTouched}
-                                  error={errors.countryVisitedInLast10Years}
-                                  touched={touched.countryVisitedInLast10Years}
-                                /> */}
-
                                 <Select
                                   defaultValue={values.countryVisitedInLast10Years?.map(
                                     value => ({
@@ -1916,7 +1871,7 @@ const StepFour = () => {
                                               className="space-y-4"
                                               key={index}
                                             >
-                                              <div className="form-input-main-div">
+                                              <div className="mt-10 form-input-main-div">
                                                 <label
                                                   className="form-label"
                                                   htmlFor={`visitedSAARCCountriesLists.${index}.saarcCountryName`}
@@ -2029,7 +1984,7 @@ const StepFour = () => {
                                         )}
                                       <button
                                         type="button"
-                                        className="formbtn"
+                                        className="mt-5 formbtn"
                                         onClick={() =>
                                           push({
                                             saarcCountryName: '',
@@ -2038,7 +1993,7 @@ const StepFour = () => {
                                           })
                                         }
                                       >
-                                        Add
+                                        Add More
                                       </button>
                                     </div>
                                   )}

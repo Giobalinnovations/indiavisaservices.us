@@ -16,7 +16,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import BannerPage from '@/components/india/common/BannerPage';
 import {
   educationalQualificationList,
-  nationalityRegionData,
   religionNames,
   step2ValidationSchema,
 } from '@/constant/indiaConstant';
@@ -298,10 +297,9 @@ const StepTwo = () => {
                               }
                               dateFormat="dd-MM-yyyy"
                               icon={<CiCalendarDate />}
-                              className="w-full new-form-input"
+                              className="w-full new-form-input input-disabled"
                               name="dateOfBirth"
                               placeholderText="Date of birth as in passport"
-                              // wrapperClassName="date-picker"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
@@ -535,24 +533,11 @@ const StepTwo = () => {
                           </label>
                           <div className="input-error-wrapper">
                             <Field
-                              component="select"
                               id="nationalityRegion"
                               name="nationalityRegion"
-                              className="p-2 border rounded select-input"
+                              className="p-2 border rounded select-input input-disabled"
                               disabled={true}
-                            >
-                              <option value="" disabled>
-                                choose*
-                              </option>
-                              {nationalityRegionData?.map((country, index) => (
-                                <option
-                                  key={index}
-                                  value={country?.nationality}
-                                >
-                                  {country?.nationality}
-                                </option>
-                              ))}
-                            </Field>
+                            />
 
                             <ErrorMessage name="nationalityRegion">
                               {errorMsg => (
@@ -583,7 +568,7 @@ const StepTwo = () => {
                               className="p-2 border rounded select-input"
                               component="select"
                             >
-                              <option value="" disabled>
+                              <option value="" selected>
                                 Select*
                               </option>
                               <option value="birth">By Birth</option>
