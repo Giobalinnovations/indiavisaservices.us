@@ -19,6 +19,7 @@ import {
   occupationList,
   step3ValidationSchema,
 } from '@/constant/indiaConstant';
+import Loading from '@/components/india/common/Loading';
 
 const StepThree = () => {
   const pathName = usePathname();
@@ -63,16 +64,11 @@ const StepThree = () => {
   };
 
   if (getAllStepsDataIsPending) {
-    return (
-      <div className="flex items-center justify-center flex-1 h-full pt-20">
-        <ImSpinner2 className="w-4 h-4 text-black animate-spin" />
-        loading
-      </div>
-    );
+    return <Loading />;
   }
 
   if (getAllStepsDataError) {
-    return router.push('/visa/step-one');
+    return router.push('/visa/step-two');
   }
 
   if (getAllStepsDataIsSuccess) {
@@ -351,7 +347,7 @@ const StepThree = () => {
                                 type="text"
                                 id="emailAddress"
                                 name="emailAddress"
-                                className="form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
                               />
                               <ErrorMessage

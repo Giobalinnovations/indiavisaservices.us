@@ -14,6 +14,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
 import PaypalPayment from '@/components/PaypalPayment';
+import useUpdatePatch from '@/hooks/useUpdatePatch';
+import useVisaBookingPaymentPost from '@/hooks/useVisaBookingPaymentPost';
 
 const paymentFormSchema = Yup.object().shape({
   termsAndConditions: Yup.boolean()
@@ -39,19 +41,17 @@ const StepEight = () => {
     enabled: !!state.formId,
   });
 
-  const paymentUpdateMutation = useUpdate(
-    apiEndpoint.UPDATE_VISA_ADD_STEP1_LAST_EXIT_STEP_URL,
+  const postPayment = useVisaBookingPaymentPost({
+    apiEndpointUrl: `api/checkout-session/${state.formId}`,
+    successMessage: 'Successful',
+  });
+
+  const paymentUpdateMutation = useUpdatePatch(
+    apiEndpoint.UPDATE_VISA_ADD_STEP1,
     state.formId,
     'successful',
     '/',
     false
-  );
-
-  const makePaymentMutation = usePostPayment(
-    `${apiEndpoint.INDIA_VISA_PAYMENT}/${'state.formId'}`,
-    'payment added successfully',
-    false,
-    'getAllStepsData'
   );
 
   const handlePayLater = () => {
@@ -71,22 +71,24 @@ const StepEight = () => {
   }
 
   if (error) {
-    return router.push('/visa/step-one');
+    return router.push('/visa/step-seven');
   }
 
-  if (getAllStepsDataIsSuccess) {
-    if (
-      getAllStepsData?.data?.visaStatus === 'pending' ||
-      getAllStepsData?.data?.visaStatus === 'under process' ||
-      getAllStepsData?.data?.visaStatus === 'visa sent' ||
-      getAllStepsData?.data?.visaStatus === 'verify'
-    ) {
-      return <div>Payment is completed</div>;
-    }
-    if (getAllStepsData?.data?.visaStatus === 'incomplete') {
-      return router.push('/visa/step-six');
-    }
+  if (getAllStepsDataIsSuccess && getAllStepsData?.data?.paid === true) {
+    return (
+      <div>
+        <div>
+          Payment is completed for this application Id :{' '}
+          {getAllStepsData?.data?._id ?? 'application id not found'}{' '}
+        </div>
+        <div>
+          visaStatus: {getAllStepsData?.data?.visaStatus ?? 'no status found'}
+        </div>
+      </div>
+    );
+  }
 
+  if (getAllStepsDataIsSuccess && getAllStepsData?.data?.paid === false) {
     return (
       <div>
         <BannerPage heading="E-VISA APPLICATION FORM" />
@@ -179,10 +181,9 @@ const StepEight = () => {
             validateOnChange={true}
             validateOnMount={true}
             onSubmit={(values, { setSubmitting, resetForm }) => {
-              makePaymentMutation.mutate({
-                lastExitStepUrl: 'notFound',
+              postPayment.mutate({
+                domainUrl: 'https://www.servicesindia-travel.in',
                 termsAndConditions: values.termsAndConditions,
-                visaStatus: 'pending',
                 termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
                   and conditions given on the website indiavisasonline.org.in
                   and understand all the questions and statements of this
@@ -247,34 +248,6 @@ const StepEight = () => {
                   </p>
                 </div>
                 <div className="space-x-4 text-center">
-                  {/* <MakePaymentComponent isValid={isValid} /> */}
-
-                  {/* <button
-                    disabled={!isValid}
-                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                      !isValid ? 'cursor-not-allowed opacity-50' : ''
-                    }`}
-                    type="submit"
-                  >
-                    Pay Now
-                  </button> */}
-
-                  {makePaymentMutation.isError ? (
-                    <div className="text-red-500">
-                      An error occurred: {makePaymentMutation.error.message}
-                    </div>
-                  ) : null}
-                  {/* <button
-                  disabled={!isValid}
-                  className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
-                    !isValid ? 'cursor-not-allowed opacity-50' : ''
-                  }`}
-                  type="submit"
-                  // onClick={makePayment}
-                >
-                  {makePaymentMutation.isPending ? <>Loading...</> : 'Pay Now'}
-                </button> */}
-
                   <button
                     disabled={paymentUpdateMutation.isPending}
                     className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
@@ -293,26 +266,21 @@ const StepEight = () => {
                       'Pay Later'
                     )}
                   </button>
-                </div>
-                <div className="flex items-center justify-center mt-8">
-                  {/* live payment */}
-                  <PayPalScriptProvider
-                    options={{
-                      clientId:
-                        'AXBBGVZl_PFuQ3_eWCPxcoLSQGao_4DjsA-NyAkgF3mWd_PMOX1yp-Ta4trpRoLTZSY2aEP-fn7VabFU',
-                    }}
+                  <button
+                    disabled={!isValid}
+                    className={`formbtn cursor-pointer inline-flex items-center gap-3 ${
+                      !isValid ? 'cursor-not-allowed opacity-50' : ''
+                    }`}
+                    type="submit"
                   >
-                    <PaypalPayment />
-                  </PayPalScriptProvider>
-                  {/* test payment */}
-                  {/* <PayPalScriptProvider
-                  options={{
-                    clientId:
-                      'AXBBGVZl_PFuQ3_eWCPxcoLSQGao_4DjsA-NyAkgF3mWd_PMOX1yp-Ta4trpRoLTZSY2aEP-fn7VabFU',
-                  }}
-                >
-                  <PaypalPayment />
-                </PayPalScriptProvider> */}
+                    {postPayment.isPending ? 'Processing...' : 'Pay Now'}
+                  </button>
+
+                  {postPayment.isError ? (
+                    <div className="text-red-500">
+                      An error occurred: {postPayment.error.message}
+                    </div>
+                  ) : null}
                 </div>
               </Form>
             )}

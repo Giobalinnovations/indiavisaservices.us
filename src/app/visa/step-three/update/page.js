@@ -237,7 +237,7 @@ export default function Step3Update() {
                                 type="text"
                                 id="emailAddress"
                                 name="emailAddress"
-                                className="opacity-50 form-input"
+                                className="form-input input-disabled"
                                 disabled={true}
                               />
                               <ErrorMessage

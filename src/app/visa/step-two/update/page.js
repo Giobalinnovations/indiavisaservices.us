@@ -201,10 +201,9 @@ export default function StepTwoUpdate() {
                               }
                               dateFormat="dd-MM-yyyy"
                               icon={<CiCalendarDate />}
-                              className="w-full new-form-input"
+                              className="w-full new-form-input input-disabled"
                               name="dateOfBirth"
                               placeholderText="Date of birth as in passport"
-                              // wrapperClassName="date-picker"
                               disabled={true}
                             />
                             <ErrorMessage name="dateOfBirth">
@@ -370,24 +369,12 @@ export default function StepTwoUpdate() {
                           <label className="form-label">Nationality</label>
                           <div className="input-error-wrapper">
                             <Field
-                              component="select"
+                              type="text"
                               id="nationalityRegion"
                               name="nationalityRegion"
-                              className="p-2 border rounded opacity-50 select-input"
+                              className="p-2 border rounded opacity-50 select-input input-disabled"
                               disabled={true}
-                            >
-                              <option value="" disabled>
-                                choose*
-                              </option>
-                              {nationalityRegionData?.map((country, index) => (
-                                <option
-                                  key={index}
-                                  value={country?.nationality}
-                                >
-                                  {country?.nationality}
-                                </option>
-                              ))}
-                            </Field>
+                            />
 
                             <ErrorMessage name="nationalityRegion">
                               {errorMsg => (
