@@ -23,7 +23,9 @@ export default function useVisaBookingPaymentPost({
       return axiosInstance.post(apiEndpointUrl, formData);
     },
     onSuccess: async data => {
+      // console.log(data.data.session);
       const stripe = await stripePromise;
+
       await stripe.redirectToCheckout({
         sessionId: data.data.session.id,
       });
