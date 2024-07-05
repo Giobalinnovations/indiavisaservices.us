@@ -69,7 +69,7 @@ export default function StepOneUpdate() {
                   setSubmitting(false);
                 }}
               >
-                {({ values, isValid, setFieldValue }) => (
+                {({ values, isValid, setFieldValue, handleChange }) => (
                   <Form className="formMain">
                     <div className="form-input-main-div">
                       <label className="form-label">Application Type*</label>
@@ -107,6 +107,19 @@ export default function StepOneUpdate() {
                           id="nationalityRegion"
                           name="nationalityRegion"
                           className="p-2 border rounded select-input"
+                          onChange={e => {
+                            handleChange(e);
+                            setFieldValue('visaService', '');
+                            setFieldValue('eTouristVisa', '');
+                            setFieldValue('eTouristVisa30Days', '');
+                            setFieldValue('eTouristVisa1Year', '');
+                            setFieldValue('eTouristVisa5Years', '');
+                            setFieldValue('eConferenceVisa', '');
+                            setFieldValue('eMedicalAttendantVisa', '');
+                            setFieldValue('eBusinessVisa', '');
+                            setFieldValue('eMedicalVisa', '');
+                            setFieldValue('eEmergencyXMisc', '');
+                          }}
                         >
                           <option disabled value="">
                             Country
@@ -299,6 +312,17 @@ export default function StepOneUpdate() {
                                   name="visaService"
                                   className="mt-1"
                                   value="eEmergencyXMisc"
+                                  onChange={e => {
+                                    handleChange(e);
+                                    setFieldValue('eTouristVisa', '');
+                                    setFieldValue('eTouristVisa30Days', '');
+                                    setFieldValue('eTouristVisa1Year', '');
+                                    setFieldValue('eTouristVisa5Years', '');
+                                    setFieldValue('eConferenceVisa', '');
+                                    setFieldValue('eMedicalAttendantVisa', '');
+                                    setFieldValue('eBusinessVisa', '');
+                                    setFieldValue('eMedicalVisa', '');
+                                  }}
                                 />
                                 <label htmlFor="visaServiceEmergencyXMisc">
                                   E Emergency X Misc
@@ -335,6 +359,14 @@ export default function StepOneUpdate() {
                                 name="visaService"
                                 className="mt-1"
                                 value="eTOURIST VISA"
+                                onChange={e => {
+                                  handleChange(e);
+                                  setFieldValue('eConferenceVisa', '');
+                                  setFieldValue('eMedicalAttendantVisa', '');
+                                  setFieldValue('eBusinessVisa', '');
+                                  setFieldValue('eEmergencyXMisc', '');
+                                  setFieldValue('eMedicalVisa', '');
+                                }}
                               />
                               <label htmlFor="visaServiceEtourist">
                                 eTOURIST VISA
@@ -714,6 +746,17 @@ export default function StepOneUpdate() {
                                   name="visaService"
                                   className="mt-1"
                                   value="eMEDICAL VISA"
+                                  onChange={e => {
+                                    handleChange(e);
+                                    setFieldValue('eTouristVisa', '');
+                                    setFieldValue('eTouristVisa30Days', '');
+                                    setFieldValue('eTouristVisa1Year', '');
+                                    setFieldValue('eTouristVisa5Years', '');
+                                    setFieldValue('eConferenceVisa', '');
+                                    setFieldValue('eMedicalAttendantVisa', '');
+                                    setFieldValue('eBusinessVisa', '');
+                                    setFieldValue('eEmergencyXMisc', '');
+                                  }}
                                 />
                                 <label htmlFor="visaServiceEmedical">
                                   eMEDICAL VISA
@@ -748,6 +791,17 @@ export default function StepOneUpdate() {
                                   name="visaService"
                                   className="mt-1"
                                   value="eBUSINESS VISA"
+                                  onChange={e => {
+                                    handleChange(e);
+                                    setFieldValue('eTouristVisa', '');
+                                    setFieldValue('eTouristVisa30Days', '');
+                                    setFieldValue('eTouristVisa1Year', '');
+                                    setFieldValue('eTouristVisa5Years', '');
+                                    setFieldValue('eMedicalVisa', '');
+                                    setFieldValue('eConferenceVisa', '');
+                                    setFieldValue('eMedicalAttendantVisa', '');
+                                    setFieldValue('eEmergencyXMisc', '');
+                                  }}
                                 />
                                 <label htmlFor="visaServiceEbusiness">
                                   eBUSINESS VISA
@@ -869,6 +923,17 @@ export default function StepOneUpdate() {
                                   name="visaService"
                                   className="mt-1"
                                   value="eCONFERENCE VISA"
+                                  onChange={e => {
+                                    handleChange(e);
+                                    setFieldValue('eTouristVisa', '');
+                                    setFieldValue('eTouristVisa30Days', '');
+                                    setFieldValue('eTouristVisa1Year', '');
+                                    setFieldValue('eTouristVisa5Years', '');
+                                    setFieldValue('eMedicalVisa', '');
+                                    setFieldValue('eMedicalAttendantVisa', '');
+                                    setFieldValue('eBusinessVisa', '');
+                                    setFieldValue('eEmergencyXMisc', '');
+                                  }}
                                 />
                                 <label htmlFor="visaServiceEconference">
                                   eCONFERENCE VISA

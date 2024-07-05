@@ -11,6 +11,8 @@ import { ImSpinner2 } from 'react-icons/im';
 import * as Yup from 'yup';
 import useUpdatePatch from '@/hooks/useUpdatePatch';
 import useVisaBookingPaymentPost from '@/hooks/useVisaBookingPaymentPost';
+import { indianVisaPaymentFinalPrice } from '@/lib/indianVisaPaymentFinalPrice';
+import Highlight from '@/components/common/Highlight';
 
 const paymentFormSchema = Yup.object().shape({
   termsAndConditions: Yup.boolean()
@@ -84,6 +86,11 @@ const StepEight = () => {
   }
 
   if (getAllStepsDataIsSuccess && getAllStepsData?.data?.paid === false) {
+    console.log(
+      getAllStepsData?.data?.nationalityRegion ?? '',
+      getAllStepsData?.data?.visaService ?? '',
+      getAllStepsData?.data?.eTouristVisa ?? ''
+    );
     return (
       <div>
         <BannerPage heading="E-VISA APPLICATION FORM" />
@@ -114,7 +121,15 @@ const StepEight = () => {
               Application Fees :-
             </h2>
             <p className="font-bold leading-relaxed tracking-wide text-justify text-primary">
-              89.00 USD / 7120 INR
+              <Highlight
+                className="text-lg font-bold"
+                text={`$ ${indianVisaPaymentFinalPrice(
+                  35,
+                  getAllStepsData?.data?.nationalityRegion ?? '',
+                  getAllStepsData?.data?.visaService ?? '',
+                  getAllStepsData?.data?.eTouristVisa ?? ''
+                )}`}
+              />
             </p>
           </div>
 
@@ -177,7 +192,7 @@ const StepEight = () => {
             validateOnMount={true}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               postPayment.mutate({
-                domainUrl: 'https://www.servicesindia-travel.in',
+                domainUrl: process.env.NEXT_PUBLIC_DOMAIN_URL,
                 termsAndConditions: values.termsAndConditions,
                 termsAndConditionsContent: `I, the applicant, hereby certify that I agree to all the terms
                   and conditions given on the website indiavisasonline.org.in
