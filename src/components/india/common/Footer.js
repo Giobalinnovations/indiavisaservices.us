@@ -39,7 +39,7 @@ const Footer = () => {
       >
         <div className="container ">
           <div className="pt-16">
-            <div className="grid justify-start gap-6 pt-8 pb-12  md:grid-cols-12 md:px-0 md:pt-0">
+            <div className="grid justify-start gap-6 pt-8 pb-12 md:grid-cols-12 md:px-0 md:pt-0">
               <div className="col-span-5 space-y-4">
                 <Link href="/">
                   <div>
@@ -72,11 +72,11 @@ const Footer = () => {
                     </ul>
                   </div> */}
                   <ul>
-                    <Link href="#">
+                    <Link href="mailto:info@traveltoindiaservices.com">
                       <li className="flex items-center mt-2 space-x-2 text-base hover:text-primary">
                         <IoIosMail className="w-6 h-6 p-1 text-black bg-white rounded-full" />{' '}
                         <span className="text-white">
-                        marketing@servicesindia-travel.in
+                          info@traveltoindiaservices.com
                         </span>
                       </li>
                     </Link>
