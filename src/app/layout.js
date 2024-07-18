@@ -1,3 +1,5 @@
+import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Inter, Poppins } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
 import { FormProvider } from '@/context/formContext';
@@ -33,6 +35,8 @@ export default function RootLayout({ children }) {
             <ToastContainer />
           </ReactQueryProvider>
         </FormProvider>
+        <GoogleTagManager gtmId="G-LC9MZM89N4" />
+        <GoogleAnalytics gaId="G-LC9MZM89N4" />
       </body>
     </html>
   );
