@@ -1464,7 +1464,7 @@ export const indianVisaPaymentFinalPrice = (
     const selectedCountry = indianTouristVisaPrices.find(
       country => country.country.toLowerCase() === nationality.toLowerCase()
     );
-    finalPrice = selectedCountry.prices[eTouristVisa] + basePrice;
+    finalPrice = selectedCountry?.prices[eTouristVisa] + basePrice;
     console.log(finalPrice);
   } else if (selectedVisaService === 'eemergencyxmisc') {
     finalPrice = basePrice;
@@ -1474,7 +1474,7 @@ export const indianVisaPaymentFinalPrice = (
       country => country.country.toLowerCase() === nationality.toLowerCase()
     );
 
-    finalPrice = selectedCountry.prices[selectedVisaService] + basePrice;
+    finalPrice = selectedCountry?.prices[selectedVisaService] + basePrice;
   }
 
   return finalPrice;
