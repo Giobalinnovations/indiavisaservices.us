@@ -1,7 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 // import logoImg from "@/public/images/logo.png"
 // import Image from "next/image";
@@ -79,46 +79,11 @@ const Header = ({ bgcolor }) => {
               </Link>
             </li>
             {/* for mobile end */}
-            <Link href="/visa/step-one">
-              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
-                Apply E-VISA
-              </li>
-            </Link>
-            {/* for mobile start */}
-            <li className="block md:hidden">
-              <Link
-                href="/visa/step-one"
-                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
-              >
-                <span className="w-2 h-2 bg-black"></span>
-                <p>Apply E-VISA</p>
-              </Link>
-            </li>
-            {/* for mobile end */}
-
-            {/* <Link href="#">
-              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
-                Ongoing Application
-              </li>
-            </Link> */}
-            {/* for mobile start */}
-            {/* <li className="block md:hidden">
-              <Link
-                href="#"
-                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
-              >
-                <span className="w-2 h-2 bg-black"></span>
-                <p>Ongoing Application</p>
-              </Link>
-            </li> */}
-            {/* for mobile end */}
-
             <Link href="#">
-              <div className="hidden px-8 py-2 ml-3 text-base text-white rounded-full drop-shadow-2xl md:flex bg-primary">
+              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
                 Contact Us
-              </div>
+              </li>
             </Link>
-
             {/* for mobile start */}
             <li className="block md:hidden">
               <Link
@@ -127,6 +92,24 @@ const Header = ({ bgcolor }) => {
               >
                 <span className="w-2 h-2 bg-black"></span>
                 <p>Contact Us</p>
+              </Link>
+            </li>
+            {/* for mobile end */}
+
+            <Link href="/visa/step-one">
+              <li className="relative font-semibold text-md hidden text-lg  !text-blue-700 cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
+                Apply E-VISA
+              </li>
+            </Link>
+
+            {/* for mobile start */}
+            <li className="block md:hidden">
+              <Link
+                href="/visa/step-one"
+                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary !text-blue-700 text-lg"
+              >
+                <span className="w-2 h-2 bg-black"></span>
+                <p>Apply E-VISA</p>
               </Link>
             </li>
             {/* for mobile end */}
