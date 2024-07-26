@@ -1,22 +1,22 @@
 'use client';
-import Link from 'next/link';
-import React from 'react';
-import { LuImagePlus } from 'react-icons/lu';
-import { ErrorMessage, Form, Formik } from 'formik';
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '@/services/api';
-import apiEndpoint from '@/services/apiEndpoint';
-import { ImSpinner2 } from 'react-icons/im';
-import Image from 'next/image';
-import usePost from '@/hooks/usePost';
-import useUpdate from '@/hooks/useUpdate';
-import { usePathname, useRouter } from 'next/navigation';
 import BannerPage from '@/components/india/common/BannerPage';
 import SavedFormId from '@/components/india/common/SavedFormId';
-import { useFormContext } from '@/context/formContext';
-import { step6ValidationSchema } from '@/constant/indiaConstant';
 import FileUploadMain from '@/components/india/FileUploadMain';
 import SingleFileUpload from '@/components/india/SingleFileUpload';
+import { step6ValidationSchema } from '@/constant/indiaConstant';
+import { useFormContext } from '@/context/formContext';
+import usePost from '@/hooks/usePost';
+import useUpdate from '@/hooks/useUpdate';
+import axiosInstance from '@/services/api';
+import apiEndpoint from '@/services/apiEndpoint';
+import { useQuery } from '@tanstack/react-query';
+import { ErrorMessage, Form, Formik } from 'formik';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import Script from 'next/script';
+import { ImSpinner2 } from 'react-icons/im';
+import { LuImagePlus } from 'react-icons/lu';
 
 const StepSix = () => {
   const pathName = usePathname();
@@ -357,6 +357,9 @@ const StepSix = () => {
             </>
           )}
         </Formik>
+        <Script id="anayltics">
+          {`window.heapReadyCb=window.heapReadyCb||[],window.heap=window.heap||[],heap.load=function(e,t){window.heap.envId=e,window.heap.clientConfig=t=t||{},window.heap.clientConfig.shouldFetchServerConfig=!1;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://cdn.us.heap-api.com/config/"+e+"/heap_config.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(a,r);var n=["init","startTracking","stopTracking","track","resetIdentity","identify","getSessionId","getUserId","getIdentity","addUserProperties","addEventProperties","removeEventProperty","clearEventProperties","addAccountProperties","addAdapter","addTransformer","addTransformerFn","onReady","addPageviewProperties","removePageviewProperty","clearPageviewProperties","trackPageview"],i=function(e){return function(){var t=Array.prototype.slice.call(arguments,0);window.heapReadyCb.push({name:e,fn:function(){heap[e]&&heap[e].apply(heap,t)}})}};for(var p=0;p<n.length;p++)heap[n[p]]=i(n[p])};heap.load("2659842454");`}
+        </Script>
       </>
     );
   }

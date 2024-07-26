@@ -1,38 +1,34 @@
-import React from "react";
-import Button from "../common/Button";
-import Link from "next/link";
-import ApplySectionUrgentHelp from "./ApplySectionUrgentHelp";
-import ApplySectionContentSection from "./ApplySectionContentSection";
-import { GiBottomRight3DArrow } from "react-icons/gi";
-import UnderlineTextCenter from "../common/UnderlineTextCenter";
+import UnderlineTextCenter from '../common/UnderlineTextCenter';
+import ApplySectionContentSection from './ApplySectionContentSection';
+import ApplySectionUrgentHelp from './ApplySectionUrgentHelp';
 
 const ApplySection = () => {
   const stepData = [
     {
       id: 1,
-      title: "Apply Online",
-      imgSrc: "/assets/images/india/common/apply-online.jpg",
-      pera: "Secure online application saves time and check status online.",
+      title: 'Apply Online',
+      imgSrc: '/assets/images/india/common/apply-online.jpg',
+      pera: 'Secure online application saves time and check status online.',
       arrow: true,
     },
     {
       id: 2,
-      title: "Submit documents",
-      imgSrc: "/assets/images/india/common/doc.jpg",
-      pera: "Submit your application with required documents at Indian Misison/Visa collection centre.",
+      title: 'Submit documents',
+      imgSrc: '/assets/images/india/common/doc.jpg',
+      pera: 'Submit your application with required documents at Indian Misison/Visa collection centre.',
       arrow: true,
     },
     {
       id: 3,
-      title: "Receive passport, visa",
-      imgSrc: "/assets/images/india/common/visaImg.jpg",
-      pera: "Collect your passport/visa from Indian Mission/Collection Centre or by post.",
+      title: 'Receive passport, visa',
+      imgSrc: '/assets/images/india/common/visaImg.jpg',
+      pera: 'Collect your passport/visa from Indian Mission/Collection Centre or by post.',
       arrow: false,
     },
   ];
   return (
-    <div className="container py-8 md:py-24">
-      <div className="md:grid grid-cols-12 gap-4 p-1 mx-auto bg-zinc-50">
+    <div className="container pb-8 md:pb-24">
+      <div className="grid-cols-12 gap-4 p-1 mx-auto md:grid bg-zinc-50">
         <div className="col-span-3 border border-gray-400 rounded">
           <ApplySectionUrgentHelp />
         </div>
@@ -45,7 +41,7 @@ const ApplySection = () => {
         <div className="w-fit md:mx-auto">
           <UnderlineTextCenter title="VISA APPLYING PROCESS" />
         </div>
-        <div className="container grid md:grid-cols-3 gap-2">
+        <div className="container grid gap-2 md:grid-cols-3">
           {stepData.map((e, i) => (
             <div key={i} className="flex items-center mt-20">
               <div className="relative h-64 pb-8 mx-auto bg-white rounded shadow-xl hover:shadow">
@@ -72,10 +68,10 @@ const ApplySection = () => {
                 // />
                 <img
                   src="/assets/images/india/common/curved-arrow.png"
-                  className="w-16 h-8 pl-2 -mb-8 text-primary md:block hidden"
+                  className="hidden w-16 h-8 pl-2 -mb-8 text-primary md:block"
                 />
               ) : (
-                ""
+                ''
               )}
             </div>
           ))}

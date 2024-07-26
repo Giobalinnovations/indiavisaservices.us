@@ -1,20 +1,22 @@
-import { GoogleTagManager } from '@next/third-parties/google';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { Inter, Poppins } from 'next/font/google';
-import { ToastContainer } from 'react-toastify';
-import { FormProvider } from '@/context/formContext';
+import Footer from '@/components/india/common/Footer';
+import Header from '@/components/india/common/Header';
 import ReactQueryProvider from '@/components/ReactQueryProvider';
+import { FormProvider } from '@/context/formContext';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { Plus_Jakarta_Sans, Poppins } from 'next/font/google';
 import 'react-datepicker/dist/react-datepicker.css';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
-import Header from '@/components/india/common/Header';
-import Footer from '@/components/india/common/Footer';
-import Script from 'next/script';
 
-const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export const metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} flex flex-col min-h-screen antialiased`}
+        className={`${plusJakartaSans.className} flex flex-col min-h-screen antialiased`}
       >
         <FormProvider>
           <ReactQueryProvider>
@@ -38,9 +40,6 @@ export default function RootLayout({ children }) {
         </FormProvider>
         <GoogleTagManager gtmId="G-LC9MZM89N4" />
         <GoogleAnalytics gaId="G-LC9MZM89N4" />
-        <Script id="anayltics">
-          {`window.heapReadyCb=window.heapReadyCb||[],window.heap=window.heap||[],heap.load=function(e,t){window.heap.envId=e,window.heap.clientConfig=t=t||{},window.heap.clientConfig.shouldFetchServerConfig=!1;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://cdn.us.heap-api.com/config/"+e+"/heap_config.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(a,r);var n=["init","startTracking","stopTracking","track","resetIdentity","identify","getSessionId","getUserId","getIdentity","addUserProperties","addEventProperties","removeEventProperty","clearEventProperties","addAccountProperties","addAdapter","addTransformer","addTransformerFn","onReady","addPageviewProperties","removePageviewProperty","clearPageviewProperties","trackPageview"],i=function(e){return function(){var t=Array.prototype.slice.call(arguments,0);window.heapReadyCb.push({name:e,fn:function(){heap[e]&&heap[e].apply(heap,t)}})}};for(var p=0;p<n.length;p++)heap[n[p]]=i(n[p])};heap.load("2659842454");`}
-        </Script>
       </body>
     </html>
   );

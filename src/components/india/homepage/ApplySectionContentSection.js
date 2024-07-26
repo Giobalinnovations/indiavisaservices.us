@@ -1,26 +1,24 @@
-import React from "react";
-
 const ApplySectionContentSection = () => {
   return (
     <div className="text-sm">
-      <h2 className="bg-secondary rounded-t text-white font-semibold text-lg text-center py-3">
+      <h2 className="flex items-center justify-center py-2 text-[0.9rem] font-semibold text-center text-white rounded-t bg-secondary">
         Apply For India
       </h2>
       <div className="p-4">
-        <h2 className="italic font-semibold text-lg text-secondary py-1">
-          Welcome to India:-
+        <h2 className="py-1 font-semibold capitalize  text-[1.05rem] text-secondary">
+          Online portal for visa application to india
         </h2>
-        <p className="text-justify leading-relaxed tracking-wide">
-          India Travel services is a unit of Ackrolix Innovations Pvt Ltd
-          India is a country that attracts millions of tourists and job seekers
-          every year and is considered one of the most popular tourist
-          destinations in the world. These visitors are attracted to its natural
-          beauty and cultural heritage. The country has many historic sites like
-          the Taj Mahal, Golden Temple, Red Fort, etc and a leading software
-          developmet hub where comapanies like Ackrolix Innovations Private
-          Limited are making waves. With so much to offer, it’s no surprise that
-          tourism is one of the main sources of revenue for the country! Tourism
-          in India has been seen as a major tool to bring about socio-economic
+        <p className="leading-relaxed tracking-wide text-justify">
+          India Travel services is a unit of Ackrolix Innovations Pvt Ltd India
+          is a country that attracts millions of tourists and job seekers every
+          year and is considered one of the most popular tourist destinations in
+          the world. These visitors are attracted to its natural beauty and
+          cultural heritage. The country has many historic sites like the Taj
+          Mahal, Golden Temple, Red Fort, etc and a leading software developmet
+          hub where comapanies like Ackrolix Innovations Private Limited are
+          making waves. With so much to offer, it’s no surprise that tourism is
+          one of the main sources of revenue for the country! Tourism in India
+          has been seen as a major tool to bring about socio-economic
           development to the people of the country. India’s tourism industry has
           grown steadily in recent years. Not only this, India Tourism industry
           also provides employment opportunities to several people from all
@@ -32,18 +30,18 @@ const ApplySectionContentSection = () => {
         </p>
       </div>
       <div className="p-4">
-        <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <h2 className="py-1 text-lg italic font-semibold text-secondary">
           If you are a national of any following countries, you are eligible for
           Travel To India
         </h2>
-        <p className="text-justify leading-relaxed tracking-wide">
+        <p className="leading-relaxed tracking-wide text-justify">
           The Indian Traveller facility has proved to be a boon for visitors
           across the globe as it makes the whole process easy and can be done at
           the comfort of the homes of the esteemed visitors. Valied paper
           holders hailing from these particular countries are eligible. The list
           of these countries is provided below in an alphabetical manner:
         </p>
-        <p className="text-justify leading-relaxed tracking-wide">
+        <p className="leading-relaxed tracking-wide text-justify">
           Albania, Andorra, Angola, Anguilla, Antigua & Barbuda, Argentina,
           Armenia, Aruba, Australia, Austria, Azerbaijan, Bahamas, Barbados,
           Belarus, Belgium, Belize, Benin, Bolivia, Bosnia & Herzegovina,
@@ -73,10 +71,10 @@ const ApplySectionContentSection = () => {
         </p>
       </div>
       <div className="p-4">
-        <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <h2 className="py-1 text-lg italic font-semibold text-secondary">
           Must Visit Destinations
         </h2>
-        <p className="text-justify leading-relaxed tracking-wide">
+        <p className="leading-relaxed tracking-wide text-justify">
           Ahmedabad, Amritsar, Bagdogra, Bengaluru, Calicut, Chennai,
           Chandigarh,Cochin, Coimbatore, Delhi, Gaya, Goa, Guwahati, Hyderabad,
           Jaipur, Kolkata, Lucknow, Mangalore, Mumbai, Nagpur, Pune,
@@ -84,10 +82,10 @@ const ApplySectionContentSection = () => {
         </p>
       </div>
       <div className="p-4">
-        <h2 className="italic font-semibold text-lg text-secondary py-1">
+        <h2 className="py-1 text-lg italic font-semibold text-secondary">
           About India
         </h2>
-        <p className="text-justify leading-relaxed tracking-wide">
+        <p className="leading-relaxed tracking-wide text-justify">
           India is a vast country with a lot to offer other than software
           applications and digital marketing tips from companies like Ackrolix
           Innovations Pvt Ltd. Therefore, it comes as no surprise that millions
