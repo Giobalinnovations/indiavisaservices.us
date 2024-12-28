@@ -1,205 +1,192 @@
 import React from 'react';
 import { IoIosMail } from 'react-icons/io';
-import { FaPhoneAlt } from 'react-icons/fa';
 import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import Link from 'next/link';
 import Image from 'next/image';
+
 const Footer = () => {
-  const data = [
+  const socialLinks = [
     {
       id: 1,
-      icon: <FaFacebookF />,
+      icon: <FaFacebookF className="w-4 h-4" />,
       href: '#',
+      label: 'Facebook',
     },
     {
       id: 2,
-      icon: <FaInstagram />,
+      icon: <FaInstagram className="w-4 h-4" />,
       href: '#',
+      label: 'Instagram',
     },
     {
       id: 3,
-      icon: <FaLinkedin />,
+      icon: <FaLinkedin className="w-4 h-4" />,
       href: '#',
+      label: 'LinkedIn',
     },
     {
       id: 4,
-      icon: <FaXTwitter />,
+      icon: <FaXTwitter className="w-4 h-4" />,
       href: '#',
+      label: 'Twitter',
     },
   ];
-  return (
-    <div>
-      <div
-        className="pb-6 bg-right-bottom bg-no-repeat bg-cover"
-        style={{
-          backgroundImage:
-            ' url("/assets/images/india/common/bannerfooter.png")',
-        }}
-      >
-        <div className="container ">
-          <div className="pt-16">
-            <div className="grid justify-start gap-6 pt-8 pb-12 md:grid-cols-12 md:px-0 md:pt-0">
-              <div className="col-span-5 space-y-4">
-                <Link href="/">
-                  <div>
-                    <Image
-                      src="/assets/images/india/common/logo-white.png"
-                      width="240"
-                      height="140"
-                      alt="logo-white"
-                    />
-                  </div>
-                </Link>
-                {/* <p className="text-base leading-relaxed tracking-tighter text-justify text-white md:tracking-tight ">
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry.
-                                </p> */}
-                <div className="space-y-6">
-                  {/* <div>
-                    <ul className="flex pt-3 space-x-4">
-                      {data.map((e, i) => (
-                        <li key={i} className="flex space-x-5">
-                          <Link
-                            href={e.href}
-                            target="_blank"
-                            className="w-8 p-2 duration-200 bg-white rounded-full hover:scale-110"
-                          >
-                            {e.icon}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div> */}
-                  <ul>
-                    <Link href="mailto:info@traveltoindiaservices.com">
-                      <li className="flex items-center mt-2 space-x-2 text-base hover:text-primary">
-                        <IoIosMail className="w-6 h-6 p-1 text-black bg-white rounded-full" />{' '}
-                        <span className="text-white">
-                          info@traveltoindiaservices.com
-                        </span>
-                      </li>
-                    </Link>
-                    {/* <Link href="#">
-                      <li className="flex items-center mt-2 space-x-2 text-base hover:text-primary">
-                        <FaPhoneAlt className="w-6 h-6 p-1 text-black bg-white rounded-full" />{" "}
-                        <span className="text-white">+91-9876543219</span>
-                      </li>
-                    </Link> */}
-                  </ul>
-                </div>
-              </div>
-              <div className="flex justify-center col-span-2">
-                <div className="space-y-6 md:flex md:space-x-28 md:space-y-0">
-                  <div>
-                    <div className="space-y-6">
-                      <h2 className="text-xl font-semibold text-white underline capitalize underline-offset-8 decoration-primary">
-                        Quick Links
-                      </h2>
-                      <ul>
-                        <Link href="/">
-                          <li className="mt-2 text-base text-white hover:text-primary">
-                            <span>Home</span>
-                          </li>
-                        </Link>
-                        <Link href="/">
-                          <li className="mt-2 text-base text-white hover:text-primary">
-                            <span>About Us</span>
-                          </li>
-                        </Link>
 
-                        <Link href="/visa/step-one">
-                          <li className="mt-2 text-base text-white hover:text-primary">
-                            <span>Apply VISA</span>
-                          </li>
-                        </Link>
-                        <Link href="/">
-                          <li className="mt-2 text-base text-white hover:text-primary">
-                            <span>Ongoing Application</span>
-                          </li>
-                        </Link>
-                        <Link href="/">
-                          <li className="mt-2 text-base text-white hover:text-primary">
-                            <span>Contact Us</span>
-                          </li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+  return (
+    <footer className="relative overflow-hidden">
+      {/* Background Decorations */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-black opacity-95"></div>
+      <div className="absolute inset-0 bg-[url('/assets/images/india/common/bannerfooter.png')] bg-cover bg-center opacity-20"></div>
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange/50 to-transparent"></div>
+
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-orange/5 to-transparent"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+
+      <div className="relative">
+        <div className="container px-4 pt-16 pb-8 mx-auto md:px-0">
+          <div className="grid gap-12 md:grid-cols-12">
+            {/* Logo and Contact Section */}
+            <div className="md:col-span-4">
+              <Link
+                href="/"
+                className="block mb-8 transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src="/assets/images/india/common/logo-white.png"
+                  width={240}
+                  height={140}
+                  alt="logo"
+                  className="w-48"
+                />
+              </Link>
+              <div className="space-y-4">
+                <Link
+                  href="mailto:info@traveltoindiaservices.com"
+                  className="flex items-center group"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 mr-4 transition-all duration-300 bg-white/10 rounded-full group-hover:bg-gradient-to-r group-hover:from-orange group-hover:to-primary group-hover:scale-110">
+                    <IoIosMail className="w-5 h-5 text-white" />
+                  </span>
+                  <span className="text-sm text-gray-300 transition-all duration-300 group-hover:text-white">
+                    info@traveltoindiaservices.com
+                  </span>
+                </Link>
               </div>
-              <div className="flex justify-center col-span-3">
-                <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white underline capitalize underline-offset-8 decoration-primary">
-                    Apply For Indian VISA
-                  </h2>
-                  <ul>
-                    <Link href="/visa/step-one">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span> Indian eVisa Online</span>
-                      </li>
-                    </Link>
-                    <Link href="/visa/step-one">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span>Indian Tourist eVisa</span>
-                      </li>
-                    </Link>
-                    <Link href="/visa/step-one">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span>Indian Medical eVisa</span>
-                      </li>
-                    </Link>
-                    <Link href="/visa/step-one">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span> Indian Business eVisa</span>
-                      </li>
-                    </Link>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex justify-end col-span-2 ">
-                <div className="space-y-6">
-                  <h2 className="text-xl font-semibold text-white underline capitalize underline-offset-8 decoration-primary">
-                    Support
-                  </h2>
-                  <ul>
-                    <Link href="/terms-and-conditions">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span> Terms & Conditions</span>
-                      </li>
-                    </Link>
-                    <Link href="/privacy-policy">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span>Privacy Policy</span>
-                      </li>
-                    </Link>
-                    <Link href="/cookie-policy">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span>Cookies Policy</span>
-                      </li>
-                    </Link>
-                    <Link href="/cancellation-and-refund-policy">
-                      <li className="mt-2 text-base text-white hover:text-primary">
-                        <span>Cancellation and Refund Policy</span>
-                      </li>
-                    </Link>
-                  </ul>
-                </div>
+              <div className="flex mt-8 space-x-4">
+                {socialLinks.map(link => (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    aria-label={link.label}
+                    className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-white/10 rounded-full hover:bg-gradient-to-r hover:from-orange hover:to-primary hover:scale-110 group"
+                  >
+                    <span className="text-gray-300 transition-colors duration-300 group-hover:text-white">
+                      {link.icon}
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
-            <hr className="h-[1px] bg-primary border-primary" />
-            <div className="px-5 py-5 text-base text-center text-white md:px-0">
-              <p>
-                {' '}
-                Copyright © 2023 |
-                <span className="px-2 font-semibold">E-Visa</span>| All Rights
-                Reserved
-              </p>
+
+            {/* Quick Links Section */}
+            <div className="md:col-span-3">
+              <h3 className="mb-6 text-lg font-semibold text-white">
+                <span className="relative">
+                  Quick Links
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                </span>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  'Home',
+                  'About Us',
+                  'Apply VISA',
+                  'Ongoing Application',
+                  'Contact Us',
+                ].map(item => (
+                  <li key={item}>
+                    <Link
+                      href="/"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Visa Types Section */}
+            <div className="md:col-span-3">
+              <h3 className="mb-6 text-lg font-semibold text-white">
+                <span className="relative">
+                  Apply For Indian VISA
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                </span>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  'Indian eVisa Online',
+                  'Indian Tourist eVisa',
+                  'Indian Medical eVisa',
+                  'Indian Business eVisa',
+                ].map(item => (
+                  <li key={item}>
+                    <Link
+                      href="/visa/step-one"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Section */}
+            <div className="md:col-span-2">
+              <h3 className="mb-6 text-lg font-semibold text-white">
+                <span className="relative">
+                  Support
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                </span>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { text: 'Terms & Conditions', href: '/terms-and-conditions' },
+                  { text: 'Privacy Policy', href: '/privacy-policy' },
+                  { text: 'Cookies Policy', href: '/cookie-policy' },
+                  {
+                    text: 'Cancellation and Refund Policy',
+                    href: '/cancellation-and-refund-policy',
+                  },
+                ].map(item => (
+                  <li key={item.text}>
+                    <Link
+                      href={item.href}
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                    >
+                      {item.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Copyright Section */}
+          <div className="pt-12 mt-12 text-center border-t border-white/10">
+            <p className="text-sm text-gray-400">
+              Copyright © {new Date().getFullYear()} |{' '}
+              <span className="font-medium text-white">E-Visa</span> | All
+              Rights Reserved
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

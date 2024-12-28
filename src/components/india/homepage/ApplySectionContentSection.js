@@ -1,105 +1,212 @@
 const ApplySectionContentSection = () => {
+  const eligibleCountries = [
+    'Albania',
+    'Andorra',
+    'Angola',
+    'Anguilla',
+    'Antigua & Barbuda',
+    'Argentina',
+    'Armenia',
+    'Australia',
+    'Austria',
+    'Azerbaijan',
+    'Bahamas',
+    'Barbados',
+    'Belgium',
+    'Belize',
+    'Brazil',
+    'Bulgaria',
+    'Cambodia',
+    'Canada',
+    'Chile',
+    'Colombia',
+    'Croatia',
+    'Cyprus',
+    'Czech Republic',
+    'Denmark',
+    'Estonia',
+    'Finland',
+    'France',
+    'Georgia',
+    'Germany',
+    'Greece',
+    'Hungary',
+    'Iceland',
+    'Indonesia',
+    'Ireland',
+    'Israel',
+    'Italy',
+    'Japan',
+    'Latvia',
+    'Liechtenstein',
+    'Lithuania',
+    'Luxembourg',
+    'Malaysia',
+    'Malta',
+    'Mexico',
+    'Monaco',
+    'Mongolia',
+    'Netherlands',
+    'New Zealand',
+    'Norway',
+    'Oman',
+    'Philippines',
+    'Poland',
+    'Portugal',
+    'Qatar',
+    'Romania',
+    'Russia',
+    'Singapore',
+    'Slovakia',
+    'Slovenia',
+    'South Korea',
+    'Spain',
+    'Sweden',
+    'Switzerland',
+    'Thailand',
+    'UAE',
+    'United Kingdom',
+    'USA',
+    'Vietnam',
+  ];
+
+  const popularDestinations = [
+    { city: 'Delhi', description: 'Capital city, rich in history and culture' },
+    { city: 'Mumbai', description: 'Financial capital and entertainment hub' },
+    { city: 'Bangalore', description: 'Technology capital of India' },
+    { city: 'Agra', description: 'Home to the iconic Taj Mahal' },
+    { city: 'Jaipur', description: 'The Pink City of royal heritage' },
+    { city: 'Goa', description: 'Tropical paradise with beautiful beaches' },
+    { city: 'Varanasi', description: 'Spiritual capital of India' },
+    {
+      city: 'Kerala',
+      description: 'God&apos;s own country with scenic backwaters',
+    },
+  ];
+
   return (
     <div className="text-sm">
-      <h2 className="flex items-center justify-center py-2 text-[0.9rem] font-semibold text-center text-white rounded-t bg-secondary">
-        Apply For India
-      </h2>
-      <div className="p-4">
-        <h2 className="py-1 font-semibold capitalize  text-[1.05rem] text-secondary">
-          Online portal for visa application to india
+      {/* Header */}
+      <div className="relative overflow-hidden rounded-t-xl bg-gradient-to-r from-secondary via-secondary to-primary">
+        <div className="absolute inset-0 bg-[url('/assets/images/india/common/pattern.png')] opacity-10"></div>
+        <h2 className="relative flex items-center justify-center py-4 text-base font-semibold text-center text-white md:text-lg">
+          Welcome to Indian e-Visa Services
         </h2>
-        <p className="leading-relaxed tracking-wide text-justify">
-          India Travel services is a unit of Ackrolix Innovations Pvt Ltd India
-          is a country that attracts millions of tourists and job seekers every
-          year and is considered one of the most popular tourist destinations in
-          the world. These visitors are attracted to its natural beauty and
-          cultural heritage. The country has many historic sites like the Taj
-          Mahal, Golden Temple, Red Fort, etc and a leading software developmet
-          hub where comapanies like Ackrolix Innovations Private Limited are
-          making waves. With so much to offer, it’s no surprise that tourism is
-          one of the main sources of revenue for the country! Tourism in India
-          has been seen as a major tool to bring about socio-economic
-          development to the people of the country. India’s tourism industry has
-          grown steadily in recent years. Not only this, India Tourism industry
-          also provides employment opportunities to several people from all
-          parts of the world. For exampel they can work with digital marketing
-          companies like Ackrolix Innovations while travelling around India and
-          making notes of its incredible beauty. Also, there are ample numbers
-          of hotels, resorts, food joints and various other amenities available
-          for tourists arriving in India.
-        </p>
       </div>
-      <div className="p-4">
-        <h2 className="py-1 text-lg italic font-semibold text-secondary">
-          If you are a national of any following countries, you are eligible for
-          Travel To India
-        </h2>
-        <p className="leading-relaxed tracking-wide text-justify">
-          The Indian Traveller facility has proved to be a boon for visitors
-          across the globe as it makes the whole process easy and can be done at
-          the comfort of the homes of the esteemed visitors. Valied paper
-          holders hailing from these particular countries are eligible. The list
-          of these countries is provided below in an alphabetical manner:
-        </p>
-        <p className="leading-relaxed tracking-wide text-justify">
-          Albania, Andorra, Angola, Anguilla, Antigua & Barbuda, Argentina,
-          Armenia, Aruba, Australia, Austria, Azerbaijan, Bahamas, Barbados,
-          Belarus, Belgium, Belize, Benin, Bolivia, Bosnia & Herzegovina,
-          Botswana, Brazil, Brunei, Bulgaria, Burundi, Cambodia, Cameroon Union
-          Republic, Cape Verde, Cayman Island, Chile, Colombia, Comoros, Cook
-          Islands, Costa Rica, Cote d&apos;lvoire, Croatia, Cuba, Cyprus, Czech
-          Republic, Denmark, Djibouti, Dominica, Dominican Republic, East Timor,
-          Ecuador, El Salvador, Equatorial Guinea, Eritrea, Estonia, Fiji,
-          Finland, France, Gabon, Gambia, Georgia, Germany, Ghana, Greece,
-          Grenada, Guatemala, Guinea, Guyana, Haiti, Honduras, Hungary, Iceland,
-          Indonesia, Ireland, Israel, Italy, Jamaica, Japan, Jordan, Kenya,
-          Kiribati, Kyrgyzstan, Laos, Latvia, Lesotho, Liberia, Liechtenstein,
-          Lithuania, Luxembourg, Macedonia, Madagascar, Malawi, Malaysia, Mali,
-          Malta, Marshall Islands, Mauritius, Mexico, Micronesia, Moldova,
-          Monaco, Mongolia, Montenegro, Montserrat, Mozambique, Myanmar,
-          Namibia, Nauru, Netherlands, New Zealand, Nicaragua, Niger Republic,
-          Niue Island, Norway, Oman, Palau, Palestine, Panama, Papua New Guinea,
-          Paraguay, Peru, Philippines, Poland, Portugal, Republic of Korea,
-          Romania, Russia, Rwanda, Saint Christopher and Nevis, Saint Lucia,
-          Saint Vincent & the Grenadines, Samoa, San Marino, Senegal, Serbia,
-          Seychelles, Sierra Leone, Singapore, Slovakia, Slovenia, Solomon
-          Islands, South Africa, Spain, Sri Lanka, Suriname, Swaziland, Sweden,
-          Switzerland, Taiwan, Tanzania, Thailand, Togo, Tonga, Trinidad &
-          Tobago, Turks & Caicos Island, Tuvalu, UAE, Uganda, Ukraine, United
-          Kingdom, Uruguay, USA, Uzbekistan, Vanuatu, Vatican City-Holy See,
-          Venezuela, Vietnam, Zambia and Zimbabwe.
-        </p>
-      </div>
-      <div className="p-4">
-        <h2 className="py-1 text-lg italic font-semibold text-secondary">
-          Must Visit Destinations
-        </h2>
-        <p className="leading-relaxed tracking-wide text-justify">
-          Ahmedabad, Amritsar, Bagdogra, Bengaluru, Calicut, Chennai,
-          Chandigarh,Cochin, Coimbatore, Delhi, Gaya, Goa, Guwahati, Hyderabad,
-          Jaipur, Kolkata, Lucknow, Mangalore, Mumbai, Nagpur, Pune,
-          Tiruchirapalli, Trivandrum, Varanasi & Vishakhapatnam
-        </p>
-      </div>
-      <div className="p-4">
-        <h2 className="py-1 text-lg italic font-semibold text-secondary">
-          About India
-        </h2>
-        <p className="leading-relaxed tracking-wide text-justify">
-          India is a vast country with a lot to offer other than software
-          applications and digital marketing tips from companies like Ackrolix
-          Innovations Pvt Ltd. Therefore, it comes as no surprise that millions
-          of people pay India a visit every year. The country offers a variety
-          of sights and sounds to enjoy, from the vibrant cities to the peaceful
-          countryside. With its diversity of tourist attractions, India is also
-          known for yoga and meditation. From the snow-capped Himalayas to the
-          tropical beaches of Goa, from the wildlife of Assam to the largest tea
-          field of Kerala, there is something new happening in every corner of
-          this country. Moreover, with major cities such as Mumbai, Bangalore,
-          Chandigarh, and Delhi being so well connected by air, road, and rail
-          networks from across the globe, it’s easy to get around and explore
-          some of the most iconic landmarks in India.
-        </p>
+
+      {/* Introduction Section */}
+      <div className="p-6 space-y-6">
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold text-secondary">
+            Your Gateway to Incredible India
+          </h2>
+          <p className="leading-relaxed text-gray-600">
+            India, a land of diverse cultures, rich heritage, and technological
+            advancement, welcomes millions of visitors annually. From ancient
+            temples to modern tech hubs, from the majestic Himalayas to serene
+            coastal beaches, India offers an unparalleled travel experience. Our
+            e-Visa service simplifies your journey to explore this magnificent
+            country.
+          </p>
+        </div>
+
+        {/* Key Features */}
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            {
+              title: 'Quick Processing',
+              description:
+                'Fast and efficient visa processing with digital verification',
+            },
+            {
+              title: 'Secure Platform',
+              description:
+                'State-of-the-art security for your personal information',
+            },
+            {
+              title: '24/7 Support',
+              description:
+                'Round-the-clock assistance for your visa applications',
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="p-4 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md"
+            >
+              <h3 className="mb-2 text-base font-semibold text-secondary">
+                {feature.title}
+              </h3>
+              <p className="text-sm text-gray-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Eligible Countries Section */}
+        <div className="p-6 space-y-4 bg-gray-50 rounded-xl">
+          <h2 className="text-lg font-semibold text-secondary">
+            Eligible Countries for e-Visa
+          </h2>
+          <p className="text-gray-600">
+            Citizens of the following countries can apply for an Indian e-Visa.
+            The process is completely online and user-friendly.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {eligibleCountries.map((country, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 text-xs text-gray-600 transition-all duration-300 bg-white rounded-full shadow-sm hover:shadow-md hover:text-primary"
+              >
+                {country}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Popular Destinations */}
+        <div className="space-y-4">
+          <h2 className="text-lg font-semibold text-secondary">
+            Popular Destinations
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {popularDestinations.map((dest, index) => (
+              <div
+                key={index}
+                className="p-4 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:scale-[1.02]"
+              >
+                <h3 className="mb-1 font-semibold text-primary">{dest.city}</h3>
+                <p className="text-sm text-gray-600">{dest.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* About Section */}
+        <div className="p-6 space-y-4 bg-gradient-to-r from-orange/5 to-primary/5 rounded-xl">
+          <h2 className="text-lg font-semibold text-secondary">
+            Why Choose Indian e-Visa?
+          </h2>
+          <div className="space-y-4 text-gray-600">
+            <p>
+              The Indian e-Visa system represents a significant advancement in
+              facilitating international travel to India. This digital platform
+              offers a streamlined, efficient process for obtaining travel
+              authorization, eliminating the need for physical visa
+              applications.
+            </p>
+            <p>
+              With multiple categories including tourist, business, and medical
+              visas, the system caters to diverse travel needs. The platform
+              ensures secure, swift processing while maintaining the highest
+              standards of security and verification.
+            </p>
+            <p>
+              Whether you&apos;re exploring India&apos;s rich cultural heritage,
+              pursuing business opportunities, or seeking medical treatment, our
+              e-Visa service provides a convenient gateway to your Indian
+              journey.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

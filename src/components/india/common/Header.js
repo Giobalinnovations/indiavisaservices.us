@@ -3,15 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-// import logoImg from "@/public/images/logo.png"
-// import Image from "next/image";
-const Header = ({ bgcolor }) => {
-  // setting mobile nav
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
 
-  // change nav color when scrolling
+const Header = ({ bgcolor }) => {
+  const [click, setClick] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const handleClick = () => setClick(!click);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,108 +26,115 @@ const Header = ({ bgcolor }) => {
   }, []);
 
   return (
-    <div className={`header bg-white shadow-md ${scrolled ? 'bg-white' : ''}`}>
-      <nav className="container navbar ">
-        <div className="flex items-center w-full md:justify-between md:space-x-12">
-          <Link href="/" className="flex space-x-4 logo">
-            {scrolled ? (
-              <>
-                <Image
-                  src="/assets/images/india/common/logo.png"
-                  width={500}
-                  height={500}
-                  className="w-36"
-                  alt="logo"
-                />
-              </>
-            ) : (
-              <>
-                <Image
-                  src="/assets/images/india/common/logo.png"
-                  width={500}
-                  height={500}
-                  className="w-36"
-                  alt="logo2"
-                />
-              </>
-            )}
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/80 backdrop-blur-lg shadow-lg'
+          : 'bg-gradient-to-b from-black/50 to-transparent'
+      }`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-orange/5 to-primary/5"></div>
+      <nav className="container relative mx-auto">
+        <div className="flex items-center justify-between h-20 px-4 md:px-0">
+          <Link href="/" className="relative z-10">
+            <Image
+              src={
+                scrolled
+                  ? '/assets/images/india/common/logo.png'
+                  : '/assets/images/india/common/logo-white.png'
+              }
+              width={144}
+              height={40}
+              alt="logo"
+              className="w-36 transition-all duration-300"
+            />
           </Link>
 
-          <ul
-            className={
-              click
-                ? 'nav-menu active md:space-y-0 space-y-0 py-5 '
-                : 'nav-menu'
-            }
-          >
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
             <Link href="/">
-              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
+              <span
+                className={`text-sm font-medium transition-all duration-200 hover:text-primary ${
+                  scrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              >
                 Home
-              </li>
+              </span>
             </Link>
-            {/* for mobile start */}
-            <li className="block md:hidden">
-              <Link
-                href=""
-                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
-              >
-                <span className="w-2 h-2 bg-black"></span>
-                <p>Home</p>
-              </Link>
-            </li>
-            {/* for mobile end */}
             <Link href="#">
-              <li className="relative hidden text-sm font-semibold cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
+              <span
+                className={`text-sm font-medium transition-all duration-200 hover:text-primary ${
+                  scrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              >
                 Contact Us
-              </li>
+              </span>
             </Link>
-            {/* for mobile start */}
-            <li className="block md:hidden">
-              <Link
-                href="#"
-                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary"
-              >
-                <span className="w-2 h-2 bg-black"></span>
-                <p>Contact Us</p>
-              </Link>
-            </li>
-            {/* for mobile end */}
-
             <Link href="/visa/step-one">
-              <li className="relative font-semibold text-md hidden text-lg  !text-blue-700 cursor-pointer group dropdown drop-shadow-2xl md:flex nav-item nav-desk hover:text-primary">
+              <span className="px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary via-primary to-orange rounded-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-0.5">
                 Apply E-VISA
-              </li>
+              </span>
             </Link>
+          </div>
 
-            {/* for mobile start */}
-            <li className="block md:hidden">
-              <Link
-                href="/visa/step-one"
-                className="flex items-center px-2 py-4 mx-4 space-x-2 font-semibold border-b border-b-secondary !text-blue-700 text-lg"
-              >
-                <span className="w-2 h-2 bg-black"></span>
-                <p>Apply E-VISA</p>
+          {/* Mobile Menu Button */}
+          <button
+            className="p-2 md:hidden focus:outline-none"
+            onClick={handleClick}
+            aria-label="Toggle menu"
+          >
+            {click ? (
+              <FaTimes
+                className={`w-6 h-6 ${
+                  scrolled ? 'text-gray-800' : 'text-white'
+                }`}
+              />
+            ) : (
+              <FaBars
+                className={`w-6 h-6 ${
+                  scrolled ? 'text-gray-800' : 'text-white'
+                }`}
+              />
+            )}
+          </button>
+
+          {/* Mobile Menu */}
+          <div
+            className={`
+            fixed inset-0 z-40 bg-white/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out
+            ${click ? 'translate-x-0' : 'translate-x-full'}
+            md:hidden
+          `}
+          >
+            <div className="flex flex-col h-full pt-20">
+              <Link href="/" onClick={handleClick}>
+                <div className="px-8 py-4 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
+                  <span className="text-base font-medium text-gray-800">
+                    Home
+                  </span>
+                </div>
               </Link>
-            </li>
-            {/* for mobile end */}
-          </ul>
-        </div>
-
-        <div className="hamburger" onClick={handleClick}>
-          {click ? (
-            <FaTimes size={30} style={{ color: '#000' }} />
-          ) : (
-            <FaBars size={30} style={{ color: '#000' }} />
-          )}
+              <Link href="#" onClick={handleClick}>
+                <div className="px-8 py-4 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
+                  <span className="text-base font-medium text-gray-800">
+                    Contact Us
+                  </span>
+                </div>
+              </Link>
+              <Link href="/visa/step-one" onClick={handleClick}>
+                <div className="px-8 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-orange/5 hover:from-primary/10 hover:to-orange/10">
+                  <span className="text-base font-semibold text-primary">
+                    Apply E-VISA
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </nav>
-      {bgcolor ? (
-        <hr
-          className={
-            scrolled ? 'bg-black text-black' : 'bg-black  w-[93%] mx-auto'
-          }
-        />
-      ) : null}
+      {bgcolor && scrolled && (
+        <div className="h-px bg-gradient-to-r from-orange/20 via-primary/20 to-orange/20" />
+      )}
     </div>
   );
 };
