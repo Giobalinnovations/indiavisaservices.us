@@ -1,3 +1,11 @@
+export const metadata = {
+  title: 'Terms and Conditions',
+  description: 'Terms and Conditions',
+  alternates: {
+    canonical: '/terms-and-conditions',
+  },
+};
+
 const page = () => {
   return (
     <div className="container px-4 pb-12 bg-white lg:pt-24 lg:py-10 lg:px-0 md:pt-28 md:pb-0 pt-28">

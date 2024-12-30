@@ -1,4 +1,12 @@
-import React from "react";
+import React from 'react';
+
+export const metadata = {
+  title: 'Cancellation and Refund Policy',
+  description: 'Cancellation and Refund Policy',
+  alternates: {
+    canonical: '/cancellation-and-refund-policy',
+  },
+};
 
 const page = () => {
   return (
