@@ -8,7 +8,34 @@ const Header = ({ bgcolor }) => {
   const [click, setClick] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => {
+    setClick(!click);
+    // Prevent body scroll when menu is open
+    if (!click) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        click &&
+        !event.target.closest('.mobile-menu') &&
+        !event.target.closest('.menu-button')
+      ) {
+        setClick(false);
+        document.body.style.overflow = 'unset';
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [click]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +49,13 @@ const Header = ({ bgcolor }) => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Clean up body overflow on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
     };
   }, []);
 
@@ -79,50 +113,54 @@ const Header = ({ bgcolor }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="p-2 md:hidden focus:outline-none"
+            className="p-2 md:hidden focus:outline-none menu-button z-50"
             onClick={handleClick}
             aria-label="Toggle menu"
           >
             {click ? (
-              <FaTimes
-                className={`w-6 h-6 ${
-                  scrolled ? 'text-gray-800' : 'text-white'
-                }`}
-              />
+              <FaTimes className="w-6 h-6 text-gray-800" />
             ) : (
               <FaBars
-                className={`w-6 h-6 ${
+                className={`w-6 h-6 transition-all duration-300 ${
                   scrolled ? 'text-gray-800' : 'text-white'
                 }`}
               />
             )}
           </button>
 
+          {/* Mobile Menu Overlay */}
+          <div
+            className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+              click ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            onClick={handleClick}
+          ></div>
+
           {/* Mobile Menu */}
           <div
             className={`
-            fixed inset-0 z-40 bg-white/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out
-            ${click ? 'translate-x-0' : 'translate-x-full'}
-            md:hidden
-          `}
+              fixed top-0 right-0 h-full w-[300px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40
+              ${click ? 'translate-x-0' : 'translate-x-full'}
+              md:hidden mobile-menu
+            `}
           >
-            <div className="flex flex-col h-full pt-20">
+            <div className="flex flex-col h-full pt-24">
               <Link href="/" onClick={handleClick}>
-                <div className="px-8 py-4 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
+                <div className="px-8 py-4 transition-all duration-200 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
                   <span className="text-base font-medium text-gray-800">
                     Home
                   </span>
                 </div>
               </Link>
               <Link href="#" onClick={handleClick}>
-                <div className="px-8 py-4 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
+                <div className="px-8 py-4 transition-all duration-200 border-b border-gray-100 hover:bg-gradient-to-r hover:from-orange/5 hover:to-primary/5">
                   <span className="text-base font-medium text-gray-800">
                     Contact Us
                   </span>
                 </div>
               </Link>
               <Link href="/visa/step-one" onClick={handleClick}>
-                <div className="px-8 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-orange/5 hover:from-primary/10 hover:to-orange/10">
+                <div className="px-8 py-4 transition-all duration-200 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-orange/5 hover:from-primary/10 hover:to-orange/10">
                   <span className="text-base font-semibold text-primary">
                     Apply E-VISA
                   </span>

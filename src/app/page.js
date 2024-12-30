@@ -42,12 +42,12 @@ const Home = () => {
 
         {/* Action Buttons Section */}
         <div className="container relative w-full py-10 mx-auto">
-          <div className="grid grid-cols-1 gap-6 px-4 md:px-6 lg:px-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 px-4 md:px-6 lg:px-8 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
             {/* Apply for India */}
-            <Link href="/visa/step-one" className="group">
-              <div className="relative p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-orange/20 hover:shadow-2xl hover:shadow-orange/5 group-hover:scale-[1.02]">
+            <Link href="/visa/step-one" className="group h-full">
+              <div className="relative flex flex-col h-full p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-orange/20 hover:shadow-2xl hover:shadow-orange/5 group-hover:scale-[1.02]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange/10 via-primary/5 to-transparent rounded-bl-full -z-10"></div>
-                <div className="flex flex-col items-center justify-center min-h-[120px] text-center space-y-3">
+                <div className="flex flex-col items-center justify-center flex-grow text-center space-y-3">
                   <span className="text-lg font-semibold text-gray-800">
                     Apply For INDIA
                   </span>
@@ -77,11 +77,11 @@ const Home = () => {
             {/* Amend or Complete */}
             <button
               onClick={() => setPartiallyFillFormOpen(true)}
-              className="group"
+              className="group h-full"
             >
-              <div className="relative p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-pink/20 hover:shadow-2xl hover:shadow-pink/5 group-hover:scale-[1.02]">
+              <div className="relative flex flex-col h-full p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-pink/20 hover:shadow-2xl hover:shadow-pink/5 group-hover:scale-[1.02]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink/10 via-primary/5 to-transparent rounded-bl-full -z-10"></div>
-                <div className="flex flex-col items-center justify-center min-h-[120px] text-center space-y-3">
+                <div className="flex flex-col items-center justify-center flex-grow text-center space-y-3">
                   <span className="text-lg font-semibold text-gray-800">
                     Amend or Complete
                   </span>
@@ -111,11 +111,11 @@ const Home = () => {
             {/* Make Payment */}
             <button
               onClick={() => setPaymentForCompletedFormOpen(true)}
-              className="group"
+              className="group h-full"
             >
-              <div className="relative p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-success/20 hover:shadow-2xl hover:shadow-success/5 group-hover:scale-[1.02]">
+              <div className="relative flex flex-col h-full p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-success/20 hover:shadow-2xl hover:shadow-success/5 group-hover:scale-[1.02]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-success/10 via-primary/5 to-transparent rounded-bl-full -z-10"></div>
-                <div className="flex flex-col items-center justify-center min-h-[120px] text-center space-y-3">
+                <div className="flex flex-col items-center justify-center flex-grow text-center space-y-3">
                   <span className="text-lg font-semibold text-gray-800">
                     Make Payment
                   </span>
@@ -145,11 +145,11 @@ const Home = () => {
             {/* Visa Status */}
             <button
               onClick={() => setVisaStatusFormOpen(true)}
-              className="group"
+              className="group h-full"
             >
-              <div className="relative p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-brown/20 hover:shadow-2xl hover:shadow-brown/5 group-hover:scale-[1.02]">
+              <div className="relative flex flex-col h-full p-6 transition-all duration-300 bg-white border border-transparent rounded-xl hover:border-brown/20 hover:shadow-2xl hover:shadow-brown/5 group-hover:scale-[1.02]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brown/10 via-primary/5 to-transparent rounded-bl-full -z-10"></div>
-                <div className="flex flex-col items-center justify-center min-h-[120px] text-center space-y-3">
+                <div className="flex flex-col items-center justify-center flex-grow text-center space-y-3">
                   <span className="text-lg font-semibold text-gray-800">
                     Visa Status
                   </span>
