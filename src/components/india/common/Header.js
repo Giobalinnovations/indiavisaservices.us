@@ -18,111 +18,141 @@ const Header = ({ bgcolor }) => {
     <header
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-lg shadow-lg'
-          : 'bg-gradient-to-b from-black/70 to-transparent'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-emerald-100'
+          : 'bg-gray-900/80 backdrop-blur-sm'
       }`}
       style={{ zIndex: 50 }}
     >
+      {/* Decorative elements */}
+      <div className="absolute inset-0 bg-hex-pattern opacity-5"></div>
+      {scrolled ? (
+        <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent"></div>
+      ) : (
+        <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent"></div>
+      )}
+
       <nav className="container relative mx-auto">
-        <div className="flex items-center justify-between h-20 px-4 md:px-6">
+        <div className="flex items-center justify-between h-20 px-6">
           {/* Logo */}
           <Link href="/" className="relative group">
+            <div className="absolute inset-0 transition-all duration-300 opacity-0 rounded-xl bg-gradient-to-r from-emerald-100 to-emerald-200 blur-xl group-hover:opacity-20"></div>
             <Image
               src={
                 scrolled
                   ? '/assets/images/india/common/logo.png'
                   : '/assets/images/india/common/logo-white.png'
               }
-              width={144}
-              height={40}
-              alt="Travel Visa Services"
-              className="transition-all duration-500 w-36 group-hover:scale-105"
+              width={150}
+              height={45}
+              alt="Indian Visa Portal"
+              className="relative transition-transform duration-300 group-hover:scale-105"
+              priority
             />
           </Link>
 
-          {/* Desktop Menu */}
+          {/* Desktop Navigation */}
           <div className="items-center hidden space-x-8 md:flex">
             <Link href="/">
               <span
-                className={`text-sm font-medium transition-all duration-300 hover:text-primary relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
-                  scrolled ? 'text-secondary' : 'text-white'
-                }`}
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-emerald-600 transition-colors duration-300`}
               >
                 Home
               </span>
             </Link>
-            <Link href="#">
+            <Link href="/about">
               <span
-                className={`text-sm font-medium transition-all duration-300 hover:text-primary relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
-                  scrolled ? 'text-secondary' : 'text-white'
-                }`}
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-emerald-600 transition-colors duration-300`}
               >
-                Contact Us
+                About
+              </span>
+            </Link>
+            <Link href="/services">
+              <span
+                className={`nav-item ${
+                  scrolled ? 'text-gray-900' : 'text-white'
+                } hover:text-emerald-600 transition-colors duration-300`}
+              >
+                Services
               </span>
             </Link>
             <Link href="/visa/step-one">
-              <span className="px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-full hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105">
-                Apply E-VISA
+              <span className="inline-flex items-center px-6 py-2.5 text-sm font-medium text-white bg-emerald-600 rounded-full relative overflow-hidden group hover:bg-emerald-700 transition-colors duration-300">
+                <span className="relative flex items-center">
+                  Start Application
+                  <svg
+                    className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
               </span>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="p-2 md:hidden focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            className="relative p-2 md:hidden group"
+            aria-label="Toggle Menu"
           >
+            <div className="absolute inset-0 transition-colors duration-300 rounded-lg group-hover:bg-emerald-100/5"></div>
             {isOpen ? (
               <FaTimes
-                className={`w-6 h-6 transition-colors duration-300 ${
-                  scrolled ? 'text-secondary' : 'text-white'
+                className={`w-6 h-6 relative ${
+                  scrolled ? 'text-gray-900' : 'text-white'
                 }`}
               />
             ) : (
               <FaBars
-                className={`w-6 h-6 transition-colors duration-300 ${
-                  scrolled ? 'text-secondary' : 'text-white'
+                className={`w-6 h-6 relative ${
+                  scrolled ? 'text-gray-900' : 'text-white'
                 }`}
               />
             )}
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Menu */}
         <div
-          className={`
-          absolute top-full left-0 right-0 bg-white/95 backdrop-blur-lg shadow-lg transition-all duration-500 md:hidden
+          className={`absolute top-full left-0 right-0 transition-all duration-300 bg-white/95 backdrop-blur-xl border-b border-emerald-100 md:hidden
           ${
             isOpen
               ? 'opacity-100 visible translate-y-0'
               : 'opacity-0 invisible -translate-y-4'
-          }
-        `}
+          }`}
         >
-          <div className="divide-y divide-gray-100">
-            <Link href="/" onClick={() => setIsOpen(false)}>
-              <div className="px-4 py-3 transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10">
-                <span className="text-secondary">Home</span>
-              </div>
-            </Link>
-            <Link href="#" onClick={() => setIsOpen(false)}>
-              <div className="px-4 py-3 transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10">
-                <span className="text-secondary">Contact Us</span>
-              </div>
-            </Link>
-            <Link href="/visa/step-one" onClick={() => setIsOpen(false)}>
-              <div className="px-4 py-3 transition-all duration-300 bg-gradient-to-r from-primary/5 to-accent/5 hover:from-primary/10 hover:to-accent/10">
-                <span className="font-semibold text-primary">Apply E-VISA</span>
-              </div>
-            </Link>
-          </div>
+          <nav className="divide-y divide-emerald-100">
+            {['Home', 'About', 'Services'].map(item => (
+              <Link key={item} href="/" onClick={() => setIsOpen(false)}>
+                <div className="px-6 py-4 transition-colors duration-200 hover:bg-emerald-50">
+                  <span className="text-gray-900">{item}</span>
+                </div>
+              </Link>
+            ))}
+            <div className="p-4">
+              <Link
+                href="/visa/step-one"
+                onClick={() => setIsOpen(false)}
+                className="block w-full py-3 text-center text-white transition-colors duration-200 rounded-lg bg-emerald-600 hover:bg-emerald-700"
+              >
+                Start Application
+              </Link>
+            </div>
+          </nav>
         </div>
       </nav>
-
-      {bgcolor && scrolled && (
-        <div className="h-px bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20" />
-      )}
     </header>
   );
 };
