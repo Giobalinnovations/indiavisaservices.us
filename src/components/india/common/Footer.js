@@ -34,18 +34,17 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden bg-secondary">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-black opacity-95"></div>
-      <div className="absolute inset-0 bg-[url('/assets/images/india/common/bannerfooter.png')] bg-cover bg-center opacity-20"></div>
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange/50 to-transparent"></div>
+      <div className="absolute inset-0 bg-[url('/assets/images/india/common/bannerfooter.png')] bg-cover bg-center opacity-10"></div>
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-orange/5 to-transparent"></div>
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/5 to-transparent"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-accent/5 to-transparent"></div>
 
       <div className="relative">
-        <div className="container px-4 pt-16 pb-8 mx-auto md:px-0">
+        <div className="container px-4 pt-16 pb-8 mx-auto md:px-6">
           <div className="grid gap-12 md:grid-cols-12">
             {/* Logo and Contact Section */}
             <div className="md:col-span-4">
@@ -57,7 +56,7 @@ const Footer = () => {
                   src="/assets/images/india/common/logo-white.png"
                   width={240}
                   height={140}
-                  alt="logo"
+                  alt="Travel Visa Services"
                   className="w-48"
                 />
               </Link>
@@ -66,7 +65,7 @@ const Footer = () => {
                   href="mailto:info@traveltoindiaservices.com"
                   className="flex items-center group"
                 >
-                  <span className="flex items-center justify-center w-10 h-10 mr-4 transition-all duration-300 bg-white/10 rounded-full group-hover:bg-gradient-to-r group-hover:from-orange group-hover:to-primary group-hover:scale-110">
+                  <span className="flex items-center justify-center w-10 h-10 mr-4 transition-all duration-300 rounded-full bg-white/10 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent group-hover:scale-110">
                     <IoIosMail className="w-5 h-5 text-white" />
                   </span>
                   <span className="text-sm text-gray-300 transition-all duration-300 group-hover:text-white">
@@ -80,7 +79,7 @@ const Footer = () => {
                     key={link.id}
                     href={link.href}
                     aria-label={link.label}
-                    className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-white/10 rounded-full hover:bg-gradient-to-r hover:from-orange hover:to-primary hover:scale-110 group"
+                    className="flex items-center justify-center w-10 h-10 transition-all duration-300 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:scale-110 group"
                   >
                     <span className="text-gray-300 transition-colors duration-300 group-hover:text-white">
                       {link.icon}
@@ -95,7 +94,7 @@ const Footer = () => {
               <h3 className="mb-6 text-lg font-semibold text-white">
                 <span className="relative">
                   Quick Links
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
               <ul className="space-y-3">
@@ -109,7 +108,7 @@ const Footer = () => {
                   <li key={item}>
                     <Link
                       href="/"
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1 hover:text-primary"
                     >
                       {item}
                     </Link>
@@ -123,7 +122,7 @@ const Footer = () => {
               <h3 className="mb-6 text-lg font-semibold text-white">
                 <span className="relative">
                   Apply For Indian VISA
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
               <ul className="space-y-3">
@@ -136,7 +135,7 @@ const Footer = () => {
                   <li key={item}>
                     <Link
                       href="/visa/step-one"
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1 hover:text-primary"
                     >
                       {item}
                     </Link>
@@ -150,7 +149,7 @@ const Footer = () => {
               <h3 className="mb-6 text-lg font-semibold text-white">
                 <span className="relative">
                   Support
-                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-orange to-transparent"></span>
+                  <span className="absolute bottom-0 left-0 w-1/2 h-px bg-gradient-to-r from-primary to-transparent"></span>
                 </span>
               </h3>
               <ul className="space-y-3">
@@ -166,7 +165,7 @@ const Footer = () => {
                   <li key={item.text}>
                     <Link
                       href={item.href}
-                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1"
+                      className="inline-block text-sm text-gray-300 transition-all duration-300 hover:text-white hover:translate-x-1 hover:text-primary"
                     >
                       {item.text}
                     </Link>
@@ -180,8 +179,10 @@ const Footer = () => {
           <div className="pt-12 mt-12 text-center border-t border-white/10">
             <p className="text-sm text-gray-400">
               Copyright © {new Date().getFullYear()} |{' '}
-              <span className="font-medium text-white">E-Visa</span> | All
-              Rights Reserved
+              <span className="font-medium text-primary">
+                indiavisaservices.us
+              </span>{' '}
+              | All Rights Reserved
             </p>
           </div>
         </div>
