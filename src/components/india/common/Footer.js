@@ -180,7 +180,7 @@ const Footer = () => {
             <p className="text-sm text-gray-400">
               Copyright © {new Date().getFullYear()} |{' '}
               <span className="font-medium text-primary">
-                indiavisaservices.us
+                indiavisaservicesUS
               </span>{' '}
               | All Rights Reserved
             </p>
