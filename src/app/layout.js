@@ -2,7 +2,7 @@ import Footer from '@/components/india/common/Footer';
 import Header from '@/components/india/common/Header';
 import ReactQueryProvider from '@/components/ReactQueryProvider';
 import { FormProvider } from '@/context/formContext';
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+
 import { Plus_Jakarta_Sans, Poppins } from 'next/font/google';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ToastContainer } from 'react-toastify';
@@ -68,8 +68,6 @@ export default function RootLayout({ children }) {
             />
           </ReactQueryProvider>
         </FormProvider>
-        <GoogleTagManager gtmId="G-LC9MZM89N4" />
-        <GoogleAnalytics gaId="G-LC9MZM89N4" />
       </body>
     </html>
   );
